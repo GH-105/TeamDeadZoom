@@ -35,6 +35,9 @@ public class playerController : MonoBehaviour, IDamage
     // Update is called once per frame
     void Update()
     {
+        Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
+        shootTimer += Time.deltaTime;
+        
         movement();
 
         sprint();
@@ -97,6 +100,8 @@ public class playerController : MonoBehaviour, IDamage
             {
                 dmg.takeDamage(shootDamage);
             }
+
+            Debug.Log(hit.collider.name);
         }
     }
 
@@ -106,7 +111,7 @@ public class playerController : MonoBehaviour, IDamage
 
         if(HP <= 0)
         {
-
+            gameManager.instance.youLose();
         }
     }
 }
