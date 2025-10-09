@@ -4,7 +4,9 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour, IDamage
 {
-    [SerializeField] Renderer model;
+    [SerializeField] Renderer body;
+    [SerializeField] Renderer head;
+    [SerializeField] Renderer jaw;
     [SerializeField] NavMeshAgent agent;
 
     [SerializeField] int HP;
@@ -13,18 +15,24 @@ public class EnemyAI : MonoBehaviour, IDamage
     [SerializeField] GameObject bullet;
     [SerializeField] float shootRate;
 
-    Color colorOrig;
+    Color colorOrigBody;
+    Color colorOrigHead;
+    Color colorOrigJaw;
 
     float shootTimer;
 
     bool playerInRange;
+
+    public room roomScript;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        colorOrig = model.material.color;
-
-        gameManager.instance.updateGameGoal(1);
+        colorOrigBody = body.material.color;
+        colorOrigHead = head.material.color;
+        colorOrigJaw = jaw.material.color;
+        roomScript = GetComponentInParent<room>();
+        roomScript.UpdateRoomGoal(1);
     }
 
     // Update is called once per frame
@@ -73,7 +81,7 @@ public class EnemyAI : MonoBehaviour, IDamage
         if(HP <= 0)
         {
             Destroy(gameObject);
-            gameManager.instance.updateGameGoal(-1);
+            roomScript.UpdateRoomGoal(-1);
         }
         else
         {
@@ -83,8 +91,12 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     IEnumerator flashRed()
     {
-        model.material.color = Color.red;
+        body.material.color = Color.red;
+        head.material.color = Color.red;
+        jaw.material.color = Color.red; 
         yield return new WaitForSeconds(0.1f);
-        model.material.color = colorOrig;
+        body.material.color = colorOrigBody;
+        head.material.color = colorOrigHead;
+        jaw.material.color = colorOrigJaw;
     }
 }

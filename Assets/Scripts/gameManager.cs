@@ -8,6 +8,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuPause;
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
+    [SerializeField] GameObject menuRoomComp;
 
     public GameObject player;
     public playerController playerScript;
@@ -16,6 +17,7 @@ public class gameManager : MonoBehaviour
 
     float timeScaleOrig;
     int gameGoalCount;
+    int gameGoalCountOrig;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -24,8 +26,12 @@ public class gameManager : MonoBehaviour
         timeScaleOrig = Time.timeScale;
 
         player = GameObject.FindWithTag("Player");
-        playerScript = player.GetComponent<playerController>();
-        
+        playerScript = player.GetComponent<playerController>(); 
+    }
+
+    private void Start()
+    {
+        gameGoalCountOrig = gameGoalCount;
     }
 
     // Update is called once per frame
@@ -74,6 +80,12 @@ public class gameManager : MonoBehaviour
             menuActive = menuWin;
             menuActive.SetActive(true);
         }
+        else if(gameGoalCount > 0 && gameGoalCount < gameGoalCountOrig)
+        {
+            statePause();
+            menuActive = menuRoomComp;
+            menuActive.SetActive(true);
+        }
     }
 
     public void youLose()
@@ -82,5 +94,4 @@ public class gameManager : MonoBehaviour
         menuActive = menuLose;
         menuActive.SetActive(true);
     }
-    
 }
