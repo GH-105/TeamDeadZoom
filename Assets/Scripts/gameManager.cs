@@ -80,12 +80,6 @@ public class gameManager : MonoBehaviour
             menuActive = menuWin;
             menuActive.SetActive(true);
         }
-        /*else if(gameGoalCount > 0 && gameGoalCount < gameGoalCountOrig)
-        {
-            statePause();
-            menuActive = menuRoomComp;
-            menuActive.SetActive(true);
-        }*/
     }
 
     public void youLose()
