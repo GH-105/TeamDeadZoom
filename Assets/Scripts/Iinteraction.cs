@@ -2,15 +2,19 @@ using UnityEngine;
 
 public class Iinteraction : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    [SerializeField] int speedBoost;
+    [SerializeField] int jumpCIncrease;
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if (other.CompareTag("Player"))
+        {
+            playerController player = other.GetComponent <playerController> ();
+            if (player != null)
+            {
+                player.Speed += (int)speedBoost; player.JumpCountMax += (int)jumpCIncrease;
+                Destroy(gameObject);
+            }
+        }
     }
 }

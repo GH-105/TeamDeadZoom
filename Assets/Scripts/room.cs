@@ -34,6 +34,10 @@ public class room : MonoBehaviour
         {
             Destroy(mainDoor);
             gameManager.instance.updateGameGoal(-1); 
+            if(roomGoalCount <= 0 && playerFinishTime < hiddenDoorTime)
+            {
+                Destroy(hiddenDoor);
+            }
         }
     }
 }

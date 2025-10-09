@@ -114,4 +114,17 @@ public class playerController : MonoBehaviour, IDamage
             gameManager.instance.youLose();
         }
     }
+
+
+    public int Speed
+    {
+        get => speed;
+        set => speed = value;
+    }
+
+    public int JumpCountMax
+    {
+        get => jumpCountMax;
+        set => jumpCountMax = value;    
+    }
 }
