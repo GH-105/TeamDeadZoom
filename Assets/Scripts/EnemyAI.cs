@@ -11,7 +11,8 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     [SerializeField] int HP;
 
-    [SerializeField] Transform shootPos;
+    [SerializeField] Transform shootPos1;
+    [SerializeField] Transform shootPos2;
     [SerializeField] GameObject bullet;
     [SerializeField] float shootRate;
 
@@ -70,8 +71,15 @@ public class EnemyAI : MonoBehaviour, IDamage
     void shoot()
     {
         shootTimer = 0;
-
-        Instantiate(bullet, shootPos.position, transform.rotation);
+        if (shootPos2 != null)
+        {
+            Instantiate(bullet, shootPos1.position, transform.rotation);
+            Instantiate(bullet, shootPos2.position, transform.rotation);
+        }
+        else 
+        {
+            Instantiate(bullet, shootPos1.position, transform.rotation);
+        }
     }
 
     public void takeDamage(int amount)

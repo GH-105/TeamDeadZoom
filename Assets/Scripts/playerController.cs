@@ -1,9 +1,12 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class playerController : MonoBehaviour, IDamage
 {
     [SerializeField] LayerMask ignoreLayer;
     [SerializeField] CharacterController controller;
+    [SerializeField] GameObject screenFlash;
 
     [SerializeField] int HP;
     [SerializeField] int speed;
@@ -113,6 +116,17 @@ public class playerController : MonoBehaviour, IDamage
         {
             gameManager.instance.youLose();
         }
+        else
+        {
+            StartCoroutine(flashRed());
+        }
+    }
+
+    IEnumerator flashRed()
+    {
+        screenFlash.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        screenFlash.SetActive(false);
     }
 
 
