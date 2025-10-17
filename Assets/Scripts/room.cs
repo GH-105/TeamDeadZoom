@@ -29,15 +29,35 @@ public class room : MonoBehaviour
 
     public void UpdateRoomGoal(int amount)
     {
+       
         roomGoalCount += amount;
         if (roomGoalCount <= 0)
         {
-            Destroy(mainDoor);
+            RecordPlayerTime();
+            OpenMainDoor();
             gameManager.instance.updateGameGoal(-1); 
-            if(roomGoalCount <= 0 && playerFinishTime < hiddenDoorTime)
+
+            if(playerFinishTime < hiddenDoorTime)
             {
-                Destroy(hiddenDoor);
+                RevealHiddenDoor();
             }
         }
+        Debug.Log($"Room completed in {playerFinishTime} seconds. Hidden door threshold: {hiddenDoorTime}");
+    }
+
+    public void RecordPlayerTime()
+    {
+        playerFinishTime = playerFinishTime.time - playerStartTime;
+        playerTotalRoomTime += playerFinishTime;
+    }
+
+    private void OpenMainDoor()
+    {
+        if (mainDoor != null) Destroy(mainDoor);
+    }
+
+    private void RevealHiddenDoor()
+    {
+        if (hiddenDoor != null) Destroy(hiddenDoor);
     }
 }
