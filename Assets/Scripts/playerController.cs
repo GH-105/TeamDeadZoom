@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections.Generic;
 
 public class playerController : MonoBehaviour, IDamage
 {
@@ -8,7 +9,7 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField] CharacterController controller;
     [SerializeField] GameObject screenFlash;
 
-    [SerializeField] int HP;
+    [SerializeField] public int HP;
     [SerializeField] int speed;
     [SerializeField] int sprintMod;
     [SerializeField] int jumpSpeed;
@@ -23,7 +24,7 @@ public class playerController : MonoBehaviour, IDamage
     Vector3 playerVel;
 
     int jumpCount;
-    int HPorig;
+    public int HPorig;
 
     float shootTimer;
 
