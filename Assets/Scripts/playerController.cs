@@ -1,6 +1,6 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.AI;
+using UnityEngine.AI; //not sure if this was auto added or if someone needs this 
 using System.Collections.Generic;
 
 public class playerController : MonoBehaviour, IDamage
