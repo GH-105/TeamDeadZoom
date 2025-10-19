@@ -22,28 +22,28 @@ public class hearts : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (playerCont == null || heart == null || fullHeart == null || emptyHeart == null)
+            return;
+
         health = playerCont.HP;
         maxHealth = playerCont.HPorig;
 
-        for (int i = 0; i < heart.Length; i++)
-        {
-            if (i < health)
-            {
-                heart[i].sprite = fullHeart;
-            }
-            else
-            {
-                heart[i].sprite = emptyHeart;
-            }
+        int count = Mathf.Min(heart.Length, maxHealth);
 
-            if (i < maxHealth)
-            {
-                heart[i].enabled = true;
-            }
-            else
-            {
+
+        for (int i = 0; i < count; i++)
+        {
+            if(heart[i] == null)
+                continue;
+
+            heart[i].sprite = (i < health) ? fullHeart : emptyHeart;
+            heart[i].enabled = true;
+        }
+
+        for (int i = count; i < heart.Length; i++)
+        {
+            if (heart[i] != null)
                 heart[i].enabled = false;
-            }
         }
     }
 }
