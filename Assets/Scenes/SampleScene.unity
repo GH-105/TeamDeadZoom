@@ -3821,6 +3821,7 @@ MonoBehaviour:
   shootPos2: {fileID: 0}
   bullet: {fileID: 6207780247886573495, guid: 57c1c19ebb6e8ad4bb351a006e3dc17d, type: 3}
   shootRate: 1.5
+  floatingTextPrefab: {fileID: 5749133604472977256, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
   roomScript: {fileID: 0}
 --- !u!1 &121672663
 GameObject:
@@ -5746,6 +5747,7 @@ MonoBehaviour:
   shootPos2: {fileID: 0}
   bullet: {fileID: 6207780247886573495, guid: 57c1c19ebb6e8ad4bb351a006e3dc17d, type: 3}
   shootRate: 100
+  floatingTextPrefab: {fileID: 5749133604472977256, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
   roomScript: {fileID: 0}
 --- !u!1 &187431598
 GameObject:
@@ -9632,6 +9634,7 @@ MonoBehaviour:
   shootPos2: {fileID: 0}
   bullet: {fileID: 6207780247886573495, guid: 57c1c19ebb6e8ad4bb351a006e3dc17d, type: 3}
   shootRate: 1.5
+  floatingTextPrefab: {fileID: 5749133604472977256, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
   roomScript: {fileID: 0}
 --- !u!1 &320581187
 GameObject:
@@ -13387,6 +13390,7 @@ MonoBehaviour:
   shootPos2: {fileID: 0}
   bullet: {fileID: 6207780247886573495, guid: 57c1c19ebb6e8ad4bb351a006e3dc17d, type: 3}
   shootRate: 1.5
+  floatingTextPrefab: {fileID: 5749133604472977256, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
   roomScript: {fileID: 0}
 --- !u!1 &433685015
 GameObject:
@@ -19722,6 +19726,7 @@ MonoBehaviour:
   shootPos2: {fileID: 0}
   bullet: {fileID: 6207780247886573495, guid: 57c1c19ebb6e8ad4bb351a006e3dc17d, type: 3}
   shootRate: 1.5
+  floatingTextPrefab: {fileID: 5749133604472977256, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
   roomScript: {fileID: 0}
 --- !u!1 &611866761
 GameObject:
@@ -21822,6 +21827,7 @@ MonoBehaviour:
   shootPos2: {fileID: 0}
   bullet: {fileID: 6207780247886573495, guid: 57c1c19ebb6e8ad4bb351a006e3dc17d, type: 3}
   shootRate: 1.5
+  floatingTextPrefab: {fileID: 5749133604472977256, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
   roomScript: {fileID: 0}
 --- !u!1 &691824090
 GameObject:
@@ -28465,6 +28471,7 @@ MonoBehaviour:
   shootPos2: {fileID: 0}
   bullet: {fileID: 6207780247886573495, guid: 57c1c19ebb6e8ad4bb351a006e3dc17d, type: 3}
   shootRate: 1.5
+  floatingTextPrefab: {fileID: 5749133604472977256, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
   roomScript: {fileID: 0}
 --- !u!1 &908062690
 GameObject:
@@ -31469,6 +31476,7 @@ MonoBehaviour:
   shootPos2: {fileID: 0}
   bullet: {fileID: 6207780247886573495, guid: 57c1c19ebb6e8ad4bb351a006e3dc17d, type: 3}
   shootRate: 1.5
+  floatingTextPrefab: {fileID: 5749133604472977256, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
   roomScript: {fileID: 0}
 --- !u!1 &976202611
 GameObject:
@@ -32965,6 +32973,7 @@ MonoBehaviour:
   shootPos2: {fileID: 0}
   bullet: {fileID: 6207780247886573495, guid: 57c1c19ebb6e8ad4bb351a006e3dc17d, type: 3}
   shootRate: 1.5
+  floatingTextPrefab: {fileID: 5749133604472977256, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
   roomScript: {fileID: 0}
 --- !u!1 &1036269641
 GameObject:
@@ -36657,6 +36666,7 @@ MonoBehaviour:
   shootPos2: {fileID: 0}
   bullet: {fileID: 6207780247886573495, guid: 57c1c19ebb6e8ad4bb351a006e3dc17d, type: 3}
   shootRate: 1.5
+  floatingTextPrefab: {fileID: 5749133604472977256, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
   roomScript: {fileID: 0}
 --- !u!1 &1170249895
 GameObject:
@@ -44884,6 +44894,7 @@ MonoBehaviour:
   shootPos2: {fileID: 0}
   bullet: {fileID: 6207780247886573495, guid: 57c1c19ebb6e8ad4bb351a006e3dc17d, type: 3}
   shootRate: 100
+  floatingTextPrefab: {fileID: 5749133604472977256, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
   roomScript: {fileID: 0}
 --- !u!1 &1403595020
 GameObject:
@@ -45687,6 +45698,7 @@ MonoBehaviour:
   shootPos2: {fileID: 0}
   bullet: {fileID: 6207780247886573495, guid: 8aa480c69c7f2444ebe40e06d5b838dc, type: 3}
   shootRate: 2
+  floatingTextPrefab: {fileID: 5749133604472977256, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
   roomScript: {fileID: 0}
 --- !u!1 &1427757462
 GameObject:
@@ -48969,6 +48981,7 @@ MonoBehaviour:
   shootPos2: {fileID: 0}
   bullet: {fileID: 6207780247886573495, guid: 57c1c19ebb6e8ad4bb351a006e3dc17d, type: 3}
   shootRate: 1.5
+  floatingTextPrefab: {fileID: 5749133604472977256, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
   roomScript: {fileID: 0}
 --- !u!1 &1505674304
 GameObject:
@@ -51807,6 +51820,7 @@ MonoBehaviour:
   shootPos2: {fileID: 0}
   bullet: {fileID: 6207780247886573495, guid: 57c1c19ebb6e8ad4bb351a006e3dc17d, type: 3}
   shootRate: 1.5
+  floatingTextPrefab: {fileID: 5749133604472977256, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
   roomScript: {fileID: 0}
 --- !u!1 &1585558442
 GameObject:
@@ -57748,6 +57762,7 @@ MonoBehaviour:
   shootPos2: {fileID: 0}
   bullet: {fileID: 6207780247886573495, guid: 57c1c19ebb6e8ad4bb351a006e3dc17d, type: 3}
   shootRate: 1.5
+  floatingTextPrefab: {fileID: 5749133604472977256, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
   roomScript: {fileID: 0}
 --- !u!1 &1790542766
 GameObject:
@@ -69675,6 +69690,7 @@ MonoBehaviour:
   shootPos2: {fileID: 0}
   bullet: {fileID: 6207780247886573495, guid: 8aa480c69c7f2444ebe40e06d5b838dc, type: 3}
   shootRate: 2
+  floatingTextPrefab: {fileID: 5749133604472977256, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
   roomScript: {fileID: 0}
 --- !u!1 &2146161576
 GameObject:
@@ -70130,6 +70146,66 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a6e173a0b175fa4aacb0618436d3d54, type: 3}
+--- !u!1001 &7493499048049202295
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 88285752292559824, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 88285752292559824, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 88285752292559824, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 88285752292559824, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 88285752292559824, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 88285752292559824, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 88285752292559824, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 88285752292559824, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 88285752292559824, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 88285752292559824, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5749133604472977256, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
+      propertyPath: m_Name
+      value: FloatingHitDamage
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3215378965592797866, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+  m_SourcePrefab: {fileID: 100100000, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
 --- !u!1001 &8523529828438421772
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -70253,3 +70329,4 @@ SceneRoots:
   - {fileID: 458894756004852057}
   - {fileID: 63219311}
   - {fileID: 1438451338}
+  - {fileID: 7493499048049202295}

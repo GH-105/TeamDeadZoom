@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using TMPro;
 
 public class EnemyAI : MonoBehaviour, IDamage
 {
@@ -15,6 +16,8 @@ public class EnemyAI : MonoBehaviour, IDamage
     [SerializeField] Transform shootPos2;
     [SerializeField] GameObject bullet;
     [SerializeField] float shootRate;
+
+    [SerializeField] GameObject floatingTextPrefab;
 
     Color colorOrigBody;
     Color colorOrigHead;
@@ -85,6 +88,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     public void takeDamage(int amount)
     {
         HP -= amount;
+        showDamage(amount.ToString());
 
         if(HP <= 0)
         {
@@ -94,6 +98,18 @@ public class EnemyAI : MonoBehaviour, IDamage
         else
         {
             StartCoroutine(flashRed());
+        }
+    }
+
+    void showDamage(string text)
+    {
+        if(floatingTextPrefab)
+        {
+            GameObject prefab = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity);
+            prefab.GetComponentInChildren<TextMeshPro>().text = text;
+
+            prefab.transform.LookAt(Camera.main.transform);
+            prefab.transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward);
         }
     }
 

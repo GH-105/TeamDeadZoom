@@ -61,6 +61,7 @@ MonoBehaviour:
   shootPos2: {fileID: 0}
   bullet: {fileID: 6207780247886573495, guid: 8aa480c69c7f2444ebe40e06d5b838dc, type: 3}
   shootRate: 2
+  floatingTextPrefab: {fileID: 5749133604472977256, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
   roomScript: {fileID: 0}
 --- !u!95 &3138403454936158112
 Animator:
