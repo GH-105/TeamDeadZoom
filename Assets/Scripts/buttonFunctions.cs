@@ -42,7 +42,7 @@ public class buttonFunctions : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene(nextIndex);
+            SceneManager.LoadScene(level);
             gameManager.instance.stateUnpause();
         }
     }
