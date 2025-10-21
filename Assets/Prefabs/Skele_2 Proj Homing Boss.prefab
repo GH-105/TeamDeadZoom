@@ -1054,7 +1054,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3939596247269308785}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 39.1911, y: 0.022577763, z: -148.46497}
   m_LocalScale: {x: 9, y: 9, z: 9}
   m_ConstrainProportionsScale: 0
@@ -1077,11 +1077,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c25b81b74c1ef342b7958bf62681273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
+  anim: {fileID: 6590894153844657967}
   body: {fileID: 4861410845871270831}
   head: {fileID: 1834492964127661294}
   jaw: {fileID: 101749663200315043}
   agent: {fileID: 3662775103382989217}
+  headPos: {fileID: 4830285367045107079}
   HP: 20
+  faceTargetSpeed: 2
+  FOV: 45
+  roamDist: 25
+  roamPauseTimer: 3
   shootPos1: {fileID: 3077017980164232922}
   shootPos2: {fileID: 4189304602971058784}
   bullet: {fileID: 6207780247886573495, guid: 8aa480c69c7f2444ebe40e06d5b838dc, type: 3}

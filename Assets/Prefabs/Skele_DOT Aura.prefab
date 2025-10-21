@@ -1729,15 +1729,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c25b81b74c1ef342b7958bf62681273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyAI
+  anim: {fileID: 3956423740790020498}
   body: {fileID: 8129016326865448571}
   head: {fileID: 4953628552696221398}
   jaw: {fileID: 5676413094410260982}
   agent: {fileID: 9066074892652925956}
+  headPos: {fileID: 545817224994583118}
   HP: 8
+  faceTargetSpeed: 2
+  FOV: 45
+  roamDist: 25
+  roamPauseTimer: 3
   shootPos1: {fileID: 2578810467199060579}
   shootPos2: {fileID: 0}
   bullet: {fileID: 6207780247886573495, guid: 57c1c19ebb6e8ad4bb351a006e3dc17d, type: 3}
-  shootRate: 100
+  shootRate: 9999
   floatingTextPrefab: {fileID: 5749133604472977256, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
   roomScript: {fileID: 0}
 --- !u!95 &3956423740790020498
@@ -1876,10 +1882,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Damage
   type: 2
   rb: {fileID: 6266769173280440242}
+  projModel: {fileID: 0}
   damageAmount: 1
   damageRate: 3
   speed: 0
   destroyTime: 0
+  flightTime: 0
 --- !u!135 &8977676480902675418
 SphereCollider:
   m_ObjectHideFlags: 0

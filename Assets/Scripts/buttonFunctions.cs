@@ -4,7 +4,15 @@ using UnityEngine.SceneManagement;
 
 public class buttonFunctions : MonoBehaviour
 {
-   public void resume()
+    [SerializeField] gunStats gun;
+    int levelChosen;
+    int nextIndex;
+    private void Start()
+    {
+        nextIndex = SceneManager.GetActiveScene().buildIndex + 1;
+    }
+
+    public void resume()
     {
         gameManager.instance.stateUnpause();
     }
@@ -26,7 +34,35 @@ public class buttonFunctions : MonoBehaviour
 
     public void loadLevel(int level)
     {
-        SceneManager.LoadScene(level);
+        int sceneIndex = SceneManager.GetActiveScene().buildIndex;
+        if (sceneIndex == 0)
+        {
+            levelChosen = level;
+            gameManager.instance.weaponSelect();
+        }
+        else
+        {
+            SceneManager.LoadScene(nextIndex);
+            gameManager.instance.stateUnpause();
+        }
+    }
+
+    public void nextLevel()
+    {
+        SceneManager.LoadScene(nextIndex);
+        gameManager.instance.stateUnpause();
+    }
+
+    public void loadLevelSelectMenu()
+    {
+        gameManager.instance.levelSelect();
+    }
+
+    public void LoadWeapon()
+    {
+        Debug.Log("LoadWeapon clicked");
+        gameManager.instance.setStartingWeapon(gun);
+        SceneManager.LoadScene(levelChosen);
         gameManager.instance.stateUnpause();
     }
 }

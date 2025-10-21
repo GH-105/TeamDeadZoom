@@ -26,7 +26,7 @@ public class hearts : MonoBehaviour
             return;
 
         health = playerCont.HP;
-        maxHealth = playerCont.HPorig;
+        maxHealth = playerCont.HPOrig;
 
         int count = Mathf.Min(heart.Length, maxHealth);
 

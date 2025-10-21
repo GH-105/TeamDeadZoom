@@ -2,26 +2,33 @@ using UnityEngine;
 using System.Collections;
 public class Damage : MonoBehaviour
 {
-    enum damagetype { moving, stationary, DOT, homing }
+    enum damagetype { moving, stationary, DOT, homing, thrown }
     [SerializeField] damagetype type;
     [SerializeField] Rigidbody rb;
+    [SerializeField] GameObject projModel;
 
     [SerializeField] int damageAmount;
     [SerializeField] float damageRate;
     [SerializeField] int speed;
     [SerializeField] int destroyTime;
 
+    [SerializeField] float flightTime;
+
     bool isDamaging;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (type == damagetype.moving || type == damagetype.homing)
+        if (type == damagetype.moving || type == damagetype.homing || type == damagetype.thrown)
         {
             Destroy(gameObject, destroyTime);
 
             if (type == damagetype.moving)
             {
                 rb.linearVelocity = transform.forward * speed;
+            }
+            else if(type == damagetype.thrown)
+            {
+                rb.linearVelocity = (gameManager.instance.player.transform.position - transform.position - 0.5f * Physics.gravity * (flightTime * flightTime)) / flightTime;
             }
         }
     }
@@ -43,11 +50,11 @@ public class Damage : MonoBehaviour
         }
 
         IDamage dmg = other.GetComponent<IDamage>();
-        if (dmg != null && (type == damagetype.moving || type == damagetype.stationary || type == damagetype.homing))
+        if (dmg != null && (type == damagetype.moving || type == damagetype.stationary || type == damagetype.homing || type == damagetype.thrown))
         {
             dmg.takeDamage(damageAmount);
 
-            if (type == damagetype.homing || type == damagetype.moving)
+            if (type == damagetype.homing || type == damagetype.moving || type == damagetype.thrown)
             {
                 Destroy(gameObject);
             }

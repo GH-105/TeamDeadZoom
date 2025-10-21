@@ -1,13 +1,11 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.AI; //not sure if this was auto added or if someone needs this 
 using System.Collections.Generic;
 
-public class playerController : MonoBehaviour, IDamage
+public class playerController : MonoBehaviour, IDamage, IPickup
 {
     [SerializeField] LayerMask ignoreLayer;
     [SerializeField] CharacterController controller;
-    [SerializeField] GameObject screenFlash;
 
     [SerializeField] public int HP;
     [SerializeField] int speed;
@@ -19,12 +17,17 @@ public class playerController : MonoBehaviour, IDamage
     [SerializeField] int shootDamage;
     [SerializeField] int shootDist;
     [SerializeField] float shootRate;
+    //[SerializeField] int numProjectiles;
+    //[SerializeField] int numChains;
+    [SerializeField] List<gunStats> gunList = new List<gunStats>();
+    [SerializeField] GameObject gunModel;
 
     Vector3 moveDir;
     Vector3 playerVel;
 
     int jumpCount;
-    public int HPorig;
+    public int HPOrig;
+    int gunListPos;
 
     float shootTimer;
 
@@ -33,7 +36,13 @@ public class playerController : MonoBehaviour, IDamage
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        HPorig = HP;
+        HPOrig = HP;
+        spawnPlayer();
+        if (gameManager.instance.startingGun != null)
+        {
+            getGunStats(gameManager.instance.startingGun);
+            //gameManager.instance.startingGun = null;
+        }
     }
 
     // Update is called once per frame
@@ -42,7 +51,8 @@ public class playerController : MonoBehaviour, IDamage
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
         shootTimer += Time.deltaTime;
         
-        movement();
+        if(!gameManager.instance.isPaused)
+            movement();
 
         sprint();
     }
@@ -65,10 +75,13 @@ public class playerController : MonoBehaviour, IDamage
         jump();
         controller.Move(playerVel * Time.deltaTime);
 
-        if(Input.GetButton("Fire1") && shootTimer >= shootRate)
+        if(Input.GetButton("Fire1") && gunList.Count > 0 && gunList[gunListPos].ammoCur > 0 && shootTimer >= shootRate)
         {
             shoot();
         }
+
+        selectGun();
+        reload();
     }
 
     void sprint()
@@ -95,41 +108,97 @@ public class playerController : MonoBehaviour, IDamage
     void shoot()
     {
         shootTimer = 0;
+        gunList[gunListPos].ammoCur--;
+        updatePlayerUI();
 
         RaycastHit hit;
         if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist, ~ignoreLayer))
         {
+            Instantiate(gunList[gunListPos].hitEffect, hit.point, Quaternion.identity);
+
             IDamage dmg = hit.collider.GetComponent<IDamage>();
             if(dmg != null)
             {
                 dmg.takeDamage(shootDamage);
             }
-
-            Debug.Log(hit.collider.name);
         }
+    }
+
+    void reload()
+    {
+        if(Input.GetButtonDown("Reload"))
+        {
+            gunList[gunListPos].ammoCur = gunList[gunListPos].ammoMax;
+        }
+        updatePlayerUI();
     }
 
     public void takeDamage(int amount)
     {
         HP -= amount;
-
+        updatePlayerUI();
+        StartCoroutine(flashPlayerDmg());
         if(HP <= 0)
         {
             gameManager.instance.youLose();
         }
-        else
+    }
+
+    public void updatePlayerUI()
+    {
+        if(gunList.Count > 0)
         {
-            StartCoroutine(flashRed());
+            gameManager.instance.ammoCur.text = gunList[gunListPos].ammoCur.ToString();
+            gameManager.instance.ammoMax.text = gunList[gunListPos].ammoMax.ToString();
+        }    
+    }
+
+    IEnumerator flashPlayerDmg()
+    {
+        gameManager.instance.playerDamageScreen.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        gameManager.instance.playerDamageScreen.SetActive(false);
+    }
+
+    public void getGunStats(gunStats gun)
+    {
+        gunList.Add(gun);
+        gunListPos = gunList.Count - 1;
+        changeGun();
+    }
+
+    void changeGun()
+    {
+        shootDamage = gunList[gunListPos].shootDamage;
+        shootDist = gunList[gunListPos].shootDist;
+        shootRate = gunList[gunListPos].shootRate;
+        //numChains = gunList[gunListPos].maxChains;
+        //numProjectiles = gunList[gunListPos].maxProjectiles;
+
+        gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[gunListPos].gunModel.GetComponent<MeshFilter>().sharedMesh;
+        gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[gunListPos].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+
+        updatePlayerUI();
+    }
+
+    void selectGun()
+    {
+        if(Input.GetAxis("Mouse ScrollWheel") > 0 && gunListPos < gunList.Count - 1)
+        {
+            gunListPos++;
+            changeGun();
+        }
+        else if(Input.GetAxis("Mouse ScrollWheel") < 0 && gunListPos > 0)
+        {
+            gunListPos--;
+            changeGun();
         }
     }
 
-    IEnumerator flashRed()
+    public void spawnPlayer()
     {
-        screenFlash.SetActive(true);
-        yield return new WaitForSeconds(0.1f);
-        screenFlash.SetActive(false);
+        controller.transform.position = gameManager.instance.playerSpawnPos.transform.position;
     }
-
 
     public int Speed
     {

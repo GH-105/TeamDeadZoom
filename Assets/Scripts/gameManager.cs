@@ -1,4 +1,6 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class gameManager : MonoBehaviour
 {
@@ -9,29 +11,47 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuWin;
     [SerializeField] GameObject menuLose;
     [SerializeField] GameObject menuRoomComp;
+    [SerializeField] GameObject menuLevelSelect;
+    [SerializeField] GameObject menuWeaponSelect;
+
+    public gunStats startingGun;
 
     public GameObject player;
     public playerController playerScript;
+    public GameObject playerSpawnPos;
 
     public bool isPaused;
 
+    public GameObject playerDamageScreen;
+    public TMP_Text gameGoalCountText;
+    public TMP_Text ammoCur, ammoMax;
+    //public TMP_Text roomGoalCountText;
+    public GameObject checkpointPopup;
+
     float timeScaleOrig;
+
     int gameGoalCount;
-    int gameGoalCountOrig;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
+        Debug.Log($"GM Awake: {GetInstanceID()} in scene {UnityEngine.SceneManagement.SceneManager.GetActiveScene().name}");
         instance = this;
         timeScaleOrig = Time.timeScale;
 
         player = GameObject.FindWithTag("Player");
-        playerScript = player.GetComponent<playerController>(); 
+        playerScript = player.GetComponent<playerController>();
+
+        playerSpawnPos = GameObject.FindWithTag("Player Spawn Pos");
     }
 
     private void Start()
     {
-        gameGoalCountOrig = gameGoalCount;
+        if(SceneManager.GetActiveScene().name == "Level Select")
+        {
+            levelSelect();
+            statePause();
+        }
     }
 
     // Update is called once per frame
@@ -74,11 +94,13 @@ public class gameManager : MonoBehaviour
     public void updateGameGoal(int amount)
     {
         gameGoalCount += amount;
+        gameGoalCountText.text = gameGoalCount.ToString("F0");
+
         if(gameGoalCount <= 0)
         {
-            statePause();
             menuActive = menuWin;
             menuActive.SetActive(true);
+            statePause();
         }
     }
 
@@ -87,5 +109,26 @@ public class gameManager : MonoBehaviour
         statePause();
         menuActive = menuLose;
         menuActive.SetActive(true);
+    }
+
+    public void levelSelect()
+    {
+        menuActive = menuLevelSelect;
+        menuActive.SetActive(true);
+    }
+
+    public void weaponSelect()
+    {
+        menuActive.SetActive(false);
+        menuActive = menuWeaponSelect;
+        menuActive.SetActive(true);
+    }
+
+    public void setStartingWeapon(gunStats gun)
+    {
+        startingGun = gun;
+        if (startingGun != null)
+            startingGun.ammoCur = startingGun.ammoMax;
+        menuActive.SetActive(false);
     }
 }
