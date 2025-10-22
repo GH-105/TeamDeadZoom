@@ -11,11 +11,11 @@ public class Iinteraction : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerController player = other.GetComponent <playerController> ();
-            gunStats gunStatP = other.GetComponent<gunStats> ();
             if (player != null)
             {
                 player.Speed += (int)speedBoost; player.JumpCountMax += (int)jumpCIncrease;
                 
+                PowerUpManager.Instance.PowerUpAdd(speedBoost, jumpCIncrease);//record data
                 
                 Destroy(gameObject);
             }

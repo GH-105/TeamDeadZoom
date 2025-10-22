@@ -43,6 +43,12 @@ public class playerController : MonoBehaviour, IDamage, IPickup
             getGunStats(gameManager.instance.startingGun);
             //gameManager.instance.startingGun = null;
         }
+
+        if(PowerUpManager.Instance != null)//checks everytime before applying
+        {
+            PowerUpManager.Instance.ApplyToPlayer(this);
+        }
+       
     }
 
     // Update is called once per frame
