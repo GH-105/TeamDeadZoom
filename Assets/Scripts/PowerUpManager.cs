@@ -6,6 +6,10 @@ public class PowerUpManager : MonoBehaviour
 
     public int totalSpeed;
     public int totalJumps;
+    public int totalDamage;
+    public int totalDist;
+    public float totalRate;
+    public int totalAmmo;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()//needs to be done every scene
     {
@@ -20,10 +24,15 @@ public class PowerUpManager : MonoBehaviour
         }
     }
 
-    public void PowerUpAdd(int speedBoost, int jumpCIncrease)
+    public void PowerUpAdd(int speedBoost, int jumpCIncrease, int totalDamage, int totalDist, float totalRate, int totalAmmo)
     {
         totalSpeed += speedBoost;   
         totalJumps += jumpCIncrease;
+        totalDamage += totalDamage;
+        totalDist += totalDist;
+        totalRate += totalRate;
+        totalAmmo += totalAmmo;
+
     }
     
     public void ApplyToPlayer(playerController player)

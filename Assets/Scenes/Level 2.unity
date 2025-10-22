@@ -290,6 +290,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Iinteraction
   speedBoost: 0
   jumpCIncrease: 2
+  damageBoost: 0
+  distBoost: 0
+  rateBoost: 5
+  ammoUp: 10
 --- !u!135 &737823988
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -546,6 +550,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Iinteraction
   speedBoost: 15
   jumpCIncrease: 0
+  damageBoost: 0
+  distBoost: 4
+  rateBoost: 0
+  ammoUp: 0
 --- !u!135 &1530438241
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -597,6 +605,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PowerUpManager
   totalSpeed: 0
   totalJumps: 0
+  totalDamage: 0
+  totalDist: 0
+  totalRate: 0
+  totalAmmo: 0
 --- !u!1001 &1937916782657291
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -912,6 +924,14 @@ PrefabInstance:
     - target: {fileID: 5616860147368426287, guid: a11b88c68cd25324083572e5336c15a3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6581602860161486536, guid: a11b88c68cd25324083572e5336c15a3, type: 3}
+      propertyPath: eventTime
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8067570072137694918, guid: a11b88c68cd25324083572e5336c15a3, type: 3}
+      propertyPath: eventTime
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8662595174688679725, guid: a11b88c68cd25324083572e5336c15a3, type: 3}
       propertyPath: m_Name

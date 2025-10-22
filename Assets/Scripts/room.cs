@@ -1,8 +1,9 @@
+using UnityEditor;
 using UnityEngine;
 
 public class room : MonoBehaviour
 {
-    [SerializeField] float hiddenDoorTime;
+    [SerializeField] float eventTime;
     [SerializeField] GameObject hiddenDoor;
     [SerializeField] GameObject mainDoor;
     
@@ -34,10 +35,11 @@ public class room : MonoBehaviour
         {
             Destroy(mainDoor);
             gameManager.instance.updateGameGoal(-1); 
-            if(roomGoalCount <= 0 && playerFinishTime < hiddenDoorTime)
+            if(roomGoalCount <= 0 && playerFinishTime < eventTime)
             {
                 Destroy(hiddenDoor);
             }
+            
         }
     }
 }
