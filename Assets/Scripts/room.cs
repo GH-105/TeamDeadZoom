@@ -23,7 +23,7 @@ public class room : MonoBehaviour
     int totalEnemiesSpawned;
 
     bool startSpawning;
-    bool roomActive;
+    public bool roomActive;
 
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -55,7 +55,7 @@ public class room : MonoBehaviour
         {
             roomActive = true;
             startSpawning = true;
-            //doorState(true);
+            doorState(true);
         }
     }
 
@@ -64,22 +64,31 @@ public class room : MonoBehaviour
         int arrayPos = Random.Range(0, spawnPos.Length);
 
         GameObject enemyClone = Instantiate(enemy, spawnPos[arrayPos].position, spawnPos[arrayPos].rotation);
-        //enemyClone.GetComponent<enemyAI>().thisRoom = this;
+        enemyClone.GetComponent<EnemyAI>().thisRoom = this;
+        enemyCount++;
+        totalEnemiesSpawned++;
+        spawnTimer = 0;
     }
+
+    void doorState(bool state)
+    {
+        mainDoor.SetActive(state);
+        if(playerFinishTime < eventTime)
+        {
+            hiddenDoor.SetActive(state);
+        }
+    }    
 
     public void UpdateRoomGoal(int amount)
     {
         roomGoalCount += amount;
+
         if (roomGoalCount <= 0)
         {
-            Destroy(mainDoor);
+            doorState(false);
             roomActive = false;
-            gameManager.instance.updateGameGoal(-1); 
-            if(roomGoalCount <= 0 && playerFinishTime < eventTime)
-            {
-                Destroy(hiddenDoor);
-            }
-            
+            startSpawning = false;
+            gameManager.instance.updateGameGoal(-1);
         }
     }
 }

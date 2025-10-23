@@ -40,7 +40,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     Vector3 playerDir;
     Vector3 startingPos;
 
-    public room roomScript;
+    public room thisRoom;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -50,8 +50,6 @@ public class EnemyAI : MonoBehaviour, IDamage
         colorOrigJaw = jaw.material.color;
         stoppingDistOrig = agent.stoppingDistance;
         startingPos = transform.position;
-        roomScript = GetComponentInParent<room>();
-        roomScript.UpdateRoomGoal(1);
     }
 
     // Update is called once per frame
@@ -181,7 +179,6 @@ public class EnemyAI : MonoBehaviour, IDamage
         if(HP <= 0)
         {
             Destroy(gameObject);
-            roomScript.UpdateRoomGoal(-1);
         }
         else
         {
