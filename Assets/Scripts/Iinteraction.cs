@@ -4,7 +4,8 @@ public class Iinteraction : MonoBehaviour
 {
     [SerializeField] int speedBoost;
     [SerializeField] int jumpCIncrease;
-    [SerializeField] int damageBoost;
+    [SerializeField] int damageBoostFlat;
+    [SerializeField] float damageBoostMult;
     [SerializeField] int distBoost;
     [SerializeField] float rateBoost;
     [SerializeField] int ammoUp;
@@ -21,7 +22,7 @@ public class Iinteraction : MonoBehaviour
     }
 
     public PowerUpType type;
-    public float value;
+    
 
     private void OnTriggerEnter(Collider other)
     {
@@ -34,27 +35,29 @@ public class Iinteraction : MonoBehaviour
                 switch(type)
                 {
                     case PowerUpType.FlatDamage:
-                        PowerUpManager.Instance.ApplyFlatDamage(gunIndex, Mathf.RoundToInt(value));
+                        PowerUpManager.Instance.ApplyFlatDamage(gunIndex, damageBoostFlat);
                         break;
                     case PowerUpType.DamageMultiplier:
-                        PowerUpManager.Instance.ApplyDamageMultiplier(gunIndex, 1 + value);
+                        PowerUpManager.Instance.ApplyDamageMultiplier(gunIndex, 1 + damageBoostMult);
                         break;
                     case PowerUpType.FireRate:
-                        PowerUpManager.Instance.ApplyRateMultiplier(gunIndex, 1 + value);
+                        PowerUpManager.Instance.ApplyRateMultiplier(gunIndex, 1 + rateBoost);
                         break;
                     case PowerUpType.Ammo:
-                        PowerUpManager.Instance.ApplyAmmoBonus(gunIndex, Mathf.RoundToInt(value));
+                        PowerUpManager.Instance.ApplyAmmoBonus(gunIndex, ammoUp);
                         break;
                     case PowerUpType.Range:
-                        PowerUpManager.Instance.ApplyRateMultiplier(gunIndex, Mathf.RoundToInt(value));
+                        PowerUpManager.Instance.ApplyRateMultiplier(gunIndex, distBoost);
                         break;
                     case PowerUpType.Speed:
-                        player.Speed += (int)speedBoost;
+                        PowerUpManager.Instance.ApplySpeedBonus(player, speedBoost);
                         break;
                     case PowerUpType.Jump:
-                        player.JumpCountMax += (int)jumpCIncrease;
+                        PowerUpManager.Instance.ApplyJumpInc(player, jumpCIncrease);
                         break;
+
                 }
+
                 
                 Destroy(gameObject);
             }

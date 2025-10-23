@@ -16,9 +16,10 @@ public class PowerUpManager : MonoBehaviour
     public List<GunListings> gunList;
     public int gunListPos;
 
-    
+    public bool pstat;
 
-   
+  
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()//needs to be done every scene
     {
@@ -80,7 +81,32 @@ public class PowerUpManager : MonoBehaviour
     {
         gunList[index].mods.addGunRangeMod += amount;
     }
+    
+    public void ApplySpeedBonus(playerController player, int Speed)
+    {
+        totalSpeed += Speed;
+        pstat = true;
+    }
 
+    public void ApplyJumpInc(playerController player, int Jump)
+    {
+        totalJumps += Jump;
+        pstat = true;
+    }
+
+    public void ApplyPstats(playerController player)
+    {
+        if(totalSpeed > 0)
+        {
+            player.Speed = totalSpeed;
+            pstat = false;
+        }
+        if(totalJumps > 0)
+        {
+            player.JumpCountMax = totalJumps;
+            pstat = false;
+        }
+    }
 
     public (int damage, float rate, int ammoMax, int range) CalcGunStats(int index)
     {
@@ -95,11 +121,7 @@ public class PowerUpManager : MonoBehaviour
 
     }
     
-    public void ApplyToPlayer(playerController player)
-    {
-        player.Speed += totalSpeed;
-        player.JumpCountMax += totalJumps;
-    }
+    
 
     public int GetCurrentAmmo(int index) => gunList[index].state.ammoCur;
 

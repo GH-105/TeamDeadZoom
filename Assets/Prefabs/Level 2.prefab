@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c033a861c52d8f46a7778579e8a1a65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::roomManager
-  hiddenDoorTime: 0
+  eventTime: 100
   hiddenDoor: {fileID: 0}
   mainDoor: {fileID: 0}
 --- !u!1 &1236698961276099118
@@ -179,7 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c033a861c52d8f46a7778579e8a1a65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::roomManager
-  hiddenDoorTime: 0
+  eventTime: 0
   hiddenDoor: {fileID: 0}
   mainDoor: {fileID: 4387560003120377378}
 --- !u!1 &2966417640404096652
@@ -549,7 +549,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c033a861c52d8f46a7778579e8a1a65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::roomManager
-  hiddenDoorTime: 50
+  eventTime: 50
   hiddenDoor: {fileID: 4843986752017708957}
   mainDoor: {fileID: 8281510854135343994}
 --- !u!1 &5548976913843113733
@@ -1036,7 +1036,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c033a861c52d8f46a7778579e8a1a65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::roomManager
-  hiddenDoorTime: 0
+  eventTime: 0
   hiddenDoor: {fileID: 0}
   mainDoor: {fileID: 3265405378435686574}
 --- !u!1 &7611506641918602116

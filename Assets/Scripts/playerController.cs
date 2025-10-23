@@ -47,7 +47,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
             }
 
             changeGun();
-            PowerUpManager.Instance.ApplyToPlayer(this);
+            
         }
        
     }
@@ -62,6 +62,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup
             movement();
 
         sprint();
+        if (PowerUpManager.Instance.pstat)
+        {
+            PowerUpManager.Instance.ApplyPstats(this);
+        }
     }
 
     void movement()
@@ -215,6 +219,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     public void spawnPlayer()
     {
         controller.transform.position = gameManager.instance.playerSpawnPos.transform.position;
+        HP = HPOrig;
+        updatePlayerUI();
     }
 
     public int Speed

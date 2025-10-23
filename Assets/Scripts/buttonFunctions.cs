@@ -32,6 +32,12 @@ public class buttonFunctions : MonoBehaviour
     #endif
     }
 
+    public void respawn()
+    {
+        gameManager.instance.playerScript.spawnPlayer();
+        gameManager.instance.stateUnpause();//everytime a button in menu is pressed
+    }
+
     public void loadLevel(int level)
     {
         int sceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -39,9 +45,15 @@ public class buttonFunctions : MonoBehaviour
         {
             levelChosen = level;
             gameManager.instance.weaponSelect();
+            
         }
         else
         {
+            if(sceneIndex == level)
+            {
+                restart();
+            }
+          
             SceneManager.LoadScene(level);
             gameManager.instance.stateUnpause();
         }

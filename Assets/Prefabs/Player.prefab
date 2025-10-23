@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2872772835046557756}
   - component: {fileID: 600270827101881631}
   - component: {fileID: 5516483503538133329}
+  - component: {fileID: 5217664826207549306}
   - component: {fileID: 226520322530061624}
   - component: {fileID: 4727253731928585866}
   - component: {fileID: 4262528227152647911}
@@ -86,7 +87,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   controller: {fileID: 4262528227152647911}
-  HP: 15
+  HP: 10
   speed: 16
   sprintMod: 3
   jumpSpeed: 12
@@ -95,9 +96,30 @@ MonoBehaviour:
   shootDamage: 2
   shootDist: 50
   shootRate: 0.5
-  gunList: []
   gunModel: {fileID: 5175435172361694362}
   HPOrig: 0
+  gunListPos: 0
+--- !u!114 &5217664826207549306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149173740938263246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 758153d4d722817488b1d2f69c3e780b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PowerUpManager
+  totalSpeed: 0
+  totalJumps: 0
+  totalDamage: 0
+  totalDist: 0
+  totalRate: 0
+  totalAmmo: 0
+  gunList: []
+  gunListPos: 0
+  pstat: 0
 --- !u!33 &226520322530061624
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -291,7 +313,8 @@ MonoBehaviour:
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
   m_CameraType: 0
-  m_Cameras: []
+  m_Cameras:
+  - {fileID: 8422662690816383044}
   m_RendererIndex: -1
   m_VolumeLayerMask:
     serializedVersion: 2
