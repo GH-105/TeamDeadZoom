@@ -19,7 +19,6 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     [SerializeField] float shootRate;
     //[SerializeField] int numProjectiles;
     //[SerializeField] int numChains;
-    [SerializeField] List<gunStats> gunList = new List<gunStats>();
     [SerializeField] GameObject gunModel;
 
     Vector3 moveDir;
@@ -27,25 +26,27 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
     int jumpCount;
     public int HPOrig;
-    int gunListPos;
+    public int gunListPos;
+    List<GunListings> playerGunList;
 
     float shootTimer;
 
     bool isSprinting;
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         HPOrig = HP;
         spawnPlayer();
-        if (gameManager.instance.startingGun != null)
-        {
-            getGunStats(gameManager.instance.startingGun);
-            //gameManager.instance.startingGun = null;
-        }
 
         if(PowerUpManager.Instance != null)//checks everytime before applying
         {
+            playerGunList = PowerUpManager.Instance.gunList;
+            if (playerGunList.Count > 0)
+            {
+                gunListPos = 0;
+            }
+
+            changeGun();
             PowerUpManager.Instance.ApplyToPlayer(this);
         }
        
@@ -81,7 +82,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         jump();
         controller.Move(playerVel * Time.deltaTime);
 
-        if(Input.GetButton("Fire1") && gunList.Count > 0 && gunList[gunListPos].ammoCur > 0 && shootTimer >= shootRate)
+        if(Input.GetButton("Fire1") && playerGunList.Count > 0 && PowerUpManager.Instance.GetCurrentAmmo(gunListPos) > 0 && shootTimer >= shootRate)
         {
             shoot();
         }
@@ -114,13 +115,13 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     void shoot()
     {
         shootTimer = 0;
-        gunList[gunListPos].ammoCur--;
+        PowerUpManager.Instance.ConsumeAmmo(gunListPos);
         updatePlayerUI();
 
         RaycastHit hit;
         if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist, ~ignoreLayer))
         {
-            Instantiate(gunList[gunListPos].hitEffect, hit.point, Quaternion.identity);
+            Instantiate(playerGunList[gunListPos].baseStats.hitEffect, hit.point, Quaternion.identity);
 
             IDamage dmg = hit.collider.GetComponent<IDamage>();
             if(dmg != null)
@@ -134,7 +135,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     {
         if(Input.GetButtonDown("Reload"))
         {
-            gunList[gunListPos].ammoCur = gunList[gunListPos].ammoMax;
+            PowerUpManager.Instance.ReloadCurrentGun(gunListPos);
         }
         updatePlayerUI();
     }
@@ -152,10 +153,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
     public void updatePlayerUI()
     {
-        if(gunList.Count > 0)
+        if(PowerUpManager.Instance.gunList.Count > 0)
         {
-            gameManager.instance.ammoCur.text = gunList[gunListPos].ammoCur.ToString();
-            gameManager.instance.ammoMax.text = gunList[gunListPos].ammoMax.ToString();
+            gameManager.instance.ammoCur.text = PowerUpManager.Instance.GetCurrentAmmo(gunListPos).ToString();
+            gameManager.instance.ammoMax.text = PowerUpManager.Instance.GetMaxAmmo(gunListPos).ToString();
         }    
     }
 
@@ -168,33 +169,43 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
     public void getGunStats(gunStats gun)
     {
-        gunList.Add(gun);
-        gunListPos = gunList.Count - 1;
+        
+        gunListPos = PowerUpManager.Instance.AddGun(gun);
         changeGun();
     }
 
     void changeGun()
     {
-        shootDamage = gunList[gunListPos].shootDamage;
-        shootDist = gunList[gunListPos].shootDist;
-        shootRate = gunList[gunListPos].shootRate;
+        if (PowerUpManager.Instance == null) return;
+
+        int count = PowerUpManager.Instance.gunList.Count;
+        if (count == 0) return;
+        gunListPos = Mathf.Clamp(gunListPos, 0, count - 1);
+
+        var (damage, rate, ammo, range) = PowerUpManager.Instance.CalcGunStats(gunListPos);
+
+        shootDamage = damage;
+        shootDist = range;
+        shootRate = rate;
         //numChains = gunList[gunListPos].maxChains;
         //numProjectiles = gunList[gunListPos].maxProjectiles;
 
-        gunModel.GetComponent<MeshFilter>().sharedMesh = gunList[gunListPos].gunModel.GetComponent<MeshFilter>().sharedMesh;
-        gunModel.GetComponent<MeshRenderer>().sharedMaterial = gunList[gunListPos].gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+        gunModel.GetComponent<MeshFilter>().sharedMesh = playerGunList[gunListPos].baseStats.gunModel.GetComponent<MeshFilter>().sharedMesh;
+        gunModel.GetComponent<MeshRenderer>().sharedMaterial = playerGunList[gunListPos].baseStats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
 
         updatePlayerUI();
     }
 
     void selectGun()
     {
-        if(Input.GetAxis("Mouse ScrollWheel") > 0 && gunListPos < gunList.Count - 1)
+        if (PowerUpManager.Instance == null || PowerUpManager.Instance.gunList.Count == 0) return;
+
+        if (Input.GetAxis("Mouse ScrollWheel") > 0 && gunListPos < playerGunList.Count - 1)
         {
             gunListPos++;
             changeGun();
         }
-        else if(Input.GetAxis("Mouse ScrollWheel") < 0 && gunListPos > 0)
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0 && gunListPos > 0)
         {
             gunListPos--;
             changeGun();
