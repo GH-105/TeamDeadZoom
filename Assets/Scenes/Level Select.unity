@@ -327,6 +327,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Powerup Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 2706004900409873481, guid: 04d3a5e60e6608d4d8404402ee59d492, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3473340142440363751, guid: 04d3a5e60e6608d4d8404402ee59d492, type: 3}
       propertyPath: m_LocalPosition.x
       value: 155.95128
@@ -504,19 +508,19 @@ PrefabInstance:
     - target: {fileID: 4062693890023320774, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
       propertyPath: SMG
       value: 
-      objectReference: {fileID: 11400000, guid: ef0be0ea3eb101641891cdd15b48fa5a, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 4062693890023320774, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
       propertyPath: rifle
       value: 
-      objectReference: {fileID: 11400000, guid: ec2b8cb7090e966429003867cbeae88a, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 4062693890023320774, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
       propertyPath: pistol
       value: 
-      objectReference: {fileID: 11400000, guid: 095db638ab357c84c8e239f9c40738f3, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 4062693890023320774, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
       propertyPath: shotgun
       value: 
-      objectReference: {fileID: 11400000, guid: f8d017855c1053f4193af54ea3269d72, type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 4862487558099611453, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
       propertyPath: SMG
       value: 
@@ -673,7 +677,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4062693890023320774, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
+    - {fileID: 4862487558099611453, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
+    - {fileID: 6749059224690009524, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
+    - {fileID: 5543297508533387345, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
     m_RemovedGameObjects:
     - {fileID: 2612592379516067419, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
     m_AddedGameObjects: []

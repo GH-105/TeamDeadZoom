@@ -35,7 +35,6 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     int jumpCount;
     public int HPOrig;
     public int gunListPos;
-    List<GunListings> playerGunList;
 
     float shootTimer;
 
@@ -50,8 +49,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
         if(PowerUpManager.Instance != null)//checks everytime before applying
         {
-            playerGunList = PowerUpManager.Instance.gunList;
-            if (playerGunList.Count > 0)
+            if (PowerUpManager.Instance.gunList.Count > 0)
             {
                 gunListPos = 0;
             }
@@ -103,7 +101,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         jump();
         controller.Move(playerVel * Time.deltaTime);
 
-        if(Input.GetButton("Fire1") && playerGunList.Count > 0 && PowerUpManager.Instance.GetCurrentAmmo(gunListPos) > 0 && shootTimer >= shootRate)
+        if(Input.GetButton("Fire1") && PowerUpManager.Instance.gunList.Count > 0 && PowerUpManager.Instance.GetCurrentAmmo(gunListPos) > 0 && shootTimer >= shootRate)
         {
             shoot();
         }
@@ -138,13 +136,13 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     {
         shootTimer = 0;
         PowerUpManager.Instance.ConsumeAmmo(gunListPos);
-        aud.PlayOneShot(playerGunList[gunListPos].baseStats.shootSounds[Random.Range(0, playerGunList[gunListPos].baseStats.shootSounds.Length)], playerGunList[gunListPos].baseStats.shootSoundVol);
+        aud.PlayOneShot(PowerUpManager.Instance.gunList[gunListPos].baseStats.shootSounds[Random.Range(0, PowerUpManager.Instance.gunList[gunListPos].baseStats.shootSounds.Length)], PowerUpManager.Instance.gunList[gunListPos].baseStats.shootSoundVol);
         updatePlayerUI();
 
         RaycastHit hit;
         if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist, ~ignoreLayer))
         {
-            Instantiate(playerGunList[gunListPos].baseStats.hitEffect, hit.point, Quaternion.identity);
+            Instantiate(PowerUpManager.Instance.gunList[gunListPos].baseStats.hitEffect, hit.point, Quaternion.identity);
 
             IDamage dmg = hit.collider.GetComponent<IDamage>();
             if(dmg != null)
@@ -206,8 +204,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         shootDamage = damage;
         shootRate = rate;
         shootDist = range;
-        gunModel.GetComponent<MeshFilter>().sharedMesh = playerGunList[gunListPos].baseStats.gunModel.GetComponent<MeshFilter>().sharedMesh;
-        gunModel.GetComponent<MeshRenderer>().sharedMaterial = playerGunList[gunListPos].baseStats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+        gunModel.GetComponent<MeshFilter>().sharedMesh = PowerUpManager.Instance.gunList[gunListPos].baseStats.gunModel.GetComponent<MeshFilter>().sharedMesh;
+        gunModel.GetComponent<MeshRenderer>().sharedMaterial = PowerUpManager.Instance.gunList[gunListPos].baseStats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
 
         updatePlayerUI();
 
@@ -229,8 +227,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         //numChains = gunList[gunListPos].maxChains;
         //numProjectiles = gunList[gunListPos].maxProjectiles;
 
-        gunModel.GetComponent<MeshFilter>().sharedMesh = playerGunList[gunListPos].baseStats.gunModel.GetComponent<MeshFilter>().sharedMesh;
-        gunModel.GetComponent<MeshRenderer>().sharedMaterial = playerGunList[gunListPos].baseStats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+        gunModel.GetComponent<MeshFilter>().sharedMesh = PowerUpManager.Instance.gunList[gunListPos].baseStats.gunModel.GetComponent<MeshFilter>().sharedMesh;
+        gunModel.GetComponent<MeshRenderer>().sharedMaterial = PowerUpManager.Instance.gunList[gunListPos].baseStats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
 
         updatePlayerUI();
     }
@@ -239,7 +237,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     {
         if (PowerUpManager.Instance == null || PowerUpManager.Instance.gunList.Count == 0) return;
 
-        if (Input.GetAxis("Mouse ScrollWheel") > 0 && gunListPos < playerGunList.Count - 1)
+        if (Input.GetAxis("Mouse ScrollWheel") > 0 && gunListPos < PowerUpManager.Instance.gunList.Count - 1)
         {
             gunListPos++;
             changeGun();
