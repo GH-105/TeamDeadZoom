@@ -388,12 +388,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Iinteraction
   speedBoost: 0
   jumpCIncrease: 4
-  damageBoostFlat: 0
+  damageBoostFlat: 1
   damageBoostMult: 0
   distBoost: 0
   rateBoost: 5
   ammoUp: 10
-  type: 6
+  type: 0
 --- !u!135 &737823988
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -820,11 +820,11 @@ MonoBehaviour:
   speedBoost: 30
   jumpCIncrease: 0
   damageBoostFlat: 0
-  damageBoostMult: 0
+  damageBoostMult: 0.5
   distBoost: 4
   rateBoost: 0
   ammoUp: 10
-  type: 5
+  type: 1
 --- !u!64 &1781392140717338
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -21620,6 +21620,10 @@ PrefabInstance:
     - target: {fileID: 2872772835046557756, guid: 0a6e173a0b175fa4aacb0618436d3d54, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5516483503538133329, guid: 0a6e173a0b175fa4aacb0618436d3d54, type: 3}
+      propertyPath: sprintMod
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

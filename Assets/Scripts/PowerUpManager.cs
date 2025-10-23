@@ -7,12 +7,13 @@ public class PowerUpManager : MonoBehaviour
 {
     public static PowerUpManager Instance;//we will use this to check if the player has any
 
-    public int totalSpeed;
+    public float totalSpeed;
     public int totalJumps;
     public int totalDamage;
     public int totalDist;
     public float totalRate;
     public int totalAmmo;
+    playerController player;
 
     public List<GunListings> gunList;
     public int gunListPos;
@@ -38,6 +39,11 @@ public class PowerUpManager : MonoBehaviour
             gunList = new List<GunListings>();
 
         Debug.Log($"[PowerUpManager] Ready in scene '{gameObject.scene.name}'", this);
+    }
+
+    private void Start()
+    {
+        player = gameManager.instance.playerScript;
     }
 
     private void OnDestroy()
@@ -79,29 +85,34 @@ public class PowerUpManager : MonoBehaviour
     public void ApplyFlatDamage(int index, int amount)
     {
         gunList[index].mods.flatDamageMod += amount;
+        RefreshAll();
     }
 
     public void ApplyDamageMultiplier(int index, float mult)
     {
         gunList[index].mods.damageMultMod += mult;
+        RefreshAll();
     }
 
     public void ApplyRateMultiplier(int index, float mult)
     {
         gunList[index].mods.rateMultMod += mult;
+        RefreshAll();
     }
 
     public void ApplyAmmoBonus(int index, int amount)
     {
         gunList[index].mods.addMaxAmmoMod += amount;
+        RefreshAll();
     }
 
     public void ApplyRangeBonus(int index, int amount)
     {
         gunList[index].mods.addGunRangeMod += amount;
+        RefreshAll();
     }
     
-    public void ApplySpeedBonus(int Speed)
+    public void ApplySpeedBonus(float Speed)
     {
         totalSpeed += Speed;
         gameManager.instance.playerScript.Speed += totalSpeed;
@@ -130,7 +141,6 @@ public class PowerUpManager : MonoBehaviour
         int range = gun.baseStats.shootDist + gun.mods.addMaxAmmoMod;
 
         return (damage, rate, range);
-
     }
     
     
@@ -160,5 +170,13 @@ public class PowerUpManager : MonoBehaviour
             currentGunState.ammoCur--;
             return true;
         }
+    }
+
+    void RefreshAll()
+    {
+        var index = gunListPos;
+        var (damage, rate, range) = CalcGunStats(index);
+
+        player.refreshGunStats();
     }
 }

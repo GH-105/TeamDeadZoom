@@ -92,6 +92,11 @@ public class room : MonoBehaviour
             startSpawning = false;
             gameManager.instance.updateGameGoal(-1);
         }
+<<<<<<< Updated upstream
         string v = roomGoalCount.ToString("F0");
         roomGoalLabel.text = v;    }
+=======
+        roomGoalLabel.text = roomGoalCount.ToString("F0");
+    }
+>>>>>>> Stashed changes
 }
