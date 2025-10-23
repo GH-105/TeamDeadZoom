@@ -1083,7 +1083,7 @@ MonoBehaviour:
   jaw: {fileID: 101749663200315043}
   agent: {fileID: 3662775103382989217}
   headPos: {fileID: 4830285367045107079}
-  HP: 20
+  HP: 40
   faceTargetSpeed: 2
   FOV: 45
   roamDist: 25
