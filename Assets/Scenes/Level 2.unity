@@ -22785,6 +22785,18 @@ PrefabInstance:
       propertyPath: 'heart.Array.data[14]'
       value: 
       objectReference: {fileID: 327327444}
+    - target: {fileID: 906466266995221467, guid: 0a6e173a0b175fa4aacb0618436d3d54, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 906466266995221467, guid: 0a6e173a0b175fa4aacb0618436d3d54, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 906466266995221467, guid: 0a6e173a0b175fa4aacb0618436d3d54, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2872772835046557756, guid: 0a6e173a0b175fa4aacb0618436d3d54, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7
