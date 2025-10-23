@@ -1993,16 +1993,16 @@ MonoBehaviour:
   agent: {fileID: 2641078000939779470}
   headPos: {fileID: 6349554998268260682}
   HP: 4
-  faceTargetSpeed: 2
-  FOV: 45
-  roamDist: 25
-  roamPauseTimer: 3
+  faceTargetSpeed: 4
+  FOV: 180
+  roamDist: 50
+  roamPauseTimer: 2
   shootPos1: {fileID: 9050308938994241673}
   shootPos2: {fileID: 0}
   bullet: {fileID: 6207780247886573495, guid: 01f600e62a9508b4bb700d6ffba2ad69, type: 3}
   shootRate: 1.5
   floatingTextPrefab: {fileID: 5749133604472977256, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
-  roomScript: {fileID: 0}
+  thisRoom: {fileID: 0}
 --- !u!95 &8167824897452198649
 Animator:
   serializedVersion: 7
@@ -2089,7 +2089,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 12
+  m_Radius: 36
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6148155626874381227
 GameObject:

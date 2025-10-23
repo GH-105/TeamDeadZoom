@@ -13,6 +13,7 @@ public class Damage : MonoBehaviour
     [SerializeField] int destroyTime;
 
     [SerializeField] float flightTime;
+    [SerializeField] GameObject playerInDot;
 
     bool isDamaging;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -68,14 +69,28 @@ public class Damage : MonoBehaviour
             return;
         }
 
+        
 
         IDamage dmg = other.GetComponent<IDamage>();
+
         if (dmg != null && type == damagetype.DOT)
         {
+            gameManager.instance.showPlayerDOTScreen(true);
             if (!isDamaging)
             {
                 StartCoroutine(damageOther(dmg));
             }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.isTrigger) return;
+
+        IDamage dmg = other.GetComponent<IDamage>();
+        if (dmg != null && type == damagetype.DOT)
+        {
+            gameManager.instance.showPlayerDOTScreen(false);
         }
     }
 

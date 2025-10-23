@@ -13,6 +13,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuRoomComp;
     [SerializeField] GameObject menuLevelSelect;
     [SerializeField] GameObject menuWeaponSelect;
+    [SerializeField] GameObject playerDOTScreen;
 
     public gunStats startingGun;
 
@@ -130,6 +131,14 @@ public class gameManager : MonoBehaviour
         if (startingGun != null)
             startingGun.ammoCur = startingGun.ammoMax;
         menuActive.SetActive(false);
+    }
+
+    public void showPlayerDOTScreen(bool dotON)
+    {
+        if (dotON)
+            playerDOTScreen.SetActive(true);
+        else
+            playerDOTScreen.SetActive(false);
     }
 
     public void showRoomComplete()

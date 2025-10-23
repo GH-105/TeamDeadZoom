@@ -190,6 +190,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         gameManager.instance.playerDamageScreen.SetActive(false);
     }
 
+
     public void getGunStats(gunStats gun)
     {
         

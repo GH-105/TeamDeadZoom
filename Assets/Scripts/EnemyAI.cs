@@ -50,6 +50,7 @@ public class EnemyAI : MonoBehaviour, IDamage
         colorOrigJaw = jaw.material.color;
         stoppingDistOrig = agent.stoppingDistance;
         startingPos = transform.position;
+        thisRoom.UpdateRoomGoal(1);
     }
 
     // Update is called once per frame
@@ -179,6 +180,7 @@ public class EnemyAI : MonoBehaviour, IDamage
         if(HP <= 0)
         {
             Destroy(gameObject);
+            thisRoom.UpdateRoomGoal(-1);
         }
         else
         {

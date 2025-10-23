@@ -85,21 +85,21 @@ public class PowerUpManager : MonoBehaviour
     public void ApplySpeedBonus(int Speed)
     {
         totalSpeed += Speed;
+        gameManager.instance.playerScript.Speed += totalSpeed;
         pstat = true;
     }
 
     public void ApplyJumpInc(int Jump)
     {
         totalJumps += Jump;
+        gameManager.instance.playerScript.JumpCountMax += totalJumps;
         pstat = true;
     }
 
     public void ApplyPstats(playerController player)
     {
-
-            gameManager.instance.playerScript.Speed += totalSpeed;
-            gameManager.instance.playerScript.JumpCountMax += totalJumps;
-
+        gameManager.instance.playerScript.Speed += totalSpeed;
+        gameManager.instance.playerScript.JumpCountMax += totalJumps;
     }
 
     public (int damage, float rate, int ammoMax, int range) CalcGunStats(int index)

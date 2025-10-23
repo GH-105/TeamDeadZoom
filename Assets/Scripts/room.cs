@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 
@@ -8,12 +9,13 @@ public class room : MonoBehaviour
     [SerializeField] GameObject mainDoor;
     [SerializeField] GameObject enemy;
     [SerializeField] int maxEnemies;
-    [SerializeField] int spawnRate;
+    [SerializeField] float spawnRate;
     [SerializeField] Transform[] spawnPos;
+    [SerializeField] public TMP_Text roomGoalLabel;
 
 
 
-    int roomGoalCount;
+    public int roomGoalCount;
     float playerStartTime;
     float playerFinishTime;
     float playerTotalRoomTime;
@@ -82,8 +84,8 @@ public class room : MonoBehaviour
     public void UpdateRoomGoal(int amount)
     {
         roomGoalCount += amount;
-
-        if (roomGoalCount <= 0)
+        roomGoalLabel.text = roomGoalCount.ToString("F0");
+        if (roomGoalCount <= 0 && totalEnemiesSpawned >= maxEnemies)
         {
             doorState(false);
             roomActive = false;
