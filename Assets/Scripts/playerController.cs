@@ -51,10 +51,12 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         {
             if (PowerUpManager.Instance.gunList.Count > 0)
             {
-                gunListPos = 0;
-            }
+                if (PowerUpManager.Instance == null) return;
+                if (PowerUpManager.Instance.gunList.Count == 0) return;
 
-            changeGun();
+                gunListPos = 0;
+                changeGun();
+            }
 
             if (PowerUpManager.Instance.pstat)
             {
@@ -191,27 +193,11 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
     public void getGunStats(gunStats gun)
     {
-        
         gunListPos = PowerUpManager.Instance.AddGun(gun);
         changeGun();
     }
 
-    public void refreshGunStats()
-    {
-        if (gunListPos < 0 || PowerUpManager.Instance == null) return;
-
-        var (damage, rate, range) = PowerUpManager.Instance.CalcGunStats(gunListPos);
-        shootDamage = damage;
-        shootRate = rate;
-        shootDist = range;
-        gunModel.GetComponent<MeshFilter>().sharedMesh = PowerUpManager.Instance.gunList[gunListPos].baseStats.gunModel.GetComponent<MeshFilter>().sharedMesh;
-        gunModel.GetComponent<MeshRenderer>().sharedMaterial = PowerUpManager.Instance.gunList[gunListPos].baseStats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
-
-        updatePlayerUI();
-
-    }
-
-    void changeGun()
+    public void changeGun()
     {
         if (PowerUpManager.Instance == null) return;
 

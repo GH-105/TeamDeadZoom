@@ -26,7 +26,6 @@ public class PowerUpManager : MonoBehaviour
     {
         if(Instance != null && Instance != this)
         {
-            Debug.LogWarning($"[PowerUpManager] Duplicate in scene '{gameObject.scene.name}', destroying this one.", this);
             Destroy(gameObject);
             return;
         }
@@ -36,13 +35,6 @@ public class PowerUpManager : MonoBehaviour
 
         if(gunList == null)
             gunList = new List<GunListings>();
-
-        Debug.Log($"[PowerUpManager] Ready in scene '{gameObject.scene.name}'", this);
-    }
-
-    private void Start()
-    {
-        player = gameManager.instance.playerScript;
     }
 
     private void OnDestroy()
@@ -50,32 +42,11 @@ public class PowerUpManager : MonoBehaviour
         if (Instance == this) Instance = null;
     }
 
-    void OnEnable()
-    {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-    }
-
-    void OnDisable()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
-
     public void SetStartingGun(gunStats startingGun)
     {
         gunList.Clear();
         AddGun(startingGun);
         gunListPos = 0;
-    }
-    
-    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        var player = gameManager.instance.playerScript;
-        if (player != null && gunList.Count > 0)
-        {
-            player.gunListPos = 0;
-            player.refreshGunStats();
-        }
-
     }
 
     public int AddGun(gunStats baseGun)
@@ -103,31 +74,31 @@ public class PowerUpManager : MonoBehaviour
     public void ApplyFlatDamage(int index, int amount)
     {
         gunList[index].mods.flatDamageMod += amount;
-        RefreshAll();
+        RefreshIfCurrent(index);
     }
 
     public void ApplyDamageMultiplier(int index, float mult)
     {
         gunList[index].mods.damageMultMod += mult;
-        RefreshAll();
+        RefreshIfCurrent(index);
     }
 
     public void ApplyRateMultiplier(int index, float mult)
     {
         gunList[index].mods.rateMultMod += mult;
-        RefreshAll();
+        RefreshIfCurrent(index);
     }
 
     public void ApplyAmmoBonus(int index, int amount)
     {
         gunList[index].mods.addMaxAmmoMod += amount;
-        RefreshAll();
+        RefreshIfCurrent(index);
     }
 
     public void ApplyRangeBonus(int index, int amount)
     {
         gunList[index].mods.addGunRangeMod += amount;
-        RefreshAll();
+        RefreshIfCurrent(index);
     }
     
     public void ApplySpeedBonus(int Speed)
@@ -161,9 +132,6 @@ public class PowerUpManager : MonoBehaviour
         return (damage, rate, range);
 
     }
-    
-    
-
     public int GetCurrentAmmo(int index) => gunList[index].state.ammoCur;
 
     public int GetMaxAmmo(int index)
@@ -196,14 +164,12 @@ public class PowerUpManager : MonoBehaviour
         if (gun.mods == null) gun.mods = new gunModifiers { damageMultMod = 1f, rateMultMod = 1f };
         if (gun.state == null) gun.state = new gunState();
     }
-
-    void RefreshAll()
+    
+    private void RefreshIfCurrent(int index)
     {
-        var index = gunListPos;
-        var (damage, rate, range) = CalcGunStats(index);
-
-        player.refreshGunStats();
-
-
+        var player = gameManager.instance?.playerScript;
+        if (player != null && player.gunListPos == index)
+            player.changeGun();
     }
 }
+

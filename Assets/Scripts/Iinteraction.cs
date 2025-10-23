@@ -47,7 +47,7 @@ public class Iinteraction : MonoBehaviour
                         PowerUpManager.Instance.ApplyAmmoBonus(gunIndex, ammoUp);
                         break;
                     case PowerUpType.Range:
-                        PowerUpManager.Instance.ApplyRateMultiplier(gunIndex, distBoost);
+                        PowerUpManager.Instance.ApplyRangeBonus(gunIndex, distBoost);
                         break;
                     case PowerUpType.Speed:
                         PowerUpManager.Instance.ApplySpeedBonus(speedBoost);
