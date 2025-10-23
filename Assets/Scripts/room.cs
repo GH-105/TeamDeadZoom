@@ -6,6 +6,7 @@ public class room : MonoBehaviour
     [SerializeField] float eventTime;
     [SerializeField] GameObject hiddenDoor;
     [SerializeField] GameObject mainDoor;
+    [SerializeField] GameObject enemy;
     [SerializeField] int maxEnemies;
     [SerializeField] int spawnRate;
     [SerializeField] Transform[] spawnPos;
@@ -16,7 +17,12 @@ public class room : MonoBehaviour
     float playerStartTime;
     float playerFinishTime;
     float playerTotalRoomTime;
+    float spawnTimer;
+    int enemyCount;
     int roomsComplete;
+    int totalEnemiesSpawned;
+
+    bool startSpawning;
     bool roomActive;
 
     
@@ -29,7 +35,18 @@ public class room : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(startSpawning)
+        {
+            spawnTimer += Time.deltaTime;
+
+            if(enemyCount < maxEnemies && spawnTimer >= spawnRate)
+            {
+                if (totalEnemiesSpawned < maxEnemies)
+                    spawn();
+                else
+                    startSpawning = false;
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -37,7 +54,17 @@ public class room : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             roomActive = true;
+            startSpawning = true;
+            //doorState(true);
         }
+    }
+
+    void spawn()
+    {
+        int arrayPos = Random.Range(0, spawnPos.Length);
+
+        GameObject enemyClone = Instantiate(enemy, spawnPos[arrayPos].position, spawnPos[arrayPos].rotation);
+        //enemyClone.GetComponent<enemyAI>().thisRoom = this;
     }
 
     public void UpdateRoomGoal(int amount)

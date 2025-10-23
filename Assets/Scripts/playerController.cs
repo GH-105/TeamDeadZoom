@@ -57,7 +57,12 @@ public class playerController : MonoBehaviour, IDamage, IPickup
             }
 
             changeGun();
-            
+
+            if (PowerUpManager.Instance.pstat)
+            {
+                PowerUpManager.Instance.ApplyPstats(this);
+                PowerUpManager.Instance.pstat = false;
+            }
         }
        
     }
@@ -72,10 +77,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
             movement();
 
         sprint();
-        if (PowerUpManager.Instance.pstat)
-        {
-            PowerUpManager.Instance.ApplyPstats(this);
-        }
+
     }
 
     void movement()
