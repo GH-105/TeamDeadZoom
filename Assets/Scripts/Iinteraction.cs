@@ -50,10 +50,10 @@ public class Iinteraction : MonoBehaviour
                         PowerUpManager.Instance.ApplyRateMultiplier(gunIndex, distBoost);
                         break;
                     case PowerUpType.Speed:
-                        PowerUpManager.Instance.ApplySpeedBonus(player, speedBoost);
+                        PowerUpManager.Instance.ApplySpeedBonus(speedBoost);
                         break;
                     case PowerUpType.Jump:
-                        PowerUpManager.Instance.ApplyJumpInc(player, jumpCIncrease);
+                        PowerUpManager.Instance.ApplyJumpInc(jumpCIncrease);
                         break;
 
                 }

@@ -131,4 +131,9 @@ public class gameManager : MonoBehaviour
             startingGun.ammoCur = startingGun.ammoMax;
         menuActive.SetActive(false);
     }
+
+    public void showRoomComplete()
+    {
+
+    }
 }

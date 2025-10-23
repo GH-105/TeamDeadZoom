@@ -82,13 +82,13 @@ public class PowerUpManager : MonoBehaviour
         gunList[index].mods.addGunRangeMod += amount;
     }
     
-    public void ApplySpeedBonus(playerController player, int Speed)
+    public void ApplySpeedBonus(int Speed)
     {
         totalSpeed += Speed;
         pstat = true;
     }
 
-    public void ApplyJumpInc(playerController player, int Jump)
+    public void ApplyJumpInc(int Jump)
     {
         totalJumps += Jump;
         pstat = true;
@@ -96,16 +96,10 @@ public class PowerUpManager : MonoBehaviour
 
     public void ApplyPstats(playerController player)
     {
-        if(totalSpeed > 0)
-        {
-            player.Speed = totalSpeed;
-            pstat = false;
-        }
-        if(totalJumps > 0)
-        {
-            player.JumpCountMax = totalJumps;
-            pstat = false;
-        }
+
+            gameManager.instance.playerScript.Speed += totalSpeed;
+            gameManager.instance.playerScript.JumpCountMax += totalJumps;
+
     }
 
     public (int damage, float rate, int ammoMax, int range) CalcGunStats(int index)
