@@ -4,7 +4,11 @@ using UnityEngine.SceneManagement;
 
 public class buttonFunctions : MonoBehaviour
 {
-    [SerializeField] gunStats gun;
+    [SerializeField] gunStats pistol;
+    [SerializeField] gunStats shotgun;
+    [SerializeField] gunStats rifle;
+    [SerializeField] gunStats SMG;
+
     int levelChosen;
     int nextIndex;
     private void Start()
@@ -70,11 +74,12 @@ public class buttonFunctions : MonoBehaviour
         gameManager.instance.levelSelect();
     }
 
-    public void LoadWeapon()
+    public void LoadWeapon(gunStats gun)
     {
         Debug.Log("LoadWeapon clicked");
         SceneManager.LoadScene(levelChosen);
-        PowerUpManager.Instance.AddGun(gun);
+        PowerUpManager.Instance.SetStartingGun(gun);
         gameManager.instance.stateUnpause();
     }
+
 }
