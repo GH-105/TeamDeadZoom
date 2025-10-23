@@ -189,7 +189,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2007017797332995275, guid: 9856dc892a6a62045a99eab092e9a30d, type: 3}
       propertyPath: damageBoostFlat
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2007017797332995275, guid: 9856dc892a6a62045a99eab092e9a30d, type: 3}
       propertyPath: damageBoostMult
