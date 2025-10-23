@@ -166,6 +166,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     public void takeDamage(int amount)
     {
         HP -= amount;
+        aud.PlayOneShot(audHurt[Random.Range(0, audHurt.Length)], audHurtVol);
         updatePlayerUI();
         StartCoroutine(flashPlayerDmg());
         if(HP <= 0)
