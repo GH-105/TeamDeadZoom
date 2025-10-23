@@ -113,7 +113,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: eabefc13566352c4dbf292195c30d066, type: 3}
   - {fileID: 8300000, guid: 9e59ec5e3a0f7fc4ab9894c2f359d07d, type: 3}
   - {fileID: 8300000, guid: 87cbdad8e3a043f49ba25fe3636278c1, type: 3}
-  audJumpVol: 0.5
+  audJumpVol: 0.6
   audHurt:
   - {fileID: 8300000, guid: 437e20257e1c8b143bbe4a7b3a066886, type: 3}
   - {fileID: 8300000, guid: d5a5bdc3ab2086c4a86a7cc4eb8a143a, type: 3}
@@ -121,7 +121,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f75a933c9ab719442b92194e98ee3911, type: 3}
   - {fileID: 8300000, guid: 5c220ca5cf5121446b4b5529d6e899a9, type: 3}
   - {fileID: 8300000, guid: c8a228bc96f60714096362ad240daf9b, type: 3}
-  audHurtVol: 0.5
+  audHurtVol: 1
   HPOrig: 0
   gunListPos: 0
 --- !u!33 &226520322530061624
@@ -486,7 +486,7 @@ Transform:
   m_GameObject: {fileID: 5175435172361694362}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.43334007, y: -0.40861678, z: 0.7982712}
+  m_LocalPosition: {x: 0.05, y: -1.05, z: 1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

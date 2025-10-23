@@ -1093,7 +1093,7 @@ MonoBehaviour:
   bullet: {fileID: 6207780247886573495, guid: 8aa480c69c7f2444ebe40e06d5b838dc, type: 3}
   shootRate: 3
   floatingTextPrefab: {fileID: 5749133604472977256, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
-  roomScript: {fileID: 0}
+  thisRoom: {fileID: 0}
 --- !u!95 &6590894153844657967
 Animator:
   serializedVersion: 7
@@ -1180,7 +1180,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 12
+  m_Radius: 36
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3977155603415177764
 GameObject:

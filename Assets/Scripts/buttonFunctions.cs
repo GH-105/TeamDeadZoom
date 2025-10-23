@@ -73,8 +73,8 @@ public class buttonFunctions : MonoBehaviour
     public void LoadWeapon()
     {
         Debug.Log("LoadWeapon clicked");
-        gameManager.instance.setStartingWeapon(gun);
         SceneManager.LoadScene(levelChosen);
+        PowerUpManager.Instance.AddGun(gun);
         gameManager.instance.stateUnpause();
     }
 }

@@ -198,6 +198,21 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         changeGun();
     }
 
+    public void refreshGunStats()
+    {
+        if (gunListPos < 0 || PowerUpManager.Instance == null) return;
+
+        var (damage, rate, range) = PowerUpManager.Instance.CalcGunStats(gunListPos);
+        shootDamage = damage;
+        shootRate = rate;
+        shootDist = range;
+        gunModel.GetComponent<MeshFilter>().sharedMesh = playerGunList[gunListPos].baseStats.gunModel.GetComponent<MeshFilter>().sharedMesh;
+        gunModel.GetComponent<MeshRenderer>().sharedMaterial = playerGunList[gunListPos].baseStats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
+
+        updatePlayerUI();
+
+    }
+
     void changeGun()
     {
         if (PowerUpManager.Instance == null) return;
@@ -206,7 +221,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         if (count == 0) return;
         gunListPos = Mathf.Clamp(gunListPos, 0, count - 1);
 
-        var (damage, rate, ammo, range) = PowerUpManager.Instance.CalcGunStats(gunListPos);
+        var (damage, rate, range) = PowerUpManager.Instance.CalcGunStats(gunListPos);
 
         shootDamage = damage;
         shootDist = range;

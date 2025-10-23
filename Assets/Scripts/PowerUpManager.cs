@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class PowerUpManager : MonoBehaviour
 {
@@ -42,6 +43,24 @@ public class PowerUpManager : MonoBehaviour
     private void OnDestroy()
     {
         if (Instance == this) Instance = null;
+    }
+
+    public void SetStartingGun(gunStats startingGun)
+    {
+        gunList.Clear();
+        AddGun(startingGun);
+        gunListPos = 0;
+    }
+    
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        var player = gameManager.instance.playerScript;
+        if (player != null && gunList.Count > 0)
+        {
+            player.gunListPos = 0;
+            player.refreshGunStats();
+        }
+
     }
 
     public int AddGun(gunStats baseGun)
@@ -102,16 +121,15 @@ public class PowerUpManager : MonoBehaviour
         gameManager.instance.playerScript.JumpCountMax += totalJumps;
     }
 
-    public (int damage, float rate, int ammoMax, int range) CalcGunStats(int index)
+    public (int damage, float rate, int range) CalcGunStats(int index)
     {
         var gun = gunList[index];
 
         int damage = Mathf.RoundToInt((gun.baseStats.shootDamage + gun.mods.flatDamageMod) * (gun.mods.damageMultMod));
         float rate = gun.baseStats.shootRate * gun.mods.rateMultMod;
-        int ammoMax = gun.baseStats.ammoMax + gun.mods.addMaxAmmoMod;
         int range = gun.baseStats.shootDist + gun.mods.addMaxAmmoMod;
 
-        return (damage, rate, ammoMax, range);
+        return (damage, rate, range);
 
     }
     

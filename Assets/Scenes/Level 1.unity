@@ -7829,6 +7829,9 @@ MonoBehaviour:
   maxEnemies: 0
   spawnRate: 0
   spawnPos: []
+  roomGoalLabel: {fileID: 0}
+  roomGoalCount: 0
+  roomActive: 0
 --- !u!1 &1534658698
 GameObject:
   m_ObjectHideFlags: 0
@@ -10637,6 +10640,7 @@ MonoBehaviour:
   speed: 0
   destroyTime: 0
   flightTime: 0
+  playerInDot: {fileID: 0}
 --- !u!33 &2024887493
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -11053,6 +11057,59 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9856dc892a6a62045a99eab092e9a30d, type: 3}
+--- !u!1 &2121785177
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2121785179}
+  - component: {fileID: 2121785178}
+  m_Layer: 0
+  m_Name: PowerUpManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2121785178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2121785177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 758153d4d722817488b1d2f69c3e780b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PowerUpManager
+  totalSpeed: 0
+  totalJumps: 0
+  totalDamage: 0
+  totalDist: 0
+  totalRate: 0
+  totalAmmo: 0
+  gunList: []
+  gunListPos: 0
+  pstat: 0
+--- !u!4 &2121785179
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2121785177}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 155.95128, y: 0, z: 50.52151}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2134954341
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11203,3 +11260,4 @@ SceneRoots:
   - {fileID: 895525108}
   - {fileID: 587554471}
   - {fileID: 543734481}
+  - {fileID: 2121785179}

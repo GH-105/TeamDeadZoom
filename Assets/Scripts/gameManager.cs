@@ -26,7 +26,6 @@ public class gameManager : MonoBehaviour
     public GameObject playerDamageScreen;
     public TMP_Text gameGoalCountText;
     public TMP_Text ammoCur, ammoMax;
-    //public TMP_Text roomGoalCountText;
     public GameObject checkpointPopup;
 
     float timeScaleOrig;
@@ -123,14 +122,6 @@ public class gameManager : MonoBehaviour
         menuActive.SetActive(false);
         menuActive = menuWeaponSelect;
         menuActive.SetActive(true);
-    }
-
-    public void setStartingWeapon(gunStats gun)
-    {
-        startingGun = gun;
-        if (startingGun != null)
-            startingGun.ammoCur = startingGun.ammoMax;
-        menuActive.SetActive(false);
     }
 
     public void showPlayerDOTScreen(bool dotON)
