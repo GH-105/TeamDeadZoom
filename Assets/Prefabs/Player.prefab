@@ -87,7 +87,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   controller: {fileID: 4262528227152647911}
-  HP: 10
+  HP: 15
   speed: 16
   sprintMod: 3
   jumpSpeed: 12

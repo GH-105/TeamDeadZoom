@@ -84,7 +84,7 @@ public class room : MonoBehaviour
     public void UpdateRoomGoal(int amount)
     {
         roomGoalCount += amount;
-        roomGoalLabel.text = roomGoalCount.ToString("F0");
+        
         if (roomGoalCount <= 0 && totalEnemiesSpawned >= maxEnemies)
         {
             doorState(false);
@@ -92,5 +92,6 @@ public class room : MonoBehaviour
             startSpawning = false;
             gameManager.instance.updateGameGoal(-1);
         }
-    }
+        string v = roomGoalCount.ToString("F0");
+        roomGoalLabel.text = v;    }
 }
