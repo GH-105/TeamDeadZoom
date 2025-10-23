@@ -14,7 +14,6 @@ public class Damage : MonoBehaviour
 
     [SerializeField] float flightTime;
     [SerializeField] GameObject playerInDot;
-    bool playerInside = false;
 
     bool isDamaging;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -76,11 +75,6 @@ public class Damage : MonoBehaviour
 
         if (dmg != null && type == damagetype.DOT)
         {
-            if (!playerInside)
-            {
-                playerInside = true;
-                gameManager.instance.showPlayerDOTScreen(true);
-            }
             gameManager.instance.showPlayerDOTScreen(true);
             if (!isDamaging)
             {
@@ -96,16 +90,6 @@ public class Damage : MonoBehaviour
         IDamage dmg = other.GetComponent<IDamage>();
         if (dmg != null && type == damagetype.DOT)
         {
-            playerInside = false;
-            gameManager.instance.showPlayerDOTScreen(false);
-        }
-    }
-
-    private void OnDestroy()
-    {
-        if (playerInside)
-        {
-            playerInside = false;
             gameManager.instance.showPlayerDOTScreen(false);
         }
     }

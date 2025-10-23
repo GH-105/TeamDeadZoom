@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Iinteraction : MonoBehaviour
 {
-    [SerializeField] float speedBoost;
+    [SerializeField] int speedBoost;
     [SerializeField] int jumpCIncrease;
     [SerializeField] int damageBoostFlat;
     [SerializeField] float damageBoostMult;

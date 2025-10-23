@@ -8,8 +8,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     [SerializeField] CharacterController controller;
 
     [SerializeField] public int HP;
-    [SerializeField] float speed;
-    [SerializeField] float sprintMod;
+    [SerializeField] int speed;
+    [SerializeField] int sprintMod;
     [SerializeField] int jumpSpeed;
     [SerializeField] int jumpCountMax;
     [SerializeField] int gravity;
@@ -193,6 +193,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
     public void getGunStats(gunStats gun)
     {
+        
         gunListPos = PowerUpManager.Instance.AddGun(gun);
         changeGun();
     }
@@ -209,6 +210,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         gunModel.GetComponent<MeshRenderer>().sharedMaterial = playerGunList[gunListPos].baseStats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
 
         updatePlayerUI();
+
     }
 
     void changeGun()
@@ -251,7 +253,6 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
     public void spawnPlayer()
     {
-        
         controller.enabled = false;
         controller.transform.position = gameManager.instance.playerSpawnPos.transform.position + Vector3.up * 1f;
         controller.enabled = true;
@@ -260,7 +261,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         updatePlayerUI();
     }
 
-    public float Speed
+    public int Speed
     {
         get => speed;
         set => speed = value;
