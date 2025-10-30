@@ -440,6 +440,10 @@ PrefabInstance:
       propertyPath: gravity
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5516483503538133329, guid: 0a6e173a0b175fa4aacb0618436d3d54, type: 3}
+      propertyPath: audJumpVol
+      value: 0.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
