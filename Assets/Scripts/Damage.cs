@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 public class Damage : MonoBehaviour
 {
-    enum damagetype { moving, stationary, DOT, homing, thrown }
+    enum damagetype { moving, stationary, DOT, DOT1, homing, thrown }
     [SerializeField] damagetype type;
     [SerializeField] Rigidbody rb;
     [SerializeField] GameObject projModel;
@@ -81,7 +81,15 @@ public class Damage : MonoBehaviour
                 StartCoroutine(damageOther(dmg));
             }
         }
+        if (dmg != null && type == damagetype.DOT1)
+        {
+            if (!isDamaging)
+            {
+                StartCoroutine(damageOther(dmg));
+            }
+        }
     }
+
 
     private void OnTriggerExit(Collider other)
     {
