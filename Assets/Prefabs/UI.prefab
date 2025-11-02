@@ -2710,7 +2710,7 @@ GameObject:
   - component: {fileID: 9155373033950415457}
   - component: {fileID: 2203289909423239348}
   - component: {fileID: 5190388884764651859}
-  - component: {fileID: 7791666350402800062}
+  - component: {fileID: 5552638139348792182}
   m_Layer: 5
   m_Name: ReloadText
   m_TagString: Untagged
@@ -2836,7 +2836,7 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!95 &7791666350402800062
+--- !u!95 &5552638139348792182
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
@@ -2846,7 +2846,7 @@ Animator:
   m_GameObject: {fileID: 2799918766639087044}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 29e25b52a86826745bf27e329c3071f3, type: 2}
+  m_Controller: {fileID: 9100000, guid: 4b90e2a7de8081848aab7882e029fe67, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
