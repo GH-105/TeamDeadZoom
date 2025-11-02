@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
-
+using TMPro;
 public class playerController : MonoBehaviour, IDamage, IPickup
 {
     [SerializeField] LayerMask ignoreLayer;
@@ -21,13 +21,15 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     //[SerializeField] int numChains;
     [SerializeField] GameObject gunModel;
 
-    [SerializeField] AudioSource aud; 
-    [SerializeField] AudioClip[] audSteps; 
-    [Range(0, 1)][SerializeField] float audStepsVol; 
+    [SerializeField] TextMeshProUGUI reloadText;
+
+    [SerializeField] AudioSource aud;
+    [SerializeField] AudioClip[] audSteps;
+    [Range(0, 1)][SerializeField] float audStepsVol;
     [SerializeField] AudioClip[] audJump;
-    [Range(0, 1)][SerializeField] float audJumpVol; 
-    [SerializeField] AudioClip[] audHurt; 
-    [Range(0, 1)][SerializeField] float audHurtVol; 
+    [Range(0, 1)][SerializeField] float audJumpVol;
+    [SerializeField] AudioClip[] audHurt;
+    [Range(0, 1)][SerializeField] float audHurtVol;
 
     Vector3 moveDir;
     Vector3 playerVel;
@@ -47,7 +49,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         HPOrig = HP;
         spawnPlayer();
 
-        if(PowerUpManager.Instance != null)//checks everytime before applying
+        if (PowerUpManager.Instance != null)//checks everytime before applying
         {
             if (PowerUpManager.Instance.gunList.Count > 0)
             {
@@ -64,7 +66,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup
                 PowerUpManager.Instance.pstat = false;
             }
         }
-       
+        if (reloadText != null)
+            reloadText.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -72,8 +75,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     {
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
         shootTimer += Time.deltaTime;
-        
-        if(!gameManager.instance.isPaused)
+
+        if (!gameManager.instance.isPaused)
             movement();
 
         sprint();
@@ -103,7 +106,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         jump();
         controller.Move(playerVel * Time.deltaTime);
 
-        if(Input.GetButton("Fire1") && PowerUpManager.Instance.gunList.Count > 0 && PowerUpManager.Instance.GetCurrentAmmo(gunListPos) > 0 && shootTimer >= shootRate)
+        if (Input.GetButton("Fire1") && PowerUpManager.Instance.gunList.Count > 0 && PowerUpManager.Instance.GetCurrentAmmo(gunListPos) > 0 && shootTimer >= shootRate)
         {
             shoot();
         }
@@ -137,17 +140,25 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     void shoot()
     {
         shootTimer = 0;
+        if (PowerUpManager.Instance.GetCurrentAmmo(gunListPos) <= 1)
+        {
+           if(reloadText != null)
+                reloadText.gameObject.SetActive(true);
+            //Debug.Log("Reload");
+            
+        }
+
         PowerUpManager.Instance.ConsumeAmmo(gunListPos);
         aud.PlayOneShot(PowerUpManager.Instance.gunList[gunListPos].baseStats.shootSounds[Random.Range(0, PowerUpManager.Instance.gunList[gunListPos].baseStats.shootSounds.Length)], PowerUpManager.Instance.gunList[gunListPos].baseStats.shootSoundVol);
         updatePlayerUI();
 
         RaycastHit hit;
-        if(Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist, ~ignoreLayer))
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist, ~ignoreLayer))
         {
             Instantiate(PowerUpManager.Instance.gunList[gunListPos].baseStats.hitEffect, hit.point, Quaternion.identity);
 
             IDamage dmg = hit.collider.GetComponent<IDamage>();
-            if(dmg != null)
+            if (dmg != null)
             {
                 dmg.takeDamage(shootDamage);
             }
@@ -156,11 +167,13 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
     void reload()
     {
-        if(Input.GetButtonDown("Reload"))
+        if (Input.GetButtonDown("Reload"))
         {
             PowerUpManager.Instance.ReloadCurrentGun(gunListPos);
+            updatePlayerUI();
+            reloadText.gameObject.SetActive(false);
         }
-        updatePlayerUI();
+        
     }
 
     public void takeDamage(int amount)
@@ -169,7 +182,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         aud.PlayOneShot(audHurt[Random.Range(0, audHurt.Length)], audHurtVol);
         updatePlayerUI();
         StartCoroutine(flashPlayerDmg());
-        if(HP <= 0)
+        if (HP <= 0)
         {
             gameManager.instance.youLose();
         }
@@ -177,11 +190,12 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
     public void updatePlayerUI()
     {
-        if(PowerUpManager.Instance.gunList.Count > 0)
+        if (PowerUpManager.Instance.gunList.Count > 0)
         {
             gameManager.instance.ammoCur.text = PowerUpManager.Instance.GetCurrentAmmo(gunListPos).ToString();
             gameManager.instance.ammoMax.text = PowerUpManager.Instance.GetMaxAmmo(gunListPos).ToString();
-        }    
+
+        }
     }
 
     IEnumerator flashPlayerDmg()
@@ -255,9 +269,9 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     public int JumpCountMax
     {
         get => jumpCountMax;
-        set => jumpCountMax = value;    
+        set => jumpCountMax = value;
     }
-    IEnumerator playStep() 
+    IEnumerator playStep()
     {
         isPlayingSteps = true;
         aud.PlayOneShot(audSteps[Random.Range(0, audSteps.Length)], audStepsVol);
