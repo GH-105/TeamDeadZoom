@@ -267,6 +267,13 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         if (other.CompareTag("Water"))
         {
             isUnderWater = true;
+            speed = underwaterSpeed;
+            jumpSpeed = underwaterJumpSpeed;
+            gravity = underwaterGravity;
+            if (isSprinting)
+                speed *= sprintMod;
+            gameManager.instance.playerUWScreen.SetActive(true);
+
         }
     }
 
@@ -275,6 +282,12 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         if (other.CompareTag("Water"))
         {
             isUnderWater = false;
+            speed = speedOrig;
+            jumpSpeed = jumpSpeedOrig;
+            gravity = gravOrig;
+            if (isSprinting)
+                speed *= sprintMod;
+            gameManager.instance.playerUWScreen.SetActive(false);
         }
     }
 

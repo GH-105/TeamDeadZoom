@@ -88,11 +88,14 @@ MonoBehaviour:
     m_Bits: 8
   controller: {fileID: 4262528227152647911}
   HP: 15
-  speed: 16
-  sprintMod: 3
+  speed: 12
+  sprintMod: 2
   jumpSpeed: 12
   jumpCountMax: 2
   gravity: 35
+  underwaterGravity: 10
+  underwaterSpeed: 8
+  underwaterJumpSpeed: 8
   shootDamage: 2
   shootDist: 50
   shootRate: 0.5
@@ -125,6 +128,9 @@ MonoBehaviour:
   audHurtVol: 1
   HPOrig: 0
   gunListPos: 0
+  gravOrig: 0
+  speedOrig: 0
+  jumpSpeedOrig: 0
 --- !u!33 &226520322530061624
 MeshFilter:
   m_ObjectHideFlags: 0
