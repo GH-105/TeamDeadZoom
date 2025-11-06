@@ -13,6 +13,9 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     [SerializeField] int jumpSpeed;
     [SerializeField] int jumpCountMax;
     [SerializeField] int gravity;
+    [SerializeField] int underwaterGravity;
+    [SerializeField] int underwaterSpeed;
+    [SerializeField] int underwaterJumpSpeed;
 
     [SerializeField] int shootDamage;
     [SerializeField] int shootDist;
@@ -37,17 +40,25 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     int jumpCount;
     public int HPOrig;
     public int gunListPos;
+    public int gravOrig;
+    public int speedOrig;
+    public int jumpSpeedOrig;
 
     float shootTimer;
 
     bool isSprinting;
     bool isPlayingSteps;
+    bool isUnderWater;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         HPOrig = HP;
+        gravOrig = gravity;
+        speedOrig = speed;
+        jumpSpeedOrig = jumpSpeed;
         spawnPlayer();
+
 
         if (PowerUpManager.Instance != null)//checks everytime before applying
         {
@@ -80,7 +91,6 @@ public class playerController : MonoBehaviour, IDamage, IPickup
             movement();
 
         sprint();
-
     }
 
     void movement()
@@ -120,10 +130,12 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         if (Input.GetButtonDown("Sprint"))
         {
             speed *= sprintMod;
+            isSprinting = true;
         }
         else if (Input.GetButtonUp("Sprint"))
         {
             speed /= sprintMod;
+            isSprinting = false;
         }
     }
 
@@ -247,6 +259,22 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         {
             gunListPos--;
             changeGun();
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Water"))
+        {
+            isUnderWater = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Water"))
+        {
+            isUnderWater = false;
         }
     }
 
