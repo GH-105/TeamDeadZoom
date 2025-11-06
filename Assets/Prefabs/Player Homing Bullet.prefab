@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: -2783392910245394818}
   - component: {fileID: 6764244344762775684}
   - component: {fileID: 7824526742746467510}
-  m_Layer: 8
-  m_Name: Homing Bullet
+  m_Layer: 6
+  m_Name: Player Homing Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,6 +55,7 @@ MonoBehaviour:
   speed: 15
   destroyTime: 3
   flightTime: 0
+  playerInDot: {fileID: 0}
 --- !u!135 &6764244344762775684
 SphereCollider:
   m_ObjectHideFlags: 0

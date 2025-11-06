@@ -2,23 +2,24 @@ using UnityEngine;
 using System.Collections;
 public class Damage : MonoBehaviour
 {
-    enum damagetype { moving, stationary, DOT, DOT1, homing, thrown }
+    enum damagetype { moving, stationary, lava, poison, homing, thrown, enemAura, incendiary, explosive, DOT }
     [SerializeField] damagetype type;
     [SerializeField] Rigidbody rb;
     [SerializeField] GameObject projModel;
 
-    [SerializeField] int damageAmount;
-    [SerializeField] float damageRate;
-    [SerializeField] int speed;
-    [SerializeField] int destroyTime;
+    [SerializeField] public int damageAmount;
+    [SerializeField] public float damageRate;
+    [SerializeField] public int speed;
+    [SerializeField] public int destroyTime;
 
     [SerializeField] float flightTime;
     [SerializeField] GameObject playerInDot;
 
     bool isDamaging;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void OnEnable()
     {
+        Debug.DrawRay(transform.position, transform.forward * 50f, Color.yellow, 2f);
         if (type == damagetype.moving || type == damagetype.homing || type == damagetype.thrown)
         {
             Destroy(gameObject, destroyTime);
@@ -73,7 +74,7 @@ public class Damage : MonoBehaviour
 
         IDamage dmg = other.GetComponent<IDamage>();
 
-        if (dmg != null && type == damagetype.DOT)
+        if (dmg != null && type == damagetype.lava)
         {
             gameManager.instance.showPlayerDOTScreen(true);
             if (!isDamaging)
@@ -81,7 +82,7 @@ public class Damage : MonoBehaviour
                 StartCoroutine(damageOther(dmg));
             }
         }
-        if (dmg != null && type == damagetype.DOT1)
+        if (dmg != null && type == damagetype.enemAura)
         {
             if (!isDamaging)
             {

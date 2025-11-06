@@ -5,6 +5,7 @@ using TMPro;
 public class playerController : MonoBehaviour, IDamage, IPickup
 {
     [SerializeField] LayerMask ignoreLayer;
+    [SerializeField] LayerMask aimMask;
     [SerializeField] CharacterController controller;
 
     [SerializeField] public int HP;
@@ -17,12 +18,16 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     [SerializeField] int underwaterSpeed;
     [SerializeField] int underwaterJumpSpeed;
 
+
     [SerializeField] int shootDamage;
     [SerializeField] int shootDist;
     [SerializeField] float shootRate;
-    //[SerializeField] int numProjectiles;
-    //[SerializeField] int numChains;
+    [SerializeField] int numProjectiles;
+    [SerializeField] int numRicochet;
+    [SerializeField] int bulletSpeed;
     [SerializeField] GameObject gunModel;
+    [SerializeField] Transform firePos;
+    [SerializeField] GameObject bullet;
 
     [SerializeField] TextMeshProUGUI reloadText;
 
@@ -36,6 +41,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
     Vector3 moveDir;
     Vector3 playerVel;
+    Quaternion baseRot;
 
     int jumpCount;
     public int HPOrig;
@@ -43,6 +49,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     public int gravOrig;
     public int speedOrig;
     public int jumpSpeedOrig;
+    public int bulletDamage;
+    float stepDeg = 6f;
 
     float shootTimer;
 
@@ -152,29 +160,45 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     void shoot()
     {
         shootTimer = 0;
+
+        Camera cam = Camera.main;
+        Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+
+        Vector3 aimPoint;
+        if (Physics.Raycast(ray, out RaycastHit hit, 1000f, aimMask))
+            aimPoint = hit.point;
+        else
+            aimPoint = ray.origin + ray.direction * 1000f;
+
+        Vector3 dir = (aimPoint - firePos.position).normalized;
+        Quaternion aimRotation = Quaternion.LookRotation(dir, firePos.up);
+
         if (PowerUpManager.Instance.GetCurrentAmmo(gunListPos) <= 1)
         {
-           if(reloadText != null)
+            if (reloadText != null)
                 reloadText.gameObject.SetActive(true);
             //Debug.Log("Reload");
-            
         }
 
         PowerUpManager.Instance.ConsumeAmmo(gunListPos);
         aud.PlayOneShot(PowerUpManager.Instance.gunList[gunListPos].baseStats.shootSounds[Random.Range(0, PowerUpManager.Instance.gunList[gunListPos].baseStats.shootSounds.Length)], PowerUpManager.Instance.gunList[gunListPos].baseStats.shootSoundVol);
         updatePlayerUI();
 
-        RaycastHit hit;
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, shootDist, ~ignoreLayer))
-        {
-            Instantiate(PowerUpManager.Instance.gunList[gunListPos].baseStats.hitEffect, hit.point, Quaternion.identity);
+        this.GetComponent<playerController>().bullet.GetComponent<Damage>().damageAmount = shootDamage;
+        this.GetComponent<playerController>().bullet.GetComponent<Damage>().speed = bulletSpeed;
 
-            IDamage dmg = hit.collider.GetComponent<IDamage>();
-            if (dmg != null)
-            {
-                dmg.takeDamage(shootDamage);
-            }
+
+        for (int i = 0; i < numProjectiles; i++)
+        {
+            float center = (numProjectiles - 1) * 0.5f;
+            float offsetIndex = i - center;
+            float angle = offsetIndex * stepDeg;
+
+            Quaternion rot = Quaternion.AngleAxis(angle, firePos.up) * aimRotation;
+
+            Instantiate(bullet, firePos.position, rot);
         }
+        
     }
 
     void reload()
@@ -243,7 +267,20 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         gunModel.GetComponent<MeshFilter>().sharedMesh = PowerUpManager.Instance.gunList[gunListPos].baseStats.gunModel.GetComponent<MeshFilter>().sharedMesh;
         gunModel.GetComponent<MeshRenderer>().sharedMaterial = PowerUpManager.Instance.gunList[gunListPos].baseStats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
 
-        updatePlayerUI();
+        if (PowerUpManager.Instance.GetCurrentAmmo(gunListPos) <= 1)
+        {
+            if (reloadText != null)
+                reloadText.gameObject.SetActive(true);
+            //Debug.Log("Reload");
+
+        }
+        else
+        {
+            if (reloadText != null)
+                reloadText.gameObject.SetActive(false);
+        }
+
+            updatePlayerUI();
     }
 
     void selectGun()

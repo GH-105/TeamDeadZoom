@@ -1399,10 +1399,10 @@ MonoBehaviour:
   roamPauseTimer: 3
   shootPos1: {fileID: 2880678300974847815}
   shootPos2: {fileID: 0}
-  bullet: {fileID: 6207780247886573495, guid: 57c1c19ebb6e8ad4bb351a006e3dc17d, type: 3}
+  bullet: {fileID: 6207780247886573495, guid: 6b49c58a982ffe04c8f2896cea4bc752, type: 3}
   shootRate: 1.5
   floatingTextPrefab: {fileID: 5749133604472977256, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
-  roomScript: {fileID: 0}
+  thisRoom: {fileID: 0}
 --- !u!95 &4154960501923803631
 Animator:
   serializedVersion: 7
