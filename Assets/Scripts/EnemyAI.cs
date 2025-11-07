@@ -1,7 +1,8 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
-using TMPro;
+using UnityEngine.UI;
 
 public class EnemyAI : MonoBehaviour, IDamage
 {
@@ -41,7 +42,12 @@ public class EnemyAI : MonoBehaviour, IDamage
     Vector3 startingPos;
 
     public room thisRoom;
-    
+
+    [SerializeField] Slider HPslider;
+    [SerializeField] Camera healthcam;
+    [SerializeField] Transform target;
+    [SerializeField] Vector3 offset;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -74,6 +80,8 @@ public class EnemyAI : MonoBehaviour, IDamage
 
         if (anim != null)
             anim.SetFloat("Speed", Mathf.Clamp01(agent.velocity.magnitude / Mathf.Max(agent.speed, 0.001f)));
+
+        UpdateEnemyHP();
     }
 
     void checkRoam()
@@ -174,6 +182,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     public void takeDamage(int amount)
     {
         HP -= amount;
+        UpdateEnemyHP();
         agent.SetDestination(gameManager.instance.player.transform.position);
         showDamage(amount.ToString());
 
@@ -210,4 +219,16 @@ public class EnemyAI : MonoBehaviour, IDamage
         head.material.color = colorOrigHead;
         jaw.material.color = colorOrigJaw;
     }
+
+    public void UpdateEnemyHP()
+    {
+        if(HPslider != null && healthcam != null)
+        { 
+            HPslider.value = HP; 
+            HPslider.transform.LookAt(healthcam.transform);
+            HPslider.transform.rotation = Quaternion.LookRotation(HPslider.transform.position - healthcam.transform.position);
+            HPslider.transform.position = target.position + offset;
+        }
+    }
+
 }

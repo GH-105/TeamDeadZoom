@@ -1393,6 +1393,7 @@ MonoBehaviour:
   agent: {fileID: 3305314079921438648}
   headPos: {fileID: 5009248322809960459}
   HP: 4
+  MaxHP: 4
   faceTargetSpeed: 2
   FOV: 45
   roamDist: 25
@@ -1403,6 +1404,7 @@ MonoBehaviour:
   shootRate: 1.5
   floatingTextPrefab: {fileID: 5749133604472977256, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
   thisRoom: {fileID: 0}
+  healthSlider: {fileID: 0}
 --- !u!95 &4154960501923803631
 Animator:
   serializedVersion: 7
