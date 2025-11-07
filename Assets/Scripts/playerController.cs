@@ -18,6 +18,9 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     [SerializeField] int underwaterSpeed;
     [SerializeField] int underwaterJumpSpeed;
 
+    [SerializeField] int dashDist;
+    [SerializeField] int maxAirDash;
+
 
     [SerializeField] int shootDamage;
     [SerializeField] int shootDist;
@@ -41,7 +44,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
     Vector3 moveDir;
     Vector3 playerVel;
+    Vector3 dashDir;
     Quaternion baseRot;
+
+    private int currDash = 0;
 
     int jumpCount;
     public int HPOrig;
@@ -57,6 +63,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     bool isSprinting;
     bool isPlayingSteps;
     bool isUnderWater;
+    bool isInAir;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -67,6 +74,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         jumpSpeedOrig = jumpSpeed;
         spawnPlayer();
 
+        controller = GetComponent<CharacterController>();
 
         if (PowerUpManager.Instance != null)//checks everytime before applying
         {
@@ -99,6 +107,11 @@ public class playerController : MonoBehaviour, IDamage, IPickup
             movement();
 
         sprint();
+
+        if (Input.GetKeyDown("Sprint") && isInAir && currDash < maxAirDash)
+        {
+            startDash();
+        }
     }
 
     void movement()
@@ -338,6 +351,17 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         updatePlayerUI();
     }
 
+    
+
+    void startDash()
+    {
+        isInAir = true;
+        dashDir = transform.forward;
+
+        StartCoroutine(DashCoroutine());
+    }
+
+
     public int Speed
     {
         get => speed;
@@ -363,5 +387,18 @@ public class playerController : MonoBehaviour, IDamage, IPickup
             yield return new WaitForSeconds(0.5f);
         }
         isPlayingSteps = false;
+    }
+
+    IEnumerator DashCoroutine()
+    {
+        float startTime = Time.time;
+
+        while(Time.time < startTime)
+        {
+            controller.Move(dashDir * dashDist * Time.deltaTime);
+            yield return null;
+        }
+
+        isInAir = false;
     }
 }
