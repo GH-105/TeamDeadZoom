@@ -1856,6 +1856,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 7968735221605272654, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
+      propertyPath: HpCamera
+      value: 
+      objectReference: {fileID: 6862576955664500924}
     - target: {fileID: 8881158984367406722, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -21470,6 +21474,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a6e173a0b175fa4aacb0618436d3d54, type: 3}
+--- !u!20 &6862576955664500924 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 2590973381785143458, guid: 0a6e173a0b175fa4aacb0618436d3d54, type: 3}
+  m_PrefabInstance: {fileID: 6862576955664500923}
+  m_PrefabAsset: {fileID: 0}
 --- !u!23 &6880037105748845159
 MeshRenderer:
   m_ObjectHideFlags: 0

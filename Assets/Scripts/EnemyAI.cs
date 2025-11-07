@@ -43,7 +43,7 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     public room thisRoom;
 
-    [SerializeField] Slider HPslider;
+    [SerializeField] Slider HpSlider;
     [SerializeField] Camera healthcam;
     [SerializeField] Transform target;
     [SerializeField] Vector3 offset;
@@ -57,6 +57,9 @@ public class EnemyAI : MonoBehaviour, IDamage
         stoppingDistOrig = agent.stoppingDistance;
         startingPos = transform.position;
         thisRoom.UpdateRoomGoal(1);
+        healthcam = gameManager.instance.HpCamera;
+        HpSlider.maxValue = HP;
+        HpSlider.value = HP;
     }
 
     // Update is called once per frame
@@ -222,12 +225,12 @@ public class EnemyAI : MonoBehaviour, IDamage
 
     public void UpdateEnemyHP()
     {
-        if(HPslider != null && healthcam != null)
+        if(HpSlider != null && healthcam != null)
         { 
-            HPslider.value = HP; 
-            HPslider.transform.LookAt(healthcam.transform);
-            HPslider.transform.rotation = Quaternion.LookRotation(HPslider.transform.position - healthcam.transform.position);
-            HPslider.transform.position = target.position + offset;
+            HpSlider.value = HP; 
+            HpSlider.transform.LookAt(healthcam.transform);
+            HpSlider.transform.rotation = Quaternion.LookRotation(HpSlider.transform.position - healthcam.transform.position);
+            HpSlider.transform.position = target.position + offset;
         }
     }
 
