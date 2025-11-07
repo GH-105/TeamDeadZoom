@@ -64,6 +64,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     bool isPlayingSteps;
     bool isUnderWater;
     bool isInAir;
+    bool isDashing = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -100,6 +101,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     // Update is called once per frame
     void Update()
     {
+        isInAir = !controller.isGrounded;
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
         shootTimer += Time.deltaTime;
 
@@ -108,7 +110,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
         sprint();
 
-        if (Input.GetKeyDown("Sprint") && isInAir && currDash < maxAirDash)
+        if (Input.GetButtonDown("Sprint") && isInAir && currDash < maxAirDash && !isDashing)
         {
             startDash();
         }
@@ -116,6 +118,11 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
     void movement()
     {
+        if (isDashing)
+        {
+            controller.Move(playerVel*Time.deltaTime);
+            return;
+        }
         if (controller.isGrounded)
         {
             if (moveDir.normalized.magnitude > 0.3f && !isPlayingSteps) //t6
@@ -125,6 +132,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
             playerVel = Vector3.zero;
             jumpCount = 0;
+            currDash = 0;
         }
         else
         {
@@ -350,15 +358,30 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         HP = HPOrig;
         updatePlayerUI();
     }
-
+    Vector3 GetDashDir()
+    {
+        Vector3 camForward = Camera.main.transform.forward;
+        camForward.y = 0f;
+        if(camForward.y < 0f)
+        {
+            return transform.forward;
+        }
+        return camForward.normalized;
+    }
     
 
     void startDash()
     {
-        isInAir = true;
-        dashDir = transform.forward;
+        if (isDashing || !isInAir) return;
+        isDashing = true;
+        currDash++;
+
+        dashDir = GetDashDir();
+
+        playerVel.y = 0f;
 
         StartCoroutine(DashCoroutine());
+        isDashing=false;
     }
 
 
@@ -392,13 +415,16 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     IEnumerator DashCoroutine()
     {
         float startTime = Time.time;
+        float dashDur = 0.3f;
+        float dashSpeed = dashDist / dashDur;
+        currDash++;
 
-        while(Time.time < startTime)
+        while(Time.time < startTime+dashDur)
         {
-            controller.Move(dashDir * dashDist * Time.deltaTime);
+            controller.Move(dashDir * dashSpeed*Time.deltaTime);
             yield return null;
         }
-
+        currDash = Mathf.Clamp(currDash, 0, maxAirDash);
         isInAir = false;
     }
 }
