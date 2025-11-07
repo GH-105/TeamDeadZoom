@@ -2,8 +2,8 @@ using UnityEngine;
 using System.Collections;
 public class Damage : MonoBehaviour
 {
-    enum damagetype { moving, stationary, lava, poison, homing, thrown, enemAura, incendiary, explosive, DOT }
-    [SerializeField] damagetype type;
+    enum movementtype { moving, stationary, lava, poison, homing, thrown, enemAura, incendiary, explosive, DOT }
+    [SerializeField] movementtype type;
     [SerializeField] Rigidbody rb;
     [SerializeField] GameObject projModel;
 
@@ -20,15 +20,15 @@ public class Damage : MonoBehaviour
     void OnEnable()
     {
         Debug.DrawRay(transform.position, transform.forward * 50f, Color.yellow, 2f);
-        if (type == damagetype.moving || type == damagetype.homing || type == damagetype.thrown)
+        if (type == movementtype.moving || type == movementtype.homing || type == movementtype.thrown)
         {
             Destroy(gameObject, destroyTime);
 
-            if (type == damagetype.moving)
+            if (type == movementtype.moving)
             {
                 rb.linearVelocity = transform.forward * speed;
             }
-            else if(type == damagetype.thrown)
+            else if(type == movementtype.thrown)
             {
                 rb.linearVelocity = (gameManager.instance.player.transform.position - transform.position - 0.5f * Physics.gravity * (flightTime * flightTime)) / flightTime;
             }
@@ -38,7 +38,7 @@ public class Damage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (type == damagetype.homing)
+        if (type == movementtype.homing)
         {
             rb.linearVelocity = (gameManager.instance.player.transform.position - transform.position).normalized * speed;
         }
@@ -52,11 +52,11 @@ public class Damage : MonoBehaviour
         }
 
         IDamage dmg = other.GetComponent<IDamage>();
-        if (dmg != null && (type == damagetype.moving || type == damagetype.stationary || type == damagetype.homing || type == damagetype.thrown))
+        if (dmg != null && (type == movementtype.moving || type == movementtype.stationary || type == movementtype.homing || type == movementtype.thrown))
         {
             dmg.takeDamage(damageAmount);
 
-            if (type == damagetype.homing || type == damagetype.moving || type == damagetype.thrown)
+            if (type == movementtype.homing || type == movementtype.moving || type == movementtype.thrown)
             {
                 Destroy(gameObject);
             }
@@ -74,7 +74,7 @@ public class Damage : MonoBehaviour
 
         IDamage dmg = other.GetComponent<IDamage>();
 
-        if (dmg != null && type == damagetype.lava)
+        if (dmg != null && type == movementtype.lava)
         {
             gameManager.instance.showPlayerDOTScreen(true);
             if (!isDamaging)
@@ -82,7 +82,7 @@ public class Damage : MonoBehaviour
                 StartCoroutine(damageOther(dmg));
             }
         }
-        if (dmg != null && type == damagetype.enemAura)
+        if (dmg != null && type == movementtype.enemAura)
         {
             if (!isDamaging)
             {
@@ -97,7 +97,7 @@ public class Damage : MonoBehaviour
         if (other.isTrigger) return;
 
         IDamage dmg = other.GetComponent<IDamage>();
-        if (dmg != null && type == damagetype.DOT)
+        if (dmg != null && type == movementtype.DOT)
         {
             gameManager.instance.showPlayerDOTScreen(false);
         }
