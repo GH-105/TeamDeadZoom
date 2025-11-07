@@ -2007,7 +2007,7 @@ MonoBehaviour:
   HpSlider: {fileID: 9066608635975089553}
   healthcam: {fileID: 0}
   target: {fileID: 4684561920409169837}
-  offset: {x: 0, y: 5.5, z: 0}
+  offset: {x: 0, y: 0, z: 0}
 --- !u!95 &8167824897452198649
 Animator:
   serializedVersion: 7
