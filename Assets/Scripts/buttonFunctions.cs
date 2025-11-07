@@ -82,4 +82,34 @@ public class buttonFunctions : MonoBehaviour
         gameManager.instance.stateUnpause();
     }
 
+    public void SaveGame()
+    {
+        GameData data = new GameData
+        {
+            souls = SoulManagement.souls,
+            playerHP = gameManager.instance.playerScript.HP,
+            checkpointPosition = gameManager.instance.playerSpawnPos.transform.position
+        };
+
+        SaveManager.SaveGame(data);
+    }
+    public void LoadGame()
+    {
+        GameData data = SaveManager.LoadGame();
+        if(data != null)
+        {
+            SoulManagement.souls = data.souls;
+            gameManager.instance.playerScript.HP = data.playerHP;
+            gameManager.instance.playerSpawnPos.transform.position = data.checkpointPosition;
+            gameManager.instance.playerScript.spawnPlayer();
+
+            Debug.Log($"Loaded : {data.souls} souls, HP {data.playerHP}, checkpoint {data.checkpointPosition}");
+        }
+    }
+    public void DeleteSave()
+    {
+
+        SaveManager.DeleteSave();
+    }
+      
 }
