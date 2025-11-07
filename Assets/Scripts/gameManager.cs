@@ -16,6 +16,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuWeaponSelect;
     [SerializeField] GameObject playerDOTScreen;
     [SerializeField] public GameObject playerUWScreen;
+    [SerializeField] public Camera HpCamera;
 
     public gunStats startingGun;
 
