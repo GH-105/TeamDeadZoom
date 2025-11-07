@@ -18,6 +18,15 @@ public class checkpoint : MonoBehaviour
         {
             gameManager.instance.playerSpawnPos.transform.position = transform.position;
             StartCoroutine(feedback());
+
+            GameData data = new GameData
+            {
+                souls = SoulManagement.souls,
+                playerHP = gameManager.instance.playerScript.HP,
+                checkpointPosition = transform.position
+            };
+            SaveManager.SaveGame( data);
+            Debug.Log("saved");
         }
     }
 
