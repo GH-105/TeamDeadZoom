@@ -111,5 +111,29 @@ public class buttonFunctions : MonoBehaviour
 
         SaveManager.DeleteSave();
     }
-      
+
+    public void StartGame()
+    {
+        gameManager.instance.levelSelect();
+    }
+
+    public void OpenOptions()
+    {
+        gameManager.instance.OptionScreen();
+    }
+
+    public void OpenSoulShop()
+    {
+        gameManager.instance.SoulShop();
+    }
+
+    public void LoadTestLevel(int level)
+    {
+        loadLevel(level);
+    }
+
+    public void BackButton()
+    {
+        gameManager.instance.StartScreen();
+    }
 }
