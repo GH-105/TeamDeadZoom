@@ -28,7 +28,7 @@ public class Damage : MonoBehaviour
             {
                 rb.linearVelocity = transform.forward * speed;
             }
-            else if(type == movementtype.thrown)
+            else if (type == movementtype.thrown)
             {
                 rb.linearVelocity = (gameManager.instance.player.transform.position - transform.position - 0.5f * Physics.gravity * (flightTime * flightTime)) / flightTime;
             }

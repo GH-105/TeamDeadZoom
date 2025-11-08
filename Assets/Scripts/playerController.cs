@@ -20,7 +20,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     [SerializeField] float groundbuffer = .1f;
 
     [SerializeField] int dashDist;
-    [SerializeField] int maxAirDash;
+    [SerializeField] public int maxAirDash;
 
 
     [SerializeField] int shootDamage;

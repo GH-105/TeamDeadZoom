@@ -14,6 +14,7 @@ public class PowerUpManager : MonoBehaviour
     public float totalRate;
     public int totalAmmo;
     public int Hp;
+    public int totalAirDash;
 
     public List<GunListings> gunList;
     public int gunListPos;

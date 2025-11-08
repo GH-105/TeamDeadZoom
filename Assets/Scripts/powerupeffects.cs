@@ -10,6 +10,7 @@ public class powerupeffects : MonoBehaviour
     [SerializeField] float rateBoost;
     [SerializeField] int ammoUp;
     [SerializeField] int HealthRecov;
+    [SerializeField] int AirDashInc;
 
     public enum PowerUpType
     {
@@ -20,7 +21,8 @@ public class powerupeffects : MonoBehaviour
         Range,
         Speed,
         Jump,
-        HpRecovery
+        HpRecovery,
+        AirDash
     }
 
     public PowerUpType type;
