@@ -175,8 +175,13 @@ public class PowerUpManager : MonoBehaviour
 
     public void HpRecovery(int amount)
     {
+
         Hp += amount;
         gameManager.instance.playerScript.HP += Hp;
+        if(gameManager.instance.playerScript.HP > gameManager.instance.playerScript.HPOrig)
+        {
+            gameManager.instance.playerScript.HP = gameManager.instance.playerScript.HPOrig;
+        }
     }
 
 }
