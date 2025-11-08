@@ -42,7 +42,6 @@ public class gameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
-        Debug.Log($"GM Awake: {GetInstanceID()} in scene {UnityEngine.SceneManagement.SceneManager.GetActiveScene().name}");
         instance = this;
         timeScaleOrig = Time.timeScale;
 
@@ -59,6 +58,10 @@ public class gameManager : MonoBehaviour
             StartScreen();
             statePause();
         }
+        else
+        {
+            menuActive = null;
+        }    
     }
 
     // Update is called once per frame
@@ -123,7 +126,6 @@ public class gameManager : MonoBehaviour
 
     public void StartScreen()
     {
-        menuActive.SetActive(false);
         menuActive = StartMenu;
         menuActive.SetActive(true);
     }
@@ -164,8 +166,9 @@ public class gameManager : MonoBehaviour
             playerDOTScreen.SetActive(false);
     }
 
-    public void showRoomComplete()
+    public void backButton()
     {
-        
+        menuActive.SetActive(false);
+        StartScreen();
     }
 }

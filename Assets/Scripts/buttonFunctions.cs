@@ -76,7 +76,6 @@ public class buttonFunctions : MonoBehaviour
 
     public void LoadWeapon(gunStats gun)
     {
-        Debug.Log("LoadWeapon clicked");
         SceneManager.LoadScene(levelChosen);
         PowerUpManager.Instance.SetStartingGun(gun);
         gameManager.instance.stateUnpause();
@@ -134,6 +133,6 @@ public class buttonFunctions : MonoBehaviour
 
     public void BackButton()
     {
-        gameManager.instance.StartScreen();
+        gameManager.instance.backButton();
     }
 }
