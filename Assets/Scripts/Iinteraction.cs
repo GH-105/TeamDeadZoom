@@ -9,6 +9,7 @@ public class Iinteraction : MonoBehaviour
     [SerializeField] int distBoost;
     [SerializeField] float rateBoost;
     [SerializeField] int ammoUp;
+    [SerializeField] int HealthRecov;
 
     public enum PowerUpType
     {
@@ -18,7 +19,8 @@ public class Iinteraction : MonoBehaviour
         Ammo,
         Range,
         Speed,
-        Jump
+        Jump,
+        HpRecovery
     }
 
     public PowerUpType type;
@@ -54,6 +56,9 @@ public class Iinteraction : MonoBehaviour
                         break;
                     case PowerUpType.Jump:
                         PowerUpManager.Instance.ApplyJumpInc(jumpCIncrease);
+                        break;
+                    case PowerUpType.HpRecovery:
+                        PowerUpManager.Instance.HpRecovery(HealthRecov);
                         break;
 
                 }

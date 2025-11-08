@@ -13,6 +13,7 @@ public class PowerUpManager : MonoBehaviour
     public int totalDist;
     public float totalRate;
     public int totalAmmo;
+    public int Hp;
 
     public List<GunListings> gunList;
     public int gunListPos;
@@ -171,5 +172,17 @@ public class PowerUpManager : MonoBehaviour
         if (player != null && player.gunListPos == index)
             player.changeGun();
     }
+
+    public void HpRecovery(int amount)
+    {
+
+        Hp += amount;
+        gameManager.instance.playerScript.HP += Hp;
+        if(gameManager.instance.playerScript.HP > gameManager.instance.playerScript.HPOrig)
+        {
+            gameManager.instance.playerScript.HP = gameManager.instance.playerScript.HPOrig;
+        }
+    }
+
 }
 

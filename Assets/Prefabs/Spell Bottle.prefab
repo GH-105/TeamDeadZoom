@@ -99,6 +99,7 @@ MonoBehaviour:
   distBoost: 4
   rateBoost: 0
   ammoUp: 10
+  HealthRecov: 0
   type: 3
 --- !u!135 &1420718751291974532
 SphereCollider:
