@@ -17,6 +17,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     [SerializeField] int underwaterGravity;
     [SerializeField] int underwaterSpeed;
     [SerializeField] int underwaterJumpSpeed;
+    [SerializeField] float groundbuffer = .1f;
 
     [SerializeField] int dashDist;
     [SerializeField] int maxAirDash;
@@ -57,8 +58,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     public int jumpSpeedOrig;
     public int bulletDamage;
     float stepDeg = 6f;
-    float sprintHoldTime = .25f;
-    float sprintPressTime;
+    float lastGrounTime;
+    
 
     float shootTimer;
 
@@ -104,6 +105,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     // Update is called once per frame
     void Update()
     {
+        if (controller.isGrounded)
+        {
+            lastGrounTime = Time.time;
+        }
         isInAir = !controller.isGrounded;
         Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
         shootTimer += Time.deltaTime;
@@ -113,12 +118,9 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
         sprint();
 
-        if (Input.GetButtonDown("Sprint") && isInAir && currDash < maxAirDash && !isDashing)
+        if (Input.GetButtonDown("Sprint") && Time.time > lastGrounTime + groundbuffer && currDash < maxAirDash && !isDashing)
         {
-            if(!controller.isGrounded && isInAir && currDash < maxAirDash && !isDashing)
-            {
-                startDash();
-            }
+            startDash();
         }
     }
 
