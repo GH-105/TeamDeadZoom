@@ -57,6 +57,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     public int jumpSpeedOrig;
     public int bulletDamage;
     float stepDeg = 6f;
+    float sprintHoldTime = .25f;
+    float sprintPressTime;
 
     float shootTimer;
 
@@ -65,6 +67,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     bool isUnderWater;
     bool isInAir;
     bool isDashing = false;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -112,7 +115,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
         if (Input.GetButtonDown("Sprint") && isInAir && currDash < maxAirDash && !isDashing)
         {
-            startDash();
+            if(!controller.isGrounded && isInAir && currDash < maxAirDash && !isDashing)
+            {
+                startDash();
+            }
         }
     }
 
@@ -372,16 +378,17 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
     void startDash()
     {
-        if (isDashing || !isInAir) return;
+        if (isDashing || !isInAir)
+            return;
+
         isDashing = true;
         currDash++;
 
         dashDir = GetDashDir();
-
         playerVel.y = 0f;
 
         StartCoroutine(DashCoroutine());
-        isDashing=false;
+    
     }
 
 
@@ -414,17 +421,19 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
     IEnumerator DashCoroutine()
     {
-        float startTime = Time.time;
         float dashDur = 0.3f;
         float dashSpeed = dashDist / dashDur;
-        currDash++;
+        float startTime = Time.time;
 
-        while(Time.time < startTime+dashDur)
+        while (Time.time < startTime + dashDur)
         {
-            controller.Move(dashDir * dashSpeed*Time.deltaTime);
+            controller.Move(dashDir * dashSpeed * Time.deltaTime);
             yield return null;
         }
+
+        
+        isDashing = false;
+
         currDash = Mathf.Clamp(currDash, 0, maxAirDash);
-        isInAir = false;
     }
 }
