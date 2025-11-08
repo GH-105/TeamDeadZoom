@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Iinteraction : MonoBehaviour
+public class powerupeffects : MonoBehaviour
 {
     [SerializeField] int speedBoost;
     [SerializeField] int jumpCIncrease;
