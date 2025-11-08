@@ -17,6 +17,9 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject playerDOTScreen;
     [SerializeField] public GameObject playerUWScreen;
     [SerializeField] public Camera HpCamera;
+    [SerializeField] public GameObject StartMenu;
+    [SerializeField] public GameObject OptionsMenu;
+    [SerializeField] public GameObject SoulShopMenu;
 
     public gunStats startingGun;
 
@@ -53,7 +56,7 @@ public class gameManager : MonoBehaviour
     {
         if(SceneManager.GetActiveScene().name == "Level Select")
         {
-            levelSelect();
+            StartScreen();
             statePause();
         }
     }
@@ -118,8 +121,30 @@ public class gameManager : MonoBehaviour
         menuActive.SetActive(true);
     }
 
+    public void StartScreen()
+    {
+        menuActive.SetActive(false);
+        menuActive = StartMenu;
+        menuActive.SetActive(true);
+    }
+
+    public void OptionScreen()
+    {
+        menuActive.SetActive(false);
+        menuActive = OptionsMenu;
+        menuActive.SetActive(true);
+    }
+
+    public void SoulShop()
+    {
+        menuActive.SetActive(false);
+        menuActive = SoulShopMenu;
+        menuActive.SetActive(true);
+    }
+
     public void levelSelect()
     {
+        menuActive.SetActive(false);
         menuActive = menuLevelSelect;
         menuActive.SetActive(true);
     }
