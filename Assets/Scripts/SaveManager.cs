@@ -40,4 +40,53 @@ public class SaveManager : MonoBehaviour
         }
 
     }
+
+    public static float UpdateBestTime(string levelName, float currentTime)
+    {
+        GameData data = LoadGame();
+        if(data == null)
+            data = new GameData();
+
+        bool levelFound = false;
+        foreach(var level in data.levelTimes)
+        {
+            if(level.levelName == levelName)
+            {
+                levelFound = true;
+
+                if(currentTime < level.bestTime)
+                    level.bestTime = currentTime;
+                
+
+                level.currentTime = currentTime;
+                level.enemiesKilled = gameManager.enemiesKilled;
+                break;
+            }
+        }
+        if(!levelFound)
+        {
+            GameData.LevelTimeData newLevelTime = new GameData.LevelTimeData
+            {
+                levelName = levelName,
+                bestTime = currentTime,
+                currentTime = currentTime
+            };
+           data.levelTimes.Add(newLevelTime);
+        }
+        data.lastLevelCompleted = levelName;
+
+        SaveGame(data);
+        return currentTime < float.MaxValue ? currentTime : float.MaxValue;
+
+    }
+   
 }
+/* add -public static int enemiesKilled = 0; to gameManager
+ * 
+ * -add this to gameManager-
+ * public void ResetKillCount()
+ * {
+ *      enemiesKilled = 0;
+ * }
+
+ * */

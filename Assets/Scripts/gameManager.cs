@@ -1,7 +1,9 @@
+using NUnit.Framework;
 using System.Threading;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class gameManager : MonoBehaviour
 {
@@ -38,7 +40,9 @@ public class gameManager : MonoBehaviour
     float timeScaleOrig;
 
     int gameGoalCount;
-    
+
+    public static int enemiesKilled = 0;
+    public List<GameData.LevelTimeData> levelTimes = new List<GameData.LevelTimeData>();
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -109,7 +113,8 @@ public class gameManager : MonoBehaviour
 
         if(gameGoalCount <= 0)
         {
-            menuActive = menuWin;
+            //menuActive = menuWin;
+            RewardsManager.instance.WinRewards();
             menuActive.SetActive(true);
             statePause();
             
@@ -121,8 +126,11 @@ public class gameManager : MonoBehaviour
     public void youLose()
     {
         statePause();
-        menuActive = menuLose;
+        
+        RewardsManager.instance.LossRewards();
+        
         menuActive.SetActive(true);
+        ResetKillCount();
     }
 
     public void StartScreen()
@@ -180,4 +188,9 @@ public class gameManager : MonoBehaviour
         menuActive.SetActive(false);
         StartScreen();
     }
+
+    public void ResetKillCount()
+  {
+       enemiesKilled = 0;
+  }
 }

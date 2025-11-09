@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -89,21 +90,44 @@ public class buttonFunctions : MonoBehaviour
             playerHP = (int)gameManager.instance.playerScript.HP,
             checkpointPosition = gameManager.instance.playerSpawnPos.transform.position
         };
+        data.gunData = new GameData.GunData[PowerUpManager.Instance.gunList.Count];
+        data.currentGunIndex = PowerUpManager.Instance.gunListPos;
+
+        for (int i = 0; i < PowerUpManager.Instance.gunList.Count; i++)
+        {
+            data.gunData[i] = new GameData.GunData
+            {
+                flatDamageMod = PowerUpManager.Instance.gunList[i].mods.flatDamageMod,
+                damageMultMod = PowerUpManager.Instance.gunList[i].mods.damageMultMod,
+                addMaxAmmoMod = PowerUpManager.Instance.gunList[i].mods.addMaxAmmoMod
+            };
+        }
+        data.levelTimes = new List<GameData.LevelTimeData>(gameManager.instance.levelTimes);
+        data.lastLevelCompleted = SceneManager.GetActiveScene().name;
 
         SaveManager.SaveGame(data);
     }
     public void LoadGame()
     {
         GameData data = SaveManager.LoadGame();
-        if(data != null)
-        {
-            SoulManagement.souls = data.souls;
-            gameManager.instance.playerScript.HP = data.playerHP;
-            gameManager.instance.playerSpawnPos.transform.position = data.checkpointPosition;
-            gameManager.instance.playerScript.spawnPlayer();
+        
+            if (data != null)
+            {
+                SoulManagement.souls = data.souls;
+                Coinlogic.coinCount = data.coins;
+                gameManager.instance.playerScript.HP = data.playerHP;
+                gameManager.instance.playerSpawnPos.transform.position = data.checkpointPosition;
+                gameManager.instance.playerScript.spawnPlayer();
 
-            Debug.Log($"Loaded : {data.souls} souls, HP {data.playerHP}, checkpoint {data.checkpointPosition}");
-        }
+                Debug.Log($"Loaded : {data.souls} souls, HP {data.playerHP}, checkpoint {data.checkpointPosition}");
+
+                for (int i = 0; i < data.gunData.Length; i++)
+                {
+                    PowerUpManager.Instance.gunList[i].mods.flatDamageMod = data.gunData[i].flatDamageMod;
+                    PowerUpManager.Instance.gunList[i].mods.damageMultMod = data.gunData[i].damageMultMod;
+                    PowerUpManager.Instance.gunList[i].mods.addMaxAmmoMod = data.gunData[i].addMaxAmmoMod;
+                }
+            }
     }
     public void DeleteSave()
     {
@@ -135,4 +159,5 @@ public class buttonFunctions : MonoBehaviour
     {
         gameManager.instance.backButton();
     }
+   
 }

@@ -5,7 +5,7 @@ public class Coinlogic : MonoBehaviour
 {
     public TMP_Text DisplayCoinAmount;
     [SerializeField] int coinVal;
-    static int coinCount;
+    public static int coinCount;
 
     private void OnTriggerEnter(Collider other)
     {
