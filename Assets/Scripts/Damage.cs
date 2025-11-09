@@ -1,11 +1,18 @@
-using UnityEngine;
+using NUnit.Framework;
 using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 public class Damage : MonoBehaviour
 {
-    enum movementtype { moving, stationary, lava, poison, homing, thrown, enemAura, incendiary, explosive, DOT }
-    [SerializeField] movementtype type;
+    enum MovementType { moving, stationary, homing, thrown, Zone }
+    enum ZoneType { lava, enemyAura, NotZone }
+    [SerializeField] MovementType moveType;
+    [SerializeField] ZoneType zoneType;
+    [SerializeField] private DamageEffects zoneEffect;
+    [SerializeField] private float zoneMagnitude = 1f;
     [SerializeField] Rigidbody rb;
     [SerializeField] GameObject projModel;
+    [SerializeField] public GameObject shooter;
 
     [SerializeField] public int damageAmount;
     [SerializeField] public float damageRate;
@@ -15,20 +22,58 @@ public class Damage : MonoBehaviour
     [SerializeField] float flightTime;
     [SerializeField] GameObject playerInDot;
 
-    bool isDamaging;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    public List<EffectInstance> damageEffects;
+    private Coroutine zoneTickRoutine;
+    private statusController zoneTarget;
+    private ZoneType? activeZone;
+    public bool InEnemyAura => activeZone == ZoneType.enemyAura && zoneTickRoutine != null;
+    public bool InLava => activeZone == ZoneType.lava && zoneTickRoutine != null;
+    public bool _initialized;
+
+    private void Awake()
+    {
+        if (rb == null) rb = GetComponent<Rigidbody>();
+    }
+    public void Init(GameObject shooter, int dmg, int speed, IReadOnlyList<EffectInstance> effects)
+    {
+        this.shooter = shooter;
+        this.damageAmount = dmg;
+        this.speed = speed;
+
+        this.damageEffects = CloneEffects(effects);
+        _initialized = true;
+
+        if (moveType == MovementType.moving && rb != null)
+            rb.linearVelocity = transform.forward * speed;
+    }
+
+    private static List<EffectInstance> CloneEffects(IReadOnlyList<EffectInstance> src)
+    {
+        if (src == null) return null;
+        var list = new List<EffectInstance>(src.Count);
+        for (int i = 0; i < src.Count; i++)
+            list.Add(new EffectInstance { effect = src[i].effect, magnitude = src[i].magnitude });
+        return list;
+    }    
+
     void OnEnable()
     {
-        Debug.DrawRay(transform.position, transform.forward * 50f, Color.yellow, 2f);
-        if (type == movementtype.moving || type == movementtype.homing || type == movementtype.thrown)
+        if (!_initialized)
+        {
+            damageEffects = (PowerUpManager.Instance != null)
+                ? CloneEffects(PowerUpManager.Instance.weaponEffects)
+                : new List<EffectInstance>();
+        }
+
+        if (moveType == MovementType.moving || moveType == MovementType.homing || moveType == MovementType.thrown)
         {
             Destroy(gameObject, destroyTime);
 
-            if (type == movementtype.moving)
+            if (moveType == MovementType.moving && rb != null)
             {
                 rb.linearVelocity = transform.forward * speed;
             }
-            else if (type == movementtype.thrown)
+            else if (moveType == MovementType.thrown && rb != null)
             {
                 rb.linearVelocity = (gameManager.instance.player.transform.position - transform.position - 0.5f * Physics.gravity * (flightTime * flightTime)) / flightTime;
             }
@@ -38,7 +83,7 @@ public class Damage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (type == movementtype.homing)
+        if (moveType == MovementType.homing)
         {
             rb.linearVelocity = (gameManager.instance.player.transform.position - transform.position).normalized * speed;
         }
@@ -46,68 +91,81 @@ public class Damage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.isTrigger)
+        if (zoneType == ZoneType.lava || zoneType == ZoneType.enemyAura)
         {
+
+            var sc = other.GetComponent<statusController>();
+            if (sc == null || zoneEffect == null) return;
+
+            zoneTarget = sc;
+            playerInDot = other.gameObject;
+            activeZone = zoneType;
+
+            if (activeZone == ZoneType.lava)
+                gameManager.instance.showLavaOverlay(true);
+
+            if (activeZone == ZoneType.enemyAura)
+                gameManager.instance.showEnemyAuraOverlay(true);
+
+            if (zoneTickRoutine != null) StopCoroutine(zoneTickRoutine);
+            zoneTickRoutine = StartCoroutine(ZoneTicker());
             return;
         }
 
-        IDamage dmg = other.GetComponent<IDamage>();
-        if (dmg != null && (type == movementtype.moving || type == movementtype.stationary || type == movementtype.homing || type == movementtype.thrown))
-        {
-            dmg.takeDamage(damageAmount);
+        if (other.isTrigger) return;
 
-            if (type == movementtype.homing || type == movementtype.moving || type == movementtype.thrown)
-            {
-                Destroy(gameObject);
-            }
-        }
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.isTrigger)
-        {
+        var target = other.GetComponent<IDamage>();
+        if (target == null)
             return;
-        }
 
-        
+        var context = new DamageContext(source: shooter, target: other.gameObject, baseHitDamage: damageAmount);
 
-        IDamage dmg = other.GetComponent<IDamage>();
+            target.takeDamage(in context, damageEffects);
 
-        if (dmg != null && type == movementtype.lava)
+        if (moveType == MovementType.homing || moveType == MovementType.moving || moveType == MovementType.thrown)
         {
-            gameManager.instance.showPlayerDOTScreen(true);
-            if (!isDamaging)
-            {
-                StartCoroutine(damageOther(dmg));
-            }
-        }
-        if (dmg != null && type == movementtype.enemAura)
-        {
-            if (!isDamaging)
-            {
-                StartCoroutine(damageOther(dmg));
-            }
+            Destroy(gameObject);
         }
     }
-
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.isTrigger) return;
-
-        IDamage dmg = other.GetComponent<IDamage>();
-        if (dmg != null && type == movementtype.DOT)
+        if (zoneType == ZoneType.lava || zoneType == ZoneType.enemyAura)
         {
-            gameManager.instance.showPlayerDOTScreen(false);
+            if (!other.CompareTag("Player")) return;
+            if (playerInDot != null && other.gameObject != playerInDot) return;
+
+            if (zoneTickRoutine != null)
+            {
+                StopCoroutine(zoneTickRoutine);
+                zoneTickRoutine = null;
+            }
+
+            if (zoneType == ZoneType.enemyAura)
+                gameManager.instance.showEnemyAuraOverlay(false);
+
+            if (zoneType == ZoneType.lava)
+                gameManager.instance.showLavaOverlay(false);
+
+            zoneTarget = null;
+            playerInDot = null;
+            activeZone = null;
         }
     }
 
-    IEnumerator damageOther(IDamage d)
+    private IEnumerator ZoneTicker()
     {
-        isDamaging = true;
-        d.takeDamage(damageAmount);
-        yield return new WaitForSeconds(damageRate);
-        isDamaging = false;
+        var rt = new statusController.RuntimeEffect
+        {
+            source = shooter != null ? shooter : gameObject,
+            baseHitDamage = 1f,
+            magnitude = zoneMagnitude
+        };
+
+        while (zoneTarget != null)
+        {
+            zoneEffect.OnTick(zoneTarget, rt);
+            yield return new WaitForSeconds(zoneEffect.TickInterval);
+        }
     }
 }

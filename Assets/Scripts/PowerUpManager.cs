@@ -15,12 +15,12 @@ public class PowerUpManager : MonoBehaviour
     public int totalAmmo;
     public int Hp;
     public int totalAirDash;
+    public List<EffectInstance> weaponEffects;
 
     public List<GunListings> gunList;
     public int gunListPos;
 
     public bool pstat;
-    playerController player;
   
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -55,8 +55,6 @@ public class PowerUpManager : MonoBehaviour
     {
         if (baseGun == null)
         {
-            Debug.LogError("[PowerUpManager] AddGun called with NULL baseGun. " +
-                           "Did you forget to assign the starting gun?");
             return -1;
         }
 
@@ -100,6 +98,21 @@ public class PowerUpManager : MonoBehaviour
     public void ApplyRangeBonus(int index, int amount)
     {
         gunList[index].mods.addGunRangeMod += amount;
+        RefreshIfCurrent(index);
+    }
+
+    public void ApplyWeaponEffect(int index, DamageEffects damageEffect, float deltaMagnitude)
+    {
+        var list = gunList[index].effects;
+        var effectIndex = list.FindIndex(e => e.effect == damageEffect);
+        if (effectIndex < 0)
+        {
+            list.Add(new EffectInstance { effect = damageEffect, magnitude = deltaMagnitude });
+        }
+        else
+        {
+            list[effectIndex].magnitude += deltaMagnitude;
+        }
         RefreshIfCurrent(index);
     }
     
@@ -184,6 +197,5 @@ public class PowerUpManager : MonoBehaviour
             gameManager.instance.playerScript.HP = gameManager.instance.playerScript.HPOrig;
         }
     }
-
 }
 
