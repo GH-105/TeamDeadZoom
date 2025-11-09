@@ -103,15 +103,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c67c6c9d2ff66204fad5d9c2e1304723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Damage
-  type: 1
+  moveType: 1
+  zoneType: 2
+  zoneEffect: {fileID: 0}
+  zoneMagnitude: 1
   rb: {fileID: 0}
   projModel: {fileID: 732139463742306042}
-  damageAmount: 2
+  shooter: {fileID: 0}
+  damageAmount: 4
   damageRate: 1
   speed: 0
   destroyTime: 0
   flightTime: 0
   playerInDot: {fileID: 0}
+  damageEffects: []
+  _initialized: 0
 --- !u!65 &3996630242809513330
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -236,15 +242,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c67c6c9d2ff66204fad5d9c2e1304723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Damage
-  type: 1
+  moveType: 1
+  zoneType: 2
+  zoneEffect: {fileID: 0}
+  zoneMagnitude: 1
   rb: {fileID: 0}
   projModel: {fileID: 863391916054676050}
-  damageAmount: 2
+  shooter: {fileID: 0}
+  damageAmount: 4
   damageRate: 1
   speed: 0
   destroyTime: 0
   flightTime: 0
   playerInDot: {fileID: 0}
+  damageEffects: []
+  _initialized: 0
 --- !u!65 &8481121253515034016
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -369,15 +381,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c67c6c9d2ff66204fad5d9c2e1304723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Damage
-  type: 1
+  moveType: 1
+  zoneType: 2
+  zoneEffect: {fileID: 0}
+  zoneMagnitude: 1
   rb: {fileID: 0}
   projModel: {fileID: 1320208915348228287}
-  damageAmount: 2
+  shooter: {fileID: 0}
+  damageAmount: 4
   damageRate: 1
   speed: 0
   destroyTime: 0
   flightTime: 0
   playerInDot: {fileID: 0}
+  damageEffects: []
+  _initialized: 0
 --- !u!65 &2731932841777946468
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -502,15 +520,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c67c6c9d2ff66204fad5d9c2e1304723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Damage
-  type: 1
+  moveType: 1
+  zoneType: 2
+  zoneEffect: {fileID: 0}
+  zoneMagnitude: 1
   rb: {fileID: 0}
   projModel: {fileID: 1351424300388956543}
-  damageAmount: 2
+  shooter: {fileID: 0}
+  damageAmount: 4
   damageRate: 1
   speed: 0
   destroyTime: 0
   flightTime: 0
   playerInDot: {fileID: 0}
+  damageEffects: []
+  _initialized: 0
 --- !u!65 &7220119416245262523
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -635,15 +659,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c67c6c9d2ff66204fad5d9c2e1304723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Damage
-  type: 1
+  moveType: 1
+  zoneType: 2
+  zoneEffect: {fileID: 0}
+  zoneMagnitude: 1
   rb: {fileID: 0}
   projModel: {fileID: 2290131844640682306}
-  damageAmount: 2
+  shooter: {fileID: 0}
+  damageAmount: 4
   damageRate: 1
   speed: 0
   destroyTime: 0
   flightTime: 0
   playerInDot: {fileID: 0}
+  damageEffects: []
+  _initialized: 0
 --- !u!65 &9188922873611947925
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -768,15 +798,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c67c6c9d2ff66204fad5d9c2e1304723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Damage
-  type: 1
+  moveType: 1
+  zoneType: 2
+  zoneEffect: {fileID: 0}
+  zoneMagnitude: 1
   rb: {fileID: 0}
   projModel: {fileID: 4146064948988333774}
-  damageAmount: 2
+  shooter: {fileID: 0}
+  damageAmount: 4
   damageRate: 1
   speed: 0
   destroyTime: 0
   flightTime: 0
   playerInDot: {fileID: 0}
+  damageEffects: []
+  _initialized: 0
 --- !u!65 &1776316845326232804
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -901,15 +937,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c67c6c9d2ff66204fad5d9c2e1304723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Damage
-  type: 1
+  moveType: 1
+  zoneType: 2
+  zoneEffect: {fileID: 0}
+  zoneMagnitude: 1
   rb: {fileID: 0}
   projModel: {fileID: 5106889920728571854}
-  damageAmount: 2
+  shooter: {fileID: 0}
+  damageAmount: 4
   damageRate: 1
   speed: 0
   destroyTime: 0
   flightTime: 0
   playerInDot: {fileID: 0}
+  damageEffects: []
+  _initialized: 0
 --- !u!65 &259207338204181533
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1034,15 +1076,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c67c6c9d2ff66204fad5d9c2e1304723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Damage
-  type: 1
+  moveType: 1
+  zoneType: 2
+  zoneEffect: {fileID: 0}
+  zoneMagnitude: 1
   rb: {fileID: 0}
   projModel: {fileID: 5316732453991024668}
-  damageAmount: 2
+  shooter: {fileID: 0}
+  damageAmount: 4
   damageRate: 1
   speed: 0
   destroyTime: 0
   flightTime: 0
   playerInDot: {fileID: 0}
+  damageEffects: []
+  _initialized: 0
 --- !u!65 &7745281876265543967
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1167,15 +1215,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c67c6c9d2ff66204fad5d9c2e1304723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Damage
-  type: 1
+  moveType: 1
+  zoneType: 2
+  zoneEffect: {fileID: 0}
+  zoneMagnitude: 1
   rb: {fileID: 0}
   projModel: {fileID: 6031960962543184518}
-  damageAmount: 2
+  shooter: {fileID: 0}
+  damageAmount: 4
   damageRate: 1
   speed: 0
   destroyTime: 0
   flightTime: 0
   playerInDot: {fileID: 0}
+  damageEffects: []
+  _initialized: 0
 --- !u!65 &9015936095654056911
 BoxCollider:
   m_ObjectHideFlags: 0
