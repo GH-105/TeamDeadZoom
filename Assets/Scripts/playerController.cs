@@ -249,7 +249,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         StartCoroutine(flashPlayerDmg());
         if (HP <= 0)
         {
-            gameManager.instance.youLose();
+
+            RewardsManager.instance.LossRewards();
         }
     }
 

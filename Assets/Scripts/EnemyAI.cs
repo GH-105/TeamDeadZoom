@@ -192,6 +192,7 @@ public class EnemyAI : MonoBehaviour, IDamage
         if(HP <= 0)
         {
             Destroy(gameObject);
+            gameManager.enemiesKilled++;
             thisRoom.UpdateRoomGoal(-1);
         }
         else

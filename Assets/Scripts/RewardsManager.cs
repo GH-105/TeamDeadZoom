@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class RewardsManager : MonoBehaviour
 {
+    public static RewardsManager instance;
     [SerializeField] public TMP_Text lastLevelText;
     [SerializeField] public TMP_Text currentTimeText;
     [SerializeField] public TMP_Text bestTimeText;
@@ -14,6 +15,12 @@ public class RewardsManager : MonoBehaviour
     [SerializeField] private GameObject rewardsCanvas;
     [SerializeField] private GameObject coinShopCanvas;
 
+    private int coinsBeforeLevel;
+
+    public void StartLevel()
+    {
+        coinsBeforeLevel = Coinlogic.coinCount;
+    }
     public void WinRewards()
     {
         GameData data = SaveManager.LoadGame();
@@ -44,7 +51,9 @@ public class RewardsManager : MonoBehaviour
             bestTimeText.text = $"Best Time: {levelTime.bestTime:F2}s";
         }
 
-        coinsGainedText.text = $"Coines: {data.coins}"; // add a way to show how much it changed by this level
+        int coinsGained = Coinlogic.coinCount - coinsBeforeLevel;
+
+        coinsGainedText.text = $"Coines Gained: {coinsGained} you have: {data.coins}"; 
         soulsGainedText.text = $"Souls: {data.souls}";
 
         outcomeText.text = $"You won {levelTime.levelName}";
@@ -103,60 +112,11 @@ public class RewardsManager : MonoBehaviour
  * 
  * -RewardsScreen rewards = FindObjectOfType<RewardsScreen>();
  * -RewardsManager.ShowRewards();
- * 
- * -add to game manager where enemy destroy is called-
- * public static void EnemyKillCount()
- * {
- * enemiesKilled++;
- * }
- *  -call lossRewards on playerdeath
+ *  
+ *  +call lossRewards on playerdeath
  *  -call winRewards where the win screen would be called
  * 
- * -add to buttonFunctions -
- * public void nextLevel()
- * {
- * string currentScene = SceneManager.GetActiveScene().name;
- * 
- * switch (currentScene)
- * {
- *      case "Level 1":
- *          SceneManager.LoadScence("Level 2");
- *          break;
- *      case "Level 2":
- *          SceneManager.LoadScence("Level 3");
- *          break;
- *      case "Level 3":
- *          SceneManager.LoadScence("Level Select");
- *          break;
- *      default:
- *          Debug.Log("Unexpected Scene: " + currentScene);
- *          break;
- *          // add a win Menu for beating the game and toggle credits after case 3
- *   }
- *   gameManager.instance.stateUnpause();
- *   }
+ *
  * 
  *
- * }
- * 
- * -add to gameManager-
- * [SerializeField] private GameObject reticle;
- * 
- * public void HideReticle()
- * {
- *  if(reticle != null)
- *      {
- *      reticle.SetActive(false);
- *      }
- * }
- * 
- *  * public void ShowReticle()
- * {
- *  if(reticle != null)
- *      {
- *      reticle.SetActive(true);
- *      }
- * }
- * 
- * 
  **/

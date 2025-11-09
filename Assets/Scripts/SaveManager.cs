@@ -59,7 +59,7 @@ public class SaveManager : MonoBehaviour
                 
 
                 level.currentTime = currentTime;
-               // level.enemiesKilled = gameManagement.enemiesKilled;
+                level.enemiesKilled = gameManager.enemiesKilled;
                 break;
             }
         }
@@ -88,50 +88,5 @@ public class SaveManager : MonoBehaviour
  * {
  *      enemiesKilled = 0;
  * }
- * 
- *  public void SaveGame()
-    {
-        GameData data = new GameData
-        {
-            souls = SoulManagement.souls,
-            playerHP = gameManager.instance.playerScript.HP,
-            checkpointPosition = gameManager.instance.playerSpawnPos.transform.position
-        };
-        data.gunData = new GameData.GunData[gameManager.instance.guns.Length];
-        data.currentGunIndex = gameManager.instance.currentGunIndex;
 
-        for(int i = 0; i < gameManager.instance.guns.Length; i++)
-    {
-            data.gunData[i] = new GameData.GunData
-        {
-            flatDamageMod = gameManager.instance.guns[i].flatDamageMod,
-            damageMultMod = gameManager.instance.guns[i].damageMultMod,
-            addMaxAmmoMod = gameManager.instance.guns[i].addMaxAmmoMod
-        };
-    }
-        data.levelTimes = new List<GameData.LevelTimeData>(gameManager.instance.levelTimes);
-        data.lastLevelCompleted = SceneManager.GetActiveScene().name;
-
-        SaveManager.SaveGame(data);
-    }
-    public void LoadGame()
-    {
-        GameData data = SaveManager.LoadGame();
-        if(data != null)
-        {
-            SoulManagement.souls = data.souls;
-            Coinlogic.coinCount = data.coins;
-            gameManager.instance.playerScript.HP = data.playerHP;
-            gameManager.instance.playerSpawnPos.transform.position = data.checkpointPosition;
-            gameManager.instance.playerScript.spawnPlayer();
-
-            Debug.Log($"Loaded : {data.souls} souls, HP {data.playerHP}, checkpoint {data.checkpointPosition}");
-            
-            for(int i = 0; i < data.gunData.Length; i++)
-        {
-            gameManager.instance.guns[i].flatDamageMod = data.gunData[i].flatDamageMod;
-            gameManager.instance.guns[i].damageMultMod = data.gunData[i].damageMultMod;
-            gameManager.instance.guns[i].addMaxAmmoMod = data.gunData[i].addMaxAmmoMod;
-        }
-    }
  * */
