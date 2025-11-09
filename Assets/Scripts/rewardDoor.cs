@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 public interface IRewardDoor
 {
@@ -13,6 +14,14 @@ public class rewardDoor : MonoBehaviour, IRewardDoor
     [SerializeField] GameObject doorObject;
     bool playerNear = false;
 
+
+    private void Update()
+    {
+        if (playerNear == true && Input.GetButtonDown("Interact"))
+        {
+            Interact();
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -32,11 +41,11 @@ public class rewardDoor : MonoBehaviour, IRewardDoor
             notEnoughPrompt.gameObject.SetActive(false);
         }
     }
-
     public void Interact()
     {
         if (!playerNear)
             return;
+
 
         if (keyLogic.keyCount > 0)
         {
@@ -48,7 +57,17 @@ public class rewardDoor : MonoBehaviour, IRewardDoor
         else
         {
             notEnoughPrompt.text = "Not enough keys!";
-            notEnoughPrompt.gameObject.SetActive(true);
+            StartCoroutine(flashNEKeys());
         }
+    }
+
+    IEnumerator flashNEKeys()
+    {
+        keyPrompt.gameObject.SetActive(false);
+        notEnoughPrompt.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        notEnoughPrompt.gameObject.SetActive(false);
+        if(playerNear)
+            keyPrompt.gameObject.SetActive(true);
     }
 }
