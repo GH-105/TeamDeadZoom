@@ -87,7 +87,7 @@ public class buttonFunctions : MonoBehaviour
         GameData data = new GameData
         {
             souls = SoulManagement.souls,
-            playerHP = gameManager.instance.playerScript.HP,
+            playerHP = (int)gameManager.instance.playerScript.HP,
             checkpointPosition = gameManager.instance.playerSpawnPos.transform.position
         };
         data.gunData = new GameData.GunData[PowerUpManager.Instance.gunList.Count];

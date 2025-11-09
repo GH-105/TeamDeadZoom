@@ -6,6 +6,8 @@ public class Traps : MonoBehaviour
     [SerializeField] GameObject pressurePlate;
     [SerializeField] GameObject bullet;
     [SerializeField] GameObject trapDoor;
+    [SerializeField] Transform firePOS;
+    [SerializeField] float fireSpeed = 10f;
 
     public enum TrapType
     {
@@ -18,7 +20,8 @@ public class Traps : MonoBehaviour
     {
         if (type == TrapType.bullet)
         {
-
+            GameObject dart = Instantiate(bullet, firePOS.position, firePOS.rotation);
+            dart.GetComponent<Rigidbody>().AddForce(firePOS.forward * fireSpeed, ForceMode.Impulse);
         }
         if (type == TrapType.trapDoor)
         {

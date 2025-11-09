@@ -47,15 +47,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c67c6c9d2ff66204fad5d9c2e1304723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Damage
-  type: 4
+  moveType: 2
+  zoneType: 2
+  zoneEffect: {fileID: 0}
+  zoneMagnitude: 1
   rb: {fileID: 7824526742746467510}
   projModel: {fileID: 0}
+  shooter: {fileID: 20909049630960775, guid: 6d6e24301bff826488984c014647dec6, type: 3}
   damageAmount: 1
   damageRate: 0
   speed: 15
   destroyTime: 3
   flightTime: 0
   playerInDot: {fileID: 0}
+  damageEffects: []
 --- !u!135 &6764244344762775684
 SphereCollider:
   m_ObjectHideFlags: 0

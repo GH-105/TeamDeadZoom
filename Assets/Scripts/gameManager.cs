@@ -16,7 +16,8 @@ public class gameManager : MonoBehaviour
     [SerializeField] GameObject menuRoomComp;
     [SerializeField] GameObject menuLevelSelect;
     [SerializeField] GameObject menuWeaponSelect;
-    [SerializeField] GameObject playerDOTScreen;
+    [SerializeField] GameObject EnemyAuraScreenOverlay;
+    [SerializeField] GameObject LavaScreenOverlay;
     [SerializeField] public GameObject playerUWScreen;
     [SerializeField] public Camera HpCamera;
     [SerializeField] public GameObject StartMenu;
@@ -166,12 +167,20 @@ public class gameManager : MonoBehaviour
         menuActive.SetActive(true);
     }
 
-    public void showPlayerDOTScreen(bool dotON)
+    public void showEnemyAuraOverlay(bool dotON)
     {
         if (dotON)
-            playerDOTScreen.SetActive(true);
+            EnemyAuraScreenOverlay.SetActive(true);
         else
-            playerDOTScreen.SetActive(false);
+            EnemyAuraScreenOverlay.SetActive(false);
+    }
+
+    public void showLavaOverlay(bool dotON)
+    {
+        if (dotON)
+            LavaScreenOverlay.SetActive(true);
+        else
+            LavaScreenOverlay.SetActive(false);
     }
 
     public void backButton()

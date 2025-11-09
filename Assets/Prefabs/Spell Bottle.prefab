@@ -100,7 +100,10 @@ MonoBehaviour:
   rateBoost: 0
   ammoUp: 10
   HealthRecov: 0
-  type: 3
+  AirDashInc: 0
+  weaponEffect: {fileID: 11400000, guid: c647aa57173d70e41bb4f54720301e5c, type: 2}
+  magnitude: 2
+  type: 9
 --- !u!135 &1420718751291974532
 SphereCollider:
   m_ObjectHideFlags: 0

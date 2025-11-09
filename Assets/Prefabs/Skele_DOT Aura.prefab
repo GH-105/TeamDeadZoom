@@ -1684,6 +1684,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3290959624444948350}
+  - component: {fileID: 3900949040458756368}
   - component: {fileID: 885659220089927143}
   - component: {fileID: 3956423740790020498}
   - component: {fileID: 9066074892652925956}
@@ -1718,6 +1719,18 @@ Transform:
   - {fileID: 2117402720852822379}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &3900949040458756368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5371664787830227755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7aa2f998775cde46bedc4f85384b293, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::statusController
 --- !u!114 &885659220089927143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1851,7 +1864,7 @@ GameObject:
   - component: {fileID: 8770746665099760434}
   - component: {fileID: 8977676480902675418}
   - component: {fileID: 6266769173280440242}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: SphereCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1885,15 +1898,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c67c6c9d2ff66204fad5d9c2e1304723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Damage
-  type: 2
+  moveType: 4
+  zoneType: 1
+  zoneEffect: {fileID: 11400000, guid: 16cff0949396a7d4382a4cccce65a7e7, type: 2}
+  zoneMagnitude: 1
   rb: {fileID: 6266769173280440242}
   projModel: {fileID: 0}
+  shooter: {fileID: 0}
   damageAmount: 1
-  damageRate: 3
+  damageRate: 0.5
   speed: 0
   destroyTime: 0
   flightTime: 0
   playerInDot: {fileID: 0}
+  damageEffects:
+  - effect: {fileID: 11400000, guid: 16cff0949396a7d4382a4cccce65a7e7, type: 2}
+    magnitude: 1
 --- !u!135 &8977676480902675418
 SphereCollider:
   m_ObjectHideFlags: 0
