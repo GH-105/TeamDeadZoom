@@ -4,8 +4,8 @@ using UnityEngine.UI;
 public class hearts : MonoBehaviour
 {
 
-    public int health;
-    public int maxHealth;
+    public float health;
+    public float maxHealth;
 
     public Sprite emptyHeart;
     public Sprite fullHeart;
@@ -25,10 +25,10 @@ public class hearts : MonoBehaviour
         if (playerCont == null || heart == null || fullHeart == null || emptyHeart == null)
             return;
 
-        health = playerCont.HP;
-        maxHealth = playerCont.HPOrig;
+        health = (int)playerCont.HP;
+        maxHealth = (int)playerCont.HPOrig;
 
-        int count = Mathf.Min(heart.Length, maxHealth);
+        int count = Mathf.Min(heart.Length, (int)maxHealth);
 
 
         for (int i = 0; i < count; i++)
@@ -40,7 +40,7 @@ public class hearts : MonoBehaviour
             heart[i].enabled = true;
         }
 
-        for (int i = count; i < heart.Length; i++)
+        for (int i = (int)count; i < heart.Length; i++)
         {
             if (heart[i] != null)
                 heart[i].enabled = false;

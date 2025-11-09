@@ -2,13 +2,14 @@ using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
 using TMPro;
-public class playerController : MonoBehaviour, IDamage, IPickup
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
+public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageReceiver
 {
     [SerializeField] LayerMask ignoreLayer;
     [SerializeField] LayerMask aimMask;
     [SerializeField] CharacterController controller;
 
-    [SerializeField] public int HP;
+    [SerializeField] public float HP;
     [SerializeField] int speed;
     [SerializeField] int sprintMod;
     [SerializeField] int jumpSpeed;
@@ -21,6 +22,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
     [SerializeField] int dashDist;
     [SerializeField] public int maxAirDash;
+    statusController status;
 
 
     [SerializeField] int shootDamage;
@@ -51,7 +53,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
     private int currDash = 0;
 
     int jumpCount;
-    public int HPOrig;
+    public float HPOrig;
     public int gunListPos;
     public int gravOrig;
     public int speedOrig;
@@ -80,6 +82,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         spawnPlayer();
 
         controller = GetComponent<CharacterController>();
+        status = GetComponent<statusController>();
 
         if (PowerUpManager.Instance != null)//checks everytime before applying
         {
@@ -206,16 +209,11 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         {
             if (reloadText != null)
                 reloadText.gameObject.SetActive(true);
-            //Debug.Log("Reload");
         }
 
         PowerUpManager.Instance.ConsumeAmmo(gunListPos);
         aud.PlayOneShot(PowerUpManager.Instance.gunList[gunListPos].baseStats.shootSounds[Random.Range(0, PowerUpManager.Instance.gunList[gunListPos].baseStats.shootSounds.Length)], PowerUpManager.Instance.gunList[gunListPos].baseStats.shootSoundVol);
         updatePlayerUI();
-
-        this.GetComponent<playerController>().bullet.GetComponent<Damage>().damageAmount = shootDamage;
-        this.GetComponent<playerController>().bullet.GetComponent<Damage>().speed = bulletSpeed;
-
 
         for (int i = 0; i < numProjectiles; i++)
         {
@@ -225,7 +223,15 @@ public class playerController : MonoBehaviour, IDamage, IPickup
 
             Quaternion rot = Quaternion.AngleAxis(angle, firePos.up) * aimRotation;
 
-            Instantiate(bullet, firePos.position, rot);
+            GameObject newBullet = Instantiate(bullet, firePos.position, rot);
+            var d = newBullet.GetComponent<Damage>();
+            d.Init(
+            shooter: gameObject,
+            dmg: shootDamage,
+            speed: bulletSpeed,
+            effects: PowerUpManager.Instance.gunList[gunListPos].effects
+            );
+            
         }
         
     }
@@ -241,16 +247,45 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         
     }
 
-    public void takeDamage(int amount)
+    public void takeDamage(in DamageContext context, IReadOnlyList<EffectInstance> effects)
     {
-        HP -= amount;
+        if (HP <= 0f) return;
+
+        float finalHit = ComputeFinalHit(context.baseHitDamage, context.source);
+        ApplyHP(finalHit, context.source);
+        StartCoroutine(flashPlayerDmg());
+        if (status != null && effects != null)
+        {
+            for (int i = 0; i < effects.Count; i++)
+            {
+                var e = effects[i];
+
+                float mag = ScaleMagnitude(e.effect, e.magnitude, in context);
+                if (mag <= 0f) continue;
+
+                status.ApplyEffect(e.effect, in context, mag);
+                
+            }
+        }
+
         aud.PlayOneShot(audHurt[Random.Range(0, audHurt.Length)], audHurtVol);
         updatePlayerUI();
+    }
+
+    public void ApplyDot(float amount, DamageEffects effect, GameObject source)
+    {
+        HP -= amount;
         StartCoroutine(flashPlayerDmg());
-        if (HP <= 0)
+        updatePlayerUI();
+        if (HP <= 0f)
         {
             gameManager.instance.youLose();
         }
+    }
+
+    float ComputeFinalHit(float baseHit, GameObject source)
+    {
+        return baseHit;
     }
 
     public void updatePlayerUI()
@@ -259,7 +294,6 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         {
             gameManager.instance.ammoCur.text = PowerUpManager.Instance.GetCurrentAmmo(gunListPos).ToString();
             gameManager.instance.ammoMax.text = PowerUpManager.Instance.GetMaxAmmo(gunListPos).ToString();
-
         }
     }
 
@@ -377,6 +411,20 @@ public class playerController : MonoBehaviour, IDamage, IPickup
         return camForward.normalized;
     }
     
+    void ApplyHP(float amount, GameObject source)
+    {
+        HP -= amount;
+        flashPlayerDmg();
+        if (HP <= 0)
+        {
+            gameManager.instance.youLose();
+        }
+    }
+
+    float ScaleMagnitude(DamageEffects def, float magnitude, in DamageContext context)
+    {
+        return magnitude;
+    }
 
     void startDash()
     {

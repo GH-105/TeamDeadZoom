@@ -22,7 +22,7 @@ public class checkpoint : MonoBehaviour
             GameData data = new GameData
             {
                 souls = SoulManagement.souls,
-                playerHP = gameManager.instance.playerScript.HP,
+                playerHP = (int)gameManager.instance.playerScript.HP,
                 checkpointPosition = transform.position
             };
             SaveManager.SaveGame( data);
