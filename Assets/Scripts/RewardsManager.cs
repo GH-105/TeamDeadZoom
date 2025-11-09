@@ -12,8 +12,8 @@ public class RewardsManager : MonoBehaviour
     [SerializeField] public TMP_Text soulsGainedText;
     [SerializeField] public TMP_Text outcomeText;
 
-    [SerializeField] private GameObject rewardsCanvas;
-    [SerializeField] private GameObject coinShopCanvas;
+    [SerializeField] private GameObject rewardsPanel;
+    [SerializeField] private GameObject coinShopPanel;
 
     private int coinsBeforeLevel;
 
@@ -58,17 +58,20 @@ public class RewardsManager : MonoBehaviour
 
         outcomeText.text = $"You won {levelTime.levelName}";
 
-        rewardsCanvas.SetActive(true);
-        if(coinShopCanvas != null) 
-            coinShopCanvas.SetActive(false);
+        rewardsPanel.SetActive(true);
+        if(coinShopPanel != null)
+            coinShopPanel.SetActive(false);
     }
 
     public void ShowCoinShop()
     {
-        if(coinShopCanvas != null)
+        Debug.Log("shop open1");
+        if (coinShopPanel != null && rewardsPanel != null)
         {
-            coinShopCanvas.SetActive(true);
-            rewardsCanvas.SetActive(false);
+            Debug.Log("shop open2");
+            rewardsPanel.SetActive(false);
+            coinShopPanel.SetActive(true);
+            Debug.Log("shop open3");
         }
     }
 
@@ -101,9 +104,9 @@ public class RewardsManager : MonoBehaviour
         coinsGainedText.text = $"Coines Gained: {data.coins}";
         soulsGainedText.text = $"Souls Gained: {data.souls}";
 
-        rewardsCanvas.SetActive(true);
-        if (coinShopCanvas != null)
-            coinShopCanvas.SetActive(false);
+        rewardsPanel.SetActive(true);
+        if (coinShopPanel != null)
+            coinShopPanel.SetActive(false);
         outcomeText.text = "You lost";
     }
 }
@@ -112,11 +115,4 @@ public class RewardsManager : MonoBehaviour
  * 
  * -RewardsScreen rewards = FindObjectOfType<RewardsScreen>();
  * -RewardsManager.ShowRewards();
- *  
- *  +call lossRewards on playerdeath
- *  -call winRewards where the win screen would be called
- * 
- *
- * 
- *
  **/
