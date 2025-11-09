@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5166599410799459538}
   m_Layer: 0
-  m_Name: Level 2 Walls
+  m_Name: Level 2 Old Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
