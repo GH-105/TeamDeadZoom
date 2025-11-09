@@ -9,6 +9,11 @@ public class CoinShop : MonoBehaviour
     [SerializeField] TMP_Text displayCoinAmount;
     [SerializeField] TMP_Text notEnoughCoins;
 
+    [SerializeField] TMP_Text healCostText;
+    [SerializeField] TMP_Text ammoCostText;
+    [SerializeField] TMP_Text flatDamageCostText;
+    [SerializeField] TMP_Text damageMultCostText;
+    
     [SerializeField] int healCount = 5;
     [SerializeField] int costOfHealing = 10;
     [SerializeField] int flatDamage = 2;
@@ -25,6 +30,11 @@ public class CoinShop : MonoBehaviour
     void Start()
     {
         displayCoinAmount.text = Coinlogic.coinCount.ToString();
+
+        healCostText.text = " - " + costOfHealing.ToString() + "coins for " + healCount.ToString() + " Hp";
+        ammoCostText.text = " - " + ammoCost.ToString() + "coins for " + ammoMult.ToString() + " Ammo";
+        flatDamageCostText.text = " - " + costOfFlat.ToString() + "coins for +" + flatDamage.ToString() + " Damage";
+        damageMultCostText.text = " - " + costOfDMult.ToString() + "coins for *" + damageMultAmm.ToString() + " Damage";
     }
 
     // Update is called once per frame
@@ -108,7 +118,7 @@ public class CoinShop : MonoBehaviour
     {
         notEnoughCoins.gameObject.SetActive(true);
         notEnoughCoins.text = "Not Enough Coins";
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         notEnoughCoins.gameObject.SetActive(false);
     }
 
@@ -116,7 +126,7 @@ public class CoinShop : MonoBehaviour
     {
         notEnoughCoins.gameObject.SetActive(true);
         notEnoughCoins.text = "you have " + Coinlogic.coinCount.ToString() + " left.";
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
         notEnoughCoins.gameObject.SetActive(false);
     }
 }
