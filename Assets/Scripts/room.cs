@@ -1,18 +1,20 @@
 using TMPro;
 using UnityEditor;
 using UnityEngine;
-
+using System.Collections;
 public class room : MonoBehaviour
 {
+    public static room instance;
+
     [SerializeField] float eventTime;
     [SerializeField] GameObject hiddenDoor;
-    [SerializeField] GameObject mainDoor;
+    [SerializeField] public GameObject mainDoor;
     [SerializeField] GameObject enemy;
     [SerializeField] int maxEnemies;
     [SerializeField] float spawnRate;
     [SerializeField] Transform[] spawnPos;
     [SerializeField] public TMP_Text roomGoalLabel;
-
+    [SerializeField] public TMP_Text doorStatusLabel; //door open ui
 
 
     public int roomGoalCount;
@@ -31,7 +33,7 @@ public class room : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        gameManager.instance.updateGameGoal(1);
+        gameManager.instance.updateGameGoal(1);        
     }
 
     // Update is called once per frame
@@ -48,6 +50,10 @@ public class room : MonoBehaviour
                 else
                     startSpawning = false;
             }
+        }
+        if(!mainDoor)
+        {
+            showDoorMessage();
         }
     }
 
@@ -72,12 +78,20 @@ public class room : MonoBehaviour
         spawnTimer = 0;
     }
 
-    void doorState(bool state)
+   public void doorState(bool state)
     {
         mainDoor.SetActive(state);
-        if(playerFinishTime < eventTime)
+
+        if (!state)
+        {
+            StartCoroutine(showDoorMessage());
+            Debug.Log("door open!");
+        }
+        if (playerFinishTime < eventTime)
         {
             hiddenDoor.SetActive(state);
+            if(!hiddenDoor)
+                StartCoroutine(showDoorMessage());
         }
     }    
 
@@ -93,5 +107,14 @@ public class room : MonoBehaviour
             gameManager.instance.updateGameGoal(-1);
         }
         string v = roomGoalCount.ToString("F0");
-        roomGoalLabel.text = v;    }
+        roomGoalLabel.text = v;  
+    }
+    IEnumerator showDoorMessage()
+    {
+        doorStatusLabel.gameObject.SetActive(true);
+        doorStatusLabel.text = "Door Open!";
+        yield return new WaitForSeconds(5f);
+        doorStatusLabel.gameObject.SetActive(false);
+       
+    }
 }
