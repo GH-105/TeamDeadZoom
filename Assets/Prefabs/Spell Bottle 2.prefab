@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100000, guid: 1f3ab9073fa6aed4bbec9d3a54b89a27, type: 3}
       propertyPath: m_Name
-      value: Spell Bottle
+      value: Spell Bottle 2
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1f3ab9073fa6aed4bbec9d3a54b89a27, type: 3}
       propertyPath: m_LocalScale.x
@@ -101,7 +101,7 @@ MonoBehaviour:
   ammoUp: 10
   HealthRecov: 0
   AirDashInc: 0
-  weaponEffect: {fileID: 11400000, guid: c647aa57173d70e41bb4f54720301e5c, type: 2}
+  weaponEffect: {fileID: 11400000, guid: 64453f6ea57e8b042a3c7623f3f9256d, type: 2}
   magnitude: 2
   type: 9
 --- !u!135 &1420718751291974532

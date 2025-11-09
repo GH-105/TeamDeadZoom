@@ -11,6 +11,8 @@ public class powerupeffects : MonoBehaviour
     [SerializeField] int ammoUp;
     [SerializeField] int HealthRecov;
     [SerializeField] int AirDashInc;
+    [SerializeField] DamageEffects weaponEffect;
+    [SerializeField] float magnitude;
 
     public enum PowerUpType
     {
@@ -22,7 +24,8 @@ public class powerupeffects : MonoBehaviour
         Speed,
         Jump,
         HpRecovery,
-        AirDash
+        AirDash,
+        WeaponEffect
     }
 
     public PowerUpType type;
@@ -61,6 +64,9 @@ public class powerupeffects : MonoBehaviour
                         break;
                     case PowerUpType.HpRecovery:
                         PowerUpManager.Instance.HpRecovery(HealthRecov);
+                        break;
+                    case PowerUpType.WeaponEffect:
+                        PowerUpManager.Instance.ApplyWeaponEffect(gunIndex, weaponEffect, magnitude);
                         break;
 
                 }

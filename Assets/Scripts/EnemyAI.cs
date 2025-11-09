@@ -1,10 +1,12 @@
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
-public class EnemyAI : MonoBehaviour, IDamage
+public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
 {
     [SerializeField] Animator anim;
     [SerializeField] Renderer body;
@@ -13,7 +15,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     [SerializeField] NavMeshAgent agent;
     [SerializeField] Transform headPos;
 
-    [SerializeField] int HP;
+    [SerializeField] float HP;
     [SerializeField] int faceTargetSpeed;
     [SerializeField] int FOV;
     [SerializeField] int roamDist;
@@ -25,6 +27,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     [SerializeField] float shootRate;
 
     [SerializeField] GameObject floatingTextPrefab;
+    statusController status;
 
     Color colorOrigBody;
     Color colorOrigHead;
@@ -36,7 +39,7 @@ public class EnemyAI : MonoBehaviour, IDamage
     float stoppingDistOrig;
 
     bool playerInRange;
-    bool isMoving;
+    bool dead;
 
     Vector3 playerDir;
     Vector3 startingPos;
@@ -56,10 +59,13 @@ public class EnemyAI : MonoBehaviour, IDamage
         colorOrigJaw = jaw.material.color;
         stoppingDistOrig = agent.stoppingDistance;
         startingPos = transform.position;
-        thisRoom.UpdateRoomGoal(1);
+        if (thisRoom != null) thisRoom.UpdateRoomGoal(1);
         healthcam = gameManager.instance.HpCamera;
         HpSlider.maxValue = HP;
         HpSlider.value = HP;
+        status = GetComponent<statusController>();
+        if (status == null) Debug.LogError($"{name}: missing statusController");
+        else if (status.Receiver == null) Debug.LogError($"{name}: statusController has no IStatusDamageReceiver");
     }
 
     // Update is called once per frame
@@ -182,34 +188,81 @@ public class EnemyAI : MonoBehaviour, IDamage
         }
     }
 
-    public void takeDamage(int amount)
+    public void takeDamage(in DamageContext context, IReadOnlyList<EffectInstance> effects)
+    {
+        if (status != null && effects != null)
+        {
+            for (int i = 0; i < effects.Count; i++)
+            {
+                var e = effects[i];
+
+                float mag = ScaleMagnitude(e.effect, e.magnitude, in context);
+                if (mag <= 0f) continue;
+                Debug.Log($"[EnemyAI] effects.Count = {effects?.Count ?? -1}");
+                status.ApplyEffect(e.effect, in context, mag);
+            }
+        }
+
+        float finalHit = ComputeFinalHit(context.baseHitDamage, context.source);
+        ApplyHP(finalHit, context.source);
+
+        if (HP <= 0)
+        {
+            if (thisRoom != null) thisRoom.UpdateRoomGoal(-1);
+            Die();
+        }
+    }
+
+    public void ApplyDot(float amount, DamageEffects effect, GameObject source)
     {
         HP -= amount;
-        UpdateEnemyHP();
-        agent.SetDestination(gameManager.instance.player.transform.position);
-        showDamage(amount.ToString());
+        if (HP <= 0)
+        {
+            if (thisRoom != null) thisRoom.UpdateRoomGoal(-1);
+            Die();
+        }
+        OnDamaged(amount, source);
+    }
 
-        if(HP <= 0)
+    float ScaleMagnitude(DamageEffects def, float magnitude, in DamageContext context)
+    {
+        return magnitude;
+    }
+
+    void OnDamaged(float finalHit, GameObject source)
+    {
+        int damageInt = (int)finalHit;
+        StartCoroutine(flashRed());
+        showDamage(damageInt.ToString());
+    }
+
+    float ComputeFinalHit(float baseHit, GameObject source)
+    {
+        return baseHit;
+    }
+
+    void ApplyHP(float amount, GameObject source)
+    {
+        HP -= amount;
+        if (HP <= 0)
         {
-            Destroy(gameObject);
-            thisRoom.UpdateRoomGoal(-1);
+            if (thisRoom != null) thisRoom.UpdateRoomGoal(-1);
+            Die();
         }
-        else
-        {
-            StartCoroutine(flashRed());
-        }
+        if(gameObject != null)
+            OnDamaged(amount, source);
     }
 
     void showDamage(string text)
     {
-        if(floatingTextPrefab)
-        {
-            GameObject prefab = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity);
-            prefab.GetComponentInChildren<TextMeshPro>().text = text;
+        if (!floatingTextPrefab) return;
 
-            prefab.transform.LookAt(Camera.main.transform);
-            prefab.transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward);
-        }
+        GameObject prefab = Instantiate(floatingTextPrefab, transform.position, Quaternion.identity);
+        prefab.GetComponentInChildren<TextMeshPro>().text = text;
+
+        prefab.transform.LookAt(Camera.main.transform);
+        prefab.transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward);
+
     }
 
     IEnumerator flashRed()
@@ -234,4 +287,20 @@ public class EnemyAI : MonoBehaviour, IDamage
         }
     }
 
+    void Die()
+    {
+        if (dead) return;
+        dead = true;
+
+        var sc = GetComponent<statusController>();
+        if (sc != null) sc.ClearAllEffects();
+
+        var colls = GetComponentsInChildren<Collider>(true);
+        for (int i = 0; i < colls.Length; i++) colls[i].enabled = false;
+
+        var agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+        if (agent) agent.enabled = false;
+
+        Destroy(gameObject);
+    }
 }

@@ -1944,6 +1944,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4684561920409169837}
   - component: {fileID: 5249376531692435118}
+  - component: {fileID: 2312070777218889428}
   - component: {fileID: 8167824897452198649}
   - component: {fileID: 2641078000939779470}
   - component: {fileID: 6373079476983226097}
@@ -2008,6 +2009,18 @@ MonoBehaviour:
   healthcam: {fileID: 0}
   target: {fileID: 4684561920409169837}
   offset: {x: 0, y: 0, z: 0}
+--- !u!114 &2312070777218889428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6000525707792629196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7aa2f998775cde46bedc4f85384b293, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::statusController
 --- !u!95 &8167824897452198649
 Animator:
   serializedVersion: 7

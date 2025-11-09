@@ -1,5 +1,7 @@
 using JetBrains.Annotations;
+using NUnit.Framework;
 using UnityEngine;
+using System.Collections.Generic;
 
 [System.Serializable]
 public class gunModifiers
@@ -18,9 +20,18 @@ public class gunState
 }
 
 [System.Serializable]
+
+public class EffectInstance
+{
+    public DamageEffects effect;
+    public float magnitude;
+}
+
+[System.Serializable]
 public class GunListings
 {
     public gunStats baseStats;
     public gunModifiers mods = new gunModifiers();
     public gunState state = new gunState();
+    public List<EffectInstance> effects = new List<EffectInstance>();
 }
