@@ -50,5 +50,10 @@ MonoBehaviour:
   totalDist: 0
   totalRate: 0
   totalAmmo: 0
+  Hp: 0
+  totalAirDash: 0
+  totaljumpDist: 0
+  weaponEffects: []
   gunList: []
   gunListPos: 0
+  pstat: 0
