@@ -231,6 +231,16 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
             speed: bulletSpeed,
             effects: PowerUpManager.Instance.gunList[gunListPos].effects
             );
+
+            foreach (var inst in d.damageEffects)
+            {
+                if (inst.effect is ExplosiveEffect ex)
+                {
+                    Vector3 targetPosition = aimPoint;
+                    d.ArmExplosive(targetPosition, ex.Radius);
+                    break;
+                }
+            }
             
         }
         
@@ -442,6 +452,11 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
     
     }
 
+    public int JumpSpeed
+    {
+        get => jumpSpeed;
+        set => jumpSpeed = value;
+    }
 
     public int Speed
     {

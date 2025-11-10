@@ -13,6 +13,10 @@ public class Damage : MonoBehaviour
     [SerializeField] Rigidbody rb;
     [SerializeField] GameObject projModel;
     [SerializeField] public GameObject shooter;
+    [SerializeField] private LayerMask groundMask;
+    [SerializeField] private GameObject telegraphPrefab;
+    private GameObject telegraph;
+    private bool hasDetonated = false;
 
     [SerializeField] public int damageAmount;
     [SerializeField] public float damageRate;
@@ -28,6 +32,7 @@ public class Damage : MonoBehaviour
     private ZoneType? activeZone;
     public bool InEnemyAura => activeZone == ZoneType.enemyAura && zoneTickRoutine != null;
     public bool InLava => activeZone == ZoneType.lava && zoneTickRoutine != null;
+    private bool IsGround(Collider c) => (groundMask.value & (1 << c.gameObject.layer)) != 0;
     public bool _initialized;
 
     private void Awake()
@@ -45,6 +50,30 @@ public class Damage : MonoBehaviour
 
         if (moveType == MovementType.moving && rb != null)
             rb.linearVelocity = transform.forward * speed;
+    }
+
+    public void ArmExplosive(Vector3 targetPosition, float radius)
+    {
+        if (telegraphPrefab == null) return;
+
+        Vector3 rayStart = targetPosition + Vector3.up * 20f;
+        if (Physics.Raycast(rayStart, Vector3.down, out var hit, 100f, groundMask))
+        {
+            telegraph = Instantiate(telegraphPrefab, hit.point + Vector3.up * 0.02f, Quaternion.identity);
+            telegraph.transform.localScale = Vector3.one * (radius * 2f);
+        }
+    }
+
+    private void Detonate()
+    {
+        if (hasDetonated) return;
+        hasDetonated = true;
+
+        foreach (var inst in damageEffects)
+            inst.effect.OnProjectileImpact(transform.position, shooter);
+
+        if (telegraph) Destroy(telegraph);
+        Destroy(gameObject);
     }
 
     private static List<EffectInstance> CloneEffects(IReadOnlyList<EffectInstance> src)
@@ -67,7 +96,10 @@ public class Damage : MonoBehaviour
 
         if (moveType == MovementType.moving || moveType == MovementType.homing || moveType == MovementType.thrown)
         {
-            Destroy(gameObject, destroyTime);
+            if (HasExplosiveEffect())
+                Invoke(nameof(Detonate), destroyTime);
+            else
+                Destroy(gameObject, destroyTime);
 
             if (moveType == MovementType.moving && rb != null)
             {
@@ -114,18 +146,30 @@ public class Damage : MonoBehaviour
 
         if (other.isTrigger) return;
 
-        var target = other.GetComponent<IDamage>();
-        if (target == null)
+
+        if (HasExplosiveEffect() && IsGroundLayer(other.gameObject.layer))
+        {
+            Detonate();
             return;
+        }
 
-        var context = new DamageContext(source: shooter, target: other.gameObject, baseHitDamage: damageAmount);
-
+        var target = other.GetComponent<IDamage>();
+        if (target != null)
+        {
+            var context = new DamageContext(source: shooter, target: other.gameObject, baseHitDamage: damageAmount);
             target.takeDamage(in context, damageEffects);
 
-        if (moveType == MovementType.homing || moveType == MovementType.moving || moveType == MovementType.thrown)
-        {
+            if (HasExplosiveEffect())
+            {
+                Detonate();
+                return;
+            }
+
             Destroy(gameObject);
+            return;
         }
+
+        Destroy(gameObject);
     }
 
     private void OnTriggerExit(Collider other)
@@ -152,6 +196,18 @@ public class Damage : MonoBehaviour
             activeZone = null;
         }
     }
+
+    private bool HasExplosiveEffect()
+    {
+        foreach (var inst in damageEffects)
+        {
+            if (inst.effect is ExplosiveEffect)
+                return true;
+        }
+        return false;
+    }
+
+    bool IsGroundLayer(int layer) => ((1 << layer) & groundMask) != 0;
 
     private IEnumerator ZoneTicker()
     {

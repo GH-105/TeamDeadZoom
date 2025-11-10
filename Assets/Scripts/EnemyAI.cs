@@ -29,6 +29,10 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
     [SerializeField] GameObject bullet3;//for bosses
     [SerializeField] GameObject SpecialShot; //for bosses
     [SerializeField] float shootRate;
+    [SerializeField] int enemyBulletDamage;
+    [SerializeField] int enemyBulletSpeed;
+    [SerializeField] List<EffectInstance> enemyEffects;
+    [SerializeField] Transform player;
     [SerializeField] bool summoner;
     [SerializeField] float bulletDelay = 1f;
 
@@ -198,20 +202,9 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
 
         List<GameObject> bullets = new List<GameObject>();
 
-        if(bullet != null)
-        {
-            bullets.Add(bullet);
-        }
-
-        if (bullet2 != null)
-        {
-            bullets.Add(bullet2);
-        }
-
-        if (bullet3 != null)
-        {
-            bullets.Add(bullet3);
-        }
+        if (bullet != null) bullets.Add(bullet);
+        if (bullet2 != null) bullets.Add(bullet2);
+        if (bullet3 != null) bullets.Add(bullet3);
 
         GameObject bulletToShoot = bullets[bulletIndex];
 
@@ -223,12 +216,12 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
                 {
                     if (shootPos2 != null)
                     {
-                        Instantiate(bullet3, shootPos1.position, transform.rotation);
-                        Instantiate(bullet3, shootPos2.position, transform.rotation);
+                        SpawnAndInit(bullet3, shootPos1);
+                        SpawnAndInit(bullet3, shootPos2);
                     }
                     else
                     {
-                        Instantiate(bullet3, shootPos1.position, transform.rotation);
+                        SpawnAndInit(bullet3, shootPos1);
                     }
                 }
                 return;
@@ -240,12 +233,12 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
         
             if (shootPos2 != null)
             {
-                Instantiate(bulletToShoot, shootPos1.position, transform.rotation);
-                Instantiate(bulletToShoot, shootPos2.position, transform.rotation);
+                SpawnAndInit(bulletToShoot, shootPos1);
+                SpawnAndInit(bulletToShoot, shootPos2);
             }
             else
             {
-                Instantiate(bulletToShoot, shootPos1.position, transform.rotation);
+                SpawnAndInit(bulletToShoot, shootPos1);
             }
 
             bulletIndex = (bulletIndex + 1) % bullets.Count;
@@ -254,12 +247,12 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
             {
                 if (shootPos2 != null)
                 {
-                    Instantiate(SpecialShot, shootPos1.position, transform.rotation);
-                    Instantiate(SpecialShot, shootPos2.position, transform.rotation);
-                }
+                SpawnAndInit(SpecialShot, shootPos1);
+                SpawnAndInit(SpecialShot, shootPos2);
+            }
                 else
                 {
-                    Instantiate(SpecialShot, shootPos1.position, transform.rotation);
+                    SpawnAndInit(SpecialShot, shootPos1);
                 }
             }
         
@@ -275,7 +268,6 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
 
                 float mag = ScaleMagnitude(e.effect, e.magnitude, in context);
                 if (mag <= 0f) continue;
-                Debug.Log($"[EnemyAI] effects.Count = {effects?.Count ?? -1}");
                 status.ApplyEffect(e.effect, in context, mag);
             }
         }
@@ -361,6 +353,36 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
             HpSlider.transform.LookAt(healthcam.transform);
             HpSlider.transform.rotation = Quaternion.LookRotation(HpSlider.transform.position - healthcam.transform.position);
             HpSlider.transform.position = target.position + offset;
+        }
+    }
+
+    private void SpawnAndInit(GameObject bullet, Transform spawn)
+    {
+        var go = Instantiate(bullet, spawn.position, transform.rotation);
+
+        var dmg = go.GetComponent<Damage>();
+        if (dmg != null)
+        {
+            dmg.Init(
+                shooter: gameObject,
+                dmg: enemyBulletDamage,
+                speed: enemyBulletSpeed,
+                effects: enemyEffects
+                );
+
+            if (dmg.damageEffects != null)
+            {
+                for (int i = 0; i < dmg.damageEffects.Count; i++)
+                {
+                    var eff = dmg.damageEffects[i].effect;
+                    if (eff is ExplosiveEffect ex)
+                    {
+                        Vector3 targetPos = gameManager.instance.player.transform.position;
+                        dmg.ArmExplosive(targetPos, ex.Radius);
+                        break;
+                    }
+                }
+            }
         }
     }
 

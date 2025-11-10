@@ -13,6 +13,8 @@ public class powerupeffects : MonoBehaviour
     [SerializeField] int AirDashInc;
     [SerializeField] DamageEffects weaponEffect;
     [SerializeField] float magnitude;
+    [SerializeField] int HPLoss;
+    [SerializeField] int jumpsSpeedInc;
 
     public enum PowerUpType
     {
@@ -25,7 +27,10 @@ public class powerupeffects : MonoBehaviour
         Jump,
         HpRecovery,
         AirDash,
-        WeaponEffect
+        WeaponEffect,
+        ChSpeed,//challenge modifier
+        ChDamage,//challenge modifier
+        jumpSpeedInc
     }
 
     public PowerUpType type;
@@ -68,10 +73,19 @@ public class powerupeffects : MonoBehaviour
                     case PowerUpType.WeaponEffect:
                         PowerUpManager.Instance.ApplyWeaponEffect(gunIndex, weaponEffect, magnitude);
                         break;
+                    case PowerUpType.jumpSpeedInc:
+                        PowerUpManager.Instance.ApplyJumpDistInc(jumpsSpeedInc);
+                        break;
+                    case PowerUpType.ChSpeed:
+                        PowerUpManager.Instance.ApplyCHSpeedBonus(speedBoost, HPLoss);
+                        break;
+                    case PowerUpType.ChDamage:
+                        PowerUpManager.Instance.ApplyCHDamage(gunIndex, damageBoostFlat, jumpsSpeedInc);
+                        break;
 
                 }
 
-                
+
                 Destroy(gameObject);
             }
         }
