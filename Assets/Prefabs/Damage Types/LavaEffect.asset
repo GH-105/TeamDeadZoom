@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LavaEffect
   m_EditorClassIdentifier: Assembly-CSharp::Lava
   duration: 0.35
-  tickInterval: 0.5
+  tickInterval: 2
   stackPolicy: 1
   combineMode: 0
   maxStacks: 1
