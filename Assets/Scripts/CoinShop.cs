@@ -5,7 +5,7 @@ using UnityEngine;
 public class CoinShop : MonoBehaviour
 {
 
-    private int coins = Coinlogic.coinCount; //make this = to player coins in the future
+    private int coins; //make this = to player coins in the future
     [SerializeField] TMP_Text displayCoinAmount;
     [SerializeField] TMP_Text notEnoughCoins;
 
@@ -30,6 +30,7 @@ public class CoinShop : MonoBehaviour
     void Start()
     {
         displayCoinAmount.text = Coinlogic.coinCount.ToString();
+        coins = Coinlogic.coinCount;
 
         healCostText.text = " - " + costOfHealing.ToString() + "coins for " + healCount.ToString() + " Hp";
         ammoCostText.text = " - " + ammoCost.ToString() + "coins for " + ammoMult.ToString() + " Ammo";
