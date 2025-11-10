@@ -86,7 +86,7 @@ public class room : MonoBehaviour
         if (playerFinishTime < eventTime)
         {
             
-            if(!hiddenDoor)
+            if(hiddenDoor != null)
             {
                 hiddenDoor.SetActive(state);
                 StartCoroutine(showDoorMessage());

@@ -334,8 +334,6 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
         shootDamage = damage;
         shootDist = range;
         shootRate = rate;
-        //numChains = gunList[gunListPos].maxChains;
-        //numProjectiles = gunList[gunListPos].maxProjectiles;
 
         gunModel.GetComponent<MeshFilter>().sharedMesh = PowerUpManager.Instance.gunList[gunListPos].baseStats.gunModel.GetComponent<MeshFilter>().sharedMesh;
         gunModel.GetComponent<MeshRenderer>().sharedMaterial = PowerUpManager.Instance.gunList[gunListPos].baseStats.gunModel.GetComponent<MeshRenderer>().sharedMaterial;
