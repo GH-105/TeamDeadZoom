@@ -9727,6 +9727,10 @@ MonoBehaviour:
   rb: {fileID: 4973151965037012068}
   projModel: {fileID: 0}
   shooter: {fileID: 8789024381003558246, guid: 9664c0a37cfb01243af663abe5b8f276, type: 3}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 0
+  telegraphPrefab: {fileID: 2181025711564005708, guid: 824ab07fc2708fe4bbddde643734c271, type: 3}
   damageAmount: 1
   damageRate: 0
   speed: 15

@@ -25,6 +25,6 @@ public abstract class DamageEffects : ScriptableObject
     public virtual void OnApplied(statusController target, statusController.RuntimeEffect rt) { }
     public virtual void OnTick(statusController target, statusController.RuntimeEffect rt) { }
     public virtual void OnExpired(statusController target, statusController.RuntimeEffect rt) { }
-
+    public virtual void OnProjectileImpact(Vector3 position, GameObject source) { }
     public virtual void OnAggregateTick(statusController target, List<statusController.RuntimeEffect> instance) { }
 }

@@ -2028,6 +2028,14 @@ PrefabInstance:
       propertyPath: bulletDelay
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 2055799986626160665, guid: 9664c0a37cfb01243af663abe5b8f276, type: 3}
+      propertyPath: enemyBulletSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2055799986626160665, guid: 9664c0a37cfb01243af663abe5b8f276, type: 3}
+      propertyPath: enemyBulletDamage
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 8789024381003558246, guid: 9664c0a37cfb01243af663abe5b8f276, type: 3}
       propertyPath: m_Name
       value: Skeleboss1
