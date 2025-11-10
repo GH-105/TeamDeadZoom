@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2207093896858196971}
   - component: {fileID: 6512396181049322226}
   - component: {fileID: 565611094922662488}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Lava
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -61,7 +61,11 @@ MonoBehaviour:
   zoneMagnitude: 1
   rb: {fileID: 0}
   projModel: {fileID: 0}
-  shooter: {fileID: 0}
+  shooter: {fileID: 4913447625050979612}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 0
+  telegraphPrefab: {fileID: 0}
   damageAmount: 2
   damageRate: 1
   speed: 0
@@ -71,6 +75,7 @@ MonoBehaviour:
   damageEffects:
   - effect: {fileID: 11400000, guid: f61d684ab5099ff46ba2ba65a8bd56d2, type: 2}
     magnitude: 1
+  _initialized: 0
 --- !u!23 &6512396181049322226
 MeshRenderer:
   m_ObjectHideFlags: 0
