@@ -12218,7 +12218,7 @@ GameObject:
   - component: {fileID: 8628166517140831756}
   - component: {fileID: 6910647409223710097}
   m_Layer: 5
-  m_Name: Sample Level
+  m_Name: Tutorial Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12328,12 +12328,12 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1453185472006100230}
         m_TargetAssemblyTypeName: buttonFunctions, Assembly-CSharp
-        m_MethodName: LoadTestLevel
+        m_MethodName: loadLevel
         m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -13558,6 +13558,7 @@ MonoBehaviour:
   StartMenu: {fileID: 5210194739684464306}
   OptionsMenu: {fileID: 4087488197732410973}
   SoulShopMenu: {fileID: 6890466476810027708}
+  TutorialButton: {fileID: 1870942833003950947}
   startingGun: {fileID: 0}
   player: {fileID: 0}
   playerScript: {fileID: 0}
@@ -13772,9 +13773,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Test Level
-
-'
+  m_text: 'Tutorial '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
