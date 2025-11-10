@@ -452,6 +452,11 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
     
     }
 
+    public int JumpSpeed
+    {
+        get => jumpSpeed;
+        set => jumpSpeed = value;
+    }
 
     public int Speed
     {
