@@ -132,7 +132,12 @@ public class buttonFunctions : MonoBehaviour
 
                 Debug.Log($"Loaded : {data.souls} souls, HP {data.playerHP}, checkpoint {data.checkpointPosition}");
 
-                for (int i = 0; i < data.gunData.Length; i++)
+                int gunDataLength = data.gunData.Length;
+                int gunListCount = PowerUpManager.Instance.gunList.Count;
+
+                int loopCount = Mathf.Min(gunDataLength, gunListCount);    
+
+                for (int i = 0; i < loopCount; i++)
                 {
                     PowerUpManager.Instance.gunList[i].mods.flatDamageMod = data.gunData[i].flatDamageMod;
                     PowerUpManager.Instance.gunList[i].mods.damageMultMod = data.gunData[i].damageMultMod;
@@ -148,7 +153,6 @@ public class buttonFunctions : MonoBehaviour
 
     public void StartGame()
     {
-        LoadGame();
         gameManager.instance.levelSelect();
     }
 
