@@ -81,12 +81,9 @@ public class SaveManager : MonoBehaviour
     }
    
 }
-/* add -public static int enemiesKilled = 0; to gameManager
- * 
- * -add this to gameManager-
- * public void ResetKillCount()
- * {
- *      enemiesKilled = 0;
- * }
 
- * */
+ // public void ResetKillCount()
+ //{
+ //      enemiesKilled = 0;
+ // }
+
