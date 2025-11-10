@@ -1425,6 +1425,8 @@ MonoBehaviour:
   summoner: 0
   bulletDelay: 1
   floatingTextPrefab: {fileID: 5749133604472977256, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
+  givesSouls: 0
+  soulsToGive: 1
   thisRoom: {fileID: 0}
   HpSlider: {fileID: 3283754933895945452}
   healthcam: {fileID: 0}

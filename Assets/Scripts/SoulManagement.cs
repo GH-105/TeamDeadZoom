@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SoulManagement : MonoBehaviour
 {
-    public static int souls = 10;
+    public static int souls;
 
     public static int dashUpgradeCost = 1;
     public static int hpUpgradeCost = 5;
@@ -31,6 +31,8 @@ public class SoulManagement : MonoBehaviour
 
     private void Start()
     {
+        buttonFunctions.LoadGame();
+        soulCountText.text = "Souls: " + souls;
         UpdateUI();
 
         dashUpgradeCostText.text = "Dash Upgrade: " + dashUpgradeCost + " souls";

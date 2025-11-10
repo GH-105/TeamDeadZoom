@@ -37,6 +37,9 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
     [SerializeField] GameObject floatingTextPrefab;
     statusController status;
 
+    [SerializeField] private bool givesSouls = false;
+    [SerializeField] private int soulsToGive = 1;
+
     Color colorOrigBody;
     Color colorOrigHead;
     Color colorOrigJaw;
@@ -398,6 +401,13 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
         if (agent) agent.enabled = false;
         if(thisRoom != null)
             thisRoom.UpdateRoomGoal(-1);
+
+        if(givesSouls)
+        {
+            SoulManagement.AddSouls(soulsToGive);
+            buttonFunctions.SaveGame();
+            Debug.Log("gave souls");
+        }
         Destroy(gameObject);
     }
 }

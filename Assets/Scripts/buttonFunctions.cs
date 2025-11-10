@@ -87,7 +87,7 @@ public class buttonFunctions : MonoBehaviour
         gameManager.instance.stateUnpause();
     }
 
-    public void SaveGame()
+    public static void SaveGame()
     {
         GameData data = new GameData
         {
@@ -117,7 +117,7 @@ public class buttonFunctions : MonoBehaviour
 
         SaveManager.SaveGame(data);
     }
-    public void LoadGame()
+    public static void LoadGame()
     {
         GameData data = SaveManager.LoadGame();
         
