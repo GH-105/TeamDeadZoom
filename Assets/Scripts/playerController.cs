@@ -1,8 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
-using TMPro;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageReceiver
 {
     [SerializeField] LayerMask ignoreLayer;
@@ -35,8 +33,6 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
     [SerializeField] Transform firePos;
     [SerializeField] GameObject bullet;
 
-    [SerializeField] TextMeshProUGUI reloadText;
-
     [SerializeField] AudioSource aud;
     [SerializeField] AudioClip[] audSteps;
     [Range(0, 1)][SerializeField] float audStepsVol;
@@ -48,7 +44,6 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
     Vector3 moveDir;
     Vector3 playerVel;
     Vector3 dashDir;
-    Quaternion baseRot;
 
     private int currDash = 0;
 
@@ -61,13 +56,13 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
     public int bulletDamage;
     float stepDeg = 6f;
     float lastGrounTime;
+    private hearts heartsUI;
     
 
     float shootTimer;
 
     bool isSprinting;
     bool isPlayingSteps;
-    bool isUnderWater;
     bool isInAir;
     bool isDashing = false;
 
@@ -79,8 +74,9 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
         gravOrig = gravity;
         speedOrig = speed;
         jumpSpeedOrig = jumpSpeed;
+        heartsUI = FindFirstObjectByType<hearts>();
         spawnPlayer();
-
+        
         controller = GetComponent<CharacterController>();
         status = GetComponent<statusController>();
 
@@ -101,8 +97,9 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
                 PowerUpManager.Instance.pstat = false;
             }
         }
-        if (reloadText != null)
-            reloadText.gameObject.SetActive(false);
+        if (gameManager.instance.reloadText != null)
+            gameManager.instance.reloadText.SetActive(false);
+        heartsUI.UpdateHearts((int)HP);
     }
 
     // Update is called once per frame
@@ -207,8 +204,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
 
         if (PowerUpManager.Instance.GetCurrentAmmo(gunListPos) <= 1)
         {
-            if (reloadText != null)
-                reloadText.gameObject.SetActive(true);
+            if (gameManager.instance.reloadText != null)
+                gameManager.instance.reloadText.gameObject.SetActive(true);
         }
 
         PowerUpManager.Instance.ConsumeAmmo(gunListPos);
@@ -252,7 +249,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
         {
             PowerUpManager.Instance.ReloadCurrentGun(gunListPos);
             updatePlayerUI();
-            reloadText.gameObject.SetActive(false);
+            gameManager.instance.reloadText.gameObject.SetActive(false);
         }
         
     }
@@ -285,6 +282,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
     public void ApplyDot(float amount, DamageEffects effect, GameObject source)
     {
         HP -= amount;
+        if (heartsUI != null)
+            heartsUI.UpdateHearts((int)HP);
         StartCoroutine(flashPlayerDmg());
         updatePlayerUI();
         if (HP <= 0f)
@@ -340,15 +339,14 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
 
         if (PowerUpManager.Instance.GetCurrentAmmo(gunListPos) <= 1)
         {
-            if (reloadText != null)
-                reloadText.gameObject.SetActive(true);
-            //Debug.Log("Reload");
+            if (gameManager.instance.reloadText != null)
+                    gameManager.instance.reloadText.SetActive(true);
 
         }
         else
         {
-            if (reloadText != null)
-                reloadText.gameObject.SetActive(false);
+            if (gameManager.instance.reloadText != null)
+                gameManager.instance.reloadText.SetActive(false);
         }
 
             updatePlayerUI();
@@ -374,7 +372,6 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
     {
         if (other.CompareTag("Water"))
         {
-            isUnderWater = true;
             speed = underwaterSpeed;
             jumpSpeed = underwaterJumpSpeed;
             gravity = underwaterGravity;
@@ -389,7 +386,6 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
     {
         if (other.CompareTag("Water"))
         {
-            isUnderWater = false;
             speed = speedOrig;
             jumpSpeed = jumpSpeedOrig;
             gravity = gravOrig;
@@ -403,9 +399,9 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
     {
         controller.enabled = false;
         controller.transform.position = gameManager.instance.playerSpawnPos.transform.position + Vector3.up * 1f;
-        controller.enabled = true;
-        //controller.transform.position = gameManager.instance.playerSpawnPos.transform.position;
+        controller.enabled = true;   
         HP = HPOrig;
+        heartsUI.UpdateHearts((int)HP);
         updatePlayerUI();
     }
     Vector3 GetDashDir()
@@ -422,6 +418,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
     void ApplyHP(float amount, GameObject source)
     {
         HP -= amount;
+        heartsUI.UpdateHearts((int)HP);
         flashPlayerDmg();
         if (HP <= 0)
         {

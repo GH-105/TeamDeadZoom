@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2872772835046557756}
   - component: {fileID: 414055822716468847}
-  - component: {fileID: 600270827101881631}
   - component: {fileID: 5516483503538133329}
   - component: {fileID: 226520322530061624}
   - component: {fileID: 4727253731928585866}
@@ -51,39 +50,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7aa2f998775cde46bedc4f85384b293, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::statusController
---- !u!114 &600270827101881631
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 149173740938263246}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ee7affe2ebea3d14c840d19ee25147a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::hearts
-  health: 0
-  maxHealth: 0
-  emptyHeart: {fileID: 21300000, guid: 77befefbc8c83714fa868ecb8d00b867, type: 3}
-  fullHeart: {fileID: 21300000, guid: 496d2284a996d8647a9e8e5b328406d9, type: 3}
-  heart:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  playerCont: {fileID: 5516483503538133329}
 --- !u!114 &5516483503538133329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,9 +70,9 @@ MonoBehaviour:
     m_Bits: 2039
   controller: {fileID: 4262528227152647911}
   HP: 15
-  speed: 12
+  speed: 16
   sprintMod: 2
-  jumpSpeed: 12
+  jumpSpeed: 20
   jumpCountMax: 2
   gravity: 35
   underwaterGravity: 10
@@ -124,7 +90,6 @@ MonoBehaviour:
   gunModel: {fileID: 5175435172361694362}
   firePos: {fileID: 4359038837788123544}
   bullet: {fileID: 6207780247886573495, guid: 57c1c19ebb6e8ad4bb351a006e3dc17d, type: 3}
-  reloadText: {fileID: 0}
   aud: {fileID: 1293996468102100521}
   audSteps:
   - {fileID: 8300000, guid: 8ca02c0a809539c4997649a6e55f45c3, type: 3}

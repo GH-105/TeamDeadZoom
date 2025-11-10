@@ -277,7 +277,6 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
 
         if (HP <= 0)
         {
-            if (thisRoom != null) thisRoom.UpdateRoomGoal(-1);
             Die();
         }
     }
@@ -287,7 +286,6 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
         HP -= amount;
         if (HP <= 0)
         {
-            if (thisRoom != null) thisRoom.UpdateRoomGoal(-1);
             Die();
         }
         OnDamaged(amount, source);
@@ -315,7 +313,6 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
         HP -= amount;
         if (HP <= 0)
         {
-            if (thisRoom != null) thisRoom.UpdateRoomGoal(-1);
             Die();
         }
         if(gameObject != null)
@@ -399,7 +396,8 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
 
         var agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         if (agent) agent.enabled = false;
-
+        if(thisRoom != null)
+            thisRoom.UpdateRoomGoal(-1);
         Destroy(gameObject);
     }
 }

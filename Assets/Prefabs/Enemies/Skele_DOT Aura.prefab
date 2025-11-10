@@ -1757,7 +1757,16 @@ MonoBehaviour:
   shootPos1: {fileID: 2578810467199060579}
   shootPos2: {fileID: 0}
   bullet: {fileID: 6207780247886573495, guid: 57c1c19ebb6e8ad4bb351a006e3dc17d, type: 3}
+  bullet2: {fileID: 0}
+  bullet3: {fileID: 0}
+  SpecialShot: {fileID: 0}
   shootRate: 9999
+  enemyBulletDamage: 1
+  enemyBulletSpeed: 10
+  enemyEffects: []
+  player: {fileID: 0}
+  summoner: 0
+  bulletDelay: 1
   floatingTextPrefab: {fileID: 5749133604472977256, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
   thisRoom: {fileID: 0}
   HpSlider: {fileID: 9010166462517473699}

@@ -2,6 +2,7 @@ using TMPro;
 using UnityEditor;
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 public class room : MonoBehaviour
 {
     public static room instance;
@@ -12,9 +13,10 @@ public class room : MonoBehaviour
     [SerializeField] GameObject enemy;
     [SerializeField] int maxEnemies;
     [SerializeField] float spawnRate;
-    [SerializeField] Transform[] spawnPos;
+    [SerializeField] List<Transform> spawnPos;
     [SerializeField] public TMP_Text roomGoalLabel;
     [SerializeField] public TMP_Text doorStatusLabel; //door open ui
+    
 
 
     public int roomGoalCount;
@@ -25,6 +27,7 @@ public class room : MonoBehaviour
 
     bool startSpawning;
     public bool roomActive;
+    bool doorOpened = false;
 
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -66,9 +69,9 @@ public class room : MonoBehaviour
 
     void spawn()
     {
-        int arrayPos = Random.Range(0, spawnPos.Length);
+        int listPos = Random.Range(0, spawnPos.Count);
 
-        GameObject enemyClone = Instantiate(enemy, spawnPos[arrayPos].position, spawnPos[arrayPos].rotation);
+        GameObject enemyClone = Instantiate(enemy, spawnPos[listPos].position, spawnPos[listPos].rotation);
         enemyClone.GetComponent<EnemyAI>().thisRoom = this;
         enemyCount++;
         totalEnemiesSpawned++;
@@ -97,23 +100,25 @@ public class room : MonoBehaviour
 
     public void UpdateRoomGoal(int amount)
     {
-        roomGoalCount += amount;
+        roomGoalCount = Mathf.Max(0, roomGoalCount + amount);
         
-        if (roomGoalCount <= 0 && totalEnemiesSpawned >= maxEnemies)
+        if (!doorOpened && roomGoalCount == 0 && totalEnemiesSpawned >= maxEnemies)
         {
             doorState(false);
+            doorOpened = true;
+
             roomActive = false;
             startSpawning = false;
+
             gameManager.instance.updateGameGoal(-1);
         }
-        string v = roomGoalCount.ToString("F0");
-        roomGoalLabel.text = v;  
+        roomGoalLabel.text = roomGoalCount.ToString();
     }
     IEnumerator showDoorMessage()
     {
         doorStatusLabel.gameObject.SetActive(true);
         doorStatusLabel.text = "Door Open!";
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(1f);
         doorStatusLabel.gameObject.SetActive(false);
        
     }

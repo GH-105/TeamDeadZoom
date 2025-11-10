@@ -1109,9 +1109,11 @@ MonoBehaviour:
   bullet3: {fileID: 0}
   SpecialShot: {fileID: 0}
   shootRate: 3
-  enemyBulletDamage: 0
-  enemyBulletSpeed: 0
-  enemyEffects: []
+  enemyBulletDamage: 1
+  enemyBulletSpeed: 15
+  enemyEffects:
+  - effect: {fileID: 11400000, guid: c647aa57173d70e41bb4f54720301e5c, type: 2}
+    magnitude: 1
   player: {fileID: 0}
   summoner: 0
   bulletDelay: 1

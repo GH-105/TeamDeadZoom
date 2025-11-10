@@ -1,5 +1,3 @@
-using NUnit.Framework;
-using System.Threading;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -24,6 +22,17 @@ public class gameManager : MonoBehaviour
     [SerializeField] public GameObject OptionsMenu;
     [SerializeField] public GameObject SoulShopMenu;
     [SerializeField] public GameObject TutorialButton;
+    [SerializeField] public GameObject reloadText;
+    [SerializeField] public TMP_Text lastLevelText;
+    [SerializeField] public TMP_Text currentTimeText;
+    [SerializeField] public TMP_Text bestTimeText;
+    [SerializeField] public TMP_Text coinsGainedText;
+    [SerializeField] public TMP_Text soulsGainedText;
+    [SerializeField] public TMP_Text outcomeText;
+    [SerializeField] public List<hearts> playerHearts;
+
+    [SerializeField] public GameObject rewardsPanel;
+    [SerializeField] public GameObject coinShopPanel;
 
     public gunStats startingGun;
 
@@ -119,13 +128,12 @@ public class gameManager : MonoBehaviour
 
         if(gameGoalCount <= 0)
         {
-            //menuActive = menuWin;
-            RewardsManager.instance.WinRewards();
-            menuActive.SetActive(true);
-            statePause();
-            
-            if(StopWatch.instance != null)
+            if (StopWatch.instance != null)
                 StopWatch.instance.StopStopwatch();
+            statePause();
+            RewardsManager.instance.WinRewards();
+            
+            
         }
     }
 
@@ -134,8 +142,6 @@ public class gameManager : MonoBehaviour
         statePause();
         
         RewardsManager.instance.LossRewards();
-        
-        menuActive.SetActive(true);
         ResetKillCount();
     }
 
@@ -180,6 +186,8 @@ public class gameManager : MonoBehaviour
         else
             EnemyAuraScreenOverlay.SetActive(false);
     }
+
+
 
     public void showLavaOverlay(bool dotON)
     {

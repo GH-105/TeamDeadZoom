@@ -84,8 +84,8 @@ MonoBehaviour:
   bullet3: {fileID: 0}
   SpecialShot: {fileID: 0}
   shootRate: 2
-  enemyBulletDamage: 0
-  enemyBulletSpeed: 0
+  enemyBulletDamage: 1
+  enemyBulletSpeed: 15
   enemyEffects: []
   player: {fileID: 0}
   summoner: 0

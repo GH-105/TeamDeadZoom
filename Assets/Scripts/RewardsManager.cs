@@ -5,18 +5,18 @@ using UnityEngine.SceneManagement;
 public class RewardsManager : MonoBehaviour
 {
     public static RewardsManager instance;
-    [SerializeField] public TMP_Text lastLevelText;
-    [SerializeField] public TMP_Text currentTimeText;
-    [SerializeField] public TMP_Text bestTimeText;
-    [SerializeField] public TMP_Text coinsGainedText;
-    [SerializeField] public TMP_Text soulsGainedText;
-    [SerializeField] public TMP_Text outcomeText;
-
-    [SerializeField] private GameObject rewardsPanel;
-    [SerializeField] private GameObject coinShopPanel;
-
     private int coinsBeforeLevel;
 
+    private void Awake()
+    {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
     public void StartLevel()
     {
         coinsBeforeLevel = Coinlogic.coinCount;
@@ -32,9 +32,9 @@ public class RewardsManager : MonoBehaviour
         }
 
         if(SceneManager.GetActiveScene().name == "Level 3")
-            lastLevelText.text = "Level Completed: " + data.lastLevelCompleted + "\n congrats you win!";
+            gameManager.instance.lastLevelText.text = "Level Completed: " + data.lastLevelCompleted + "\n congrats you win!";
         else
-            lastLevelText.text = "Level Completed: " + data.lastLevelCompleted;
+            gameManager.instance.lastLevelText.text = "Level Completed: " + data.lastLevelCompleted;
 
         GameData.LevelTimeData levelTime = null;
         foreach( var lvl in data.levelTimes)
@@ -45,33 +45,38 @@ public class RewardsManager : MonoBehaviour
                 break;
             }
         }
+
         if(levelTime!= null)
         {
-            currentTimeText.text = $"Current Time: {levelTime.currentTime:F2}s";
-            bestTimeText.text = $"Best Time: {levelTime.bestTime:F2}s";
+            gameManager.instance.currentTimeText.text = $"Current Time: {levelTime.currentTime:F2}s";
+            gameManager.instance.bestTimeText.text = $"Best Time: {levelTime.bestTime:F2}s";
+            gameManager.instance.outcomeText.text = $"You won {levelTime.levelName}";
+        }
+        else
+        {
+            gameManager.instance.currentTimeText.text = "Current Time: —";
+            gameManager.instance.bestTimeText.text = "Best Time: —";
+            gameManager.instance.outcomeText.text = $"You won {data.lastLevelCompleted}";
         }
 
         int coinsGained = Coinlogic.coinCount - coinsBeforeLevel;
 
-        coinsGainedText.text = $"Coines Gained: {coinsGained} you have: {data.coins}"; 
-        soulsGainedText.text = $"Souls: {data.souls}";
+        gameManager.instance.coinsGainedText.text = $"Coines Gained: {coinsGained} you have: {data.coins}"; 
+        gameManager.instance.soulsGainedText.text = $"Souls: {data.souls}";
 
-        outcomeText.text = $"You won {levelTime.levelName}";
+        
 
-        rewardsPanel.SetActive(true);
-        if(coinShopPanel != null)
-            coinShopPanel.SetActive(false);
+        gameManager.instance.rewardsPanel.SetActive(true);
+        if(gameManager.instance.coinShopPanel != null)
+            gameManager.instance.coinShopPanel.SetActive(false);
     }
 
     public void ShowCoinShop()
     {
-        Debug.Log("shop open1");
-        if (coinShopPanel != null && rewardsPanel != null)
+        if (gameManager.instance.coinShopPanel != null && gameManager.instance.rewardsPanel != null)
         {
-            Debug.Log("shop open2");
-            rewardsPanel.SetActive(false);
-            coinShopPanel.SetActive(true);
-            Debug.Log("shop open3");
+            gameManager.instance.rewardsPanel.SetActive(false);
+            gameManager.instance.coinShopPanel.SetActive(true);
         }
     }
 
@@ -84,7 +89,7 @@ public class RewardsManager : MonoBehaviour
             return;
         }
 
-        lastLevelText.text = "Level Failed: " + data.lastLevelCompleted;
+        gameManager.instance.lastLevelText.text = "Level Failed: " + data.lastLevelCompleted;
 
         GameData.LevelTimeData levelTime = null;
         foreach (var lvl in data.levelTimes)
@@ -97,22 +102,16 @@ public class RewardsManager : MonoBehaviour
         }
         if (levelTime != null)
         {
-            currentTimeText.text = $"Current Time: {levelTime.currentTime:F2}s";
-            bestTimeText.text = $"Best Time: {levelTime.bestTime:F2}s";
+            gameManager.instance.currentTimeText.text = $"Current Time: {levelTime.currentTime:F2}s";
+            gameManager.instance.bestTimeText.text = $"Best Time: {levelTime.bestTime:F2}s";
         }
 
-        coinsGainedText.text = $"Coines Gained: {data.coins}";
-        soulsGainedText.text = $"Souls Gained: {data.souls}";
+        gameManager.instance.coinsGainedText.text = $"Coines Gained: {data.coins}";
+        gameManager.instance.soulsGainedText.text = $"Souls Gained: {data.souls}";
 
-        rewardsPanel.SetActive(true);
-        if (coinShopPanel != null)
-            coinShopPanel.SetActive(false);
-        outcomeText.text = "You lost";
+        gameManager.instance.rewardsPanel.SetActive(true);
+        if (gameManager.instance.coinShopPanel != null)
+            gameManager.instance.coinShopPanel.SetActive(false);
+        gameManager.instance.outcomeText.text = "You lost";
     }
 }
-/*
- * add to where win menu and lose menu is called when update from main
- * 
- * -RewardsScreen rewards = FindObjectOfType<RewardsScreen>();
- * -RewardsManager.ShowRewards();
- **/

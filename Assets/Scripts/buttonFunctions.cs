@@ -24,13 +24,13 @@ public class buttonFunctions : MonoBehaviour
 
     public void restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         gameManager.instance.stateUnpause();
     }
 
     public void quit()
     {
-        SaveGame();
+        //SaveGame();
 
     #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
@@ -68,7 +68,10 @@ public class buttonFunctions : MonoBehaviour
 
     public void nextLevel()
     {
-        SceneManager.LoadScene(nextIndex);
+        if (SceneManager.GetActiveScene().buildIndex != 4)
+            SceneManager.LoadScene(nextIndex);
+        else
+            SceneManager.LoadScene(1);
         gameManager.instance.stateUnpause();
     }
 
@@ -164,6 +167,11 @@ public class buttonFunctions : MonoBehaviour
     public void OpenSoulShop()
     {
         gameManager.instance.SoulShop();
+    }
+
+    public void OpenCoinShop()
+    {
+        RewardsManager.instance.ShowCoinShop();
     }
 
     public void LoadTestLevel(int level)
