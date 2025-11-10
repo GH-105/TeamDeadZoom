@@ -32,7 +32,6 @@ public class Damage : MonoBehaviour
     private ZoneType? activeZone;
     public bool InEnemyAura => activeZone == ZoneType.enemyAura && zoneTickRoutine != null;
     public bool InLava => activeZone == ZoneType.lava && zoneTickRoutine != null;
-    private bool IsGround(Collider c) => (groundMask.value & (1 << c.gameObject.layer)) != 0;
     public bool _initialized;
 
     private void Awake()
@@ -84,15 +83,6 @@ public class Damage : MonoBehaviour
         for (int i = 0; i < src.Count; i++)
             dst.Add(new EffectInstance { effect = src[i].effect, magnitude = src[i].magnitude });
     }
-
-    private static List<EffectInstance> CloneEffects(IReadOnlyList<EffectInstance> src)
-    {
-        if (src == null) return null;
-        var list = new List<EffectInstance>(src.Count);
-        for (int i = 0; i < src.Count; i++)
-            list.Add(new EffectInstance { effect = src[i].effect, magnitude = src[i].magnitude });
-        return list;
-    }    
 
     void OnEnable()
     {
