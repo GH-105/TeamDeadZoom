@@ -27,6 +27,7 @@ public class SoulManagement : MonoBehaviour
     [SerializeField] private GameObject hpUpgradeButton;
     [SerializeField] private GameObject jumpUpgradeButton;
     [SerializeField] private GameObject speedUpgradeButton;
+    [SerializeField] GameObject backButton;
 
     private void Start()
     {

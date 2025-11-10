@@ -4245,15 +4245,15 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 150
+    m_Top: 250
     m_Bottom: 0
   m_ChildAlignment: 1
   m_StartCorner: 0
   m_StartAxis: 1
   m_CellSize: {x: 200, y: 200}
-  m_Spacing: {x: 300, y: 20}
+  m_Spacing: {x: 200, y: 0}
   m_Constraint: 1
-  m_ConstraintCount: 2
+  m_ConstraintCount: 4
 --- !u!1 &1315288960738638919
 GameObject:
   m_ObjectHideFlags: 0
@@ -19440,7 +19440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76795f2bc74896341bd28a6acefe37c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoulManagement
-  soulCountText: {fileID: 2456303470569039532}
+  soulCountText: {fileID: 0}
   dashUpgradeCostText: {fileID: 3185974428362407157}
   hpUpgradeCostText: {fileID: 2640494189399929679}
   jumpUpgradeCostText: {fileID: 5506306316650572458}
@@ -19449,6 +19449,7 @@ MonoBehaviour:
   hpUpgradeButton: {fileID: 4832862931692487647}
   jumpUpgradeButton: {fileID: 9209360167195071036}
   speedUpgradeButton: {fileID: 2777648948573729337}
+  backButton: {fileID: 0}
 --- !u!1 &6948664999846747460
 GameObject:
   m_ObjectHideFlags: 0
