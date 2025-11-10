@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.AI;
@@ -29,6 +30,7 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
     [SerializeField] GameObject SpecialShot; //for bosses
     [SerializeField] float shootRate;
     [SerializeField] bool summoner;
+    [SerializeField] float bulletDelay = 1f;
 
     [SerializeField] GameObject floatingTextPrefab;
     statusController status;
@@ -58,6 +60,7 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
 
     private int bulletIndex = 0;
     private float maxHP;
+    private float summonTimer;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -82,6 +85,10 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
     void Update()
     {
         shootTimer += Time.deltaTime;
+        if (summoner)
+        {
+            summonTimer += Time.deltaTime;
+        }
 
         if (agent.remainingDistance < 0.01f)
         {
@@ -180,13 +187,15 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
 
     void shoot()
     {
+   
         shootTimer = 0;
-
         anim.SetTrigger("Shoot");
+        
     }
 
     public void createBullet()
-    {
+    { 
+
         List<GameObject> bullets = new List<GameObject>();
 
         if(bullet != null)
@@ -206,31 +215,54 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
 
         GameObject bulletToShoot = bullets[bulletIndex];
 
-
-        if (shootPos2 != null)
+        if (summoner && (bulletIndex == 0 || bulletIndex == 1))
         {
-            Instantiate(bulletToShoot, shootPos1.position, transform.rotation);
-            Instantiate(bulletToShoot, shootPos2.position, transform.rotation);
+            if (summonTimer < bulletDelay)
+            {
+                if (bullet3 != null)
+                {
+                    if (shootPos2 != null)
+                    {
+                        Instantiate(bullet3, shootPos1.position, transform.rotation);
+                        Instantiate(bullet3, shootPos2.position, transform.rotation);
+                    }
+                    else
+                    {
+                        Instantiate(bullet3, shootPos1.position, transform.rotation);
+                    }
+                }
+                return;
+            }
         }
-        else
-        {
-            Instantiate(bulletToShoot, shootPos1.position, transform.rotation);
-        }
 
-        bulletIndex = (bulletIndex+1)%bullets.Count;
+        if (summoner) summonTimer = 0;
 
-        if(SpecialShot != null && (HP <= maxHP/2))
-        {
+        
             if (shootPos2 != null)
             {
-                Instantiate(SpecialShot, shootPos1.position, transform.rotation);
-                Instantiate(SpecialShot, shootPos2.position, transform.rotation);
+                Instantiate(bulletToShoot, shootPos1.position, transform.rotation);
+                Instantiate(bulletToShoot, shootPos2.position, transform.rotation);
             }
             else
             {
-                Instantiate(SpecialShot, shootPos1.position, transform.rotation);
+                Instantiate(bulletToShoot, shootPos1.position, transform.rotation);
             }
-        }
+
+            bulletIndex = (bulletIndex + 1) % bullets.Count;
+
+            if (SpecialShot != null && (HP <= maxHP / 2))
+            {
+                if (shootPos2 != null)
+                {
+                    Instantiate(SpecialShot, shootPos1.position, transform.rotation);
+                    Instantiate(SpecialShot, shootPos2.position, transform.rotation);
+                }
+                else
+                {
+                    Instantiate(SpecialShot, shootPos1.position, transform.rotation);
+                }
+            }
+        
     }
 
     public void takeDamage(in DamageContext context, IReadOnlyList<EffectInstance> effects)

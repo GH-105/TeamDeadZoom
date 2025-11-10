@@ -2004,6 +2004,30 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2055799986626160665, guid: 9664c0a37cfb01243af663abe5b8f276, type: 3}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 6000525707792629196, guid: 2f0f6429b13a0a241957a76b8f93dbb1, type: 3}
+    - target: {fileID: 2055799986626160665, guid: 9664c0a37cfb01243af663abe5b8f276, type: 3}
+      propertyPath: bullet2
+      value: 
+      objectReference: {fileID: 2989840195807678915, guid: c02dc260002e37d4c8f289a43eae6689, type: 3}
+    - target: {fileID: 2055799986626160665, guid: 9664c0a37cfb01243af663abe5b8f276, type: 3}
+      propertyPath: bullet3
+      value: 
+      objectReference: {fileID: 3559753877454613832, guid: bb97a6e19348b224a9a0389f5f2a2b7b, type: 3}
+    - target: {fileID: 2055799986626160665, guid: 9664c0a37cfb01243af663abe5b8f276, type: 3}
+      propertyPath: summoner
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2055799986626160665, guid: 9664c0a37cfb01243af663abe5b8f276, type: 3}
+      propertyPath: SpecialShot
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2055799986626160665, guid: 9664c0a37cfb01243af663abe5b8f276, type: 3}
+      propertyPath: bulletDelay
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8789024381003558246, guid: 9664c0a37cfb01243af663abe5b8f276, type: 3}
       propertyPath: m_Name
       value: Skeleboss1
