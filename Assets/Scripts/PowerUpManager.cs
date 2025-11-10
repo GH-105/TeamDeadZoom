@@ -15,6 +15,7 @@ public class PowerUpManager : MonoBehaviour
     public int totalAmmo;
     public int Hp;
     public int totalAirDash;
+    public int totaljumpDist;
     public List<EffectInstance> weaponEffects;
 
     public List<GunListings> gunList;
@@ -77,6 +78,16 @@ public class PowerUpManager : MonoBehaviour
         RefreshIfCurrent(index);
     }
 
+    public void ApplyCHDamage(int index, int amount, int distance)
+    {
+        gunList[index].mods.flatDamageMod += amount;
+        RefreshIfCurrent(index);
+
+        totaljumpDist -= distance;
+        gameManager.instance.playerScript.JumpSpeed -= totaljumpDist; ;
+        pstat = true;
+    }
+
     public void ApplyDamageMultiplier(int index, float mult)
     {
         gunList[index].mods.damageMultMod += mult;
@@ -123,6 +134,15 @@ public class PowerUpManager : MonoBehaviour
         pstat = true;
     }
 
+    public void ApplyCHSpeedBonus(int Speed, int amount)
+    {
+        totalSpeed += Speed;
+        Hp -= amount;
+        gameManager.instance.playerScript.Speed += totalSpeed;
+        gameManager.instance.playerScript.HP -= amount;
+        pstat = true;
+    }
+
     public void ApplyJumpInc(int Jump)
     {
         totalJumps += Jump;
@@ -130,12 +150,20 @@ public class PowerUpManager : MonoBehaviour
         pstat = true;
     }
 
+    public void ApplyJumpDistInc(int JumpDist)
+    {
+        totaljumpDist += JumpDist;
+        gameManager.instance.playerScript.JumpSpeed += totaljumpDist; ;
+        pstat = true;
+    }
+
     public void ApplyPstats(playerController player)
     {
         gameManager.instance.playerScript.Speed += totalSpeed;
         gameManager.instance.playerScript.JumpCountMax += totalJumps;
-    }
+        gameManager.instance.playerScript.JumpSpeed += totaljumpDist;
 
+    }
     public (int damage, float rate, int range) CalcGunStats(int index)
     {
         var gun = gunList[index];
