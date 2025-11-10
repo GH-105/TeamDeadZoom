@@ -36,6 +36,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4989738174942039872}
+  - {fileID: 5109373540462794392}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &414055822716468847
@@ -62,6 +63,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbc7609e6469c6a4bb84fc5a631589bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::playerController
+  buttonFunc: {fileID: 3946731967320632944}
   ignoreLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -487,6 +489,54 @@ MonoBehaviour:
   lockVertMin: -90
   lockVertMax: 90
   invertY: 0
+--- !u!1 &4184562308804420668
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5109373540462794392}
+  - component: {fileID: 3946731967320632944}
+  m_Layer: 0
+  m_Name: Button Functions (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5109373540462794392
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4184562308804420668}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -26.991669, y: 9.096924, z: 492.875}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2872772835046557756}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3946731967320632944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4184562308804420668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f64cdcf64a86945b74c648a06e93c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::buttonFunctions
+  pistol: {fileID: 11400000, guid: 095db638ab357c84c8e239f9c40738f3, type: 2}
+  shotgun: {fileID: 11400000, guid: f8d017855c1053f4193af54ea3269d72, type: 2}
+  rifle: {fileID: 11400000, guid: ec2b8cb7090e966429003867cbeae88a, type: 2}
+  SMG: {fileID: 11400000, guid: ef0be0ea3eb101641891cdd15b48fa5a, type: 2}
 --- !u!1 &5175435172361694362
 GameObject:
   m_ObjectHideFlags: 0

@@ -93,4 +93,11 @@ public class StopWatch : MonoBehaviour
         PlayerPrefs.DeleteKey(sceneKey);
        
     }
+    public void SaveTimeToSaveManager() // ill need later
+    {
+        if (currentTime < 0f) return;
+        StopStopwatch();
+
+        SaveManager.UpdateBestTime(SceneManager.GetActiveScene().name, currentTime);
+    }
 }

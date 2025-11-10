@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Lava
   duration: 0.35
   tickInterval: 2
-  stackPolicy: 1
+  stackPolicy: 2
   combineMode: 0
-  maxStacks: 1
-  aggregateTicks: 0
+  maxStacks: 2
+  aggregateTicks: 1

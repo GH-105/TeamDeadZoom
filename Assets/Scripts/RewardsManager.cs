@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Threading;
 
 public class RewardsManager : MonoBehaviour
 {
@@ -24,8 +25,9 @@ public class RewardsManager : MonoBehaviour
     public void WinRewards()
     {
         GameData data = SaveManager.LoadGame();
-        
-        if(data == null)
+        StopWatch.instance.UpdateBestTime();
+
+        if (data == null)
         {
             Debug.Log("No save data found!");
             return;
@@ -54,7 +56,7 @@ public class RewardsManager : MonoBehaviour
         }
         else
         {
-            gameManager.instance.currentTimeText.text = "Current Time: —";
+            gameManager.instance.currentTimeText.text = $"Current Time: {levelTime.currentTime:F2}s";
             gameManager.instance.bestTimeText.text = "Best Time: —";
             gameManager.instance.outcomeText.text = $"You won {data.lastLevelCompleted}";
         }
@@ -102,11 +104,18 @@ public class RewardsManager : MonoBehaviour
         }
         if (levelTime != null)
         {
+            Debug.Log("test 1 lose");
             gameManager.instance.currentTimeText.text = $"Current Time: {levelTime.currentTime:F2}s";
             gameManager.instance.bestTimeText.text = $"Best Time: {levelTime.bestTime:F2}s";
         }
+        else
+        {
+            gameManager.instance.currentTimeText.text = $"Current Time: {StopWatch.instance.currentTimeText.text}";
+            gameManager.instance.bestTimeText.text = $"Best Time: {StopWatch.instance.saveTimeText.text}";
+            gameManager.instance.outcomeText.text = $"You Lost {data.lastLevelCompleted}";
+        }
 
-        gameManager.instance.coinsGainedText.text = $"Coines Gained: {data.coins}";
+        gameManager.instance.coinsGainedText.text = $"Coins Gained: {data.coins}";
         gameManager.instance.soulsGainedText.text = $"Souls Gained: {data.souls}";
 
         gameManager.instance.rewardsPanel.SetActive(true);

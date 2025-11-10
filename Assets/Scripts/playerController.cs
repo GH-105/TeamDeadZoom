@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections.Generic;
 public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageReceiver
 {
+    [SerializeField] private buttonFunctions buttonFunc;
     [SerializeField] LayerMask ignoreLayer;
     [SerializeField] LayerMask aimMask;
     [SerializeField] CharacterController controller;
@@ -288,6 +289,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
         updatePlayerUI();
         if (HP <= 0f)
         {
+         //   buttonFunc.SaveGame();
             gameManager.instance.youLose();
         }
     }
