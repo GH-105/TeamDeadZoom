@@ -2315,15 +2315,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c67c6c9d2ff66204fad5d9c2e1304723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Damage
-  type: 2
+  moveType: 0
+  zoneType: 0
+  zoneEffect: {fileID: 0}
+  zoneMagnitude: 1
   rb: {fileID: 4036505411179803889}
   projModel: {fileID: 0}
+  shooter: {fileID: 0}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 0
+  telegraphPrefab: {fileID: 0}
   damageAmount: 1
   damageRate: 3
   speed: 0
   destroyTime: 0
   flightTime: 0
   playerInDot: {fileID: 0}
+  damageEffects: []
+  _initialized: 0
 --- !u!135 &8164337151338151820
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3589,6 +3599,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2940759203593189872}
+  - component: {fileID: 1111624449379167547}
   - component: {fileID: 938946169183734435}
   - component: {fileID: 4076957335237542787}
   - component: {fileID: 3459307900560266884}
@@ -3620,6 +3631,18 @@ Transform:
   - {fileID: 5608704473772658103}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1111624449379167547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8280288797637250008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7aa2f998775cde46bedc4f85384b293, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::statusController
 --- !u!95 &938946169183734435
 Animator:
   serializedVersion: 7
@@ -3668,7 +3691,16 @@ MonoBehaviour:
   shootPos1: {fileID: 2578810467199060579, guid: e7aca7b06b595c845bc0d6febaecfb6a, type: 3}
   shootPos2: {fileID: 0}
   bullet: {fileID: 6207780247886573495, guid: 57c1c19ebb6e8ad4bb351a006e3dc17d, type: 3}
+  bullet2: {fileID: 0}
+  bullet3: {fileID: 0}
+  SpecialShot: {fileID: 0}
   shootRate: 9999
+  enemyBulletDamage: 0
+  enemyBulletSpeed: 0
+  enemyEffects: []
+  player: {fileID: 0}
+  summoner: 0
+  bulletDelay: 1
   floatingTextPrefab: {fileID: 5749133604472977256, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
   thisRoom: {fileID: 0}
   HpSlider: {fileID: 9010166462517473699, guid: e7aca7b06b595c845bc0d6febaecfb6a, type: 3}

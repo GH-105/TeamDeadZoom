@@ -202,20 +202,9 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
 
         List<GameObject> bullets = new List<GameObject>();
 
-        if(bullet != null)
-        {
-            bullets.Add(bullet);
-        }
-
-        if (bullet2 != null)
-        {
-            bullets.Add(bullet2);
-        }
-
-        if (bullet3 != null)
-        {
-            bullets.Add(bullet3);
-        }
+        if (bullet != null) bullets.Add(bullet);
+        if (bullet2 != null) bullets.Add(bullet2);
+        if (bullet3 != null) bullets.Add(bullet3);
 
         GameObject bulletToShoot = bullets[bulletIndex];
 
@@ -227,12 +216,12 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
                 {
                     if (shootPos2 != null)
                     {
-                        Instantiate(bullet3, shootPos1.position, transform.rotation);
-                        Instantiate(bullet3, shootPos2.position, transform.rotation);
+                        SpawnAndInit(bullet3, shootPos1);
+                        SpawnAndInit(bullet3, shootPos2);
                     }
                     else
                     {
-                        Instantiate(bullet3, shootPos1.position, transform.rotation);
+                        SpawnAndInit(bullet3, shootPos1);
                     }
                 }
                 return;
@@ -244,12 +233,12 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
         
             if (shootPos2 != null)
             {
-                Instantiate(bulletToShoot, shootPos1.position, transform.rotation);
-                Instantiate(bulletToShoot, shootPos2.position, transform.rotation);
+                SpawnAndInit(bulletToShoot, shootPos1);
+                SpawnAndInit(bulletToShoot, shootPos2);
             }
             else
             {
-                Instantiate(bulletToShoot, shootPos1.position, transform.rotation);
+                SpawnAndInit(bulletToShoot, shootPos1);
             }
 
             bulletIndex = (bulletIndex + 1) % bullets.Count;
@@ -258,12 +247,12 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
             {
                 if (shootPos2 != null)
                 {
-                    Instantiate(SpecialShot, shootPos1.position, transform.rotation);
-                    Instantiate(SpecialShot, shootPos2.position, transform.rotation);
-                }
+                SpawnAndInit(SpecialShot, shootPos1);
+                SpawnAndInit(SpecialShot, shootPos2);
+            }
                 else
                 {
-                    Instantiate(SpecialShot, shootPos1.position, transform.rotation);
+                    SpawnAndInit(SpecialShot, shootPos1);
                 }
             }
         
@@ -367,11 +356,9 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
         }
     }
 
-    private void SpawnFrom(Transform shootPos)
+    private void SpawnAndInit(GameObject bullet, Transform spawn)
     {
-        if (!shootPos) return;
-
-        var go = Instantiate(bullet, shootPos.position, transform.rotation);
+        var go = Instantiate(bullet, spawn.position, transform.rotation);
 
         var dmg = go.GetComponent<Damage>();
         if (dmg != null)
@@ -383,17 +370,17 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
                 effects: enemyEffects
                 );
 
-            if (enemyEffects != null)
+            if (dmg.damageEffects != null)
             {
-                foreach (var inst in dmg.damageEffects)
+                for (int i = 0; i < dmg.damageEffects.Count; i++)
                 {
-                    if (inst.effect is ExplosiveEffect ex)
+                    var eff = dmg.damageEffects[i].effect;
+                    if (eff is ExplosiveEffect ex)
                     {
-                        var targetPos = player ? player.position : (shootPos.position + shootPos.forward * 8f);
+                        Vector3 targetPos = gameManager.instance.player.transform.position;
                         dmg.ArmExplosive(targetPos, ex.Radius);
                         break;
                     }
-                    
                 }
             }
         }

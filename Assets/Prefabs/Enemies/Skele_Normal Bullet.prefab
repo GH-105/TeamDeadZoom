@@ -1343,6 +1343,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1006130498234724920}
+  - component: {fileID: 6004681240080931759}
   - component: {fileID: 6417068116904493215}
   - component: {fileID: 4154960501923803631}
   - component: {fileID: 3305314079921438648}
@@ -1375,6 +1376,18 @@ Transform:
   - {fileID: 5618857981384909860}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6004681240080931759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2989840195807678915}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7aa2f998775cde46bedc4f85384b293, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::statusController
 --- !u!114 &6417068116904493215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1401,7 +1414,16 @@ MonoBehaviour:
   shootPos1: {fileID: 2880678300974847815}
   shootPos2: {fileID: 0}
   bullet: {fileID: 6207780247886573495, guid: 6b49c58a982ffe04c8f2896cea4bc752, type: 3}
+  bullet2: {fileID: 0}
+  bullet3: {fileID: 0}
+  SpecialShot: {fileID: 0}
   shootRate: 1.5
+  enemyBulletDamage: 0
+  enemyBulletSpeed: 0
+  enemyEffects: []
+  player: {fileID: 0}
+  summoner: 0
+  bulletDelay: 1
   floatingTextPrefab: {fileID: 5749133604472977256, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
   thisRoom: {fileID: 0}
   HpSlider: {fileID: 3283754933895945452}
