@@ -85,13 +85,16 @@ public class room : MonoBehaviour
         if (!state)
         {
             StartCoroutine(showDoorMessage());
-            Debug.Log("door open!");
         }
         if (playerFinishTime < eventTime)
         {
-            hiddenDoor.SetActive(state);
+            
             if(!hiddenDoor)
+            {
+                hiddenDoor.SetActive(state);
                 StartCoroutine(showDoorMessage());
+            }    
+                
         }
     }    
 

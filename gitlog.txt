@@ -1,0 +1,251 @@
+*   cc880fd (HEAD -> main, origin/main, origin/HEAD) Merge branch 'main' of https://github.com/GH-105/TeamDeadZoom
+|\  
+| * ac9fe6b fixing enemy modifiers
+| * 5108d6b (origin/gameTweaks1-fessler, gameTweaks1-fessler) level 3 added rooms
+* | 1d89636 lvlv 1
+|/  
+*   47161ef Merge branch 'main' of https://github.com/GH-105/TeamDeadZoom
+|\  
+| *   51526c7 Merge branch 'main' of https://github.com/GH-105/TeamDeadZoom
+| |\  
+| | *   a3e00ec Merge branch 'main' of https://github.com/GH-105/TeamDeadZoom
+| | |\  
+| | * | f59768f found lvl2
+| * | | 6bc7e5d status effects finally fixed
+* | | | 5625639 commit
+| |_|/  
+|/| |   
+* | | 14e3d5f lvl1 so far
+* | | f09de7a modifiers done + jump distance increase
+* | |   cde09ba Merge branch 'gameTweaks1-fessler'
+|\ \ \  
+| |/ /  
+|/| |   
+| * | 3e85e3c more stuff that didnt commit
+| * | 00d9250 Merge branch 'main' into gameTweaks1-fessler
+| |\| 
+| * | b656730 tutorial Level implemented
+* | |   94e2a6f Merge branch 'Underwater-Enemies'
+|\ \ \  
+| |_|/  
+|/| |   
+| * | 42d99cc (origin/Underwater-Enemies, Underwater-Enemies) tryna fix poison and explosions still
+| * |   653f2b7 Merge branch 'main' into Underwater-Enemies
+| |\ \  
+| * \ \   83ba209 Merge branch 'main' into Underwater-Enemies
+| |\ \ \  
+| * | | | 97ab590 stuff changed enemy AI working on getting their status effects working
+| * | | |   355eeca Merge branch 'main' into Underwater-Enemies
+| |\ \ \ \  
+* | | | | | df919df SharkBossProgress
+| |_|_|/ /  
+|/| | | |   
+* | | | |   957bc9a Merge branch 'main' of https://github.com/GH-105/TeamDeadZoom
+|\ \ \ \ \  
+| | |_|_|/  
+| |/| | |   
+| * | | | f1aaa9a tutorial level done but not clickable
+| | |_|/  
+| |/| |   
+* / | | aa0959c Update shark_modeling.prefab
+|/ / /  
+* | |   30063eb Merge branch 'SharkBoss'
+|\ \ \  
+| * | | e07e0a2 (origin/SharkBoss) Shark stuff
+| | |/  
+| |/|   
+* | | e949454 enemyai class
+* | | 579e28f soul shop connected
+* | |   a6d4aae Merge branch 'main' into gameTweaks1-fessler
+|\ \ \  
+| * | | 72ef66f adding enemy AI change
+* | | | d70a06c save update
+|/ / /  
+* | | e79ff46 skeleboss
+* | |   8023d74 Merge branch 'main' of https://github.com/GH-105/TeamDeadZoom
+|\ \ \  
+| * | | cb92c12 soul shop
+| |/ /  
+* / / 7ef8cea test
+|/ /  
+* |   77a1f54 Merge branch 'gameTweaks1-fessler'
+|\ \  
+| * | bbfde51 coin shop implemented and pushed
+| | | * d198ece (origin/PlayerModel) Playermodel
+| | | * 932c74f Missing lvl2
+| |_|/  
+|/| |   
+| | | * 719f4db (refs/stash) On Underwater-Enemies: !!GitHub_Desktop<Underwater-Enemies>
+| | |/| 
+| | | * 7a335cd index on Underwater-Enemies: d46b25b Merge branch 'main' into Underwater-Enemies
+| | |/  
+| | *   d46b25b Merge branch 'main' into Underwater-Enemies
+| | |\  
+| |_|/  
+|/| |   
+* | |   f5b4908 Merge branch 'Level2Blockout'
+|\ \ \  
+| |/ /  
+|/| |   
+| * | 0825eec Lvl2 Blockout
+* | |   d4bb9b1 i think this is imported from main
+|\ \ \  
+| * | | 8555c37 fixed reward door bug
+* | | | 2fee9fc finished implementing most of what i wrote last night
+* | | |   3d00a9a Merge branch 'main' into gameTweaks1-fessler
+|\ \ \ \  
+| | |/ /  
+| |/| |   
+* | | | 6866adb souls, results screen, coin shop
+| | | * 7d66aa9 Organized prefabs and added fish
+| | |/  
+| | * 6b39264 So close
+| | * 34aff21 Traps work
+| | * 978152c Merge branch 'Player-Projectiles-&-Modifiers'
+| |/| 
+| | * 87f5b2d (origin/Player-Projectiles-&-Modifiers, Player-Projectiles-&-Modifiers) Some of the same weapon stuff
+| | * 7853d44 Create Damage Types.meta
+| | * ba73251 Weapon Projectiles, Effects & Modifiers implemented
+| * | 34e0783 Merge branch 'EnemyModels'
+|/| | 
+| * | 0b6cb43 (origin/EnemyModels) Enemy models
+* | | d0cc162 door open pops up when door opens
+| |/  
+|/|   
+* | fc07b55 Spike trap prefab+assets
+|/  
+* 17efb45 lvl 2 projectile bugfix
+* 6807f1d Bugfix
+*   332df02 Merge branch 'Title-and-menu-screen'
+|\  
+| * e08e96d (origin/Title-and-menu-screen, Title-and-menu-screen) Title Screen
+* | afad877 Air dash should be perfect now
+* | c8b1afe Assets/coins
+* | ecce9b3 changes my test scene
+* | d14ac48 air dash works as intended
+* |   5139a7d Merge branch 'Air-dash'
+|\ \  
+| * | 607dcb0 (origin/Air-dash) Update GabrielTest.unity
+| * | f6de961 dash now functions
+| * | 31bd7b2 Air dash start
+* | |   c80015c Merge branch 'PotionsUpdate'
+|\ \ \  
+| * | | 9c1854b (origin/PotionsUpdate, PotionsUpdate) potions tested and clamped to max hp
+| | |/  
+| |/|   
+| * | 204a887 Potions Updated
+| |/  
+* / 8d08fae (origin/Level-2-Blockout, Level-2-Blockout) Level 2 Blockout complete
+|/  
+* 4db845d Level 1 with walls =)
+*   0e1cc6f resolving issue
+|\  
+| *   57f3d6d Merge branch 'gameTweaks1-fessler'
+| |\  
+| | * 63edff6 save game works on pause menu
+| * | 2972e4b Update Skele_Thrower.prefab
+| * | 134121f Merge branch 'main' into Player-Projectiles-&-Modifiers
+| |\| 
+| | * ca3867a (origin/EnemyHealthBars, EnemyHealthBars) HP Bar Bugfixes
+| | * 14cb6c9 Finished
+| * | 175fdf1 Damage changes (in progress)
+| |/  
+| * 1788ddf a couple projectile fixes
+| * f9de8d3 updated small things
+| * ea2813b Projectile Modifiers nearly finished
+* | e7dd19d now walls
+|/  
+*   9cb7381 (origin/Level-1-Blockout-branch) Merge branch 'Underwater-Movement-&-Destroy-enemy-projectiles'
+|\  
+| * b581825 (origin/Underwater-Movement-&-Destroy-enemy-projectiles, Underwater-Movement-&-Destroy-enemy-projectiles) Underwater Movement Implemented!
+| * 3a9e238 Underwater movement partially implemented
+* | 398ad99 Revert "test/water"
+* | a47ec11 test/water
+* | ad779ae platforms done
+|/  
+* 0a403e4 not sure why so many files are changed but i fixed reload anim i hope
+* 1bbb5f4 ok now should be updated??
+* a5a11bb fixed reload animation
+* afeb396 added some animation to reload
+* 0def9d5 Reload text
+* 925427b level 1
+* c9448bc fixed level 1 checkpoint
+* 792bb3f linked the times
+* b6ae7a4 save times in
+* 2ddec38 fixed hearts size and make DOT1 for lava
+* ef02b76 Finished level 3 layout
+*   cb0a484 Merge branch 'main' of https://github.com/GH-105/TeamDeadZoom
+|\  
+| * 1c65d21 (origin/Powerup-Refactor, Powerup-Refactor) Pushed Build To GitHub
+| * 953ea15 fixed audio
+* | ccf317c Level 3 started
+|/  
+*   709db18 Merge branch 'main' of https://github.com/GH-105/TeamDeadZoom
+|\  
+| *   33e2c5f Merge branch 'gameTweaks1-fessler'
+| |\  
+| | * 6aa2194 boss health balance
+| * | 386f134 Merge branch 'main' of https://github.com/GH-105/TeamDeadZoom
+| |\| 
+| * | ec914c9 changes
+* | | 0c394d0 thank goodness
+| |/  
+|/|   
+* | 304abb1 Update playerController.cs
+* | edb9222 Pushed level updates
+|/  
+* d58bbe6 Level 2 spawners, powerups, weapon select
+* 45d4b0e Revert "Syncing, fixing bugs/polish"
+* c628ac2 Syncing, fixing bugs/polish
+* 24f430e more balance stuff
+* 8a0ed90 updated some power ups
+* 53d0423 syncing
+* 6939b9a player respawn works
+* 9a7eb73 Fixed 3rd room & fixing weapon select
+* 5840e20 Enemy Spawners working
+* bf5211e shotgun update
+* c312cb5 Room implementation complete
+* 00d396e level 1
+* ef29066 Level design/room script
+*   887d3e8 Merge branch 'main' of https://github.com/GH-105/TeamDeadZoom
+|\  
+| * 364bf17 audio
+* | f321b07 room started, test push
+|/  
+* cf1a43c Powerup carryover + restart fix + gun powerups
+* 27fc21f Upgrades Implemented
+* 6c6ecb5 Framework for gun power ups
+* 747ce42 Level up Carryout
+* b04fadd Fixed scenes & level select
+* e9dde2c new level files
+* 9d0d0db UI/Level Select/Weapons/Animations
+* 25dc802 (origin/Timer-Fessler) timer works
+* af39260 (origin/testRun) hearts no longer throws a S#! ton of errors in either scene
+* 038e0d2 added more hearts
+*   b0c43fd Merge branch 'hearts'
+|\  
+| * 7cf0783 (origin/hearts/floatingHitDamage-Fessler) Update playerController.cs
+| * 93d8022 hearts
+* | 31239a9 (origin/FloatingHitDamage-Fessler) floating hit damage
+|/  
+| * 67f6096 (origin/Modified-hidden-door, Modified-hidden-door) #RecordPlayerTime - Track player time explicity #Seperated Door logic into methods for flexibility #Updated UpdateRoomGoal method #Added Debug Logging
+|/  
+* 66ca985 (origin/10/11-Fessler) Deleted random cloned enemy & redundant code
+* bea5d16 Pushing Build
+* 6de9146 Finishing up
+* 12bc9f9 Power Ups Work!!!!!!!
+* c82239d Bullets, Room Completion
+* 82c7452 added lava level
+* 74dd7b8 (origin/10/8-Fessler, 10/8-Fessler) load level added to button functions
+* db90955 (origin/Enemy-Movement-and-spawning, Enemy-Movement-and-room-completion) Enemy Movement
+* 404be82 The skeleton can die now
+* 6868ade looks like an uncommitted change
+* 94ec8e9 (origin/Level-&-Upgrade-UI, Level-&-Upgrade-UI) EnemyAI Controller + Room Structure + Level Design
+* 421ac99 Level Design
+* 0dcaa40 (origin/GabrielTestBranch) item interaction
+* 04cb940 Test
+* 06b4f2a Raycast set up. Layers set up.
+* 3ed6570 (origin/10/5-Fessler, 10/5-Fessler) Ui menu set up
+* 7ca4267 (origin/Armstrong_Player&CameraControl) Player controller, Idamage & camera controller implemented
+* 7ab0054 Level Design/Git Testing
+* 8a0e142 Initial commit

@@ -1,0 +1,440 @@
+commit ac9fe6be392728864da42d53046a6908a7145209
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Sun Nov 9 23:47:31 2025 -0500
+
+    fixing enemy modifiers
+
+commit 51526c7f25873944a0439c5a4ebab048b334530b
+Merge: 6bc7e5d a3e00ec
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Sun Nov 9 23:29:28 2025 -0500
+
+    Merge branch 'main' of https://github.com/GH-105/TeamDeadZoom
+
+commit 6bc7e5d6af3531c1e8c75a58e5d12232433aeaa8
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Sun Nov 9 23:29:17 2025 -0500
+
+    status effects finally fixed
+
+commit 94e2a6fcfe5311fb54715c91ca1d11ec9c87bc89
+Merge: df919df 42d99cc
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Sun Nov 9 23:03:11 2025 -0500
+
+    Merge branch 'Underwater-Enemies'
+
+commit 42d99cc17945620bdd0e5efae193dc7cfb4f620c
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Sun Nov 9 23:02:43 2025 -0500
+
+    tryna fix poison and explosions still
+
+commit 653f2b7b31b37479548048411a5414edb1c5dce8
+Merge: 83ba209 957bc9a
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Sun Nov 9 22:43:49 2025 -0500
+
+    Merge branch 'main' into Underwater-Enemies
+
+commit 83ba209958f666297aced1993ac7ba5c11699c7d
+Merge: 97ab590 30063eb
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Sun Nov 9 22:24:54 2025 -0500
+
+    Merge branch 'main' into Underwater-Enemies
+
+commit 97ab5908b0b10493376273aa4f7080cbd61fe61e
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Sun Nov 9 22:20:08 2025 -0500
+
+    stuff changed enemy AI working on getting their status effects working
+
+commit 355eeca76123edec7c36ae5e0c5b08d4d892c2de
+Merge: d46b25b 77a1f54
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Sun Nov 9 17:39:09 2025 -0500
+
+    Merge branch 'main' into Underwater-Enemies
+
+commit d46b25b0a67d650d403629b28d37043e3d8ab147
+Merge: 7d66aa9 f5b4908
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Sun Nov 9 16:54:04 2025 -0500
+
+    Merge branch 'main' into Underwater-Enemies
+
+commit 8555c37192a9973604ab226c3a027f1d496aa50b
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Sun Nov 9 15:12:20 2025 -0500
+
+    fixed reward door bug
+
+commit 7d66aa96c3b9b165d2fe53907d4dc0b89143c2ed
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Sun Nov 9 14:35:07 2025 -0500
+
+    Organized prefabs and added fish
+    
+    just some organization and assets added
+
+commit 978152cc2a86d1de8a71c09bc2c34b2bab99a4f0
+Merge: 34e0783 87f5b2d
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Sun Nov 9 05:53:04 2025 -0500
+
+    Merge branch 'Player-Projectiles-&-Modifiers'
+
+commit 87f5b2dfb7a610f6a1bd264cededed7beaa4e9a6
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Sun Nov 9 05:45:19 2025 -0500
+
+    Some of the same weapon stuff
+
+commit 7853d44fe3f8262918ac74327417315792aada84
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Sun Nov 9 05:43:00 2025 -0500
+
+    Create Damage Types.meta
+
+commit ba7325176aa5d6a4254b18045e7f2211abe5283a
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Sun Nov 9 05:41:56 2025 -0500
+
+    Weapon Projectiles, Effects & Modifiers implemented
+    
+    Implemented the weapon mods, various effects life dots and added them to the spell bottle prefab, enemies also use the same projectile mods so we can very easily give enemies dot dmg on hit, etc.
+
+commit 17efb45d8c25a7d0cb927b2c59a9bd5c504c155c
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Sat Nov 8 14:42:54 2025 -0500
+
+    lvl 2 projectile bugfix
+
+commit 6807f1d014f8c31fb43dd0037251269eceb0bb1d
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Sat Nov 8 14:24:48 2025 -0500
+
+    Bugfix
+    
+    Fixed a menu routing bug that was preventing pause menu from opening
+
+commit 332df028baedf273a6ae9f46bc8d403443dd1867
+Merge: afad877 e08e96d
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Sat Nov 8 13:54:53 2025 -0500
+
+    Merge branch 'Title-and-menu-screen'
+
+commit c80015c8dd1631e15dea82a6d778c5ac0508f00f
+Merge: 8d08fae 9c1854b
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Sat Nov 8 00:00:26 2025 -0500
+
+    Merge branch 'PotionsUpdate'
+
+commit 9c1854bda959ccaa3cf7c4dfdf990c8238bdb7f0
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Sat Nov 8 00:00:08 2025 -0500
+
+    potions tested and clamped to max hp
+
+commit 8d08fae8cb83863312c25d223b52157441369e60
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Fri Nov 7 23:38:57 2025 -0500
+
+    Level 2 Blockout complete
+    
+    Completed Level 2 Blockout. Also added in some prefabs for us to use in the future.
+
+commit 2972e4b94ce1293a83c508bf9118e6d5365abaec
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Thu Nov 6 21:47:27 2025 -0500
+
+    Update Skele_Thrower.prefab
+
+commit 134121f3008553406389512f641fe16269139ca5
+Merge: 175fdf1 ca3867a
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Thu Nov 6 21:06:23 2025 -0500
+
+    Merge branch 'main' into Player-Projectiles-&-Modifiers
+
+commit ca3867a1eaf670140e9ff39e808a5a9f106f0679
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Thu Nov 6 21:03:17 2025 -0500
+
+    HP Bar Bugfixes
+    
+    Fixed a couple bugs
+
+commit 175fdf1c417468faa7f6df081b71fee67574fce2
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Thu Nov 6 19:36:43 2025 -0500
+
+    Damage changes (in progress)
+
+commit 1788ddfbf7b8c9e52584b0c299260a5f92f6efba
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Thu Nov 6 15:29:31 2025 -0500
+
+    a couple projectile fixes
+
+commit f9de8d366b541b6e1fa754a58bba38f65e0e6979
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Thu Nov 6 15:17:24 2025 -0500
+
+    updated small things
+
+commit ea2813bde647ff37160f439f9371b831b7996651
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Thu Nov 6 15:12:33 2025 -0500
+
+    Projectile Modifiers nearly finished
+    
+    Almost done, just getting the projectiles to go toward the correct rotation, then I'll be implementing different modifier types.
+
+commit 9cb738134b6f3286a6d6e7a8c90f1c8455bd608d
+Merge: 398ad99 b581825
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Thu Nov 6 12:18:52 2025 -0500
+
+    Merge branch 'Underwater-Movement-&-Destroy-enemy-projectiles'
+
+commit 398ad99f9aca0a1745961f109ef5ca60b616b62e
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Thu Nov 6 12:17:46 2025 -0500
+
+    Revert "test/water"
+    
+    This reverts commit a47ec11c7a3324dfb9006ba1714bea3878ae1015.
+
+commit b581825c4ad3d85c2ac8b6d5c36338b1f933d470
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Thu Nov 6 00:21:46 2025 -0500
+
+    Underwater Movement Implemented!
+    
+    Got underwater movement settings in, just waiting for someone to test it then we can merge to main.
+
+commit 3a9e23819f8b917f0bf9095ccc5236e2ed2743a9
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Wed Nov 5 21:39:38 2025 -0500
+
+    Underwater movement partially implemented
+    
+    Taking a little break, brain not working fully I guess. Unsure where to put the code to adjust player's movement stats whenever they enter water. Update wasn't working because it disabled sprint.
+
+commit 1c65d21ba0bdbf3922f14d389bc0cb643f64dfd9
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Thu Oct 23 14:08:44 2025 -0400
+
+    Pushed Build To GitHub
+
+commit 709db18b916343ebce5968bd1f6c8be0f8afebb1
+Merge: 0c394d0 33e2c5f
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Thu Oct 23 10:37:44 2025 -0400
+
+    Merge branch 'main' of https://github.com/GH-105/TeamDeadZoom
+
+commit 0c394d0c87516535ca7dd24f5d435b5c328b83fa
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Thu Oct 23 10:37:40 2025 -0400
+
+    thank goodness
+    
+    powerups fixed hallelujah
+
+commit 304abb14c29474ac609eddab4c4b01c4622dfb18
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Thu Oct 23 09:55:33 2025 -0400
+
+    Update playerController.cs
+
+commit edb9222c11f813bc1d7629e932fc85be3050f196
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Thu Oct 23 09:40:18 2025 -0400
+
+    Pushed level updates
+    
+    Levels updated, some small bugs fixed
+
+commit d58bbe684aac247c4ccb8600d1edd2f10c97fabc
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Thu Oct 23 08:56:35 2025 -0400
+
+    Level 2 spawners, powerups, weapon select
+
+commit 45d4b0e9d5640fa51a937949cd73c3ed7bcc6148
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Thu Oct 23 07:50:37 2025 -0400
+
+    Revert "Syncing, fixing bugs/polish"
+    
+    This reverts commit c628ac29a78297cf975b1335a239936fedba6b42.
+
+commit c628ac29a78297cf975b1335a239936fedba6b42
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Thu Oct 23 07:41:14 2025 -0400
+
+    Syncing, fixing bugs/polish
+
+commit 53d0423986798271c9ec92065f8e2408cecf9355
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Thu Oct 23 06:29:19 2025 -0400
+
+    syncing
+    
+    push it real good
+
+commit 9a7eb734e39f5000466d17cc2cd4f6d01d3b1cbf
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Thu Oct 23 06:24:52 2025 -0400
+
+    Fixed 3rd room & fixing weapon select
+
+commit 5840e2088539530253d39fd2e18cfd96c9c7a003
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Thu Oct 23 05:34:01 2025 -0400
+
+    Enemy Spawners working
+    
+    Bugs fixed, finishing up level design stuff, enemy placement. Powerup bug fixed.
+
+commit c312cb5a231ff4b5618c207d3b0f4ad410d694e0
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Thu Oct 23 04:01:30 2025 -0400
+
+    Room implementation complete
+    
+    Rooms and spawners implemented, few more bugs to fix
+
+commit ef29066c3b911285bc8b5949bb158e971fe2c477
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Thu Oct 23 03:09:04 2025 -0400
+
+    Level design/room script
+    
+    Updated some level design and partially implemented rooms
+
+commit 887d3e8510154a78cc595dca5a77d5b93522e27b
+Merge: f321b07 364bf17
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Thu Oct 23 02:36:06 2025 -0400
+
+    Merge branch 'main' of https://github.com/GH-105/TeamDeadZoom
+
+commit f321b07fd19a1b50a7bf2a0a275f639406398c90
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Thu Oct 23 02:35:43 2025 -0400
+
+    room started, test push
+
+commit 27fc21f58c950ecce8f6ed8808d1525b2e0554f4
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Wed Oct 22 23:27:05 2025 -0400
+
+    Upgrades Implemented
+    
+    Moved all weapon logic to the UpgradeManager to save weapons/upgrades across scenes.
+
+commit b04faddaaf6a36775dc8f5ddab1f6d783a1fc0b1
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Tue Oct 21 18:17:05 2025 -0400
+
+    Fixed scenes & level select
+    
+    Fixed bug with level select not working properly. Removed some random garbage scenes and renamed scenes appropriately.
+
+commit 9d0d0dbffc1b526e2a5aa723d617c3f3e6165aba
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Mon Oct 20 23:58:16 2025 -0400
+
+    UI/Level Select/Weapons/Animations
+    
+    -Added Ammo UI element
+    -Added checkpoints
+    -Added weapons and gunstats
+    -Added level select menu
+    -Added weapon select menu (not working)
+    -Added some particle effects to player/enemy
+    -Set up enemy attack animation (thrown projectile)
+
+commit 66ca9854b8681ec0aca47d5e1e66a0d4cf7e58bf
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Thu Oct 9 15:30:12 2025 -0400
+
+    Deleted random cloned enemy & redundant code
+
+commit bea5d16d09a6f1958826fdc45d3fadd1792b9756
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Thu Oct 9 14:43:54 2025 -0400
+
+    Pushing Build
+    
+    build was ignored
+
+commit 6de9146711d74083ab3b752358307f9f443b3b86
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Thu Oct 9 04:42:01 2025 -0400
+
+    Finishing up
+    
+    Changed some enemy behaviors, adjusted HP for a more gradual increase in difficulty (hopefully). Created new enemy types. Set up level order and build.
+
+commit c82239dd416e58a7c8e1a14b3a7157538244213f
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Thu Oct 9 00:26:48 2025 -0400
+
+    Bullets, Room Completion
+    
+    Got the enemies shooting bullets, fixed skeleton so the entire body flashes red, put some in places, rooms open and flash menu as the last enemy in each room is killed. Win menu only shown when last room is completed.
+
+commit db90955f3fd2f3495904e2276c6daf0adde20608
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Tue Oct 7 22:09:10 2025 -0400
+
+    Enemy Movement
+    
+    Enemy Movement working. Will refine tomorrow with information from new lecture. Melee too complicated. Going to instead shoot projectiles from center mass at idle animation until we can transition to melee enemies.
+
+commit 94ec8e93e72aa7769c7cce0e312581f46f6b7768
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Mon Oct 6 15:29:26 2025 -0400
+
+    EnemyAI Controller + Room Structure + Level Design
+    
+    Added to level design, feel free to change whatever. Implemented Enemy AI and attached script to skeleton. Put each room in separate hierarchy and added box colliders to each room for room specific triggers and variable tracking within each room, also to target the doors/walls from each room individually
+
+commit 421ac99309bdf8e73d78d43bfb38fcdb1b74f0f6
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Mon Oct 6 13:38:28 2025 -0400
+
+    Level Design
+    
+    Outlined design of level
+
+commit 06b4f2a44d81133416fd34697152c46ae4e1b1cc
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Sun Oct 5 20:05:51 2025 -0400
+
+    Raycast set up. Layers set up.
+    
+    Added layers and layered player and enemy appropriately. Finished ray cast setup, and finished function for the player to take damage. Gave enemy a collider to test.
+
+commit 7ca42670993ff77bee0c56fbca36f178377ca961
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Sun Oct 5 15:22:49 2025 -0400
+
+    Player controller, Idamage & camera controller implemented
+    
+    Implemented player controller, created IDamage interface script, and camera controller. Player movement working. Added some simple assets and created a single room to run around in.
+
+commit 7ab0054a445ca63d8938b2f77ea08822c9b7bf64
+Author: David <davidarmstrong0925@gmail.com>
+Date:   Sun Oct 5 01:15:47 2025 -0400
+
+    Level Design/Git Testing
+    
+    Just branching and making sure I cloned the repo properly, threw in some cubes for level
