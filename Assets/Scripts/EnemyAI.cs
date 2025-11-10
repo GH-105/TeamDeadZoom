@@ -206,6 +206,8 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
         if (bullet2 != null) bullets.Add(bullet2);
         if (bullet3 != null) bullets.Add(bullet3);
 
+        if (bullets.Count == 0) return;
+
         GameObject bulletToShoot = bullets[bulletIndex];
 
         if (summoner && (bulletIndex == 0 || bulletIndex == 1))

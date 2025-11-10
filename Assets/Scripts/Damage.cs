@@ -45,7 +45,9 @@ public class Damage : MonoBehaviour
         this.damageAmount = dmg;
         this.speed = speed;
 
-        this.damageEffects = CloneEffects(effects);
+        if (damageEffects == null) damageEffects = new List<EffectInstance>();
+        AppendClone(damageEffects, effects);
+
         _initialized = true;
 
         if (moveType == MovementType.moving && rb != null)
@@ -76,6 +78,13 @@ public class Damage : MonoBehaviour
         Destroy(gameObject);
     }
 
+    private static void AppendClone(List<EffectInstance> dst, IReadOnlyList<EffectInstance> src)
+    {
+        if (src == null) return;
+        for (int i = 0; i < src.Count; i++)
+            dst.Add(new EffectInstance { effect = src[i].effect, magnitude = src[i].magnitude });
+    }
+
     private static List<EffectInstance> CloneEffects(IReadOnlyList<EffectInstance> src)
     {
         if (src == null) return null;
@@ -87,12 +96,7 @@ public class Damage : MonoBehaviour
 
     void OnEnable()
     {
-        if (!_initialized)
-        {
-            damageEffects = (PowerUpManager.Instance != null)
-                ? CloneEffects(PowerUpManager.Instance.weaponEffects)
-                : new List<EffectInstance>();
-        }
+        if (damageEffects == null) damageEffects = new List<EffectInstance>();
 
         if (moveType == MovementType.moving || moveType == MovementType.homing || moveType == MovementType.thrown)
         {
@@ -199,6 +203,7 @@ public class Damage : MonoBehaviour
 
     private bool HasExplosiveEffect()
     {
+        if (damageEffects == null) return false;
         foreach (var inst in damageEffects)
         {
             if (inst.effect is ExplosiveEffect)
