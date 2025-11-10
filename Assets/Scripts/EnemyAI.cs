@@ -28,6 +28,7 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
     [SerializeField] GameObject bullet3;//for bosses
     [SerializeField] GameObject SpecialShot; //for bosses
     [SerializeField] float shootRate;
+    [SerializeField] bool summoner;
 
     [SerializeField] GameObject floatingTextPrefab;
     statusController status;
@@ -44,6 +45,7 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
     bool playerInRange;
     bool dead;
 
+
     Vector3 playerDir;
     Vector3 startingPos;
 
@@ -56,6 +58,7 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
 
     private int bulletIndex = 0;
     private float maxHP;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
