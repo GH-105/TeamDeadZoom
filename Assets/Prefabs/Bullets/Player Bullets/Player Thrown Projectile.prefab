@@ -47,13 +47,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c67c6c9d2ff66204fad5d9c2e1304723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Damage
-  moveType: 0
-  zoneType: 0
+  moveType: 3
+  zoneType: 2
   zoneEffect: {fileID: 0}
   zoneMagnitude: 1
   rb: {fileID: 7824526742746467510}
   projModel: {fileID: 0}
   shooter: {fileID: 149173740938263246, guid: 0a6e173a0b175fa4aacb0618436d3d54, type: 3}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 24576
+  telegraphPrefab: {fileID: 2181025711564005708, guid: 824ab07fc2708fe4bbddde643734c271, type: 3}
   damageAmount: 1
   damageRate: 0
   speed: 25
@@ -61,6 +65,7 @@ MonoBehaviour:
   flightTime: 1.1
   playerInDot: {fileID: 0}
   damageEffects: []
+  _initialized: 0
 --- !u!135 &6764244344762775684
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -108,7 +113,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 2
 --- !u!1001 &4324451614595028920
 PrefabInstance:
   m_ObjectHideFlags: 0

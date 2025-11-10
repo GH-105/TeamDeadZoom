@@ -25,6 +25,10 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
     [SerializeField] Transform shootPos2;
     [SerializeField] GameObject bullet;
     [SerializeField] float shootRate;
+    [SerializeField] int enemyBulletDamage;
+    [SerializeField] int enemyBulletSpeed;
+    [SerializeField] List<EffectInstance> enemyEffects;
+    [SerializeField] Transform player;
 
     [SerializeField] GameObject floatingTextPrefab;
     statusController status;
@@ -177,15 +181,8 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
 
     public void createBullet()
     {
-        if (shootPos2 != null)
-        {
-            Instantiate(bullet, shootPos1.position, transform.rotation);
-            Instantiate(bullet, shootPos2.position, transform.rotation);
-        }
-        else
-        {
-            Instantiate(bullet, shootPos1.position, transform.rotation);
-        }
+        SpawnFrom(shootPos1);
+        if (shootPos2 != null) SpawnFrom(shootPos2);
     }
 
     public void takeDamage(in DamageContext context, IReadOnlyList<EffectInstance> effects)
@@ -198,7 +195,6 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
 
                 float mag = ScaleMagnitude(e.effect, e.magnitude, in context);
                 if (mag <= 0f) continue;
-                Debug.Log($"[EnemyAI] effects.Count = {effects?.Count ?? -1}");
                 status.ApplyEffect(e.effect, in context, mag);
             }
         }
@@ -284,6 +280,38 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
             HpSlider.transform.LookAt(healthcam.transform);
             HpSlider.transform.rotation = Quaternion.LookRotation(HpSlider.transform.position - healthcam.transform.position);
             HpSlider.transform.position = target.position + offset;
+        }
+    }
+
+    private void SpawnFrom(Transform shootPos)
+    {
+        if (!shootPos) return;
+
+        var go = Instantiate(bullet, shootPos.position, transform.rotation);
+
+        var dmg = go.GetComponent<Damage>();
+        if (dmg != null)
+        {
+            dmg.Init(
+                shooter: gameObject,
+                dmg: enemyBulletDamage,
+                speed: enemyBulletSpeed,
+                effects: enemyEffects
+                );
+
+            if (enemyEffects != null)
+            {
+                foreach (var inst in dmg.damageEffects)
+                {
+                    if (inst.effect is ExplosiveEffect ex)
+                    {
+                        var targetPos = player ? player.position : (shootPos.position + shootPos.forward * 8f);
+                        dmg.ArmExplosive(targetPos, ex.Radius);
+                        break;
+                    }
+                    
+                }
+            }
         }
     }
 

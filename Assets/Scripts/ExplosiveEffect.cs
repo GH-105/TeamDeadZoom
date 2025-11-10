@@ -5,20 +5,29 @@ public class ExplosiveEffect : DamageEffects
 {
     [SerializeField] private float radius = 4f;
     [SerializeField] private LayerMask hitMask;
-
-    public override void OnApplied(statusController target, statusController.RuntimeEffect rt)
+    [SerializeField] private GameObject explosionVfx;
+    [SerializeField] private float baseHit;
+    public float Radius => radius;
+    public override void OnProjectileImpact(Vector3 position, GameObject source)
     {
-        Vector3 center = target.transform.position;
+        var hits = Physics.OverlapSphere(position, radius, hitMask, QueryTriggerInteraction.Collide);
 
-        var hits = Physics.OverlapSphere(center, radius, hitMask);
         for (int i = 0; i < hits.Length; i++)
         {
             var idmg = hits[i].GetComponent<IDamage>();
             if (idmg == null) continue;
 
-            float dmg = rt.baseHitDamage * rt.magnitude;
-            var context = new DamageContext(rt.source, hits[i].gameObject, dmg);
-            idmg.takeDamage(in context, effects: null);
+            var ctx = new DamageContext(
+                source: source,
+                target: hits[i].gameObject,
+                baseHitDamage: baseHit
+            );
+
+            idmg.takeDamage(in ctx, effects: null);
         }
+
+        // 2) VFX (optional)
+        if (explosionVfx)
+            Object.Instantiate(explosionVfx, position, Quaternion.identity);
     }
 }
