@@ -24,6 +24,9 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
     [SerializeField] Transform shootPos1;
     [SerializeField] Transform shootPos2;
     [SerializeField] GameObject bullet;
+    [SerializeField] GameObject bullet2;//for bosses
+    [SerializeField] GameObject bullet3;//for bosses
+    [SerializeField] GameObject SpecialShot; //for bosses
     [SerializeField] float shootRate;
 
     [SerializeField] GameObject floatingTextPrefab;
@@ -51,6 +54,9 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
     [SerializeField] Transform target;
     [SerializeField] Vector3 offset;
 
+    private int bulletIndex = 0;
+    private float maxHP;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -66,6 +72,7 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
         status = GetComponent<statusController>();
         if (status == null) Debug.LogError($"{name}: missing statusController");
         else if (status.Receiver == null) Debug.LogError($"{name}: statusController has no IStatusDamageReceiver");
+        maxHP = HP;
     }
 
     // Update is called once per frame
@@ -177,14 +184,49 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
 
     public void createBullet()
     {
+        List<GameObject> bullets = new List<GameObject>();
+
+        if(bullet != null)
+        {
+            bullets.Add(bullet);
+        }
+
+        if (bullet2 != null)
+        {
+            bullets.Add(bullet2);
+        }
+
+        if (bullet3 != null)
+        {
+            bullets.Add(bullet3);
+        }
+
+        GameObject bulletToShoot = bullets[bulletIndex];
+
+
         if (shootPos2 != null)
         {
-            Instantiate(bullet, shootPos1.position, transform.rotation);
-            Instantiate(bullet, shootPos2.position, transform.rotation);
+            Instantiate(bulletToShoot, shootPos1.position, transform.rotation);
+            Instantiate(bulletToShoot, shootPos2.position, transform.rotation);
         }
         else
         {
-            Instantiate(bullet, shootPos1.position, transform.rotation);
+            Instantiate(bulletToShoot, shootPos1.position, transform.rotation);
+        }
+
+        bulletIndex = (bulletIndex+1)%bullets.Count;
+
+        if(SpecialShot != null && (HP <= maxHP/2))
+        {
+            if (shootPos2 != null)
+            {
+                Instantiate(SpecialShot, shootPos1.position, transform.rotation);
+                Instantiate(SpecialShot, shootPos2.position, transform.rotation);
+            }
+            else
+            {
+                Instantiate(SpecialShot, shootPos1.position, transform.rotation);
+            }
         }
     }
 
