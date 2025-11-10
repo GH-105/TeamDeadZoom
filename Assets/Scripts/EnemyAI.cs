@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.AI;
@@ -24,11 +25,16 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
     [SerializeField] Transform shootPos1;
     [SerializeField] Transform shootPos2;
     [SerializeField] GameObject bullet;
+    [SerializeField] GameObject bullet2;//for bosses
+    [SerializeField] GameObject bullet3;//for bosses
+    [SerializeField] GameObject SpecialShot; //for bosses
     [SerializeField] float shootRate;
     [SerializeField] int enemyBulletDamage;
     [SerializeField] int enemyBulletSpeed;
     [SerializeField] List<EffectInstance> enemyEffects;
     [SerializeField] Transform player;
+    [SerializeField] bool summoner;
+    [SerializeField] float bulletDelay = 1f;
 
     [SerializeField] GameObject floatingTextPrefab;
     statusController status;
@@ -45,6 +51,7 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
     bool playerInRange;
     bool dead;
 
+
     Vector3 playerDir;
     Vector3 startingPos;
 
@@ -54,6 +61,11 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
     [SerializeField] Camera healthcam;
     [SerializeField] Transform target;
     [SerializeField] Vector3 offset;
+
+    private int bulletIndex = 0;
+    private float maxHP;
+    private float summonTimer;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -70,12 +82,17 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
         status = GetComponent<statusController>();
         if (status == null) Debug.LogError($"{name}: missing statusController");
         else if (status.Receiver == null) Debug.LogError($"{name}: statusController has no IStatusDamageReceiver");
+        maxHP = HP;
     }
 
     // Update is called once per frame
     void Update()
     {
         shootTimer += Time.deltaTime;
+        if (summoner)
+        {
+            summonTimer += Time.deltaTime;
+        }
 
         if (agent.remainingDistance < 0.01f)
         {
@@ -174,15 +191,82 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
 
     void shoot()
     {
+   
         shootTimer = 0;
-
         anim.SetTrigger("Shoot");
+        
     }
 
     public void createBullet()
-    {
-        SpawnFrom(shootPos1);
-        if (shootPos2 != null) SpawnFrom(shootPos2);
+    { 
+
+        List<GameObject> bullets = new List<GameObject>();
+
+        if(bullet != null)
+        {
+            bullets.Add(bullet);
+        }
+
+        if (bullet2 != null)
+        {
+            bullets.Add(bullet2);
+        }
+
+        if (bullet3 != null)
+        {
+            bullets.Add(bullet3);
+        }
+
+        GameObject bulletToShoot = bullets[bulletIndex];
+
+        if (summoner && (bulletIndex == 0 || bulletIndex == 1))
+        {
+            if (summonTimer < bulletDelay)
+            {
+                if (bullet3 != null)
+                {
+                    if (shootPos2 != null)
+                    {
+                        Instantiate(bullet3, shootPos1.position, transform.rotation);
+                        Instantiate(bullet3, shootPos2.position, transform.rotation);
+                    }
+                    else
+                    {
+                        Instantiate(bullet3, shootPos1.position, transform.rotation);
+                    }
+                }
+                return;
+            }
+        }
+
+        if (summoner) summonTimer = 0;
+
+        
+            if (shootPos2 != null)
+            {
+                Instantiate(bulletToShoot, shootPos1.position, transform.rotation);
+                Instantiate(bulletToShoot, shootPos2.position, transform.rotation);
+            }
+            else
+            {
+                Instantiate(bulletToShoot, shootPos1.position, transform.rotation);
+            }
+
+            bulletIndex = (bulletIndex + 1) % bullets.Count;
+
+            if (SpecialShot != null && (HP <= maxHP / 2))
+            {
+                if (shootPos2 != null)
+                {
+                    Instantiate(SpecialShot, shootPos1.position, transform.rotation);
+                    Instantiate(SpecialShot, shootPos2.position, transform.rotation);
+                }
+                else
+                {
+                    Instantiate(SpecialShot, shootPos1.position, transform.rotation);
+                }
+            }
+        
     }
 
     public void takeDamage(in DamageContext context, IReadOnlyList<EffectInstance> effects)

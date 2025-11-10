@@ -10,6 +10,9 @@ public class GameData
     public int coins;
     public int playerHP;
     public Vector3 checkpointPosition;
+    public int dashCount;
+    public int jumpCount;
+    public float playerSpeed;
 
 
     [System.Serializable]

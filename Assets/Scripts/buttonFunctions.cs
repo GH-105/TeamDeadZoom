@@ -30,6 +30,8 @@ public class buttonFunctions : MonoBehaviour
 
     public void quit()
     {
+        SaveGame();
+
     #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
     #else
@@ -87,8 +89,13 @@ public class buttonFunctions : MonoBehaviour
         GameData data = new GameData
         {
             souls = SoulManagement.souls,
+            coins = Coinlogic.coinCount,
             playerHP = (int)gameManager.instance.playerScript.HP,
-            checkpointPosition = gameManager.instance.playerSpawnPos.transform.position
+            checkpointPosition = gameManager.instance.playerSpawnPos.transform.position,
+            dashCount = SoulManagement.dashCount,
+            jumpCount = SoulManagement.jumpCount,
+            playerSpeed = SoulManagement.playerSpeed
+
         };
         data.gunData = new GameData.GunData[PowerUpManager.Instance.gunList.Count];
         data.currentGunIndex = PowerUpManager.Instance.gunListPos;
@@ -119,6 +126,10 @@ public class buttonFunctions : MonoBehaviour
                 gameManager.instance.playerSpawnPos.transform.position = data.checkpointPosition;
                 gameManager.instance.playerScript.spawnPlayer();
 
+                SoulManagement.dashCount = data.dashCount;
+                SoulManagement.jumpCount = data.jumpCount;
+                SoulManagement.playerSpeed = data.playerSpeed;
+
                 Debug.Log($"Loaded : {data.souls} souls, HP {data.playerHP}, checkpoint {data.checkpointPosition}");
 
                 for (int i = 0; i < data.gunData.Length; i++)
@@ -137,6 +148,7 @@ public class buttonFunctions : MonoBehaviour
 
     public void StartGame()
     {
+        LoadGame();
         gameManager.instance.levelSelect();
     }
 
