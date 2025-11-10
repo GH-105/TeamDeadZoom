@@ -19,6 +19,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
     [SerializeField] int underwaterSpeed;
     [SerializeField] int underwaterJumpSpeed;
     [SerializeField] float groundbuffer = .1f;
+    [SerializeField] Animator playerAnimator;
 
     [SerializeField] int dashDist;
     [SerializeField] public int maxAirDash;
@@ -45,6 +46,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
     [SerializeField] AudioClip[] audHurt;
     [Range(0, 1)][SerializeField] float audHurtVol;
 
+    float moveDirX;
+    float moveDirY;
     Vector3 moveDir;
     Vector3 playerVel;
     Vector3 dashDir;
@@ -150,10 +153,23 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
             playerVel.y -= gravity * Time.deltaTime;
         }
 
-        moveDir = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward;
-        controller.Move(moveDir * speed * Time.deltaTime);
+        moveDirX = Input.GetAxis("Horizontal");
+        moveDirY = Input.GetAxis("Vertical");
+        moveDir = new Vector3 (moveDirX, 0f, moveDirY).normalized;
+        if(moveDir.magnitude > 0.05f)
+        {
+            moveDirX = 0;
+            moveDirY = 0;
+        }
+        playerAnimator.SetFloat("moveX", moveDir.x, 0.1f, Time.deltaTime);
+        playerAnimator.SetFloat("moveY", moveDir.z, 0.1f, Time.deltaTime);
+        
 
         jump();
+        if(moveDir.magnitude >= 0.1f)
+        {
+            controller.Move(moveDir * speed*Time.deltaTime);
+        }
         controller.Move(playerVel * Time.deltaTime);
 
         if (Input.GetButton("Fire1") && PowerUpManager.Instance.gunList.Count > 0 && PowerUpManager.Instance.GetCurrentAmmo(gunListPos) > 0 && shootTimer >= shootRate)
