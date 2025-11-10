@@ -23,6 +23,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] public GameObject StartMenu;
     [SerializeField] public GameObject OptionsMenu;
     [SerializeField] public GameObject SoulShopMenu;
+    [SerializeField] public GameObject TutorialButton;
 
     public gunStats startingGun;
 
@@ -86,6 +87,11 @@ public class gameManager : MonoBehaviour
             }
         }
         
+    }
+    public void loadTutorial()
+    {
+        Debug.Log("tutorial Load");
+        SceneManager.LoadScene("Level Tut");
     }
 
     public void statePause()
