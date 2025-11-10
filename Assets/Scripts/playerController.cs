@@ -289,8 +289,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
         updatePlayerUI();
         if (HP <= 0f)
         {
-
-            RewardsManager.instance.LossRewards();
+            gameManager.instance.youLose();
         }
     }
 

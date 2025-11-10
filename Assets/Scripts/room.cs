@@ -18,12 +18,9 @@ public class room : MonoBehaviour
 
 
     public int roomGoalCount;
-    float playerStartTime;
     float playerFinishTime;
-    float playerTotalRoomTime;
     float spawnTimer;
     int enemyCount;
-    int roomsComplete;
     int totalEnemiesSpawned;
 
     bool startSpawning;
