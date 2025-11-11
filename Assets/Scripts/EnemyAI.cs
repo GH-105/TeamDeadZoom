@@ -59,7 +59,6 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
     public room thisRoom;
 
     [SerializeField] Slider HpSlider;
-    [SerializeField] Camera healthcam;
     [SerializeField] Transform target;
     [SerializeField] Vector3 offset;
 
@@ -77,7 +76,6 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
         stoppingDistOrig = agent.stoppingDistance;
         startingPos = transform.position;
         if (thisRoom != null) thisRoom.UpdateRoomGoal(1);
-        healthcam = gameManager.instance.HpCamera;
         HpSlider.maxValue = HP;
         HpSlider.value = HP;
         status = GetComponent<statusController>();
@@ -347,11 +345,11 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
 
     public void UpdateEnemyHP()
     {
-        if(HpSlider != null && healthcam != null)
+        if(HpSlider != null)
         { 
             HpSlider.value = HP; 
-            HpSlider.transform.LookAt(healthcam.transform);
-            HpSlider.transform.rotation = Quaternion.LookRotation(HpSlider.transform.position - healthcam.transform.position);
+            HpSlider.transform.LookAt(Camera.main.transform);
+            HpSlider.transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward);
             HpSlider.transform.position = target.position + offset;
         }
     }
