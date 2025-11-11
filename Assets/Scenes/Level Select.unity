@@ -668,6 +668,10 @@ PrefabInstance:
       propertyPath: playerContr
       value: 
       objectReference: {fileID: 436097901}
+    - target: {fileID: 6853782986101594265, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
+      propertyPath: m_text
+      value: Showcase Level
+      objectReference: {fileID: 0}
     - target: {fileID: 7968735221605272654, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
       propertyPath: HpCamera
       value: 
