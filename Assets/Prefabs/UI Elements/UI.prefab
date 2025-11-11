@@ -798,9 +798,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1453185472006100230}
-        m_TargetAssemblyTypeName: buttonFunctions, Assembly-CSharp
-        m_MethodName: loadLevelSelectMenu
+      - m_Target: {fileID: 7968735221605272654}
+        m_TargetAssemblyTypeName: gameManager, Assembly-CSharp
+        m_MethodName: StartScreenMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
