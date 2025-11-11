@@ -326,11 +326,12 @@ MonoBehaviour:
   summoner: 0
   bulletDelay: 1
   floatingTextPrefab: {fileID: 5749133604472977256, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
+  givesSouls: 0
+  soulsToGive: 1
   thisRoom: {fileID: 0}
   HpSlider: {fileID: 186488910906891444}
-  healthcam: {fileID: 0}
   target: {fileID: 5995936802651374966}
-  offset: {x: 0, y: 0, z: 0}
+  offset: {x: 0, y: 6, z: 0}
 --- !u!95 &2566315062781100355
 Animator:
   serializedVersion: 7
@@ -3359,15 +3360,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1382001106089685825, guid: b1e3e9a91fa1d3242a8bcf0313bbfaaf, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.03
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 1382001106089685825, guid: b1e3e9a91fa1d3242a8bcf0313bbfaaf, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.03
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 1382001106089685825, guid: b1e3e9a91fa1d3242a8bcf0313bbfaaf, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.03
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: 1382001106089685825, guid: b1e3e9a91fa1d3242a8bcf0313bbfaaf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3379,7 +3380,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1382001106089685825, guid: b1e3e9a91fa1d3242a8bcf0313bbfaaf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 316.28516
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1382001106089685825, guid: b1e3e9a91fa1d3242a8bcf0313bbfaaf, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3399,11 +3400,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1382001106089685825, guid: b1e3e9a91fa1d3242a8bcf0313bbfaaf, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 5.69812
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1382001106089685825, guid: b1e3e9a91fa1d3242a8bcf0313bbfaaf, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.022577763
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1382001106089685825, guid: b1e3e9a91fa1d3242a8bcf0313bbfaaf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3428,6 +3429,10 @@ PrefabInstance:
     - target: {fileID: 3245278658978229788, guid: b1e3e9a91fa1d3242a8bcf0313bbfaaf, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 7059534431554799137, guid: b1e3e9a91fa1d3242a8bcf0313bbfaaf, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9191268174523659070, guid: b1e3e9a91fa1d3242a8bcf0313bbfaaf, type: 3}
       propertyPath: m_PresetInfoIsWorld
