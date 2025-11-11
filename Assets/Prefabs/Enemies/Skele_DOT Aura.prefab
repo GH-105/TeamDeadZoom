@@ -1768,9 +1768,10 @@ MonoBehaviour:
   summoner: 0
   bulletDelay: 1
   floatingTextPrefab: {fileID: 5749133604472977256, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
+  givesSouls: 0
+  soulsToGive: 1
   thisRoom: {fileID: 0}
   HpSlider: {fileID: 9010166462517473699}
-  healthcam: {fileID: 0}
   target: {fileID: 3290959624444948350}
   offset: {x: 0, y: 5.5, z: 0}
 --- !u!95 &3956423740790020498
@@ -3486,9 +3487,37 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 7059534431554799137, guid: b1e3e9a91fa1d3242a8bcf0313bbfaaf, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -104834.836
+      objectReference: {fileID: 0}
+    - target: {fileID: 7059534431554799137, guid: b1e3e9a91fa1d3242a8bcf0313bbfaaf, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.3002655
+      objectReference: {fileID: 0}
+    - target: {fileID: 7059534431554799137, guid: b1e3e9a91fa1d3242a8bcf0313bbfaaf, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.020132676
+      objectReference: {fileID: 0}
+    - target: {fileID: 7059534431554799137, guid: b1e3e9a91fa1d3242a8bcf0313bbfaaf, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.95150673
+      objectReference: {fileID: 0}
+    - target: {fileID: 7059534431554799137, guid: b1e3e9a91fa1d3242a8bcf0313bbfaaf, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.06379814
+      objectReference: {fileID: 0}
+    - target: {fileID: 7059534431554799137, guid: b1e3e9a91fa1d3242a8bcf0313bbfaaf, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -55531.285
+      objectReference: {fileID: 0}
+    - target: {fileID: 7059534431554799137, guid: b1e3e9a91fa1d3242a8bcf0313bbfaaf, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 558.3331
+      objectReference: {fileID: 0}
     - target: {fileID: 8306280974676724617, guid: b1e3e9a91fa1d3242a8bcf0313bbfaaf, type: 3}
       propertyPath: m_Value
-      value: 8
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8306280974676724617, guid: b1e3e9a91fa1d3242a8bcf0313bbfaaf, type: 3}
       propertyPath: m_MaxValue
