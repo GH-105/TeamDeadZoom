@@ -111,7 +111,11 @@ public class room : MonoBehaviour
             roomActive = false;
             startSpawning = false;
 
-            gameManager.instance.updateGameGoal(-1);
+            if (gameManager.instance.bossRoom == this)
+            {
+                Debug.Log("Boss Room Complete");
+                gameManager.instance.updateGameGoal(-1);
+            }
         }
         roomGoalLabel.text = roomGoalCount.ToString();
     }

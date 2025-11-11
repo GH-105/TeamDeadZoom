@@ -68,7 +68,6 @@ public class buttonFunctions : MonoBehaviour
         {
             levelChosen = level;
             gameManager.instance.weaponSelect();
-            
         }
         else
         {
@@ -76,9 +75,9 @@ public class buttonFunctions : MonoBehaviour
             {
                 restart();
             }
-          
-            SceneManager.LoadScene(level);
+
             gameManager.instance.stateUnpause();
+            SceneManager.LoadScene(level);
         }
     }
 
@@ -100,6 +99,7 @@ public class buttonFunctions : MonoBehaviour
     {
         SceneManager.LoadScene(levelChosen);
         PowerUpManager.Instance.SetStartingGun(gun);
+        
         gameManager.instance.stateUnpause();
     }
 

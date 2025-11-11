@@ -131,7 +131,11 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
 
         NavMeshHit hit;
         NavMesh.SamplePosition(ranPos, out hit, roamDist, 1);
-        agent.SetDestination(hit.position);
+        if (agent != null)
+        {
+            agent.SetDestination(hit.position);
+        }
+        
     }
 
     bool canSeePlayer()
@@ -144,8 +148,10 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
         {
             if(angleToPlayer <= FOV && hit.collider.CompareTag ("Player"))
             {
-                agent.SetDestination(gameManager.instance.player.transform.position);
-
+                if (agent != null)
+                {
+                    agent.SetDestination(gameManager.instance.player.transform.position);
+                }
                 if(shootTimer > shootRate)
                 {
                     shoot();

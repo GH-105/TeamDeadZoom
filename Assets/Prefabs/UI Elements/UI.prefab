@@ -12802,6 +12802,7 @@ MonoBehaviour:
   soulsGainedText: {fileID: 3035769460349489205}
   outcomeText: {fileID: 8069407002494015543}
   playerHearts: []
+  bossRoom: {fileID: 0}
   rewardsPanel: {fileID: 5315282679960477115}
   coinShopPanel: {fileID: 3444744323404713309}
   startingGun: {fileID: 0}
