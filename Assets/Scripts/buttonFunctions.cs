@@ -17,6 +17,22 @@ public class buttonFunctions : MonoBehaviour
         nextIndex = SceneManager.GetActiveScene().buildIndex + 1;
     }
 
+    private void OnApplicationQuit()
+    {
+        Debug.Log("saving on quit");
+        SaveGame();
+    }
+
+    private void OnApplicationPause(bool pauseStatus)
+    {
+        if(pauseStatus)
+        {
+            SaveGame();
+            Debug.Log("auto save on pause");
+        }    
+        
+    }
+
     public void resume()
     {
         gameManager.instance.stateUnpause();
