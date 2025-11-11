@@ -7,7 +7,7 @@ public class gameManager : MonoBehaviour
 {
     public static gameManager instance;
 
-    [SerializeField] GameObject menuActive;
+    [SerializeField] public GameObject menuActive;
     [SerializeField] GameObject menuPause;
     [SerializeField] public GameObject menuWin;
     [SerializeField] GameObject menuLose;
@@ -147,6 +147,13 @@ public class gameManager : MonoBehaviour
 
     public void StartScreen()
     {
+        menuActive = StartMenu;
+        menuActive.SetActive(true);
+    }
+
+    public void StartScreenMenu()
+    {
+        menuActive.SetActive(false);
         menuActive = StartMenu;
         menuActive.SetActive(true);
     }

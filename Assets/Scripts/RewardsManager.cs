@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using System.Threading;
+using UnityEditor;
 
 public class RewardsManager : MonoBehaviour
 {
@@ -79,6 +80,7 @@ public class RewardsManager : MonoBehaviour
         {
             gameManager.instance.rewardsPanel.SetActive(false);
             gameManager.instance.coinShopPanel.SetActive(true);
+            gameManager.instance.menuActive = gameManager.instance.coinShopPanel;
         }
     }
 
