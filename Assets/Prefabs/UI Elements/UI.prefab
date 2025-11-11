@@ -19077,7 +19077,8 @@ MonoBehaviour:
   hpUpgradeButton: {fileID: 4832862931692487647}
   jumpUpgradeButton: {fileID: 9209360167195071036}
   speedUpgradeButton: {fileID: 2777648948573729337}
-  backButton: {fileID: 0}
+  backButton: {fileID: 4192647692682936371}
+  playercont: {fileID: 0}
 --- !u!1 &6948664999846747460
 GameObject:
   m_ObjectHideFlags: 0
