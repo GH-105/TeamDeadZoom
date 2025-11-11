@@ -17,8 +17,6 @@ public class room : MonoBehaviour
     [SerializeField] public TMP_Text roomGoalLabel;
     [SerializeField] public TMP_Text doorStatusLabel; //door open ui
     
-
-
     public int roomGoalCount;
     float playerFinishTime;
     float spawnTimer;
@@ -33,7 +31,10 @@ public class room : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        gameManager.instance.updateGameGoal(1);        
+              if (gameManager.instance.bossRoom == this)
+        {
+            gameManager.instance.updateGameGoal(1);
+        }
     }
 
     // Update is called once per frame

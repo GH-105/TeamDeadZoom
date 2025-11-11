@@ -30,6 +30,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] public TMP_Text soulsGainedText;
     [SerializeField] public TMP_Text outcomeText;
     [SerializeField] public List<hearts> playerHearts;
+    [SerializeField] public room bossRoom;
 
     [SerializeField] public GameObject rewardsPanel;
     [SerializeField] public GameObject coinShopPanel;
@@ -132,7 +133,7 @@ public class gameManager : MonoBehaviour
                 StopWatch.instance.StopStopwatch();
             statePause();
             RewardsManager.instance.WinRewards();
-            
+            Debug.Log("Rewards Manager called");
             
         }
     }
@@ -140,7 +141,6 @@ public class gameManager : MonoBehaviour
     public void youLose()
     {
         statePause();
-        
         RewardsManager.instance.LossRewards();
         ResetKillCount();
     }
