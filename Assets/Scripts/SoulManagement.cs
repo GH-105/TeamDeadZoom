@@ -29,6 +29,8 @@ public class SoulManagement : MonoBehaviour
     [SerializeField] private GameObject speedUpgradeButton;
     [SerializeField] GameObject backButton;
 
+    [SerializeField] public playerController playercont;
+
     private void Start()
     {
         buttonFunctions.LoadGame();
@@ -68,7 +70,15 @@ public class SoulManagement : MonoBehaviour
         {
             dashCount++;
             dashUpgradeCost *= 2;
-            UpdateUI();
+
+            if (playercont != null)
+            {
+                playercont.maxAirDash = dashCount;
+                Debug.Log("Player Dash upgraded");
+            }
+            else
+                Debug.Log("player dash not upgraded");
+                UpdateUI();
         }
     }
 
