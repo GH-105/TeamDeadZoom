@@ -219,6 +219,7 @@ public class PowerUpManager : MonoBehaviour
     {
 
         Hp += amount;
+        gameManager.instance.playerScript.heartsUI.UpdateHearts((int)gameManager.instance.playerScript.HP);
         gameManager.instance.playerScript.HP += Hp;
         if(gameManager.instance.playerScript.HP > gameManager.instance.playerScript.HPOrig)
         {
