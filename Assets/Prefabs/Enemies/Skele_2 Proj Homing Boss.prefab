@@ -1104,20 +1104,20 @@ MonoBehaviour:
   roamPauseTimer: 3
   shootPos1: {fileID: 3077017980164232922}
   shootPos2: {fileID: 4189304602971058784}
-  bullet: {fileID: 6207780247886573495, guid: 8aa480c69c7f2444ebe40e06d5b838dc, type: 3}
-  bullet2: {fileID: 0}
-  bullet3: {fileID: 0}
-  SpecialShot: {fileID: 0}
+  bullet: {fileID: 6000525707792629196, guid: 2f0f6429b13a0a241957a76b8f93dbb1, type: 3}
+  bullet2: {fileID: 8280288797637250008, guid: 058e3f206d6cc9940a8c1474206006e1, type: 3}
+  bullet3: {fileID: 6207780247886573495, guid: 8aa480c69c7f2444ebe40e06d5b838dc, type: 3}
+  SpecialShot: {fileID: 6207780247886573495, guid: 01f600e62a9508b4bb700d6ffba2ad69, type: 3}
   shootRate: 3
   enemyBulletDamage: 1
   enemyBulletSpeed: 15
-  enemyEffects:
-  - effect: {fileID: 11400000, guid: c647aa57173d70e41bb4f54720301e5c, type: 2}
-    magnitude: 1
+  enemyEffects: []
   player: {fileID: 0}
-  summoner: 0
+  summoner: 1
   bulletDelay: 1
   floatingTextPrefab: {fileID: 5749133604472977256, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
+  givesSouls: 0
+  soulsToGive: 1
   thisRoom: {fileID: 0}
   HpSlider: {fileID: 2693943454683470692}
   healthcam: {fileID: 0}

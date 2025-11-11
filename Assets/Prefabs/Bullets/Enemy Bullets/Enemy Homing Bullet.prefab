@@ -54,13 +54,20 @@ MonoBehaviour:
   rb: {fileID: 7824526742746467510}
   projModel: {fileID: 0}
   shooter: {fileID: 20909049630960775, guid: 6d6e24301bff826488984c014647dec6, type: 3}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 0
+  telegraphPrefab: {fileID: 0}
   damageAmount: 1
   damageRate: 0
   speed: 15
   destroyTime: 3
-  flightTime: 0
+  flightTime: 0.75
   playerInDot: {fileID: 0}
-  damageEffects: []
+  damageEffects:
+  - effect: {fileID: 11400000, guid: c647aa57173d70e41bb4f54720301e5c, type: 2}
+    magnitude: 1
+  _initialized: 0
 --- !u!135 &6764244344762775684
 SphereCollider:
   m_ObjectHideFlags: 0

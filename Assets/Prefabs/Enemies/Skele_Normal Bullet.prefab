@@ -1413,7 +1413,7 @@ MonoBehaviour:
   roamPauseTimer: 3
   shootPos1: {fileID: 2880678300974847815}
   shootPos2: {fileID: 0}
-  bullet: {fileID: 6207780247886573495, guid: 6b49c58a982ffe04c8f2896cea4bc752, type: 3}
+  bullet: {fileID: 20909049630960775, guid: 6d6e24301bff826488984c014647dec6, type: 3}
   bullet2: {fileID: 0}
   bullet3: {fileID: 0}
   SpecialShot: {fileID: 0}

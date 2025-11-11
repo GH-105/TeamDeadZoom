@@ -1097,7 +1097,7 @@ MonoBehaviour:
   jaw: {fileID: 101749663200315043}
   agent: {fileID: 3662775103382989217}
   headPos: {fileID: 4830285367045107079}
-  HP: 200
+  HP: 500
   faceTargetSpeed: 2
   FOV: 45
   roamDist: 25
@@ -1118,6 +1118,8 @@ MonoBehaviour:
   summoner: 0
   bulletDelay: 1
   floatingTextPrefab: {fileID: 5749133604472977256, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
+  givesSouls: 0
+  soulsToGive: 1
   thisRoom: {fileID: 0}
   HpSlider: {fileID: 2693943454683470692}
   healthcam: {fileID: 0}
