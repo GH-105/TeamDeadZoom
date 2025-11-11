@@ -57,7 +57,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
     public int bulletDamage;
     float stepDeg = 6f;
     float lastGrounTime;
-    private hearts heartsUI;
+    public hearts heartsUI;
     
 
     float shootTimer;
