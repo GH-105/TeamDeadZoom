@@ -108,5 +108,7 @@ public class SoulManagement : MonoBehaviour
         jumpUpgradeButton.SetActive(souls >= jummpUpgradeCost);
         speedUpgradeButton.SetActive(souls >= speedUpgradeCost);
 
+        buttonFunctions.SaveGame();
+
     }
 }
