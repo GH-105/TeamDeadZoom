@@ -110,6 +110,9 @@ public class gameManager : MonoBehaviour
         Time.timeScale = 0;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+
+        buttonFunctions.SaveGame();
+        Debug.Log("auto pause save");
     }
 
     public void stateUnpause()
