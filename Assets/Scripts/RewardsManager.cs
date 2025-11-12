@@ -25,6 +25,7 @@ public class RewardsManager : MonoBehaviour
     }
     public void WinRewards()
     {
+        HideDoorMessage();
         GameData data = SaveManager.LoadGame();
         StopWatch.instance.UpdateBestTime();
         if (data == null)
@@ -69,6 +70,7 @@ public class RewardsManager : MonoBehaviour
 
     public void ShowCoinShop()
     {
+        HideDoorMessage();
         if (gameManager.instance.coinShopPanel != null && gameManager.instance.rewardsPanel != null)
         {
             gameManager.instance.rewardsPanel.SetActive(false);
@@ -79,6 +81,7 @@ public class RewardsManager : MonoBehaviour
 
     public void LossRewards()
     {
+        HideDoorMessage();
         GameData data = SaveManager.LoadGame();
         if (data == null)
         {
@@ -118,4 +121,15 @@ public class RewardsManager : MonoBehaviour
             gameManager.instance.coinShopPanel.SetActive(false);
         gameManager.instance.outcomeText.text = "You lost";
     }
+
+    private void HideDoorMessage()
+    {
+        room[] rooms = FindObjectsByType<room>(FindObjectsSortMode.None);
+        foreach(room r in rooms)
+        {
+            if(r.doorStatusLabel != null)
+                r.doorStatusLabel.gameObject.SetActive(false);
+        }
+    }
+
 }
