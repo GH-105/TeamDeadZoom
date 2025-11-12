@@ -40,7 +40,7 @@ public class buttonFunctions : MonoBehaviour
 
     public void restart()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        LoadingScreen.instance.LoadScene(SceneManager.GetActiveScene().buildIndex);
         gameManager.instance.stateUnpause();
     }
 
@@ -84,9 +84,10 @@ public class buttonFunctions : MonoBehaviour
     public void nextLevel()
     {
         if (SceneManager.GetActiveScene().buildIndex != 4)
-            SceneManager.LoadScene(nextIndex);
+            LoadingScreen.instance.LoadScene(nextIndex);
         else
-            SceneManager.LoadScene(1);
+            LoadingScreen.instance.LoadScene(1);
+
         gameManager.instance.stateUnpause();
     }
 
@@ -97,7 +98,7 @@ public class buttonFunctions : MonoBehaviour
 
     public void LoadWeapon(gunStats gun)
     {
-        SceneManager.LoadScene(levelChosen);
+        LoadingScreen.instance.LoadScene(levelChosen);
         PowerUpManager.Instance.SetStartingGun(gun);
         
         gameManager.instance.stateUnpause();
