@@ -18,6 +18,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
     [SerializeField] int underwaterSpeed;
     [SerializeField] int underwaterJumpSpeed;
     [SerializeField] float groundbuffer = .1f;
+    [SerializeField] Animator anim;
 
     [SerializeField] int dashDist;
     [SerializeField] public int maxAirDash;
@@ -148,8 +149,18 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
             playerVel.y -= gravity * Time.deltaTime;
         }
 
-        moveDir = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward;
+        float inputX = Input.GetAxisRaw("Horizontal");
+        float inputY = Input.GetAxisRaw("Vertical");
+
+        moveDir = inputX * transform.right + inputY * transform.forward;
         controller.Move(moveDir * speed * Time.deltaTime);
+
+        const float deadZone = 0.1f;
+        if (Mathf.Abs(inputX) < deadZone) inputX = 0f;
+        if (Mathf.Abs(inputY) < deadZone) inputY = 0f;
+
+        anim.SetFloat("MoveX", inputX);
+        anim.SetFloat("MoveY", inputY);
 
         jump();
         controller.Move(playerVel * Time.deltaTime);
