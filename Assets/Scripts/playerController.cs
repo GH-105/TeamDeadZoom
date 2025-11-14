@@ -7,6 +7,9 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
     [SerializeField] LayerMask ignoreLayer;
     [SerializeField] LayerMask aimMask;
     [SerializeField] CharacterController controller;
+    [SerializeField] CameraShake Camshake;
+    [SerializeField] float ShakeDur;
+    [SerializeField] float ShakeMag;
 
     [SerializeField] public float HP;
     [SerializeField] int speed;
@@ -274,6 +277,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
                 status.ApplyEffect(e.effect, in context, mag);
                 
             }
+        }
+        if(Camshake != null)
+        {
+            StartCoroutine(Camshake.camShake(ShakeDur, ShakeMag));
         }
 
         aud.PlayOneShot(audHurt[Random.Range(0, audHurt.Length)], audHurtVol);
