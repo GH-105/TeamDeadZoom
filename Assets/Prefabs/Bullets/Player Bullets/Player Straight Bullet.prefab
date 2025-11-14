@@ -50,10 +50,10 @@ MonoBehaviour:
   moveType: 0
   zoneType: 2
   zoneEffect: {fileID: 0}
-  zoneMagnitude: 1
+  zoneMagnitude: 0
   rb: {fileID: 7824526742746467510}
   projModel: {fileID: 0}
-  shooter: {fileID: 149173740938263246, guid: 0a6e173a0b175fa4aacb0618436d3d54, type: 3}
+  shooter: {fileID: 8071361250210128629, guid: bbf91673d021f534c8524d681966054b, type: 3}
   groundMask:
     serializedVersion: 2
     m_Bits: 24576
