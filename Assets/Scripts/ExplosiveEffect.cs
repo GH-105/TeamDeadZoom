@@ -22,8 +22,8 @@ public class ExplosiveEffect : DamageEffects
                 target: hits[i].gameObject,
                 baseHitDamage: baseHit
             );
-
-            idmg.takeDamage(in ctx, effects: null);
+            Vector3 dmgPos = Vector3.zero;
+            idmg.takeDamage(in ctx, effects: null, dmgPos);
         }
 
         // 2) VFX (optional)

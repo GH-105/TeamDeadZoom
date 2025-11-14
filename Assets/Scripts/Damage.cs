@@ -150,7 +150,8 @@ public class Damage : MonoBehaviour
         if (target != null)
         {
             var context = new DamageContext(source: shooter, target: other.gameObject, baseHitDamage: damageAmount);
-            target.takeDamage(in context, damageEffects);
+            Vector3 dmgPosition = Vector3.zero;
+            target.takeDamage(in context, damageEffects, dmgPosition);
 
             if (HasExplosiveEffect())
             {

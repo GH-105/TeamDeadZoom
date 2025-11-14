@@ -414,4 +414,9 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
         }
         Destroy(gameObject);
     }
+
+    public void takeDamage(in DamageContext context, IReadOnlyList<EffectInstance> effects, Vector3 dmgPos)
+    {
+        throw new System.NotImplementedException();
+    }
 }

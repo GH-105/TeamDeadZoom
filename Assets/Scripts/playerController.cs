@@ -11,6 +11,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
     [SerializeField] float ShakeDur;
     [SerializeField] float ShakeMag;
 
+    [SerializeField] public DamageDirection DmgIndicatorDir;
+
     [SerializeField] public float HP;
     [SerializeField] int speed;
     [SerializeField] int sprintMod;
@@ -258,7 +260,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
         
     }
 
-    public void takeDamage(in DamageContext context, IReadOnlyList<EffectInstance> effects)
+    public void takeDamage(in DamageContext context, IReadOnlyList<EffectInstance> effects, Vector3 dmgPos)
     {
         if (HP <= 0f) return;
 
@@ -278,11 +280,24 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
                 
             }
         }
-        if(Camshake != null)
+        if(context.source != null)
+        {
+            Vector3 enemyPos = context.source.transform.position;
+            DmgIndicatorDir.TakeDmgDirection = enemyPos;
+        }
+        else
+        {
+            DmgIndicatorDir.TakeDmgDirection = dmgPos;
+        }
+        DmgIndicatorDir.TakeDmgDirection = dmgPos;
+        GameObject obj = Instantiate(DmgIndicatorDir.gameObject, DmgIndicatorDir.transform.position, DmgIndicatorDir.transform.rotation, DmgIndicatorDir.transform.parent);
+        obj.SetActive(true);
+
+        if (Camshake != null)
         {
             StartCoroutine(Camshake.camShake(ShakeDur, ShakeMag));
         }
-
+        
         aud.PlayOneShot(audHurt[Random.Range(0, audHurt.Length)], audHurtVol);
         updatePlayerUI();
     }
