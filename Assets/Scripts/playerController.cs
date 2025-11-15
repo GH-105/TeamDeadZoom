@@ -36,6 +36,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
     [SerializeField] GameObject gunModel;
     [SerializeField] Transform firePos;
     [SerializeField] GameObject bullet;
+    [SerializeField] PowerUpManager reloadBool;
 
     [SerializeField] AudioSource aud;
     [SerializeField] AudioClip[] audSteps;
@@ -156,8 +157,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
 
         jump();
         controller.Move(playerVel * Time.deltaTime);
-
-        if (Input.GetButton("Fire1") && PowerUpManager.Instance.gunList.Count > 0 && PowerUpManager.Instance.GetCurrentAmmo(gunListPos) > 0 && shootTimer >= shootRate)
+      
+        if (Input.GetButton("Fire1") && PowerUpManager.Instance.gunList.Count > 0 && PowerUpManager.Instance.GetCurrentAmmo(gunListPos) > 0 && shootTimer >= shootRate && !PowerUpManager.Instance.isReloading)
         {
             shoot();
         }

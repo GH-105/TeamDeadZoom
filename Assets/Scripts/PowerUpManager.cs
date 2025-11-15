@@ -1,6 +1,7 @@
-using NUnit.Framework;
-using UnityEngine;
+
+using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class PowerUpManager : MonoBehaviour
@@ -17,6 +18,8 @@ public class PowerUpManager : MonoBehaviour
     public int totalAirDash;
     public int totaljumpDist;
     public List<EffectInstance> weaponEffects;
+    public bool isReloading = false;
+    [SerializeField] public float reloadTime;
 
     public List<GunListings> gunList;
     public int gunListPos;
@@ -185,7 +188,48 @@ public class PowerUpManager : MonoBehaviour
 
     public void ReloadCurrentGun(int index)
     {
+        if (!isReloading)
+        {
+            StartCoroutine(ReloadProcess(index));
+        }
+    }
+    private IEnumerator ReloadProcess(int index)
+    {
+        isReloading = true;
+        float elapsedTime = 0f;
+        float reloadDuration = reloadTime;
+        if(gameManager.instance.ReloadSlider != null)
+        {
+            gameManager.instance.ReloadSlider.value = 0f;
+        }
+        if (gameManager.instance.ReloadSlider != null)
+        {
+            gameManager.instance.ReloadSlider.gameObject.SetActive(true);
+        }
+
+        while(elapsedTime < reloadDuration)
+        {
+            elapsedTime += Time.deltaTime; 
+            if(gameManager.instance.ReloadSlider != null)
+            {
+                gameManager.instance.ReloadSlider.value = elapsedTime / reloadDuration;
+            }
+            yield return null;
+        }
         gunList[index].state.ammoCur = GetMaxAmmo(index);
+        
+        if (gameManager.instance != null && gameManager.instance.playerScript != null)
+        {
+            gameManager.instance.playerScript.updatePlayerUI();
+        }
+
+        if(gameManager.instance.ReloadSlider != null)
+        {
+            gameManager.instance.ReloadSlider.value = 1f;
+            gameManager.instance.ReloadSlider.gameObject.SetActive(false);
+        }
+
+        isReloading = false;
     }
 
     public bool ConsumeAmmo(int index)

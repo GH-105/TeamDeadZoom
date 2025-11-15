@@ -2,6 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class gameManager : MonoBehaviour
 {
@@ -36,6 +37,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] public GameObject coinShopPanel;
 
     public gunStats startingGun;
+    [SerializeField] public Slider ReloadSlider;
 
     public GameObject player;
     public playerController playerScript;
