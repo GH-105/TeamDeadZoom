@@ -1848,6 +1848,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!82 &1313469790 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1293996468102100521, guid: 0a6e173a0b175fa4aacb0618436d3d54, type: 3}
+  m_PrefabInstance: {fileID: 1771986070}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1356228769
 GameObject:
   m_ObjectHideFlags: 0
@@ -1935,6 +1940,14 @@ PrefabInstance:
       propertyPath: reloadTime
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3913264587383023668, guid: 04d3a5e60e6608d4d8404402ee59d492, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 1313469790}
+    - target: {fileID: 3913264587383023668, guid: 04d3a5e60e6608d4d8404402ee59d492, type: 3}
+      propertyPath: dryFireSound
+      value: 
+      objectReference: {fileID: 8300000, guid: f318390815f76484eb56929a594e9853, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2706,9 +2719,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 121622905}
     - target: {fileID: 5516483503538133329, guid: 0a6e173a0b175fa4aacb0618436d3d54, type: 3}
+      propertyPath: audDryfireVol
+      value: 0.009
+      objectReference: {fileID: 0}
+    - target: {fileID: 5516483503538133329, guid: 0a6e173a0b175fa4aacb0618436d3d54, type: 3}
       propertyPath: DmgIndicatorDir
       value: 
       objectReference: {fileID: 1188867370}
+    - target: {fileID: 5516483503538133329, guid: 0a6e173a0b175fa4aacb0618436d3d54, type: 3}
+      propertyPath: audDryfire.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5516483503538133329, guid: 0a6e173a0b175fa4aacb0618436d3d54, type: 3}
+      propertyPath: 'audDryfire.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: f318390815f76484eb56929a594e9853, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2911,11 +2936,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
---- !u!224 &1862259000 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4680015118406665790, guid: bbae892a52f90a940a19f52726504070, type: 3}
-  m_PrefabInstance: {fileID: 8697691508557819562}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1862259001 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1548365630874265075, guid: bbae892a52f90a940a19f52726504070, type: 3}
@@ -3411,6 +3431,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1602579939}
     m_Modifications:
+    - target: {fileID: 3191580316291950760, guid: bbae892a52f90a940a19f52726504070, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3191580316291950760, guid: bbae892a52f90a940a19f52726504070, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4680015118406665790, guid: bbae892a52f90a940a19f52726504070, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3537,3 +3565,4 @@ SceneRoots:
   - {fileID: 898633258}
   - {fileID: 1916592759}
   - {fileID: 789689394}
+  - {fileID: 8697691508557819562}
