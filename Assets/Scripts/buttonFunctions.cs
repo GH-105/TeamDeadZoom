@@ -9,12 +9,16 @@ public class buttonFunctions : MonoBehaviour
     [SerializeField] gunStats shotgun;
     [SerializeField] gunStats rifle;
     [SerializeField] gunStats SMG;
+    [SerializeField] private GameObject nextLevelButton;
 
     int levelChosen;
     int nextIndex;
     private void Start()
     {
         nextIndex = SceneManager.GetActiveScene().buildIndex + 1;
+
+        if(SceneManager.GetActiveScene().buildIndex == 3 || SceneManager.GetActiveScene().buildIndex == 4)
+            nextLevelButton.SetActive(false);
     }
 
     private void OnApplicationQuit()

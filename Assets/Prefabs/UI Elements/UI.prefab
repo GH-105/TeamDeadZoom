@@ -2704,10 +2704,10 @@ RectTransform:
   - {fileID: 1628931429564351322}
   m_Father: {fileID: 5248538750878103284}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -650}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &808879295034765322
 GameObject:
@@ -3617,10 +3617,10 @@ RectTransform:
   - {fileID: 1954433554001236344}
   m_Father: {fileID: 5248538750878103284}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -50}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1033026699836455803
 GameObject:
@@ -9263,6 +9263,7 @@ MonoBehaviour:
   shotgun: {fileID: 11400000, guid: f8d017855c1053f4193af54ea3269d72, type: 2}
   rifle: {fileID: 11400000, guid: ec2b8cb7090e966429003867cbeae88a, type: 2}
   SMG: {fileID: 11400000, guid: ef0be0ea3eb101641891cdd15b48fa5a, type: 2}
+  nextLevelButton: {fileID: 3397683732197346180}
 --- !u!1 &3762546823710491667
 GameObject:
   m_ObjectHideFlags: 0
@@ -10643,10 +10644,10 @@ RectTransform:
   - {fileID: 4046429833915081543}
   m_Father: {fileID: 5248538750878103284}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -250}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4192647692682936371
 GameObject:
@@ -12237,7 +12238,7 @@ GameObject:
   - component: {fileID: 3141578103406215640}
   - component: {fileID: 8628166517140831756}
   - component: {fileID: 6910647409223710097}
-  - component: {fileID: 686972955515536466}
+  - component: {fileID: 7456685189371098445}
   m_Layer: 5
   m_Name: Tutorial Level
   m_TagString: Untagged
@@ -12359,7 +12360,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!95 &686972955515536466
+--- !u!95 &7456685189371098445
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
@@ -12371,7 +12372,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 5c575c46e6952154ea9112aba47e5e36, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 2
+  m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -13980,7 +13981,7 @@ GameObject:
   - component: {fileID: 5898736602961410011}
   - component: {fileID: 4137117162650629583}
   - component: {fileID: 7832492321765268774}
-  - component: {fileID: 4013562049225522380}
+  - component: {fileID: 3291146525150145856}
   m_Layer: 5
   m_Name: Options
   m_TagString: Untagged
@@ -14102,7 +14103,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!95 &4013562049225522380
+--- !u!95 &3291146525150145856
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
@@ -14114,7 +14115,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 5c575c46e6952154ea9112aba47e5e36, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 2
+  m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
@@ -19561,10 +19562,10 @@ RectTransform:
   - {fileID: 7707047840056401375}
   m_Father: {fileID: 5248538750878103284}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -450}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6804649046794945172
 GameObject:
@@ -23859,7 +23860,7 @@ GameObject:
   - component: {fileID: 7847286624289909846}
   - component: {fileID: 7697608678401735228}
   - component: {fileID: 7342879864059129187}
-  - component: {fileID: 6121294255516147904}
+  - component: {fileID: 9001179991259083207}
   m_Layer: 5
   m_Name: Start
   m_TagString: Untagged
@@ -23981,7 +23982,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!95 &6121294255516147904
+--- !u!95 &9001179991259083207
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
@@ -23993,7 +23994,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 5c575c46e6952154ea9112aba47e5e36, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 2
+  m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
