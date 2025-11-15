@@ -54,6 +54,8 @@ MonoBehaviour:
   totalAirDash: 0
   totaljumpDist: 0
   weaponEffects: []
+  isReloading: 0
+  reloadTime: 3
   gunList: []
   gunListPos: 0
   pstat: 0
