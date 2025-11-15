@@ -11,6 +11,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
     [SerializeField] float ShakeDur;
     [SerializeField] float ShakeMag;
 
+    [SerializeField] public DamageDirection DmgIndicatorDir;
+
     [SerializeField] public float HP;
     [SerializeField] int speed;
     [SerializeField] int sprintMod;
@@ -279,11 +281,19 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
                 
             }
         }
-        if(Camshake != null)
+        if(context.source != null)
+        {
+            DmgIndicatorDir.TakeDmgDirection = context.source.transform.position;
+        }
+        GameObject obj = Instantiate(DmgIndicatorDir.gameObject, DmgIndicatorDir.transform.position, DmgIndicatorDir.transform.rotation, DmgIndicatorDir.transform.parent);
+        var indicator = obj.GetComponent<DamageDirection>();
+        obj.SetActive(true);
+
+        if (Camshake != null)
         {
             StartCoroutine(Camshake.camShake(ShakeDur, ShakeMag));
         }
-
+        
         aud.PlayOneShot(audHurt[Random.Range(0, audHurt.Length)], audHurtVol);
         updatePlayerUI();
     }

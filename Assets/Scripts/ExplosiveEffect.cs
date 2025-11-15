@@ -1,4 +1,6 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 [CreateAssetMenu(fileName = "ExplosiveEffect", menuName = "Scriptable Objects/ExplosiveEffect")]
 public class ExplosiveEffect : DamageEffects
@@ -22,12 +24,21 @@ public class ExplosiveEffect : DamageEffects
                 target: hits[i].gameObject,
                 baseHitDamage: baseHit
             );
-
             idmg.takeDamage(in ctx, effects: null);
         }
 
         // 2) VFX (optional)
-        if (explosionVfx)
-            Object.Instantiate(explosionVfx, position, Quaternion.identity);
+
+
+        IEnumerator ShowExplodeVFX()
+        {
+            if (explosionVfx)
+            {
+            GameObject explodeVFX = Object.Instantiate(explosionVfx, position, Quaternion.identity);
+            yield return new WaitForSeconds(2f);
+            Destroy(explodeVFX);
+            }
+        }
+
     }
 }
