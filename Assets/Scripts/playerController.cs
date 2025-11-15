@@ -10,6 +10,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
     [SerializeField] CameraShake Camshake;
     [SerializeField] float ShakeDur;
     [SerializeField] float ShakeMag;
+    [SerializeField] Animator anim;
 
     [SerializeField] public DamageDirection DmgIndicatorDir;
 
@@ -158,9 +159,17 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
 
         moveDir = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward;
         controller.Move(moveDir * speed * Time.deltaTime);
+        float velocity = new Vector3(playerVel.x, 0, playerVel.z).magnitude;
+        anim.SetFloat("Speed", velocity);
 
         jump();
         controller.Move(playerVel * Time.deltaTime);
+      
+        if (Input.GetButton("Fire1") && PowerUpManager.Instance.gunList.Count > 0 && PowerUpManager.Instance.GetCurrentAmmo(gunListPos) > 0 && shootTimer >= shootRate && !PowerUpManager.Instance.isReloading)
+        {
+            shoot();
+            anim.SetTrigger("Shoot");
+        }
 
 
 
@@ -227,7 +236,6 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
         PowerUpManager.Instance.ConsumeAmmo(gunListPos);
         aud.PlayOneShot(PowerUpManager.Instance.gunList[gunListPos].baseStats.shootSounds[Random.Range(0, PowerUpManager.Instance.gunList[gunListPos].baseStats.shootSounds.Length)], PowerUpManager.Instance.gunList[gunListPos].baseStats.shootSoundVol);
         updatePlayerUI();
-
         for (int i = 0; i < numProjectiles; i++)
         {
             float center = (numProjectiles - 1) * 0.5f;
