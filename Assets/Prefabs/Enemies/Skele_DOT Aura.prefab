@@ -1770,6 +1770,7 @@ MonoBehaviour:
   floatingTextPrefab: {fileID: 5749133604472977256, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
   givesSouls: 0
   soulsToGive: 1
+  playerInSight: 0
   thisRoom: {fileID: 0}
   HpSlider: {fileID: 9010166462517473699}
   target: {fileID: 3290959624444948350}
@@ -3489,27 +3490,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7059534431554799137, guid: b1e3e9a91fa1d3242a8bcf0313bbfaaf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -101190.38
+      value: -101713.45
       objectReference: {fileID: 0}
     - target: {fileID: 7059534431554799137, guid: b1e3e9a91fa1d3242a8bcf0313bbfaaf, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.040218804
+      value: 0.83466697
       objectReference: {fileID: 0}
     - target: {fileID: 7059534431554799137, guid: b1e3e9a91fa1d3242a8bcf0313bbfaaf, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.00009937748
+      value: 0.038584296
       objectReference: {fileID: 0}
     - target: {fileID: 7059534431554799137, guid: b1e3e9a91fa1d3242a8bcf0313bbfaaf, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.9991879
+      value: -0.54881567
       objectReference: {fileID: 0}
     - target: {fileID: 7059534431554799137, guid: b1e3e9a91fa1d3242a8bcf0313bbfaaf, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0024689157
+      value: 0.025370192
       objectReference: {fileID: 0}
     - target: {fileID: 7059534431554799137, guid: b1e3e9a91fa1d3242a8bcf0313bbfaaf, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -54858.812
+      value: -55990.535
       objectReference: {fileID: 0}
     - target: {fileID: 7059534431554799137, guid: b1e3e9a91fa1d3242a8bcf0313bbfaaf, type: 3}
       propertyPath: m_AnchoredPosition.y

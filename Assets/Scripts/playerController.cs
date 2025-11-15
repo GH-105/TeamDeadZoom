@@ -260,7 +260,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
         
     }
 
-    public void takeDamage(in DamageContext context, IReadOnlyList<EffectInstance> effects, Vector3 dmgPos)
+    public void takeDamage(in DamageContext context, IReadOnlyList<EffectInstance> effects)
     {
         if (HP <= 0f) return;
 
@@ -282,15 +282,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
         }
         if(context.source != null)
         {
-            Vector3 enemyPos = context.source.transform.position;
-            DmgIndicatorDir.TakeDmgDirection = enemyPos;
+            DmgIndicatorDir.TakeDmgDirection = context.source.transform.position;
         }
-        else
-        {
-            DmgIndicatorDir.TakeDmgDirection = dmgPos;
-        }
-        DmgIndicatorDir.TakeDmgDirection = dmgPos;
         GameObject obj = Instantiate(DmgIndicatorDir.gameObject, DmgIndicatorDir.transform.position, DmgIndicatorDir.transform.rotation, DmgIndicatorDir.transform.parent);
+        var indicator = obj.GetComponent<DamageDirection>();
         obj.SetActive(true);
 
         if (Camshake != null)

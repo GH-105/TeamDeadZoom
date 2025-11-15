@@ -71,7 +71,7 @@ public class Damage : MonoBehaviour
 
         foreach (var inst in damageEffects)
             inst.effect.OnProjectileImpact(transform.position, shooter);
-
+        //Add Explosive Effect VFX Destroy Here
         if (telegraph) Destroy(telegraph);
         Destroy(gameObject);
     }
@@ -151,7 +151,7 @@ public class Damage : MonoBehaviour
         {
             var context = new DamageContext(source: shooter, target: other.gameObject, baseHitDamage: damageAmount);
             Vector3 dmgPosition = Vector3.zero;
-            target.takeDamage(in context, damageEffects, dmgPosition);
+            target.takeDamage(in context, damageEffects);
 
             if (HasExplosiveEffect())
             {

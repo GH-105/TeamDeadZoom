@@ -33,7 +33,7 @@ public class DamageDirection : MonoBehaviour
 
         TakeDmgDirection.y = PlayerObj.position.y;
         Vector3 DmgDirection = (TakeDmgDirection - PlayerObj.position).normalized;
-        float DmgAngle = (Vector3.SignedAngle(DmgDirection, PlayerObj.forward, Vector3.up));
-        ImagePivot.transform.localEulerAngles = new Vector3(0, 0, DmgAngle);
+        float DmgAngle = (Vector3.SignedAngle(PlayerObj.forward, DmgDirection, Vector3.up));
+        ImagePivot.transform.localEulerAngles = new Vector3(0, 0, -DmgAngle);
     }
 }

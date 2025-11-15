@@ -39,6 +39,7 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
 
     [SerializeField] private bool givesSouls = false;
     [SerializeField] private int soulsToGive = 1;
+    public bool playerInSight;
 
     Color colorOrigBody;
     Color colorOrigHead;
@@ -146,6 +147,7 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
         RaycastHit hit;
         if(Physics.Raycast(headPos.position, playerDir, out hit))
         {
+            playerInSight = true;
             if(angleToPlayer <= FOV && hit.collider.CompareTag ("Player"))
             {
                 if (agent != null)
@@ -166,7 +168,7 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
                 return true;
             }
         }
-
+        playerInSight = false;
         agent.stoppingDistance = 0;
         return false;
     }
@@ -413,10 +415,5 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
             Debug.Log("gave souls");
         }
         Destroy(gameObject);
-    }
-
-    public void takeDamage(in DamageContext context, IReadOnlyList<EffectInstance> effects, Vector3 dmgPos)
-    {
-        throw new System.NotImplementedException();
     }
 }
