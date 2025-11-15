@@ -47,6 +47,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
     [Range(0, 1)][SerializeField] float audJumpVol;
     [SerializeField] AudioClip[] audHurt;
     [Range(0, 1)][SerializeField] float audHurtVol;
+    [SerializeField] AudioClip[] audDryfire;
+    [Range(0, 1)][SerializeField] float audDryfireVol;
 
     Vector3 moveDir;
     Vector3 playerVel;
@@ -159,12 +161,23 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
 
         jump();
         controller.Move(playerVel * Time.deltaTime);
-      
-        if (Input.GetButton("Fire1") && PowerUpManager.Instance.gunList.Count > 0 && PowerUpManager.Instance.GetCurrentAmmo(gunListPos) > 0 && shootTimer >= shootRate && !PowerUpManager.Instance.isReloading)
-        {
-            shoot();
-        }
 
+
+
+        if (Input.GetButton("Fire1") && PowerUpManager.Instance.gunList.Count > 0 && PowerUpManager.Instance.GetCurrentAmmo(gunListPos) >= 0 && shootTimer >= shootRate && !PowerUpManager.Instance.isReloading)
+        {
+            if (PowerUpManager.Instance.GetCurrentAmmo(gunListPos) >= 1)
+            {
+                shoot();
+            }
+            else
+            {
+                aud.PlayOneShot(PowerUpManager.Instance.dryFireSound);
+                if (gameManager.instance.reloadText != null)
+                    gameManager.instance.reloadText.gameObject.SetActive(true);
+
+            }
+        }
         selectGun();
         reload();
     }
@@ -209,11 +222,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
         Vector3 dir = (aimPoint - firePos.position).normalized;
         Quaternion aimRotation = Quaternion.LookRotation(dir, firePos.up);
 
-        if (PowerUpManager.Instance.GetCurrentAmmo(gunListPos) <= 1)
-        {
-            if (gameManager.instance.reloadText != null)
-                gameManager.instance.reloadText.gameObject.SetActive(true);
-        }
+        
 
         PowerUpManager.Instance.ConsumeAmmo(gunListPos);
         aud.PlayOneShot(PowerUpManager.Instance.gunList[gunListPos].baseStats.shootSounds[Random.Range(0, PowerUpManager.Instance.gunList[gunListPos].baseStats.shootSounds.Length)], PowerUpManager.Instance.gunList[gunListPos].baseStats.shootSoundVol);

@@ -1,4 +1,5 @@
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,6 +21,7 @@ public class PowerUpManager : MonoBehaviour
     public List<EffectInstance> weaponEffects;
     public bool isReloading = false;
     [SerializeField] public float reloadTime;
+    [SerializeField] public AudioClip dryFireSound;
 
     public List<GunListings> gunList;
     public int gunListPos;
@@ -234,16 +236,13 @@ public class PowerUpManager : MonoBehaviour
 
     public bool ConsumeAmmo(int index)
     {
-         if(GetCurrentAmmo(index) < 0)
-        {
+         if(GetCurrentAmmo(index) <= 0)
+         {
             return false;
-        }
-        else
-        {
-            var currentGunState = gunList[index].state;
-            currentGunState.ammoCur--;
-            return true;
-        }
+         }
+         var currentGunState = gunList[index].state;
+         currentGunState.ammoCur--;
+         return true;
     }
 
     private static void EnsureInitialized(GunListings gun)
