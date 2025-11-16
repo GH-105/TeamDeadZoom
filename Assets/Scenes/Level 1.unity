@@ -23062,6 +23062,7 @@ MonoBehaviour:
   - {fileID: 1540697333}
   roomGoalLabel: {fileID: 1516555843}
   doorStatusLabel: {fileID: 0}
+  battleClip: {fileID: 8300000, guid: 73e800617cbae8843909627cf37f3b01, type: 3}
   roomGoalCount: 0
   roomActive: 0
 --- !u!65 &895184577
@@ -28406,7 +28407,7 @@ PrefabInstance:
     - target: {fileID: 5209052059936825753, guid: 2234d1085ecee174cbd784c3f80bf342, type: 3}
       propertyPath: m_Resource
       value: 
-      objectReference: {fileID: 8300000, guid: 73e800617cbae8843909627cf37f3b01, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8552754542459184044, guid: 2234d1085ecee174cbd784c3f80bf342, type: 3}
       propertyPath: m_Name
       value: Music
@@ -28414,7 +28415,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8552754542459184044, guid: 2234d1085ecee174cbd784c3f80bf342, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 1564450726}
   m_SourcePrefab: {fileID: 100100000, guid: 2234d1085ecee174cbd784c3f80bf342, type: 3}
 --- !u!1001 &1061392575
 PrefabInstance:
@@ -34739,6 +34743,7 @@ MonoBehaviour:
   - {fileID: 433410642}
   roomGoalLabel: {fileID: 1516555843}
   doorStatusLabel: {fileID: 1088884425}
+  battleClip: {fileID: 8300000, guid: 73e800617cbae8843909627cf37f3b01, type: 3}
   roomGoalCount: 0
   roomActive: 0
 --- !u!4 &1274694450
@@ -37020,7 +37025,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 20, y: 10, z: 1}
+  m_Size: {x: 20, y: 40, z: 1}
   m_Center: {x: 4.5, y: 0, z: -10}
 --- !u!114 &1375187574
 MonoBehaviour:
@@ -37049,6 +37054,7 @@ MonoBehaviour:
   - {fileID: 1255230319}
   roomGoalLabel: {fileID: 1516555843}
   doorStatusLabel: {fileID: 1924667103}
+  battleClip: {fileID: 8300000, guid: 73e800617cbae8843909627cf37f3b01, type: 3}
   roomGoalCount: 0
   roomActive: 0
 --- !u!1001 &1376391567
@@ -41575,6 +41581,31 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4.000001, y: 4, z: 0.1939719}
   m_Center: {x: 0.000015258789, y: 1.9999999, z: 0.09698512}
+--- !u!1 &1564450722 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8552754542459184044, guid: 2234d1085ecee174cbd784c3f80bf342, type: 3}
+  m_PrefabInstance: {fileID: 1057952466}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1564450723 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5209052059936825753, guid: 2234d1085ecee174cbd784c3f80bf342, type: 3}
+  m_PrefabInstance: {fileID: 1057952466}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1564450726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1564450722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3de368fb989c2e4b8ac612deb0d68d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MusicManager
+  CurrentTrack: {fileID: 1564450723}
+  DefaultTrack: {fileID: 8300000, guid: cb55320d937abde49bafcff1af94bb72, type: 3}
+  fadeDur: 1
 --- !u!4 &1577346917 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: cde161403e4daa841897213ea28384a5, type: 3}
@@ -45691,6 +45722,7 @@ MonoBehaviour:
   - {fileID: 1434373102}
   roomGoalLabel: {fileID: 1516555843}
   doorStatusLabel: {fileID: 1143654099}
+  battleClip: {fileID: 8300000, guid: 73e800617cbae8843909627cf37f3b01, type: 3}
   roomGoalCount: 0
   roomActive: 0
 --- !u!4 &1791640268
@@ -45729,7 +45761,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 20, y: 15, z: 1}
+  m_Size: {x: 20, y: 40, z: 1}
   m_Center: {x: -45, y: 0, z: 15}
 --- !u!1001 &1791832958
 PrefabInstance:
