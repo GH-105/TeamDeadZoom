@@ -26,15 +26,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1f3ab9073fa6aed4bbec9d3a54b89a27, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -12.375458
+      value: -854.9858
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1f3ab9073fa6aed4bbec9d3a54b89a27, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.000015258789
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1f3ab9073fa6aed4bbec9d3a54b89a27, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 118.4506
+      value: 276.3639
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 1f3ab9073fa6aed4bbec9d3a54b89a27, type: 3}
       propertyPath: m_LocalRotation.w
@@ -92,18 +92,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b75c88d60abd9364b94fd6b69d62e54e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Iinteraction
-  speedBoost: 15
+  speedBoost: 0
   jumpCIncrease: 0
   damageBoostFlat: 0
   damageBoostMult: 0
-  distBoost: 4
+  distBoost: 0
   rateBoost: 0
-  ammoUp: 10
-  HealthRecov: 0
+  ammoUp: 0
+  HealthRecov: 5
   AirDashInc: 0
   weaponEffect: {fileID: 11400000, guid: c647aa57173d70e41bb4f54720301e5c, type: 2}
   magnitude: 2
-  type: 9
+  HPLoss: 0
+  jumpsSpeedInc: 0
+  type: 7
 --- !u!135 &1420718751291974532
 SphereCollider:
   m_ObjectHideFlags: 0

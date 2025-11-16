@@ -1302,6 +1302,37 @@ Transform:
   - {fileID: 2363852931474811701}
   m_Father: {fileID: 4314076713974868169}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5277889232145936711
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6662296902357590914}
+  m_Layer: 7
+  m_Name: HeadPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6662296902357590914
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5277889232145936711}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.0065, z: 0.0325}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1254503810006246326}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5301699879794976561
 GameObject:
   m_ObjectHideFlags: 0
@@ -1373,6 +1404,7 @@ Transform:
   - {fileID: 6998095253526506729}
   - {fileID: 4748173751452274777}
   - {fileID: 8670471947165770672}
+  - {fileID: 6662296902357590914}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1866405980084161444
@@ -1426,7 +1458,7 @@ MonoBehaviour:
   head: {fileID: 6677424773807101072}
   jaw: {fileID: 6677424773807101072}
   agent: {fileID: 325116566542499768}
-  headPos: {fileID: 1254503810006246326}
+  headPos: {fileID: 6662296902357590914}
   HP: 100
   faceTargetSpeed: 5
   FOV: 360
@@ -1434,20 +1466,21 @@ MonoBehaviour:
   roamPauseTimer: 4
   shootPos1: {fileID: 1134388235234798289}
   shootPos2: {fileID: 0}
-  bullet: {fileID: 6207780247886573495, guid: 57c1c19ebb6e8ad4bb351a006e3dc17d, type: 3}
+  bullet: {fileID: 0}
   bullet2: {fileID: 0}
   bullet3: {fileID: 0}
   SpecialShot: {fileID: 0}
-  shootRate: 9999
+  shootRate: 2
   enemyBulletDamage: 0
   enemyBulletSpeed: 0
   enemyEffects: []
   player: {fileID: 0}
-  summoner: 0
+  summoner: 1
   bulletDelay: 1
   floatingTextPrefab: {fileID: 5749133604472977256, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
   givesSouls: 0
   soulsToGive: 1
+  playerInSight: 0
   thisRoom: {fileID: 0}
   HpSlider: {fileID: 2417565450876004497}
   target: {fileID: 1254503810006246326}
@@ -1471,7 +1504,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 0.2
-  m_BaseOffset: 0.01
+  m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!136 &8607899621155771134
