@@ -172,13 +172,12 @@ public class buttonFunctions : MonoBehaviour
 
         
                
-                Coinlogic.coinCount = data.coins;
-                gameManager.instance.playerSpawnPos.transform.position = data.checkpointPosition;
-                gameManager.instance.playerScript.spawnPlayer();
+        Coinlogic.coinCount = data.coins;
+        gameManager.instance.playerSpawnPos.transform.position = data.checkpointPosition;
+        gameManager.instance.playerScript.spawnPlayer();
 
-               
-
-               
+        SoulManagement.ApplyStatsToPlayer(gameManager.instance.playerScript);
+   
             if (data.gunData != null && data.gunData.Length > 0)
             {
                 int gunDataLength = data.gunData.Length;

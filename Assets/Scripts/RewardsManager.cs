@@ -22,7 +22,7 @@ public class RewardsManager : MonoBehaviour
             return;
         }
         instance = this;
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
     }
 
  
@@ -192,6 +192,12 @@ public static class RewardsManagerDebug
         return;
     }
         RewardsManager.instance.LossRewards();
+    }
+
+    [MenuItem("Debug/Trigger souls")]
+    private static void TriggerSouls()
+    {
+        SoulManagement.AddSouls(1);
     }
 }
 

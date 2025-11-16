@@ -35,12 +35,29 @@ public class SoulManagement : MonoBehaviour
     {
         buttonFunctions.LoadGame();
         soulCountText.text = "Souls: " + souls;
-        UpdateUI();
 
         dashUpgradeCostText.text = "Dash Upgrade: " + dashUpgradeCost + " souls";
         hpUpgradeCostText.text = "HP Upgrade: " + hpUpgradeCost + " souls";
         jumpUpgradeCostText.text = "Jump Upgrade: " + jummpUpgradeCost + " souls";
         speedUpgradeCostText.text = "Speed Upgrade: " + speedUpgradeCost + " souls";
+
+        if (playercont == null)
+            playercont = FindAnyObjectByType<playerController>();
+
+        ApplyStatsToPlayer(playercont);
+        UpdateUI();
+    }
+
+    public static void ApplyStatsToPlayer(playerController player)
+    {
+        if(player == null) return;
+
+        player.maxAirDash = dashCount;
+        player.HPOrig = maxHp;
+        player.HP = currentHP > 0 ? currentHP : maxHp;
+        player.Speed = (int)playerSpeed;
+        player.JumpCountMax = jumpCount;
+
     }
 
     public static void AddSouls(int amount)
@@ -73,7 +90,7 @@ public class SoulManagement : MonoBehaviour
 
             if (playercont != null)
             {
-                playercont.maxAirDash = dashCount;
+                playercont.maxAirDash++;
                 Debug.Log("Player Dash upgraded");
             }
             else
@@ -103,7 +120,6 @@ public class SoulManagement : MonoBehaviour
             UpdateUI();
         }
     }
-
 
     public void UpdateUI()
     {

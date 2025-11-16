@@ -72,6 +72,8 @@ public class gameManager : MonoBehaviour
 
     private void Start()
     {
+        SaveManager.LoadGame();
+
         if(SceneManager.GetActiveScene().name == "Level Select")
         {
             StartScreen();
