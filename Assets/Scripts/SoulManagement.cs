@@ -1,21 +1,24 @@
+using System.Collections;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SoulManagement : MonoBehaviour
 {
+    public static SoulManagement instance;
     public static int souls;
 
-    public static int dashUpgradeCost = 0;
-    public static int hpUpgradeCost = 0;
-    public static int jumpUpgradeCost = 0;
-    public static int speedUpgradeCost = 0;
+    public static int dashUpgradeCost = 0;//1
+    public static int hpUpgradeCost = 0;//5
+    public static int jumpUpgradeCost = 0;//3
+    public static int speedUpgradeCost = 0;//3
 
     public static int jumpCount = 1;
     public static int dashCount = 0;
     public static int maxHp = 15;
     public static int currentHP;
-    public static float playerSpeed = 5f;
+    public static float playerSpeed = 15f;
 
     [SerializeField] private TMP_Text soulCountText;
     [SerializeField] private TMP_Text dashUpgradeCostText;
@@ -31,22 +34,27 @@ public class SoulManagement : MonoBehaviour
 
     [SerializeField] public playerController playercont;
 
-    private void Start()
+    private void OnEnable()
     {
-        buttonFunctions.LoadGame();
-        soulCountText.text = "Souls: " + souls;
+        playerController.OnPlayerReady += HandlePlayerReady;
+    }
+    private void OnDisable()
+    {
+        playerController.OnPlayerReady -= HandlePlayerReady;
+    }
 
-        dashUpgradeCostText.text = "Dash Upgrade: " + dashUpgradeCost + " souls";
-        hpUpgradeCostText.text = "HP Upgrade: " + hpUpgradeCost + " souls";
-        jumpUpgradeCostText.text = "Jump Upgrade: " + jumpUpgradeCost + " souls";
-        speedUpgradeCostText.text = "Speed Upgrade: " + speedUpgradeCost + " souls";
-
-        if (playercont == null)
-            playercont = FindAnyObjectByType<playerController>();
-
+    private void HandlePlayerReady(playerController player)
+    {
+        playercont = player;
         ApplyStatsToPlayer(playercont);
         UpdateUI();
     }
+    private void Awake()
+    {
+        instance = this;
+        UpdateUI();
+    }
+
 
     public static void ApplyStatsToPlayer(playerController player)
     {
@@ -63,6 +71,8 @@ public class SoulManagement : MonoBehaviour
     public static void AddSouls(int amount)
     {
         souls += Mathf.Max(amount, 0);
+        if(instance != null)
+            instance.UpdateUI();
     }
 
     public static bool SpendSouls(int amount)
@@ -82,26 +92,22 @@ public class SoulManagement : MonoBehaviour
 
     public void UpgradeDash()
     {
-        if(SpendSouls(dashUpgradeCost))
+        Debug.Log("UpgradeDash method called");
+
+        if (SpendSouls(dashUpgradeCost))
         {
             dashCount++;
             dashUpgradeCost *= 2;
 
-            if (playercont != null)
-            {
-                playercont.maxAirDash++;
-                Debug.Log("Player Dash upgraded");
-            }
-            else
-                Debug.Log("player dash not upgraded");
-
-                UpdateUI();
+            ApplyStatsToPlayer(playercont);
+            UpdateUI();
+            Debug.Log("player dash upgraded");
         }
     }
 
     public void UpgradeHealth()
     {
-        if(SpendSouls(hpUpgradeCost))
+        if(SpendSouls(hpUpgradeCost) && playercont != null)
         {
             maxHp += 5;
             currentHP = maxHp;
@@ -114,7 +120,7 @@ public class SoulManagement : MonoBehaviour
 
     public void UpgradeSpeed()
     {
-        if(SpendSouls(speedUpgradeCost))
+        if(SpendSouls(speedUpgradeCost) && playercont != null)
         {
             playerSpeed += 1f;
             speedUpgradeCost *= 2;
@@ -126,7 +132,7 @@ public class SoulManagement : MonoBehaviour
 
     public void UpgradeJump()
     {
-        if (SpendSouls(jumpUpgradeCost))
+        if (SpendSouls(jumpUpgradeCost) && playercont != null)
         {
             jumpCount++;
             jumpUpgradeCost *= 2;
@@ -154,4 +160,28 @@ public class SoulManagement : MonoBehaviour
         buttonFunctions.SaveGame(false);
 
     }
+    public static void DeleteSave()
+    {
+        SaveManager.DeleteSave();
+
+        souls = 0;
+        dashUpgradeCost = 1;
+        hpUpgradeCost = 5;
+        jumpUpgradeCost = 3;
+        speedUpgradeCost = 3;
+
+        jumpCount = 1;
+        dashCount = 0;
+        maxHp = 15;
+        currentHP = maxHp;
+        playerSpeed = 15;
+
+        playerController player = FindAnyObjectByType<playerController>();
+        ApplyStatsToPlayer(player);
+
+        SoulManagement ui = FindAnyObjectByType<SoulManagement>();
+        ui?.UpdateUI();
+    }
+
+
 }

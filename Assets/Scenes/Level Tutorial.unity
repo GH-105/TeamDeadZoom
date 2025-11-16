@@ -1351,6 +1351,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 8464894528499008667, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8464894528499008667, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8464894528499008667, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8464894528499008667, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
       propertyPath: m_LocalPosition.x
       value: -737.331
       objectReference: {fileID: 0}
@@ -1399,6 +1411,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
+--- !u!1 &924509884 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2135029538412865801, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
+  m_PrefabInstance: {fileID: 924509883}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1155898228
 GameObject:
   m_ObjectHideFlags: 0
@@ -2324,7 +2341,7 @@ PlayableDirector:
   m_InitialTime: 0
   m_SceneBindings:
   - key: {fileID: 4940582894004095223, guid: b55db844a5524314894758185d93b2cb, type: 2}
-    value: {fileID: 0}
+    value: {fileID: 924509884}
   - key: {fileID: -3526240992997010630, guid: b55db844a5524314894758185d93b2cb, type: 2}
     value: {fileID: 1200930458}
   - key: {fileID: -7968159713370511803, guid: b55db844a5524314894758185d93b2cb, type: 2}

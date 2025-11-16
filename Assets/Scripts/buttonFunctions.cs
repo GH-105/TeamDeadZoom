@@ -94,6 +94,7 @@ public class buttonFunctions : MonoBehaviour
             gameManager.instance.stateUnpause();
             SceneManager.LoadScene(level);
         }
+        LoadGame();
     }
 
     public void nextLevel()
@@ -104,6 +105,7 @@ public class buttonFunctions : MonoBehaviour
             LoadingScreen.instance.LoadScene(1);
 
         gameManager.instance.stateUnpause();
+        LoadGame();
     }
 
     public void loadLevelSelectMenu()
@@ -128,6 +130,12 @@ public class buttonFunctions : MonoBehaviour
         data.jumpCount = SoulManagement.jumpCount;
         data.playerSpeed = SoulManagement.playerSpeed;
         data.playerHP = (int)gameManager.instance.playerScript.HP;
+        data.maxHP = SoulManagement.maxHp;
+        data.currentHP = SoulManagement.currentHP;
+        data.dashUpgradeCost = SoulManagement.dashUpgradeCost;
+        data.hpUpgradeCost = SoulManagement.hpUpgradeCost;
+        data.jumpUpgradeCost = SoulManagement.jumpUpgradeCost;
+        data.speedUpgradeCost = SoulManagement.speedUpgradeCost;
 
         if (win)
         {
@@ -164,17 +172,23 @@ public class buttonFunctions : MonoBehaviour
     }
     public static void LoadGame()
     {
-        GameData data = SaveManager.LoadGame();
+        GameData data = SaveManager.LoadGame() ?? new GameData();
         SoulManagement.souls = data.souls;
         SoulManagement.dashCount = data.dashCount;
         SoulManagement.jumpCount = data.jumpCount;
         SoulManagement.playerSpeed = data.playerSpeed;
-        gameManager.instance.playerScript.HP = data.playerHP;
         DifficultyManager.currDif = data.dL;
-        
-               
+        SoulManagement.maxHp = data.maxHP;
+        SoulManagement.currentHP = data.currentHP;
+        SoulManagement.dashUpgradeCost = data.dashUpgradeCost;
+        SoulManagement.hpUpgradeCost = data.hpUpgradeCost;
+        SoulManagement.jumpUpgradeCost = data.jumpUpgradeCost;
+        SoulManagement.speedUpgradeCost = data.speedUpgradeCost;
+        gameManager.instance.playerScript.HP = data.playerHP;
+
         Coinlogic.coinCount = data.coins;
         gameManager.instance.playerSpawnPos.transform.position = data.checkpointPosition;
+   
         gameManager.instance.playerScript.spawnPlayer();
 
         SoulManagement.ApplyStatsToPlayer(gameManager.instance.playerScript);
@@ -202,12 +216,12 @@ public class buttonFunctions : MonoBehaviour
                 }
                 PowerUpManager.Instance.gunListPos = data.currentGunIndex;
             }
-        
+        SoulManagement.instance.UpdateUI();
     }
     public void DeleteSave()
     {
-
-        SaveManager.DeleteSave();
+            SoulManagement.DeleteSave();
+            Debug.LogWarning("Soul management instance not found cannot delete save");
     }
 
     public void StartGame()
