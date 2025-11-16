@@ -39,7 +39,14 @@ public class SaveManager : MonoBehaviour
             File.Delete(path);
             Debug.Log("deleted save");
         }
+        if(StopWatch.instance != null)
+        {
+            StopWatch.instance.currentTime = 0f;
+            StopWatch.instance.saveTime = float.MaxValue;
+            StopWatch.instance.currentTimeText.text = "--:--:--";
+            StopWatch.instance.saveTimeText.text = "--:--:--";
 
+        }
     }
 
     public static float UpdateBestTime(string levelName, float currentTime)
@@ -55,7 +62,7 @@ public class SaveManager : MonoBehaviour
             {
                 levelFound = true;
 
-                if(currentTime < level.bestTime)
+                if (currentTime < level.bestTime || level.bestTime <= 0f)
                     level.bestTime = currentTime;
                 
 

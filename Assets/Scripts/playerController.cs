@@ -306,6 +306,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
         
         aud.PlayOneShot(audHurt[Random.Range(0, audHurt.Length)], audHurtVol);
         updatePlayerUI();
+        buttonFunctions.SaveGame(false);
     }
 
     public void ApplyDot(float amount, DamageEffects effect, GameObject source)

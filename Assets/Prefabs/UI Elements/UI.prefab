@@ -5107,7 +5107,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1453185472006100230}
         m_TargetAssemblyTypeName: buttonFunctions, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: DeleteSave
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -25561,6 +25561,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f71d78c9d0913a409c6830975ec27b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StopWatch
+  currentTime: 0
   saveTime: 0
   currentTimeText: {fileID: 7936010498274653581}
   saveTimeText: {fileID: 8127616302476659933}

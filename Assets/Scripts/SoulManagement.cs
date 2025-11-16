@@ -78,6 +78,7 @@ public class SoulManagement : MonoBehaviour
             }
             else
                 Debug.Log("player dash not upgraded");
+
                 UpdateUI();
         }
     }
@@ -103,6 +104,7 @@ public class SoulManagement : MonoBehaviour
         }
     }
 
+
     public void UpdateUI()
     {
         Debug.Log("UpdateUI bug test");
@@ -118,7 +120,7 @@ public class SoulManagement : MonoBehaviour
         jumpUpgradeButton.SetActive(souls >= jummpUpgradeCost);
         speedUpgradeButton.SetActive(souls >= speedUpgradeCost);
 
-        buttonFunctions.SaveGame();
+        buttonFunctions.SaveGame(false);
 
     }
 }
