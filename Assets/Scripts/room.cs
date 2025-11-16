@@ -16,6 +16,7 @@ public class room : MonoBehaviour
     [SerializeField] List<Transform> spawnPos;
     [SerializeField] public TMP_Text roomGoalLabel;
     [SerializeField] public TMP_Text doorStatusLabel; //door open ui
+    [SerializeField] AudioClip battleClip;
     
     public int roomGoalCount;
     float playerFinishTime;
@@ -59,12 +60,21 @@ public class room : MonoBehaviour
     {
         if (other.CompareTag("Player") && doorOpened == false)
         {
-            if (doorOpened == false)
-            {
-                roomActive = true;
-                startSpawning = true;
-                doorState(true);
-            }
+            roomActive = true;
+            startSpawning = true;
+            doorState(true);
+
+            FindObjectOfType<MusicManager>().RoomActivated(battleClip);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            roomActive = false;
+
+            FindObjectOfType<MusicManager>().RoomDeactivated();
         }
     }
 
