@@ -68,7 +68,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bef590b5f83718440bddad527c144253, type: 2}
+  - {fileID: 2100000, guid: 5395c56e03889384398da83042f0b46e, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -110,10 +110,6 @@ MonoBehaviour:
   rb: {fileID: 0}
   projModel: {fileID: 732139463742306042}
   shooter: {fileID: 0}
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 0
-  telegraphPrefab: {fileID: 0}
   damageAmount: 4
   damageRate: 1
   speed: 0
@@ -211,7 +207,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bef590b5f83718440bddad527c144253, type: 2}
+  - {fileID: 2100000, guid: 5395c56e03889384398da83042f0b46e, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -253,10 +249,6 @@ MonoBehaviour:
   rb: {fileID: 0}
   projModel: {fileID: 863391916054676050}
   shooter: {fileID: 0}
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 0
-  telegraphPrefab: {fileID: 0}
   damageAmount: 4
   damageRate: 1
   speed: 0
@@ -354,7 +346,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bef590b5f83718440bddad527c144253, type: 2}
+  - {fileID: 2100000, guid: 5395c56e03889384398da83042f0b46e, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -396,10 +388,6 @@ MonoBehaviour:
   rb: {fileID: 0}
   projModel: {fileID: 1320208915348228287}
   shooter: {fileID: 0}
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 0
-  telegraphPrefab: {fileID: 0}
   damageAmount: 4
   damageRate: 1
   speed: 0
@@ -497,7 +485,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bef590b5f83718440bddad527c144253, type: 2}
+  - {fileID: 2100000, guid: 5395c56e03889384398da83042f0b46e, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -539,10 +527,6 @@ MonoBehaviour:
   rb: {fileID: 0}
   projModel: {fileID: 1351424300388956543}
   shooter: {fileID: 0}
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 0
-  telegraphPrefab: {fileID: 0}
   damageAmount: 4
   damageRate: 1
   speed: 0
@@ -640,7 +624,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bef590b5f83718440bddad527c144253, type: 2}
+  - {fileID: 2100000, guid: 5395c56e03889384398da83042f0b46e, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -682,10 +666,6 @@ MonoBehaviour:
   rb: {fileID: 0}
   projModel: {fileID: 2290131844640682306}
   shooter: {fileID: 0}
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 0
-  telegraphPrefab: {fileID: 0}
   damageAmount: 4
   damageRate: 1
   speed: 0
@@ -783,7 +763,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bef590b5f83718440bddad527c144253, type: 2}
+  - {fileID: 2100000, guid: 5395c56e03889384398da83042f0b46e, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -825,10 +805,6 @@ MonoBehaviour:
   rb: {fileID: 0}
   projModel: {fileID: 4146064948988333774}
   shooter: {fileID: 0}
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 0
-  telegraphPrefab: {fileID: 0}
   damageAmount: 4
   damageRate: 1
   speed: 0
@@ -926,7 +902,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bef590b5f83718440bddad527c144253, type: 2}
+  - {fileID: 2100000, guid: 5395c56e03889384398da83042f0b46e, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -968,10 +944,6 @@ MonoBehaviour:
   rb: {fileID: 0}
   projModel: {fileID: 5106889920728571854}
   shooter: {fileID: 0}
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 0
-  telegraphPrefab: {fileID: 0}
   damageAmount: 4
   damageRate: 1
   speed: 0
@@ -1069,7 +1041,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bef590b5f83718440bddad527c144253, type: 2}
+  - {fileID: 2100000, guid: 5395c56e03889384398da83042f0b46e, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1111,10 +1083,6 @@ MonoBehaviour:
   rb: {fileID: 0}
   projModel: {fileID: 5316732453991024668}
   shooter: {fileID: 0}
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 0
-  telegraphPrefab: {fileID: 0}
   damageAmount: 4
   damageRate: 1
   speed: 0
@@ -1212,7 +1180,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bef590b5f83718440bddad527c144253, type: 2}
+  - {fileID: 2100000, guid: 5395c56e03889384398da83042f0b46e, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1254,10 +1222,6 @@ MonoBehaviour:
   rb: {fileID: 0}
   projModel: {fileID: 6031960962543184518}
   shooter: {fileID: 0}
-  groundMask:
-    serializedVersion: 2
-    m_Bits: 0
-  telegraphPrefab: {fileID: 0}
   damageAmount: 4
   damageRate: 1
   speed: 0
@@ -1363,7 +1327,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bef590b5f83718440bddad527c144253, type: 2}
+  - {fileID: 2100000, guid: 1bb56df4b9ba24840bbfe7e3f0cec5b8, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1442,10 +1406,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2300000, guid: 1bb56df4b9ba24840bbfe7e3f0cec5b8, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: bef590b5f83718440bddad527c144253, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

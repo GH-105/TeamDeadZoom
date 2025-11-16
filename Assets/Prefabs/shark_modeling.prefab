@@ -997,6 +997,10 @@ MonoBehaviour:
   rb: {fileID: 0}
   projModel: {fileID: 0}
   shooter: {fileID: 0}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 0
+  telegraphPrefab: {fileID: 0}
   damageAmount: 5
   damageRate: 0
   speed: 0
@@ -1698,12 +1702,18 @@ MonoBehaviour:
   bullet3: {fileID: 0}
   SpecialShot: {fileID: 0}
   shootRate: 0
+  enemyBulletDamage: 0
+  enemyBulletSpeed: 0
+  enemyEffects: []
+  player: {fileID: 9093480221707116065, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
   summoner: 0
   bulletDelay: 1
   floatingTextPrefab: {fileID: 0}
+  givesSouls: 0
+  soulsToGive: 1
+  playerInSight: 0
   thisRoom: {fileID: 0}
   HpSlider: {fileID: 2356303659313138673}
-  healthcam: {fileID: 0}
   target: {fileID: 0}
   offset: {x: 0, y: 0, z: 0}
 --- !u!195 &5026046884010972894

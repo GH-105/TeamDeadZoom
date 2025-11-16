@@ -897,6 +897,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 657987f19f0767d4f81541198f8e3eff, type: 3}
   m_PrefabInstance: {fileID: 28136904}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &30467510 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4938722061642647908, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
+  m_PrefabInstance: {fileID: 148491504}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd1501b27edc377418114542a6189124, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DamageDirection
 --- !u!4 &33678355 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 657987f19f0767d4f81541198f8e3eff, type: 3}
@@ -13093,7 +13104,7 @@ PrefabInstance:
     - target: {fileID: 3629761327608750198, guid: 758cf89b8ed816348876e7a99dde20eb, type: 3}
       propertyPath: interactiveSource
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 992208190}
     - target: {fileID: 4926249215279122078, guid: 758cf89b8ed816348876e7a99dde20eb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1147
@@ -21642,7 +21653,7 @@ PrefabInstance:
     - target: {fileID: 3629761327608750198, guid: 758cf89b8ed816348876e7a99dde20eb, type: 3}
       propertyPath: interactiveSource
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 992208190}
     - target: {fileID: 4926249215279122078, guid: 758cf89b8ed816348876e7a99dde20eb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1293.3041
@@ -24804,6 +24815,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4976407977306092244, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
+      propertyPath: DmgIndicatorDir
+      value: 
+      objectReference: {fileID: 30467510}
     - target: {fileID: 8464894528499008667, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
       propertyPath: m_LocalPosition.x
       value: -737.331
@@ -26346,6 +26361,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 989918454}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &992208190 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6509400436022483906, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
+  m_PrefabInstance: {fileID: 937268855}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &992440336
 PrefabInstance:
   m_ObjectHideFlags: 0

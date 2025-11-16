@@ -9736,7 +9736,7 @@ MonoBehaviour:
   speed: 15
   destroyTime: 3
   flightTime: 0
-  playerInDot: {fileID: 0}
+  playerInDot: {fileID: 9093480221707116065, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
   damageEffects:
   - effect: {fileID: 11400000, guid: c647aa57173d70e41bb4f54720301e5c, type: 2}
     magnitude: 1

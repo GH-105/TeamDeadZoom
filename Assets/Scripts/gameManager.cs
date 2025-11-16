@@ -114,7 +114,10 @@ public class gameManager : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
 
-        buttonFunctions.SaveGame();
+        if(PowerUpText.Instance != null && PowerUpText.Instance.popUpParent != null)
+            PowerUpText.Instance.popUpParent.gameObject.SetActive(false);
+
+        buttonFunctions.SaveGame(true);
         Debug.Log("auto pause save");
     }
 
@@ -124,6 +127,10 @@ public class gameManager : MonoBehaviour
         Time.timeScale = timeScaleOrig;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
+
+        if (PowerUpText.Instance != null && PowerUpText.Instance.popUpParent != null)
+            PowerUpText.Instance.popUpParent.gameObject.SetActive(true);
+
         menuActive.SetActive(false);
         menuActive = null;
     }
@@ -136,8 +143,11 @@ public class gameManager : MonoBehaviour
         if(gameGoalCount <= 0)
         {
             if (StopWatch.instance != null)
+            {
                 StopWatch.instance.StopStopwatch();
-            statePause();
+                StopWatch.instance.SaveTimeToSaveManager();
+            }
+                statePause();
             RewardsManager.instance.WinRewards();
             Debug.Log("Rewards Manager called");
             

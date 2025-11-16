@@ -10,13 +10,13 @@ public class StopWatch : MonoBehaviour
 {
     public static StopWatch instance;
     bool stopwatchActive = false;
-    float currentTime;
+    public float currentTime;
     public float saveTime = float.MaxValue;
 
     public TMP_Text currentTimeText;
     public TMP_Text saveTimeText;
 
-    private string sceneKey;
+    //private string sceneKey;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,11 +24,11 @@ public class StopWatch : MonoBehaviour
         instance = this;
         currentTime = 0;
 
-        sceneKey = "BestTime_" + SceneManager.GetActiveScene().name; // get level name for each save
-        Debug.Log(sceneKey);
+       // sceneKey = "BestTime_" + SceneManager.GetActiveScene().name; 
+        //Debug.Log(sceneKey);
 
         StartStopwatch();
-        LoadTime();
+        UpdateBestTime();
     }
 
     // Update is called once per frame
@@ -38,10 +38,8 @@ public class StopWatch : MonoBehaviour
         {
             currentTime = currentTime + Time.deltaTime;
         }
-        TimeSpan time = TimeSpan.FromSeconds(currentTime);
-        currentTimeText.text = time.ToString(@"mm\:ss\:ff");
-
-        //Debug.Log("Time: " + currentTimeText.text);
+        TimeSpan cur = TimeSpan.FromSeconds(currentTime);
+        currentTimeText.text = cur.ToString(@"mm\:ss\:ff");
     }
 
     public void StartStopwatch()
@@ -54,9 +52,10 @@ public class StopWatch : MonoBehaviour
     public void StopStopwatch()
     {
         stopwatchActive = false;
-        SaveTime();
+        //SaveTime();
+        //SaveTimeToSaveManager();
     } 
-
+    /*
     public void SaveTime()
     {
         if (currentTime < saveTime)
@@ -68,21 +67,23 @@ public class StopWatch : MonoBehaviour
         }
         UpdateBestTime();
     }
-
+    */
     public void UpdateBestTime()
     {
-        if(saveTime == float.MaxValue)
+        GameData data = SaveManager.LoadGame();
+        if (data != null)
         {
             saveTimeText.text = "--:--:--";
+            return;
         }
+        GameData.LevelTimeData leveltime = data.levelTimes.Find(lvl => lvl.levelName == SceneManager.GetActiveScene().name);
+
+        if (leveltime != null)
+            saveTimeText.text = TimeSpan.FromSeconds(leveltime.bestTime).ToString(@"mm\:ss\:ff");
         else
-        {
-            TimeSpan best = TimeSpan.FromSeconds(saveTime);
-            saveTimeText.text = best.ToString(@"mm\:ss\:ff");
-            
-        }
-        Debug.Log(sceneKey);
+            saveTimeText.text = "--:--:--";
     }
+    /*
     public void LoadTime()
     {
         saveTime = PlayerPrefs.GetFloat(sceneKey, float.MaxValue);
@@ -92,12 +93,13 @@ public class StopWatch : MonoBehaviour
     {
         PlayerPrefs.DeleteKey(sceneKey);
        
-    }
-    public void SaveTimeToSaveManager() // ill need later
+    }*/
+    public void SaveTimeToSaveManager()
     {
         if (currentTime < 0f) return;
-        StopStopwatch();
 
         SaveManager.UpdateBestTime(SceneManager.GetActiveScene().name, currentTime);
+        UpdateBestTime();
+        Debug.Log("Time saved to Json via save Manager");
     }
 }
