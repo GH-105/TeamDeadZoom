@@ -56,6 +56,7 @@ MonoBehaviour:
   weaponEffects: []
   isReloading: 0
   reloadTime: 3
+  dryFireSound: {fileID: 8300000, guid: f318390815f76484eb56929a594e9853, type: 3}
   gunList: []
   gunListPos: 0
   pstat: 0

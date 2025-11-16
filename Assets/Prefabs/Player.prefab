@@ -73,7 +73,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2039
   controller: {fileID: 4262528227152647911}
-  HP: 15
+  Camshake: {fileID: 5165058220983467793}
+  ShakeDur: 0.3
+  ShakeMag: 0.3
+  DmgIndicatorDir: {fileID: 0}
+  HP: 5000
   speed: 16
   sprintMod: 2
   jumpSpeed: 20
@@ -94,6 +98,7 @@ MonoBehaviour:
   gunModel: {fileID: 5175435172361694362}
   firePos: {fileID: 4359038837788123544}
   bullet: {fileID: 6207780247886573495, guid: 57c1c19ebb6e8ad4bb351a006e3dc17d, type: 3}
+  reloadBool: {fileID: 0}
   aud: {fileID: 1293996468102100521}
   audSteps:
   - {fileID: 8300000, guid: 8ca02c0a809539c4997649a6e55f45c3, type: 3}
@@ -119,6 +124,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 5c220ca5cf5121446b4b5529d6e899a9, type: 3}
   - {fileID: 8300000, guid: c8a228bc96f60714096362ad240daf9b, type: 3}
   audHurtVol: 0.075
+  audDryfire:
+  - {fileID: 8300000, guid: f318390815f76484eb56929a594e9853, type: 3}
+  audDryfireVol: 0.009
   HPOrig: 0
   gunListPos: 0
   gravOrig: 0
@@ -357,6 +365,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4989738174942039872}
   - component: {fileID: 2590973381785143458}
+  - component: {fileID: 5165058220983467793}
   - component: {fileID: 1633256187910552067}
   - component: {fileID: 9190045410095448087}
   - component: {fileID: 5761001354057909802}
@@ -435,6 +444,18 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &5165058220983467793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3255019042457079771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a7ede3375841ab40914d46f95dc8d14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraShake
 --- !u!81 &1633256187910552067
 AudioListener:
   m_ObjectHideFlags: 0

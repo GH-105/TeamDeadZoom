@@ -335,7 +335,7 @@ MonoBehaviour:
   thisRoom: {fileID: 0}
   HpSlider: {fileID: 186488910906891444}
   target: {fileID: 5995936802651374966}
-  offset: {x: 0, y: 6, z: 0}
+  offset: {x: 0, y: 5.5, z: 0}
 --- !u!95 &2566315062781100355
 Animator:
   serializedVersion: 7
@@ -3424,11 +3424,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3233396089718816747, guid: b1e3e9a91fa1d3242a8bcf0313bbfaaf, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3233396089718816747, guid: b1e3e9a91fa1d3242a8bcf0313bbfaaf, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3245278658978229788, guid: b1e3e9a91fa1d3242a8bcf0313bbfaaf, type: 3}
       propertyPath: m_Name
