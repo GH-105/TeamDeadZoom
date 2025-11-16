@@ -18,6 +18,7 @@ public class PowerUpManager : MonoBehaviour
     public int Hp;
     public int totalAirDash;
     public int totaljumpDist;
+    public int totalProjPlus;
     public List<EffectInstance> weaponEffects;
     public bool isReloading = false;
     [SerializeField] public float reloadTime;
@@ -151,7 +152,11 @@ public class PowerUpManager : MonoBehaviour
         }
         RefreshIfCurrent(index);
     }
-    
+
+    public void ApplyNumProjBonus(int proj)
+    {
+        totalProjPlus += proj;
+    }
     public void ApplySpeedBonus(int Speed)
     {
         totalSpeed += Speed;
@@ -191,6 +196,7 @@ public class PowerUpManager : MonoBehaviour
         gameManager.instance.playerScript.Speed += totalSpeed;
         gameManager.instance.playerScript.JumpCountMax += totalJumps;
         gameManager.instance.playerScript.JumpSpeed += totaljumpDist;
+        gameManager.instance.playerScript.numProjectiles += totalProjPlus;
 
     }
     public (int damage, float rate, int range) CalcGunStats(int index)
