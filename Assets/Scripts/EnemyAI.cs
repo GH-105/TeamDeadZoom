@@ -30,7 +30,7 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
     [SerializeField] int enemyBulletDamage;
     [SerializeField] int enemyBulletSpeed;
     [SerializeField] List<EffectInstance> enemyEffects;
-    [SerializeField] Transform player;
+    [SerializeField] GameObject player;
     [SerializeField] bool summoner;
     [SerializeField] float bulletDelay = 1f;
 
@@ -83,6 +83,7 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
         if (status == null) Debug.LogError($"{name}: missing statusController");
         else if (status.Receiver == null) Debug.LogError($"{name}: statusController has no IStatusDamageReceiver");
         maxHP = HP;
+        player = gameManager.instance.player;
     }
 
     // Update is called once per frame
@@ -141,7 +142,9 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
 
     bool canSeePlayer()
     {
-        playerDir = gameManager.instance.player.transform.position - headPos.position;
+        var cc = player.GetComponent<CharacterController>();
+        Vector3 playerCenter = cc.bounds.center;
+        playerDir = playerCenter - headPos.position;
         angleToPlayer = Vector3.Angle(playerDir, transform.forward);
         
         RaycastHit hit;
