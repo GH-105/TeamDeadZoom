@@ -34,7 +34,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] public List<hearts> playerHearts;
     [SerializeField] public room bossRoom;
     [SerializeField] public DamageDirection DamageIndicatorDir;
-    [SerializeField] public int finalLevelIndex = 5;
+    [SerializeField] public int finalLevelIndex = 3;
     [SerializeField] GameObject hardModeButton;
     [SerializeField] public PlayableDirector endingCutscene;
 
