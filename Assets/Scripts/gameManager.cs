@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.Playables;
 
 public class gameManager : MonoBehaviour
 {
@@ -33,8 +34,9 @@ public class gameManager : MonoBehaviour
     [SerializeField] public List<hearts> playerHearts;
     [SerializeField] public room bossRoom;
     [SerializeField] public DamageDirection DamageIndicatorDir;
-    [SerializeField] public int finalLevelIndex = 5;
+    [SerializeField] public int finalLevelIndex = 3;
     [SerializeField] GameObject hardModeButton;
+    [SerializeField] public PlayableDirector endingCutscene;
 
     [SerializeField] public GameObject rewardsPanel;
     [SerializeField] public GameObject coinShopPanel;
@@ -151,13 +153,16 @@ public class gameManager : MonoBehaviour
                 StopWatch.instance.StopStopwatch();
                 StopWatch.instance.SaveTimeToSaveManager();
             }
-                statePause();
-            RewardsManager.instance.WinRewards();
+            statePause();
             Debug.Log("Rewards Manager called");
             if(SceneManager.GetActiveScene().buildIndex == finalLevelIndex)
             {
                 UnlockHardMode();
+                endingCutscene.gameObject.SetActive(true);
             }
+
+            else
+                RewardsManager.instance.WinRewards();
         }
     }
 
