@@ -80,6 +80,8 @@ public class PowerUpManager : MonoBehaviour
     public void ApplyFlatDamage(int index, int amount)
     {
         gunList[index].mods.flatDamageMod += amount;
+        string gunName = gunList[index].baseStats.name;
+        Notify($"+{amount} on {gunName}");
         RefreshIfCurrent(index);
     }
 
@@ -89,31 +91,43 @@ public class PowerUpManager : MonoBehaviour
         RefreshIfCurrent(index);
 
         totaljumpDist -= distance;
-        gameManager.instance.playerScript.JumpSpeed -= totaljumpDist; ;
+        gameManager.instance.playerScript.JumpSpeed -= totaljumpDist;
+        string gunName = gunList[index].baseStats.name;
+        Notify($"+{amount} on {gunName}");
         pstat = true;
     }
 
     public void ApplyDamageMultiplier(int index, float mult)
     {
+        float added = (mult - 1) * 100f;
         gunList[index].mods.damageMultMod += mult;
+        string gunName = gunList[index].baseStats.name;
+        Notify($"+{added:F0}% Damage on {gunName}");
         RefreshIfCurrent(index);
     }
 
     public void ApplyRateMultiplier(int index, float mult)
     {
+        float added = (mult - 1) * 100f;
         gunList[index].mods.rateMultMod += mult;
+        string gunName = gunList[index].baseStats.name;
+        Notify($"+{added:F0}% Fire Rate on {gunName}");
         RefreshIfCurrent(index);
     }
 
     public void ApplyAmmoBonus(int index, int amount)
     {
         gunList[index].mods.addMaxAmmoMod += amount;
+        string gunName = gunList[index].baseStats.name;
+        Notify($"+{amount} Max Ammo on {gunName}");
         RefreshIfCurrent(index);
     }
 
     public void ApplyRangeBonus(int index, int amount)
     {
         gunList[index].mods.addGunRangeMod += amount;
+        string gunName = gunList[index].baseStats.name;
+        Notify($"+{amount} Range on {gunName}");
         RefreshIfCurrent(index);
     }
 
@@ -121,13 +135,18 @@ public class PowerUpManager : MonoBehaviour
     {
         var list = gunList[index].effects;
         var effectIndex = list.FindIndex(e => e.effect == damageEffect);
+
+        string gunName = gunList[index].baseStats.name;
+
         if (effectIndex < 0)
         {
             list.Add(new EffectInstance { effect = damageEffect, magnitude = deltaMagnitude });
+            Notify($"+{damageEffect} applied to {gunName}");
         }
         else
         {
             list[effectIndex].magnitude += deltaMagnitude;
+            Notify($"+{deltaMagnitude} applied to {gunName}");
         }
         RefreshIfCurrent(index);
     }
@@ -136,6 +155,7 @@ public class PowerUpManager : MonoBehaviour
     {
         totalSpeed += Speed;
         gameManager.instance.playerScript.Speed += totalSpeed;
+        Notify($"+{Speed} Speed");
         pstat = true;
     }
 
@@ -145,6 +165,7 @@ public class PowerUpManager : MonoBehaviour
         Hp -= amount;
         gameManager.instance.playerScript.Speed += totalSpeed;
         gameManager.instance.playerScript.HP -= amount;
+        Notify($"+{Speed} Speed & -{amount} HP");
         pstat = true;
     }
 
@@ -152,13 +173,15 @@ public class PowerUpManager : MonoBehaviour
     {
         totalJumps += Jump;
         gameManager.instance.playerScript.JumpCountMax += totalJumps;
+        Notify($"+{Jump} Jumps");
         pstat = true;
     }
 
     public void ApplyJumpDistInc(int JumpDist)
     {
         totaljumpDist += JumpDist;
-        gameManager.instance.playerScript.JumpSpeed += totaljumpDist; ;
+        gameManager.instance.playerScript.JumpSpeed += totaljumpDist;
+        Notify("+ jump Distance");
         pstat = true;
     }
 
@@ -267,6 +290,16 @@ public class PowerUpManager : MonoBehaviour
         if(gameManager.instance.playerScript.HP > gameManager.instance.playerScript.HPOrig)
         {
             gameManager.instance.playerScript.HP = gameManager.instance.playerScript.HPOrig;
+        }
+
+        Notify($"+{amount} HP");
+    }
+
+    public void Notify(string message)
+    {
+        if(PowerUpText.Instance != null)
+        {
+            PowerUpText.Instance.ShowPopup(message);
         }
     }
 }
