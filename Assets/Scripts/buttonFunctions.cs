@@ -135,6 +135,7 @@ public class buttonFunctions : MonoBehaviour
             data.checkpointPosition = gameManager.instance.playerSpawnPos.transform.position;
             data.gunData = new GameData.GunData[PowerUpManager.Instance.gunList.Count];
             data.currentGunIndex = PowerUpManager.Instance.gunListPos;
+            data.dL = DifficultyManager.currDif;
 
             Debug.Log($"all save : {data.coins} coins, HP {data.playerHP}, checkpoint {data.checkpointPosition}");
 
@@ -169,7 +170,7 @@ public class buttonFunctions : MonoBehaviour
         SoulManagement.jumpCount = data.jumpCount;
         SoulManagement.playerSpeed = data.playerSpeed;
         gameManager.instance.playerScript.HP = data.playerHP;
-
+        DifficultyManager.currDif = data.dL;
         
                
         Coinlogic.coinCount = data.coins;
@@ -237,6 +238,17 @@ public class buttonFunctions : MonoBehaviour
     public void BackButton()
     {
         gameManager.instance.backButton();
+    }
+
+    public void SelectHardMode()
+    {
+        GameData data = SaveManager.LoadGame() ?? new GameData();
+        data.HardModeSelected = enabled;
+        SaveManager.SaveGame(data); 
+
+        DifficultyManager.currDif = enabled?difficulty.Hard:difficulty.normal;
+
+        Debug.Log("Hard Mode" + enabled);
     }
    
 }

@@ -33,6 +33,8 @@ public class gameManager : MonoBehaviour
     [SerializeField] public List<hearts> playerHearts;
     [SerializeField] public room bossRoom;
     [SerializeField] public DamageDirection DamageIndicatorDir;
+    [SerializeField] public int finalLevelIndex = 5;
+    [SerializeField] GameObject hardModeButton;
 
     [SerializeField] public GameObject rewardsPanel;
     [SerializeField] public GameObject coinShopPanel;
@@ -152,8 +154,26 @@ public class gameManager : MonoBehaviour
                 statePause();
             RewardsManager.instance.WinRewards();
             Debug.Log("Rewards Manager called");
-            
+            if(SceneManager.GetActiveScene().buildIndex == finalLevelIndex)
+            {
+                UnlockHardMode();
+            }
         }
+    }
+
+    public void UnlockHardMode()
+    {
+        Debug.Log("Hard Mode unlocked");
+
+        GameData data = SaveManager.LoadGame();
+        if(data == null)
+        {
+            data = new GameData();
+        }
+
+        data.HardModeUnlocked = true;
+        SaveManager.SaveGame(data); 
+        
     }
 
     public void youLose()
@@ -167,6 +187,16 @@ public class gameManager : MonoBehaviour
     {
         menuActive = StartMenu;
         menuActive.SetActive(true);
+
+        GameData data = SaveManager.LoadGame();
+        if(data != null && data.HardModeUnlocked)
+        {
+            hardModeButton.SetActive(true);
+        }
+        else
+        {
+            hardModeButton.SetActive(false);
+        }
     }
 
     public void StartScreenMenu()

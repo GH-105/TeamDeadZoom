@@ -87,6 +87,14 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
         else if (status.Receiver == null) Debug.LogError($"{name}: statusController has no IStatusDamageReceiver");
         maxHP = HP;
         player = gameManager.instance.player;
+
+        GameData data = SaveManager.LoadGame();
+        if(data != null && data.HardModeSelected)
+        {
+            HP *= 1.5f;
+            enemyBulletDamage = Mathf.RoundToInt(enemyBulletDamage * 1.5f);
+            shootRate *= .8f;
+        }
     }
 
     // Update is called once per frame

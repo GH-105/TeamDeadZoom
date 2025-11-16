@@ -13,8 +13,9 @@ public class GameData
     public int dashCount;
     public int jumpCount;
     public float playerSpeed;
-   
-
+    public difficulty dL = difficulty.normal;
+    public bool HardModeUnlocked = false;
+    public bool HardModeSelected = false;
 
     [System.Serializable]
     public class GunData
