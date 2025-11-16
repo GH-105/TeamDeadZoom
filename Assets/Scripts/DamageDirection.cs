@@ -11,6 +11,7 @@ public class DamageDirection : MonoBehaviour
 
     void Start()
     {
+        PlayerObj = gameManager.instance.player.transform;
         MaxFade = FadeDur;
     }
 

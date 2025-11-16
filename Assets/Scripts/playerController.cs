@@ -39,7 +39,6 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
     [SerializeField] GameObject gunModel;
     [SerializeField] Transform firePos;
     [SerializeField] GameObject bullet;
-    [SerializeField] PowerUpManager reloadBool;
 
     [SerializeField] AudioSource aud;
     [SerializeField] AudioClip[] audSteps;
@@ -110,6 +109,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
         if (gameManager.instance.reloadText != null)
             gameManager.instance.reloadText.SetActive(false);
         heartsUI.UpdateHearts((int)HP);
+        DmgIndicatorDir = gameManager.instance.DamageIndicatorDir;
     }
 
     // Update is called once per frame
@@ -159,25 +159,18 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
 
         moveDir = Input.GetAxis("Horizontal") * transform.right + Input.GetAxis("Vertical") * transform.forward;
         controller.Move(moveDir * speed * Time.deltaTime);
-        float velocity = new Vector3(playerVel.x, 0, playerVel.z).magnitude;
+        float velocity = new Vector3(moveDir.x, 0, moveDir.z).magnitude;
         anim.SetFloat("Speed", velocity);
 
         jump();
         controller.Move(playerVel * Time.deltaTime);
-      
-        if (Input.GetButton("Fire1") && PowerUpManager.Instance.gunList.Count > 0 && PowerUpManager.Instance.GetCurrentAmmo(gunListPos) > 0 && shootTimer >= shootRate && !PowerUpManager.Instance.isReloading)
-        {
-            shoot();
-            anim.SetTrigger("Shoot");
-        }
-
-
 
         if (Input.GetButton("Fire1") && PowerUpManager.Instance.gunList.Count > 0 && PowerUpManager.Instance.GetCurrentAmmo(gunListPos) >= 0 && shootTimer >= shootRate && !PowerUpManager.Instance.isReloading)
         {
             if (PowerUpManager.Instance.GetCurrentAmmo(gunListPos) >= 1)
             {
                 shoot();
+                anim.SetTrigger("Shoot");
             }
             else
             {

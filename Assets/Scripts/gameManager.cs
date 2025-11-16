@@ -32,6 +32,7 @@ public class gameManager : MonoBehaviour
     [SerializeField] public TMP_Text outcomeText;
     [SerializeField] public List<hearts> playerHearts;
     [SerializeField] public room bossRoom;
+    [SerializeField] public DamageDirection DamageIndicatorDir;
 
     [SerializeField] public GameObject rewardsPanel;
     [SerializeField] public GameObject coinShopPanel;
