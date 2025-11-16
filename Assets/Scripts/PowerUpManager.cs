@@ -204,7 +204,7 @@ public class PowerUpManager : MonoBehaviour
         var gun = gunList[index];
 
         int damage = Mathf.RoundToInt((gun.baseStats.shootDamage + gun.mods.flatDamageMod) * (gun.mods.damageMultMod));
-        float rate = gun.baseStats.shootRate * gun.mods.rateMultMod;
+        float rate = gun.baseStats.shootRate / gun.mods.rateMultMod;
         int range = gun.baseStats.shootDist + gun.mods.addGunRangeMod;
 
         return (damage, rate, range);

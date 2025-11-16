@@ -75,6 +75,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
     bool isInAir;
     bool isDashing = false;
 
+    public static event System.Action<playerController> OnPlayerReady; //event for soulManagment 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -120,7 +121,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
             lastGrounTime = Time.time;
         }
         isInAir = !controller.isGrounded;
-        Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
+        //Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
         shootTimer += Time.deltaTime;
 
         if (!gameManager.instance.isPaused)
@@ -434,6 +435,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
         HP = HPOrig;
         heartsUI.UpdateHearts((int)HP);
         updatePlayerUI();
+
+        OnPlayerReady?.Invoke(this); // event for soulmanagement 
     }
     Vector3 GetDashDir()
     {

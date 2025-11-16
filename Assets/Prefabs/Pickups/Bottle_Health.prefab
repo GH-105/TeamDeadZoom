@@ -9845,4 +9845,9 @@ MonoBehaviour:
   rateBoost: 0
   ammoUp: 0
   HealthRecov: 5
+  AirDashInc: 0
+  weaponEffect: {fileID: 0}
+  magnitude: 0
+  HPLoss: 0
+  jumpsSpeedInc: 0
   type: 7
