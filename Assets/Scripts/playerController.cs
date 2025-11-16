@@ -10,7 +10,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
     [SerializeField] CameraShake Camshake;
     [SerializeField] float ShakeDur;
     [SerializeField] float ShakeMag;
-    //[SerializeField] Animator anim;
+    [SerializeField] Animator anim;
 
     [SerializeField] public DamageDirection DmgIndicatorDir;
 
