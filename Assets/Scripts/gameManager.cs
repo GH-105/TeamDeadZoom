@@ -153,7 +153,6 @@ public class gameManager : MonoBehaviour
                 StopWatch.instance.StopStopwatch();
                 StopWatch.instance.SaveTimeToSaveManager();
             }
-
             statePause();
             Debug.Log("Rewards Manager called");
             if(SceneManager.GetActiveScene().buildIndex == finalLevelIndex)
@@ -161,6 +160,7 @@ public class gameManager : MonoBehaviour
                 UnlockHardMode();
                 endingCutscene.gameObject.SetActive(true);
             }
+
             else
                 RewardsManager.instance.WinRewards();
         }
