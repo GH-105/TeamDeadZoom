@@ -59,9 +59,12 @@ public class room : MonoBehaviour
     {
         if (other.CompareTag("Player") && doorOpened == false)
         {
-            roomActive = true;
-            startSpawning = true;
-            doorState(true);
+            if (doorOpened == false)
+            {
+                roomActive = true;
+                startSpawning = true;
+                doorState(true);
+            }
         }
     }
 

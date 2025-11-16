@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.Playables;
 
 public class gameManager : MonoBehaviour
 {
@@ -33,8 +34,12 @@ public class gameManager : MonoBehaviour
     [SerializeField] public List<hearts> playerHearts;
     [SerializeField] public room bossRoom;
     [SerializeField] public DamageDirection DamageIndicatorDir;
+<<<<<<< Updated upstream
     [SerializeField] public int finalLevelIndex = 5;
     [SerializeField] GameObject hardModeButton;
+=======
+    [SerializeField] public PlayableDirector endingCutscene;
+>>>>>>> Stashed changes
 
     [SerializeField] public GameObject rewardsPanel;
     [SerializeField] public GameObject coinShopPanel;
@@ -151,6 +156,7 @@ public class gameManager : MonoBehaviour
                 StopWatch.instance.StopStopwatch();
                 StopWatch.instance.SaveTimeToSaveManager();
             }
+<<<<<<< Updated upstream
                 statePause();
             RewardsManager.instance.WinRewards();
             Debug.Log("Rewards Manager called");
@@ -158,6 +164,15 @@ public class gameManager : MonoBehaviour
             {
                 UnlockHardMode();
             }
+=======
+            statePause();
+            if (SceneManager.GetActiveScene().name == "Level 3 New")
+            {
+                endingCutscene.gameObject.SetActive(true);
+            }
+            else
+                RewardsManager.instance.WinRewards();
+>>>>>>> Stashed changes
         }
     }
 
