@@ -10,9 +10,17 @@ public class GameData
     public int coins;
     public int playerHP;
     public Vector3 checkpointPosition;
+
     public int dashCount;
     public int jumpCount;
+    public int maxHP;
+    public int currentHP;
     public float playerSpeed;
+
+    public int dashUpgradeCost;
+    public int jumpUpgradeCost;
+    public int hpUpgradeCost;
+    public int speedUpgradeCost;
     public difficulty dL = difficulty.normal;
     public bool HardModeUnlocked = false;
     public bool HardModeSelected = false;

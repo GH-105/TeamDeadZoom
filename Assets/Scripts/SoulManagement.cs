@@ -6,10 +6,10 @@ public class SoulManagement : MonoBehaviour
 {
     public static int souls;
 
-    public static int dashUpgradeCost = 1;
-    public static int hpUpgradeCost = 5;
-    public static int jummpUpgradeCost = 3;
-    public static int speedUpgradeCost = 5;
+    public static int dashUpgradeCost = 0;
+    public static int hpUpgradeCost = 0;
+    public static int jumpUpgradeCost = 0;
+    public static int speedUpgradeCost = 0;
 
     public static int jumpCount = 1;
     public static int dashCount = 0;
@@ -38,7 +38,7 @@ public class SoulManagement : MonoBehaviour
 
         dashUpgradeCostText.text = "Dash Upgrade: " + dashUpgradeCost + " souls";
         hpUpgradeCostText.text = "HP Upgrade: " + hpUpgradeCost + " souls";
-        jumpUpgradeCostText.text = "Jump Upgrade: " + jummpUpgradeCost + " souls";
+        jumpUpgradeCostText.text = "Jump Upgrade: " + jumpUpgradeCost + " souls";
         speedUpgradeCostText.text = "Speed Upgrade: " + speedUpgradeCost + " souls";
 
         if (playercont == null)
@@ -82,7 +82,6 @@ public class SoulManagement : MonoBehaviour
 
     public void UpgradeDash()
     {
-        Debug.Log("Dash test");
         if(SpendSouls(dashUpgradeCost))
         {
             dashCount++;
@@ -107,6 +106,8 @@ public class SoulManagement : MonoBehaviour
             maxHp += 5;
             currentHP = maxHp;
             hpUpgradeCost *= 2;
+
+            ApplyStatsToPlayer(playercont);
             UpdateUI();
         }
     }
@@ -117,6 +118,20 @@ public class SoulManagement : MonoBehaviour
         {
             playerSpeed += 1f;
             speedUpgradeCost *= 2;
+
+            ApplyStatsToPlayer(playercont);
+            UpdateUI();
+        }
+    }
+
+    public void UpgradeJump()
+    {
+        if (SpendSouls(jumpUpgradeCost))
+        {
+            jumpCount++;
+            jumpUpgradeCost *= 2;
+
+            ApplyStatsToPlayer(playercont);
             UpdateUI();
         }
     }
@@ -128,12 +143,12 @@ public class SoulManagement : MonoBehaviour
 
         dashUpgradeCostText.text = "Dash Upgrade: " + dashUpgradeCost + " souls";
         hpUpgradeCostText.text = "HP Upgrade: " + hpUpgradeCost + " souls";
-        jumpUpgradeCostText.text = "Jump Upgrade: " + jummpUpgradeCost + " souls";
+        jumpUpgradeCostText.text = "Jump Upgrade: " + jumpUpgradeCost + " souls";
         speedUpgradeCostText.text = "Speed Upgrade: " + speedUpgradeCost + " souls";
 
         dashUpgradeButton.SetActive(souls >= dashUpgradeCost);
         hpUpgradeButton.SetActive(souls >= hpUpgradeCost);
-        jumpUpgradeButton.SetActive(souls >= jummpUpgradeCost);
+        jumpUpgradeButton.SetActive(souls >= jumpUpgradeCost);
         speedUpgradeButton.SetActive(souls >= speedUpgradeCost);
 
         buttonFunctions.SaveGame(false);
