@@ -33,7 +33,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
     [SerializeField] int shootDamage;
     [SerializeField] int shootDist;
     [SerializeField] float shootRate;
-    [SerializeField] int numProjectiles;
+    [SerializeField] public int numProjectiles;
     [SerializeField] int numRicochet;
     [SerializeField] int bulletSpeed;
     [SerializeField] GameObject gunModel;

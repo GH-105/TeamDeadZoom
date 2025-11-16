@@ -52,10 +52,7 @@ public class room : MonoBehaviour
                     startSpawning = false;
             }
         }
-        if(!mainDoor)
-        {
-            showDoorMessage();
-        }
+        
     }
 
     private void OnTriggerEnter(Collider other)

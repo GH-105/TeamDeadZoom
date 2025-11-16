@@ -1445,6 +1445,9 @@ MonoBehaviour:
   player: {fileID: 9093480221707116065, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
   summoner: 0
   bulletDelay: 1
+  drop: {fileID: 6431597599677190801, guid: b8ceea6204253184caed635b2baaff67, type: 3}
+  deathSound: {fileID: 8300000, guid: 566d2ea6240b489479a6e9fd608c2621, type: 3}
+  deathSoundVol: 1
   floatingTextPrefab: {fileID: 5749133604472977256, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
   givesSouls: 0
   soulsToGive: 1
