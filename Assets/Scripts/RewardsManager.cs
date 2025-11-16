@@ -50,7 +50,9 @@ public class RewardsManager : MonoBehaviour
         {
             gameManager.instance.currentTimeText.text = $"Current Time: {levelTime.currentTime:F2}s";
             gameManager.instance.bestTimeText.text = $"Best Time: {levelTime.bestTime:F2}s";
-            gameManager.instance.outcomeText.text = $"You won {levelTime.levelName}";
+
+            if (levelTime.bestTime == levelTime.currentTime)
+                gameManager.instance.outcomeText.text = $"First completion of {levelTime.levelName} ";
         }
         /*else
         {
