@@ -13,6 +13,7 @@ public class GameData
     public int dashCount;
     public int jumpCount;
     public float playerSpeed;
+   
 
 
     [System.Serializable]
@@ -21,6 +22,10 @@ public class GameData
         public int flatDamageMod;
         public float damageMultMod;
         public int addMaxAmmoMod;
+        public float totalDamage;
+        public float totalDist;
+        public float totalRate;
+        public float totalAmmo;
     }
 
     public GunData[] gunData;

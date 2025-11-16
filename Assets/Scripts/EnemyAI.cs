@@ -414,7 +414,7 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
         if(givesSouls)
         {
             SoulManagement.AddSouls(soulsToGive);
-            buttonFunctions.SaveGame();
+            buttonFunctions.SaveGame(false);
             Debug.Log("gave souls");
         }
         Destroy(gameObject);

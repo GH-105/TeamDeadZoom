@@ -8,8 +8,8 @@ public class PowerUpText : MonoBehaviour
 {
     public static PowerUpText Instance;
 
-    [SerializeField] private TextMeshProUGUI popUpText;
-    [SerializeField] private Transform popUpParent;
+    [SerializeField] public TextMeshProUGUI popUpText;
+    [SerializeField] public Transform popUpParent;
 
     private void Awake()
     {

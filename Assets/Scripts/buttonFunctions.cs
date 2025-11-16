@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem.Controls;
 using UnityEngine.SceneManagement;
 
 public class buttonFunctions : MonoBehaviour
@@ -24,14 +25,24 @@ public class buttonFunctions : MonoBehaviour
     private void OnApplicationQuit()
     {
         Debug.Log("saving on quit");
-        SaveGame();
+        if(StopWatch.instance != null)
+        {
+            StopWatch.instance.StopStopwatch();
+            StopWatch.instance.SaveTimeToSaveManager();
+        }
+        SaveGame(true);
     }
 
     private void OnApplicationPause(bool pauseStatus)
     {
         if(pauseStatus)
         {
-            SaveGame();
+            if (StopWatch.instance != null)
+            {
+                StopWatch.instance.StopStopwatch();
+                StopWatch.instance.SaveTimeToSaveManager();
+            }
+            SaveGame(true);
             Debug.Log("auto save on pause");
         }    
         
@@ -108,30 +119,42 @@ public class buttonFunctions : MonoBehaviour
         gameManager.instance.stateUnpause();
     }
 
-    public static void SaveGame()
+    public static void SaveGame(bool win)
     {
-        GameData data = new GameData
-        {
-            souls = SoulManagement.souls,
-            coins = Coinlogic.coinCount,
-            playerHP = (int)gameManager.instance.playerScript.HP,
-            checkpointPosition = gameManager.instance.playerSpawnPos.transform.position,
-            dashCount = SoulManagement.dashCount,
-            jumpCount = SoulManagement.jumpCount,
-            playerSpeed = SoulManagement.playerSpeed
+        GameData data = SaveManager.LoadGame() ?? new GameData(); // ?? is useful if left = null go with right
 
-        };
-        data.gunData = new GameData.GunData[PowerUpManager.Instance.gunList.Count];
-        data.currentGunIndex = PowerUpManager.Instance.gunListPos;
+        data.souls = SoulManagement.souls;
+        data.dashCount = SoulManagement.dashCount;
+        data.jumpCount = SoulManagement.jumpCount;
+        data.playerSpeed = SoulManagement.playerSpeed;
+        data.playerHP = (int)gameManager.instance.playerScript.HP;
 
-        for (int i = 0; i < PowerUpManager.Instance.gunList.Count; i++)
+        if (win)
         {
-            data.gunData[i] = new GameData.GunData
+            data.coins = Coinlogic.coinCount;
+            data.checkpointPosition = gameManager.instance.playerSpawnPos.transform.position;
+            data.gunData = new GameData.GunData[PowerUpManager.Instance.gunList.Count];
+            data.currentGunIndex = PowerUpManager.Instance.gunListPos;
+
+            Debug.Log($"all save : {data.coins} coins, HP {data.playerHP}, checkpoint {data.checkpointPosition}");
+
+
+            for (int i = 0; i < PowerUpManager.Instance.gunList.Count; i++)
             {
-                flatDamageMod = PowerUpManager.Instance.gunList[i].mods.flatDamageMod,
-                damageMultMod = PowerUpManager.Instance.gunList[i].mods.damageMultMod,
-                addMaxAmmoMod = PowerUpManager.Instance.gunList[i].mods.addMaxAmmoMod
-            };
+                var gun = PowerUpManager.Instance.gunList[i];
+                data.gunData[i] = new GameData.GunData
+                {
+                    flatDamageMod = PowerUpManager.Instance.gunList[i].mods.flatDamageMod,
+                    damageMultMod = PowerUpManager.Instance.gunList[i].mods.damageMultMod,
+                    addMaxAmmoMod = PowerUpManager.Instance.gunList[i].mods.addMaxAmmoMod,
+
+                    totalDamage = gun.baseStats.shootDamage + gun.mods.flatDamageMod,
+                    totalRate = gun.baseStats.shootRate + gun.mods.rateMultMod,
+                    totalAmmo = gun.baseStats.ammoMax + gun.mods.addMaxAmmoMod,
+                    totalDist = gun.baseStats.shootDist + gun.mods.addGunRangeMod
+                };
+            }
+            data.currentGunIndex = PowerUpManager.Instance.gunListPos;
         }
         data.levelTimes = new List<GameData.LevelTimeData>(gameManager.instance.levelTimes);
         data.lastLevelCompleted = SceneManager.GetActiveScene().name;
@@ -141,33 +164,45 @@ public class buttonFunctions : MonoBehaviour
     public static void LoadGame()
     {
         GameData data = SaveManager.LoadGame();
+        SoulManagement.souls = data.souls;
+        SoulManagement.dashCount = data.dashCount;
+        SoulManagement.jumpCount = data.jumpCount;
+        SoulManagement.playerSpeed = data.playerSpeed;
+        gameManager.instance.playerScript.HP = data.playerHP;
+
         
-            if (data != null)
-            {
-                SoulManagement.souls = data.souls;
+               
                 Coinlogic.coinCount = data.coins;
-                gameManager.instance.playerScript.HP = data.playerHP;
                 gameManager.instance.playerSpawnPos.transform.position = data.checkpointPosition;
                 gameManager.instance.playerScript.spawnPlayer();
 
-                SoulManagement.dashCount = data.dashCount;
-                SoulManagement.jumpCount = data.jumpCount;
-                SoulManagement.playerSpeed = data.playerSpeed;
+               
 
-                Debug.Log($"Loaded : {data.souls} souls, HP {data.playerHP}, checkpoint {data.checkpointPosition}");
-
+               
+            if (data.gunData != null && data.gunData.Length > 0)
+            {
                 int gunDataLength = data.gunData.Length;
                 int gunListCount = PowerUpManager.Instance.gunList.Count;
 
-                int loopCount = Mathf.Min(gunDataLength, gunListCount);    
+                int loopCount = Mathf.Min(gunDataLength, gunListCount);
 
                 for (int i = 0; i < loopCount; i++)
                 {
+                    var gun = PowerUpManager.Instance.gunList[i];
+                    var savedGun = data.gunData[i];
+
                     PowerUpManager.Instance.gunList[i].mods.flatDamageMod = data.gunData[i].flatDamageMod;
                     PowerUpManager.Instance.gunList[i].mods.damageMultMod = data.gunData[i].damageMultMod;
                     PowerUpManager.Instance.gunList[i].mods.addMaxAmmoMod = data.gunData[i].addMaxAmmoMod;
+
+                    PowerUpManager.Instance.totalDamage = (int)savedGun.totalDamage;
+                    PowerUpManager.Instance.totalRate = (int)savedGun.totalRate;
+                    PowerUpManager.Instance.totalAmmo = (int)savedGun.totalAmmo;
+                    PowerUpManager.Instance.totalDist = (int)savedGun.totalDist;
                 }
+                PowerUpManager.Instance.gunListPos = data.currentGunIndex;
             }
+        
     }
     public void DeleteSave()
     {

@@ -119,6 +119,22 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &121087717 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9093480221707116065, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
+  m_PrefabInstance: {fileID: 957567546}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &121087722 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4976407977306092244, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
+  m_PrefabInstance: {fileID: 957567546}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121087717}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbc7609e6469c6a4bb84fc5a631589bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::playerController
 --- !u!1 &203844586
 GameObject:
   m_ObjectHideFlags: 0
@@ -652,6 +668,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 5210194739684464306, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5451607261722437417, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -683,6 +703,18 @@ PrefabInstance:
     - target: {fileID: 7713751369082130347, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7968735221605272654, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 121087717}
+    - target: {fileID: 7968735221605272654, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
+      propertyPath: playerScript
+      value: 
+      objectReference: {fileID: 121087722}
+    - target: {fileID: 8724591671634873134, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: DeleteSave
       objectReference: {fileID: 0}
     - target: {fileID: 8881158984367406722, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
       propertyPath: m_Pivot.x
