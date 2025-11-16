@@ -33,9 +33,6 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
     [SerializeField] GameObject player;
     [SerializeField] bool summoner;
     [SerializeField] float bulletDelay = 1f;
-    [SerializeField] GameObject drop;//for cleanup
-    [SerializeField] AudioClip deathSound;//for cleanup
-    [SerializeField] float deathSoundVol =1f;//cleanup
 
     [SerializeField] GameObject floatingTextPrefab;
     statusController status;
@@ -116,8 +113,6 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
             anim.SetFloat("Speed", Mathf.Clamp01(agent.velocity.magnitude / Mathf.Max(agent.speed, 0.001f)));
 
         UpdateEnemyHP();
-
-        
     }
 
     void checkRoam()
@@ -422,24 +417,6 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
             buttonFunctions.SaveGame(false);
             Debug.Log("gave souls");
         }
-        if (dead)//for cleanup
-        {
-            Instantiate(drop, transform.position, Quaternion.identity);
-            Play2D(deathSound, deathSoundVol, transform.position);
-        }
         Destroy(gameObject);
-    }
-
-    void Play2D(AudioClip clip, float volume, Vector3 pos)
-    {
-        GameObject g = new GameObject("Temp2DSound");
-        g.transform.position = pos;
-        AudioSource s = g.AddComponent<AudioSource>();
-        s.clip = clip;
-        s.volume = volume;
-        s.spatialBlend = 0;
-        s.Play();
-        Destroy(g,clip.length);
-
     }
 }
