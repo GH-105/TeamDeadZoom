@@ -101,8 +101,10 @@ MonoBehaviour:
   ammoUp: 10
   HealthRecov: 0
   AirDashInc: 0
-  weaponEffect: {fileID: 11400000, guid: 64453f6ea57e8b042a3c7623f3f9256d, type: 2}
+  weaponEffect: {fileID: 11400000, guid: b0fee9010d20d754faccc08cc2a69cd7, type: 2}
   magnitude: 2
+  HPLoss: 0
+  jumpsSpeedInc: 0
   type: 9
 --- !u!135 &1420718751291974532
 SphereCollider:
