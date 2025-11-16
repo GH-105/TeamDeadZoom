@@ -141,7 +141,8 @@ public class PowerUpManager : MonoBehaviour
         if (effectIndex < 0)
         {
             list.Add(new EffectInstance { effect = damageEffect, magnitude = deltaMagnitude });
-            Notify($"+{damageEffect} applied to {gunName}");
+            Notify($"+{damageEffect.name} applied to {gunName}");
+            Debug.Log(damageEffect.name + "test");
         }
         else
         {
