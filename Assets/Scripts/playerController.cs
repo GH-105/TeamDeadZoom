@@ -10,7 +10,9 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
     [SerializeField] CameraShake Camshake;
     [SerializeField] float ShakeDur;
     [SerializeField] float ShakeMag;
-    //[SerializeField] Animator anim;
+    [SerializeField] Animator anim;
+    [SerializeField] public ParticleSystem muzzleFlash;
+    [SerializeField] public GunRecoil recoil;
 
     [SerializeField] public DamageDirection DmgIndicatorDir;
 
@@ -171,6 +173,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
             {
                 shoot();
                 anim.SetTrigger("Shoot");
+                if(recoil != null)
+                {
+                    recoil.ApplyRecoil();
+                }
             }
             else
             {
@@ -228,6 +234,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
 
         PowerUpManager.Instance.ConsumeAmmo(gunListPos);
         aud.PlayOneShot(PowerUpManager.Instance.gunList[gunListPos].baseStats.shootSounds[Random.Range(0, PowerUpManager.Instance.gunList[gunListPos].baseStats.shootSounds.Length)], PowerUpManager.Instance.gunList[gunListPos].baseStats.shootSoundVol);
+        muzzleFlash.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        muzzleFlash.Play();
         updatePlayerUI();
         for (int i = 0; i < numProjectiles; i++)
         {
