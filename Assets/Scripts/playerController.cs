@@ -10,7 +10,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
     [SerializeField] CameraShake Camshake;
     [SerializeField] float ShakeDur;
     [SerializeField] float ShakeMag;
-    [SerializeField] Animator anim;
+    //[SerializeField] Animator anim;
 
     [SerializeField] public DamageDirection DmgIndicatorDir;
 
@@ -121,7 +121,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
             lastGrounTime = Time.time;
         }
         isInAir = !controller.isGrounded;
-        Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
+        //Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
         shootTimer += Time.deltaTime;
 
         if (!gameManager.instance.isPaused)

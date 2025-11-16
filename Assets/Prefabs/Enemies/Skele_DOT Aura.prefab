@@ -3493,31 +3493,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7059534431554799137, guid: b1e3e9a91fa1d3242a8bcf0313bbfaaf, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -106042.445
+      value: 44218.863
       objectReference: {fileID: 0}
     - target: {fileID: 7059534431554799137, guid: b1e3e9a91fa1d3242a8bcf0313bbfaaf, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.46664533
+      value: 0.7338151
       objectReference: {fileID: 0}
     - target: {fileID: 7059534431554799137, guid: b1e3e9a91fa1d3242a8bcf0313bbfaaf, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.01496168
+      value: 0.023952298
       objectReference: {fileID: 0}
     - target: {fileID: 7059534431554799137, guid: b1e3e9a91fa1d3242a8bcf0313bbfaaf, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.8838638
+      value: -0.6785656
       objectReference: {fileID: 0}
     - target: {fileID: 7059534431554799137, guid: b1e3e9a91fa1d3242a8bcf0313bbfaaf, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.028338626
+      value: 0.022148915
       objectReference: {fileID: 0}
     - target: {fileID: 7059534431554799137, guid: b1e3e9a91fa1d3242a8bcf0313bbfaaf, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -54332.195
+      value: 2241.1226
       objectReference: {fileID: 0}
     - target: {fileID: 7059534431554799137, guid: b1e3e9a91fa1d3242a8bcf0313bbfaaf, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 558.3331
+      value: 36458.336
       objectReference: {fileID: 0}
     - target: {fileID: 8306280974676724617, guid: b1e3e9a91fa1d3242a8bcf0313bbfaaf, type: 3}
       propertyPath: m_Value
@@ -3526,6 +3526,10 @@ PrefabInstance:
     - target: {fileID: 8306280974676724617, guid: b1e3e9a91fa1d3242a8bcf0313bbfaaf, type: 3}
       propertyPath: m_MaxValue
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9191268174523659070, guid: b1e3e9a91fa1d3242a8bcf0313bbfaaf, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

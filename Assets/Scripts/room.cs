@@ -57,7 +57,7 @@ public class room : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
+        if (other.CompareTag("Player") && doorOpened == false)
         {
             roomActive = true;
             startSpawning = true;
@@ -114,7 +114,7 @@ public class room : MonoBehaviour
                 gameManager.instance.updateGameGoal(-1);
             }
         }
-        roomGoalLabel.text = roomGoalCount.ToString();
+            roomGoalLabel.text = roomGoalCount.ToString();
     }
     IEnumerator showDoorMessage()
     {
