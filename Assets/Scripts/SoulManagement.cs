@@ -9,10 +9,10 @@ public class SoulManagement : MonoBehaviour
     public static SoulManagement instance;
     public static int souls;
 
-    public static int dashUpgradeCost = 0;//1
-    public static int hpUpgradeCost = 0;//5
-    public static int jumpUpgradeCost = 0;//3
-    public static int speedUpgradeCost = 0;//3
+    public static int dashUpgradeCost = 1;//1
+    public static int hpUpgradeCost = 5;//5
+    public static int jumpUpgradeCost = 3;//3
+    public static int speedUpgradeCost = 3;//3
 
     public static int jumpCount = 1;
     public static int dashCount = 0;
