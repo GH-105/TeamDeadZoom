@@ -6,6 +6,7 @@ public class CoinShop : MonoBehaviour
 {
 
     private int coins; //make this = to player coins in the future
+    [SerializeField] private buttonFunctions buttonFuncs;
     [SerializeField] TMP_Text displayCoinAmount;
     [SerializeField] TMP_Text notEnoughCoins;
 
@@ -41,7 +42,18 @@ public class CoinShop : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (buttonFuncs != null && gameManager.instance.playerScript != null)
+        {
+            if (gameManager.instance.playerScript.HP <= 0)
+            {
+                buttonFuncs.nextLevelButton.SetActive(false);
+            }
+            else
+            {
+                // Optional: you can re-enable it if needed, depending on your level logic
+                buttonFuncs.nextLevelButton.SetActive(true);
+            }
+        }
     }
 
     void UpdateCoinDisplay()

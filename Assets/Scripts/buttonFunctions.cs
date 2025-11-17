@@ -10,7 +10,7 @@ public class buttonFunctions : MonoBehaviour
     [SerializeField] gunStats shotgun;
     [SerializeField] gunStats rifle;
     [SerializeField] gunStats SMG;
-    [SerializeField] private GameObject nextLevelButton;
+    [SerializeField] public GameObject nextLevelButton;
 
     int levelChosen;
     int nextIndex;

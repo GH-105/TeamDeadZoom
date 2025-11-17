@@ -9469,6 +9469,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 339699f61073eae4f861b6953464395f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoinShop
+  buttonFuncs: {fileID: 1453185472006100230}
   displayCoinAmount: {fileID: 1443749731597424933}
   notEnoughCoins: {fileID: 1502559433370962371}
   healCostText: {fileID: 893536951426524570}
@@ -24649,7 +24650,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7417273708693340366
 RectTransform:
   m_ObjectHideFlags: 0
