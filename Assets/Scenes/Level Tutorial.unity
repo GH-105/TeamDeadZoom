@@ -1387,9 +1387,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3de368fb989c2e4b8ac612deb0d68d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MusicManager
-  CurrentTrack: {fileID: 0}
+  CurrentTrack: {fileID: 416292504}
   DefaultTrack: {fileID: 8300000, guid: aa4e226f4ddbf5d47900ac09bef565c4, type: 3}
   fadeDur: 1
+--- !u!82 &416292504 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5209052059936825753, guid: 2234d1085ecee174cbd784c3f80bf342, type: 3}
+  m_PrefabInstance: {fileID: 416292501}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &425589781
 GameObject:
   m_ObjectHideFlags: 0
@@ -4144,7 +4149,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 130
+  far clip plane: 170
   field of view: 60.000004
   orthographic: 0
   orthographic size: 5
@@ -10138,6 +10143,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 5210194739684464306, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5451607261722437417, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -10257,10 +10266,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 237477325798244647, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 0}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
 --- !u!114 &7482262042145826163 stripped
 MonoBehaviour:
