@@ -1226,15 +1226,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Traps
   pressurePlate: {fileID: 1724130026}
   bullet: {fileID: 6207780247886573495, guid: 6b49c58a982ffe04c8f2896cea4bc752, type: 3}
-  trapDoor: {fileID: 1860309668}
+  trapDoor: {fileID: 0}
   firePOS: {fileID: 1860309672}
   fireSpeed: 10
   type: 0
---- !u!1 &1860309668 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100000, guid: 1bb56df4b9ba24840bbfe7e3f0cec5b8, type: 3}
-  m_PrefabInstance: {fileID: 1928276553}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1860309672 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 1bb56df4b9ba24840bbfe7e3f0cec5b8, type: 3}
