@@ -548,42 +548,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &1332434739406573117
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3214519702425673634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f9a91f896abc79409e8a3c5eab45991, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GunRecoil
-  recoilX: 3
-  recoilY: 4
-  recoilZ: 0
-  kickbackZ: 1
-  snap: 8
-  resetSpeed: 6
---- !u!114 &698663100984566744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3214519702425673634}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f9a91f896abc79409e8a3c5eab45991, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GunRecoil
-  recoilX: 0
-  recoilY: 0
-  recoilZ: 0
-  kickbackZ: 0
-  snap: 0
-  resetSpeed: 0
 --- !u!1 &3262077972696966027
 GameObject:
   m_ObjectHideFlags: 0
