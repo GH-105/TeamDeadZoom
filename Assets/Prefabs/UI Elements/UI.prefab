@@ -14607,6 +14607,7 @@ MonoBehaviour:
   playerScript: {fileID: 0}
   playerSpawnPos: {fileID: 0}
   isPaused: 0
+  chSelected: 0
   playerDamageScreen: {fileID: 3930812819590704544}
   gameGoalCountText: {fileID: 8576360519382137945}
   ammoCur: {fileID: 8744671852483122521}
@@ -25664,7 +25665,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7238873108584039526
 RectTransform:
   m_ObjectHideFlags: 0
