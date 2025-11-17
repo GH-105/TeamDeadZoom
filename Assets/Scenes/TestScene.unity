@@ -449,22 +449,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4976407977306092244, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
-      propertyPath: recoil
-      value: 
-      objectReference: {fileID: 1079753939}
-    - target: {fileID: 7793194016898233446, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7793194016898233446, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7793194016898233446, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 8464894528499008667, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
       propertyPath: m_LocalPosition.x
       value: -837
@@ -512,10 +496,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3214519702425673634, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1079753939}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
 --- !u!4 &389844077 stripped
 Transform:
@@ -1379,29 +1360,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b4fc052389854b40989549d7804affb, type: 3}
---- !u!1 &1079753935 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3214519702425673634, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
-  m_PrefabInstance: {fileID: 350564133}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1079753939
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1079753935}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f9a91f896abc79409e8a3c5eab45991, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GunRecoil
-  recoilX: 3
-  recoilY: 4
-  recoilZ: 0
-  kickbackZ: 1
-  snap: 8
-  resetSpeed: 6
 --- !u!1001 &1120801509
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2103,7 +2061,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 237477325798244647, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
 --- !u!1001 &1650820281
 PrefabInstance:
