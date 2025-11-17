@@ -467,6 +467,7 @@ GameObject:
   - component: {fileID: 6691913591585370111}
   - component: {fileID: 34361670144029411}
   - component: {fileID: 7619096741063622849}
+  - component: {fileID: 1332434739406573117}
   m_Layer: 10
   m_Name: Gun Model
   m_TagString: Untagged
@@ -546,6 +547,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1332434739406573117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3214519702425673634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f9a91f896abc79409e8a3c5eab45991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GunRecoil
+  recoilX: 3
+  recoilY: 4
+  recoilZ: 0
+  kickbackZ: 1
+  snap: 8
+  resetSpeed: 6
 --- !u!1 &3262077972696966027
 GameObject:
   m_ObjectHideFlags: 0
@@ -1468,7 +1487,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 3.9079837e-14, w: 1}
   m_LocalPosition: {x: -0.06, y: 0.08, z: 0.2}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4844087231178137093}
@@ -6583,6 +6602,7 @@ MonoBehaviour:
   ShakeMag: 0.3
   anim: {fileID: 1483621364987424703}
   muzzleFlash: {fileID: 1059451736670857884}
+  recoil: {fileID: 1332434739406573117}
   DmgIndicatorDir: {fileID: 0}
   HP: 15
   speed: 16

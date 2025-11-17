@@ -4654,6 +4654,14 @@ PrefabInstance:
       propertyPath: bossRoom
       value: 
       objectReference: {fileID: 895184576}
+    - target: {fileID: 7968735221605272654, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
+      propertyPath: ReloadSlider
+      value: 
+      objectReference: {fileID: 1548365630874265075, guid: bbae892a52f90a940a19f52726504070, type: 3}
+    - target: {fileID: 8533750314586473874, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8881158984367406722, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -24821,6 +24829,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 30467510}
     - target: {fileID: 8464894528499008667, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8464894528499008667, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8464894528499008667, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8464894528499008667, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
       propertyPath: m_LocalPosition.x
       value: -737.331
       objectReference: {fileID: 0}
@@ -24867,8 +24887,34 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3214519702425673634, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 937268857}
   m_SourcePrefab: {fileID: 100100000, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
+--- !u!1 &937268856 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3214519702425673634, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
+  m_PrefabInstance: {fileID: 937268855}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &937268857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 937268856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f9a91f896abc79409e8a3c5eab45991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GunRecoil
+  recoilX: 0
+  recoilY: 0
+  recoilZ: 0
+  kickbackZ: 0
+  snap: 0
+  resetSpeed: 0
 --- !u!1001 &937584674
 PrefabInstance:
   m_ObjectHideFlags: 0
