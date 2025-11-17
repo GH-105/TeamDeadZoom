@@ -1057,7 +1057,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 39.1911, y: 0.022577763, z: -148.46497}
-  m_LocalScale: {x: 9, y: 9, z: 9}
+  m_LocalScale: {x: 11, y: 11, z: 11}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7532891913298918886}
@@ -1117,6 +1117,9 @@ MonoBehaviour:
   player: {fileID: 9093480221707116065, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
   summoner: 0
   bulletDelay: 1
+  drop: {fileID: 0}
+  deathSound: {fileID: 0}
+  deathSoundVol: 1
   floatingTextPrefab: {fileID: 5749133604472977256, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
   givesSouls: 0
   soulsToGive: 1
