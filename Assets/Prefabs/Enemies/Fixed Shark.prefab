@@ -1464,7 +1464,7 @@ MonoBehaviour:
   FOV: 360
   roamDist: 60
   roamPauseTimer: 4
-  shootPos1: {fileID: 1134388235234798289}
+  shootPos1: {fileID: 6662296902357590914}
   shootPos2: {fileID: 0}
   bullet: {fileID: 0}
   bullet2: {fileID: 0}
@@ -1498,7 +1498,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 6
+  m_Speed: 12
   m_Acceleration: 32
   avoidancePriority: 50
   m_AngularSpeed: 600
@@ -1507,7 +1507,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 0.2
-  m_BaseOffset: 0
+  m_BaseOffset: 0.015
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!136 &8607899621155771134

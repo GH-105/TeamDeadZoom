@@ -14597,7 +14597,7 @@ MonoBehaviour:
   bossRoom: {fileID: 0}
   DamageIndicatorDir: {fileID: 0}
   finalLevelIndex: 3
-  hardModeButton: {fileID: 0}
+  hardModeButton: {fileID: 2105352480150939637}
   endingCutscene: {fileID: 0}
   rewardsPanel: {fileID: 5315282679960477115}
   coinShopPanel: {fileID: 3444744323404713309}
