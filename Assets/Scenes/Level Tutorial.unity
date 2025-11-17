@@ -1387,9 +1387,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3de368fb989c2e4b8ac612deb0d68d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MusicManager
-  CurrentTrack: {fileID: 0}
+  CurrentTrack: {fileID: 416292504}
   DefaultTrack: {fileID: 8300000, guid: aa4e226f4ddbf5d47900ac09bef565c4, type: 3}
   fadeDur: 1
+--- !u!82 &416292504 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5209052059936825753, guid: 2234d1085ecee174cbd784c3f80bf342, type: 3}
+  m_PrefabInstance: {fileID: 416292501}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &425589781
 GameObject:
   m_ObjectHideFlags: 0
@@ -4144,7 +4149,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 130
+  far clip plane: 170
   field of view: 60.000004
   orthographic: 0
   orthographic size: 5
