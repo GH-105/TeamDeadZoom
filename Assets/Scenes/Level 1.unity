@@ -13110,13 +13110,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3629761327608750198, guid: 758cf89b8ed816348876e7a99dde20eb, type: 3}
+      propertyPath: interactRange
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3629761327608750198, guid: 758cf89b8ed816348876e7a99dde20eb, type: 3}
       propertyPath: DisplayKeyAmount
       value: 
       objectReference: {fileID: 148491507}
     - target: {fileID: 3629761327608750198, guid: 758cf89b8ed816348876e7a99dde20eb, type: 3}
       propertyPath: interactiveSource
       value: 
-      objectReference: {fileID: 992208190}
+      objectReference: {fileID: 0}
     - target: {fileID: 4926249215279122078, guid: 758cf89b8ed816348876e7a99dde20eb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1147
@@ -14457,7 +14461,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -21719,13 +21723,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3629761327608750198, guid: 758cf89b8ed816348876e7a99dde20eb, type: 3}
+      propertyPath: interactRange
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 3629761327608750198, guid: 758cf89b8ed816348876e7a99dde20eb, type: 3}
       propertyPath: DisplayKeyAmount
       value: 
       objectReference: {fileID: 148491507}
     - target: {fileID: 3629761327608750198, guid: 758cf89b8ed816348876e7a99dde20eb, type: 3}
       propertyPath: interactiveSource
       value: 
-      objectReference: {fileID: 992208190}
+      objectReference: {fileID: 0}
     - target: {fileID: 4926249215279122078, guid: 758cf89b8ed816348876e7a99dde20eb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1293.3041
@@ -23100,8 +23108,8 @@ Transform:
   - {fileID: 935504198}
   - {fileID: 1293889391}
   - {fileID: 298744481}
-  - {fileID: 296784851}
   - {fileID: 458147422}
+  - {fileID: 296784851}
   - {fileID: 1033642558}
   - {fileID: 68193730}
   - {fileID: 442630853}
@@ -23152,7 +23160,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -26450,11 +26458,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 989918454}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &992208190 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6509400436022483906, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
-  m_PrefabInstance: {fileID: 937268855}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &992440336
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37291,8 +37294,8 @@ MonoBehaviour:
   hiddenDoor: {fileID: 376363651}
   mainDoor: {fileID: 354407096}
   enemy: {fileID: 20909049630960775, guid: 6d6e24301bff826488984c014647dec6, type: 3}
-  maxEnemies: 5
-  spawnRate: 1.5
+  maxEnemies: 3
+  spawnRate: 1
   spawnPos:
   - {fileID: 1732958200}
   - {fileID: 1043293950}
@@ -45964,7 +45967,7 @@ MonoBehaviour:
   hiddenDoor: {fileID: 658564973}
   mainDoor: {fileID: 1482456610}
   enemy: {fileID: 1402317468560811732, guid: 9764d19d1cb8a814b95d61c94a39a53c, type: 3}
-  maxEnemies: 8
+  maxEnemies: 5
   spawnRate: 1.5
   spawnPos:
   - {fileID: 340663464}
