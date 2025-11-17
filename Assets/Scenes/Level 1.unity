@@ -23064,7 +23064,7 @@ MonoBehaviour:
   hiddenDoor: {fileID: 0}
   mainDoor: {fileID: 811903109}
   enemy: {fileID: 8789024381003558246, guid: 9664c0a37cfb01243af663abe5b8f276, type: 3}
-  maxEnemies: 2
+  maxEnemies: 1
   spawnRate: 1
   spawnPos:
   - {fileID: 1540697333}
@@ -34745,7 +34745,7 @@ MonoBehaviour:
   hiddenDoor: {fileID: 1909453189}
   mainDoor: {fileID: 1021017598}
   enemy: {fileID: 2055536657813595115, guid: d6998943058414c4cb0b664ca7986960, type: 3}
-  maxEnemies: 20
+  maxEnemies: 10
   spawnRate: 1
   spawnPos:
   - {fileID: 433410642}
@@ -37051,7 +37051,7 @@ MonoBehaviour:
   hiddenDoor: {fileID: 376363651}
   mainDoor: {fileID: 354407096}
   enemy: {fileID: 20909049630960775, guid: 6d6e24301bff826488984c014647dec6, type: 3}
-  maxEnemies: 10
+  maxEnemies: 5
   spawnRate: 1.5
   spawnPos:
   - {fileID: 1732958200}
@@ -45719,7 +45719,7 @@ MonoBehaviour:
   hiddenDoor: {fileID: 658564973}
   mainDoor: {fileID: 1482456610}
   enemy: {fileID: 1402317468560811732, guid: 9764d19d1cb8a814b95d61c94a39a53c, type: 3}
-  maxEnemies: 15
+  maxEnemies: 8
   spawnRate: 1.5
   spawnPos:
   - {fileID: 340663464}
