@@ -468,6 +468,7 @@ GameObject:
   - component: {fileID: 34361670144029411}
   - component: {fileID: 7619096741063622849}
   - component: {fileID: 1332434739406573117}
+  - component: {fileID: 698663100984566744}
   m_Layer: 10
   m_Name: Gun Model
   m_TagString: Untagged
@@ -565,6 +566,24 @@ MonoBehaviour:
   kickbackZ: 1
   snap: 8
   resetSpeed: 6
+--- !u!114 &698663100984566744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3214519702425673634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f9a91f896abc79409e8a3c5eab45991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GunRecoil
+  recoilX: 0
+  recoilY: 0
+  recoilZ: 0
+  kickbackZ: 0
+  snap: 0
+  resetSpeed: 0
 --- !u!1 &3262077972696966027
 GameObject:
   m_ObjectHideFlags: 0
@@ -6363,19 +6382,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 5b597a86d70b2f84089580cdd2b8d04c, type: 3}
       propertyPath: m_LocalScale.x
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5b597a86d70b2f84089580cdd2b8d04c, type: 3}
       propertyPath: m_LocalScale.y
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5b597a86d70b2f84089580cdd2b8d04c, type: 3}
       propertyPath: m_LocalScale.z
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5b597a86d70b2f84089580cdd2b8d04c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -837
+      value: -737.331
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5b597a86d70b2f84089580cdd2b8d04c, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6383,7 +6402,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5b597a86d70b2f84089580cdd2b8d04c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 178
+      value: -799.328
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5b597a86d70b2f84089580cdd2b8d04c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6391,15 +6410,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5b597a86d70b2f84089580cdd2b8d04c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5b597a86d70b2f84089580cdd2b8d04c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5b597a86d70b2f84089580cdd2b8d04c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5b597a86d70b2f84089580cdd2b8d04c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6607,7 +6626,7 @@ MonoBehaviour:
   HP: 15
   speed: 16
   sprintMod: 2
-  jumpSpeed: 20
+  jumpSpeed: 10
   jumpCountMax: 2
   gravity: 35
   underwaterGravity: 14
@@ -6615,7 +6634,7 @@ MonoBehaviour:
   underwaterJumpSpeed: 14
   groundbuffer: 0.1
   dashDist: 20
-  maxAirDash: 1
+  maxAirDash: 0
   shootDamage: 2
   shootDist: 50
   shootRate: 0.5
