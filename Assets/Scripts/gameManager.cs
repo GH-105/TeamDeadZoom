@@ -37,6 +37,9 @@ public class gameManager : MonoBehaviour
     [SerializeField] public int finalLevelIndex = 3;
     [SerializeField] GameObject hardModeButton;
     [SerializeField] public PlayableDirector endingCutscene;
+    
+
+   
 
     [SerializeField] public GameObject rewardsPanel;
     [SerializeField] public GameObject coinShopPanel;
@@ -49,6 +52,7 @@ public class gameManager : MonoBehaviour
     public GameObject playerSpawnPos;
 
     public bool isPaused;
+    public bool chSelected = false;
 
     public GameObject playerDamageScreen;
     public TMP_Text gameGoalCountText;
@@ -87,6 +91,8 @@ public class gameManager : MonoBehaviour
         {
             menuActive = null;
         }    
+
+
     }
 
     // Update is called once per frame
@@ -202,7 +208,11 @@ public class gameManager : MonoBehaviour
         {
             hardModeButton.SetActive(false);
         }
+
+        
     }
+
+    
 
     public void StartScreenMenu()
     {
