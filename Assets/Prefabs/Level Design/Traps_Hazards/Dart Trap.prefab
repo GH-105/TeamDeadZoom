@@ -233,8 +233,8 @@ Transform:
   m_GameObject: {fileID: 6380263631347466646}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.000000923872, z: -0, w: 1}
-  m_LocalPosition: {x: 191.25, y: -19.5, z: 0}
-  m_LocalScale: {x: 360, y: 0.6, z: 30}
+  m_LocalPosition: {x: 191.25, y: -5.5, z: -36.363636}
+  m_LocalScale: {x: 360, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6767229687142109235}
@@ -328,10 +328,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb6ec992434a99c49acd51885fcd3e90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DartTrap
-  pressurePlate: {fileID: 0}
-  bullet: {fileID: 0}
+  pressurePlate: {fileID: 6380263631347466646}
+  bullet: {fileID: 6207780247886573495, guid: ac4d5150854da1844bd1b879a19c716e, type: 3}
   trapDoor: {fileID: 0}
-  firePOS: {fileID: 0}
+  firePOS: {fileID: 3968989743483954826}
   fireSpeed: 10
   type: 0
 --- !u!1 &8265055862114808707
