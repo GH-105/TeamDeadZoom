@@ -712,6 +712,10 @@ PrefabInstance:
       propertyPath: playerScript
       value: 
       objectReference: {fileID: 121087722}
+    - target: {fileID: 8533750314586473874, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8881158984367406722, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
       propertyPath: m_Pivot.x
       value: 0
