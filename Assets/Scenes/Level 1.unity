@@ -4658,6 +4658,10 @@ PrefabInstance:
       propertyPath: ReloadSlider
       value: 
       objectReference: {fileID: 1548365630874265075, guid: bbae892a52f90a940a19f52726504070, type: 3}
+    - target: {fileID: 7968735221605272654, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
+      propertyPath: LavaScreenOverlay
+      value: 
+      objectReference: {fileID: 6617786900005535971, guid: 4240ae83812c18a43ae82f2d5060591b, type: 3}
     - target: {fileID: 8533750314586473874, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -14269,6 +14273,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 545206096}
     m_Modifications:
+    - target: {fileID: 565611094922662488, guid: da203db01ec84da459c4f4f2c839e6aa, type: 3}
+      propertyPath: m_Size.y
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4913447625050979612, guid: da203db01ec84da459c4f4f2c839e6aa, type: 3}
       propertyPath: m_Name
       value: Lava
@@ -17192,7 +17200,7 @@ Transform:
   m_GameObject: {fileID: 652109406}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -24, y: 3, z: 7.7272644}
+  m_LocalPosition: {x: -23.4, y: 3, z: 7.7272644}
   m_LocalScale: {x: 1, y: 1, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -24889,17 +24897,25 @@ PrefabInstance:
       propertyPath: DmgIndicatorDir
       value: 
       objectReference: {fileID: 30467510}
+    - target: {fileID: 5867841632748879998, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
+      propertyPath: m_Height
+      value: 2.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5867841632748879998, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
+      propertyPath: m_Center.y
+      value: 1.2
+      objectReference: {fileID: 0}
     - target: {fileID: 8464894528499008667, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -737.331
+      value: -1365
       objectReference: {fileID: 0}
     - target: {fileID: 8464894528499008667, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 11.25
       objectReference: {fileID: 0}
     - target: {fileID: 8464894528499008667, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -799.328
+      value: -276.90103
       objectReference: {fileID: 0}
     - target: {fileID: 8464894528499008667, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
       propertyPath: m_LocalRotation.w
