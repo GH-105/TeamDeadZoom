@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class NewMonoBehaviourScript1 : MonoBehaviour
 {
+    [SerializeField] GameObject creditsPanel;
+
     public PlayableDirector director;
     public string creditsSceneName = "CreditsScene";
     void Start()
@@ -14,6 +16,7 @@ public class NewMonoBehaviourScript1 : MonoBehaviour
 
     private void OnCutsceneFinished(PlayableDirector d)
     {
-        SceneManager.LoadScene(creditsSceneName);
+        gameManager.instance.statePause();
+        creditsPanel.SetActive(true);
     }
 }
