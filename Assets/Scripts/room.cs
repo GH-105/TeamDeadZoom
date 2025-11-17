@@ -123,7 +123,6 @@ public class room : MonoBehaviour
 
             if (gameManager.instance.bossRoom == this)
             {
-                Debug.Log("Boss Room Complete");
                 gameManager.instance.updateGameGoal(-1);
             }
         }

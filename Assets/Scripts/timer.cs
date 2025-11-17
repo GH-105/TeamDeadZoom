@@ -25,7 +25,6 @@ public class StopWatch : MonoBehaviour
         currentTime = 0;
 
        // sceneKey = "BestTime_" + SceneManager.GetActiveScene().name; 
-        //Debug.Log(sceneKey);
 
         StartStopwatch();
         UpdateBestTime();
@@ -46,7 +45,6 @@ public class StopWatch : MonoBehaviour
     {
 
         stopwatchActive = true;
-        //Debug.Log("Stopwatch started");
 
     }
     public void StopStopwatch()
@@ -63,7 +61,6 @@ public class StopWatch : MonoBehaviour
             saveTime = currentTime;
             PlayerPrefs.SetFloat(sceneKey, saveTime);
             PlayerPrefs.Save();
-            Debug.Log("new Best time");
         }
         UpdateBestTime();
     }
@@ -100,6 +97,5 @@ public class StopWatch : MonoBehaviour
 
         SaveManager.UpdateBestTime(SceneManager.GetActiveScene().name, currentTime);
         UpdateBestTime();
-        Debug.Log("Time saved to Json via save Manager");
     }
 }

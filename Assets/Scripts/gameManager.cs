@@ -115,7 +115,6 @@ public class gameManager : MonoBehaviour
     }
     public void loadTutorial()
     {
-        Debug.Log("tutorial Load");
         SceneManager.LoadScene("Level Tut");
     }
 
@@ -130,7 +129,6 @@ public class gameManager : MonoBehaviour
             PowerUpText.Instance.popUpParent.gameObject.SetActive(false);
 
         buttonFunctions.SaveGame(true);
-        Debug.Log("auto pause save");
     }
 
     public void stateUnpause()
@@ -160,7 +158,6 @@ public class gameManager : MonoBehaviour
                 StopWatch.instance.SaveTimeToSaveManager();
             }
             statePause();
-            Debug.Log("Rewards Manager called");
             if(SceneManager.GetActiveScene().buildIndex == finalLevelIndex)
             {
                 UnlockHardMode();
@@ -174,8 +171,6 @@ public class gameManager : MonoBehaviour
 
     public void UnlockHardMode()
     {
-        Debug.Log("Hard Mode unlocked");
-
         GameData data = SaveManager.LoadGame();
         if(data == null)
         {

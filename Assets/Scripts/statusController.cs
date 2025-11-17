@@ -34,7 +34,6 @@ public class statusController : MonoBehaviour
 
     public void ApplyEffect(DamageEffects def, in DamageContext context, float magnitude)
     {
-        Debug.Log($"[status] ApplyEffect {def.name} mag={magnitude} baseHit={context.baseHitDamage}");
         switch (def.Policy)
         {
             case DamageEffects.StackPolicy.IndependentStacks:
@@ -171,7 +170,6 @@ public class statusController : MonoBehaviour
                 while (t <= 0f)
                 {
                     // TEMP
-                    Debug.Log($"Ticking {def.name} on {name} with {aggregateBucket.Count} instances");
                     t += Mathf.Max(0.0001f, def.TickInterval);
 
                     aggregateBucket.Clear();

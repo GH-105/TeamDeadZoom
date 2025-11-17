@@ -143,7 +143,6 @@ public class PowerUpManager : MonoBehaviour
         {
             list.Add(new EffectInstance { effect = damageEffect, magnitude = deltaMagnitude });
             Notify($"+{damageEffect.name} applied to {gunName}");
-            Debug.Log(damageEffect.name + "test");
         }
         else
         {

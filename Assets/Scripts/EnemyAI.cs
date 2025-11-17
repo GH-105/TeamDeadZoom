@@ -83,8 +83,6 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
         HpSlider.maxValue = HP;
         HpSlider.value = HP;
         status = GetComponent<statusController>();
-        if (status == null) Debug.LogError($"{name}: missing statusController");
-        else if (status.Receiver == null) Debug.LogError($"{name}: statusController has no IStatusDamageReceiver");
         maxHP = HP;
         player = gameManager.instance.player;
 
@@ -428,7 +426,6 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
         {
             SoulManagement.AddSouls(soulsToGive);
             buttonFunctions.SaveGame(false);
-            Debug.Log("gave souls");
         }
         if (dead)//for cleanup
         {

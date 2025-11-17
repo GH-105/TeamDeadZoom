@@ -123,7 +123,6 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
             lastGrounTime = Time.time;
         }
         isInAir = !controller.isGrounded;
-        //Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * shootDist, Color.red);
         shootTimer += Time.deltaTime;
 
         if (!gameManager.instance.isPaused)

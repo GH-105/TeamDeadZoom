@@ -92,7 +92,6 @@ public class SoulManagement : MonoBehaviour
 
     public void UpgradeDash()
     {
-        Debug.Log("UpgradeDash method called");
 
         if (SpendSouls(dashUpgradeCost))
         {
@@ -101,7 +100,6 @@ public class SoulManagement : MonoBehaviour
 
             ApplyStatsToPlayer(playercont);
             UpdateUI();
-            Debug.Log("player dash upgraded");
         }
     }
 
@@ -144,7 +142,6 @@ public class SoulManagement : MonoBehaviour
 
     public void UpdateUI()
     {
-        Debug.Log("UpdateUI bug test");
         soulCountText.text = "Souls: " + souls;
 
         dashUpgradeCostText.text = "Dash Upgrade: " + dashUpgradeCost + " souls";

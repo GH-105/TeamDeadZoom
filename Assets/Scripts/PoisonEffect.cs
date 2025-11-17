@@ -9,8 +9,7 @@ public class PoisonEffect : DamageEffects
     public override void OnAggregateTick(statusController target, List<statusController.RuntimeEffect> instance)
     {
         if (target.Receiver == null) return;
-        Debug.Log($"Poison tick: count={instance.Count} " +
-          $"bh={instance[0].baseHitDamage} mag={instance[0].magnitude} stacks={instance[0].stacks}");
+        
 
         float total = 0f;
         for (int i = 0; i < instance.Count; i++)
@@ -21,7 +20,7 @@ public class PoisonEffect : DamageEffects
 
         if (total > 0f)
         {
-            Debug.Log($"[Poison] total={total}");
+           
             target.Receiver.ApplyDot(total, this, instance[0].source);
         }
             

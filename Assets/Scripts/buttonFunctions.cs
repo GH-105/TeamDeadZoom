@@ -24,7 +24,6 @@ public class buttonFunctions : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        Debug.Log("saving on quit");
         if(StopWatch.instance != null)
         {
             StopWatch.instance.StopStopwatch();
@@ -43,7 +42,6 @@ public class buttonFunctions : MonoBehaviour
                 StopWatch.instance.SaveTimeToSaveManager();
             }
             SaveGame(true);
-            Debug.Log("auto save on pause");
         }    
         
     }
@@ -145,8 +143,6 @@ public class buttonFunctions : MonoBehaviour
             data.currentGunIndex = PowerUpManager.Instance.gunListPos;
             data.dL = DifficultyManager.currDif;
 
-            Debug.Log($"all save : {data.coins} coins, HP {data.playerHP}, checkpoint {data.checkpointPosition}");
-
 
             for (int i = 0; i < PowerUpManager.Instance.gunList.Count; i++)
             {
@@ -221,7 +217,6 @@ public class buttonFunctions : MonoBehaviour
     public void DeleteSave()
     {
             SoulManagement.DeleteSave();
-            Debug.LogWarning("Soul management instance not found cannot delete save");
     }
 
     public void StartGame()
@@ -262,7 +257,6 @@ public class buttonFunctions : MonoBehaviour
 
         DifficultyManager.currDif = enabled?difficulty.Hard:difficulty.normal;
 
-        Debug.Log("Hard Mode" + enabled);
     }
    
 }

@@ -14579,7 +14579,7 @@ MonoBehaviour:
   menuLevelSelect: {fileID: 5115394273413208672}
   menuWeaponSelect: {fileID: 5833997477592003202}
   EnemyAuraScreenOverlay: {fileID: 2360185468161177007}
-  LavaScreenOverlay: {fileID: 0}
+  LavaScreenOverlay: {fileID: 6617786900005535971, guid: 4240ae83812c18a43ae82f2d5060591b, type: 3}
   playerUWScreen: {fileID: 1033026699836455803}
   HpCamera: {fileID: 0}
   StartMenu: {fileID: 5210194739684464306}
@@ -14602,7 +14602,7 @@ MonoBehaviour:
   rewardsPanel: {fileID: 5315282679960477115}
   coinShopPanel: {fileID: 3444744323404713309}
   startingGun: {fileID: 0}
-  ReloadSlider: {fileID: 1681571299823870807}
+  ReloadSlider: {fileID: 1548365630874265075, guid: bbae892a52f90a940a19f52726504070, type: 3}
   player: {fileID: 0}
   playerScript: {fileID: 0}
   playerSpawnPos: {fileID: 0}
@@ -21508,7 +21508,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Load
+  m_text: Main Menu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -24649,7 +24649,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7417273708693340366
 RectTransform:
   m_ObjectHideFlags: 0
@@ -26804,7 +26804,7 @@ GameObject:
   - component: {fileID: 8659121285320977102}
   - component: {fileID: 6246404299395886868}
   m_Layer: 5
-  m_Name: Load
+  m_Name: /mainmenu/load
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26914,7 +26914,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1453185472006100230}
         m_TargetAssemblyTypeName: buttonFunctions, Assembly-CSharp
-        m_MethodName: LoadGame
+        m_MethodName: loadLevelSelectMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -27364,7 +27364,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -28654,17 +28654,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbae892a52f90a940a19f52726504070, type: 3}
---- !u!114 &1681571299823870807 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1548365630874265075, guid: bbae892a52f90a940a19f52726504070, type: 3}
-  m_PrefabInstance: {fileID: 156150882131592868}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
 --- !u!224 &4816602628379574426 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4680015118406665790, guid: bbae892a52f90a940a19f52726504070, type: 3}

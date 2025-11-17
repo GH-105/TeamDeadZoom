@@ -13,7 +13,6 @@ public class SaveManager : MonoBehaviour
     {
         string json = JsonUtility.ToJson(data, true);
         File.WriteAllText(GetSavePath(), json);
-        Debug.Log("game saved ");
     }
     public static GameData LoadGame()
     {
@@ -22,7 +21,6 @@ public class SaveManager : MonoBehaviour
         {
             string json = File.ReadAllText(path);
             GameData data = JsonUtility.FromJson<GameData>(json);
-            Debug.Log("game loaded");
             return data;
         }
         return null;
@@ -37,7 +35,6 @@ public class SaveManager : MonoBehaviour
         if (File.Exists(path))
         {
             File.Delete(path);
-            Debug.Log("deleted save");
         }
         if(StopWatch.instance != null)
         {

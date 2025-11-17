@@ -36,7 +36,6 @@ public class RewardsManager : MonoBehaviour
         GameData data = SaveManager.LoadGame();
         if (data == null)
         {
-            Debug.Log("No save data found!4");
             return;
         }
 
@@ -95,7 +94,6 @@ public class RewardsManager : MonoBehaviour
 
     public void ShowCoinShop()
     {
-        Debug.Log("coin shop open");
         HideDoorMessage();
         if (gameManager.instance.coinShopPanel != null && gameManager.instance.rewardsPanel != null)
         {
@@ -112,7 +110,6 @@ public class RewardsManager : MonoBehaviour
         GameData data = SaveManager.LoadGame();
         if (data == null)
         {
-            Debug.Log("No save data found!");
             return;
         }
 
@@ -129,7 +126,6 @@ public class RewardsManager : MonoBehaviour
         }
         if (levelTime != null)
         {
-            Debug.Log("test 1 lose");
             gameManager.instance.currentTimeText.text = $"Current Time: {levelTime.currentTime:F2}s";
             gameManager.instance.bestTimeText.text = $"Best Time: {levelTime.bestTime:F2}s";
         }
@@ -167,38 +163,3 @@ public class RewardsManager : MonoBehaviour
     }
 
 }
-
-#if UNITY_EDITOR
-
-public static class RewardsManagerDebug
-{
-    [MenuItem("Debug/Trigger Win screen")]
-    private static void TriggerWin()
-    {
-        if (RewardsManager.instance == null)
-        { 
-            Debug.Log("Instance not in scene");
-        return;
-        }
-        RewardsManager.instance.WinRewards();
-    }
-
-    [MenuItem("Debug/Trigger Loss screen")]
-    private static void TriggerLoss()
-    {
-        if (RewardsManager.instance == null)
-        { 
-            Debug.Log("Instance not in scene");
-        return;
-    }
-        RewardsManager.instance.LossRewards();
-    }
-
-    [MenuItem("Debug/Trigger souls")]
-    private static void TriggerSouls()
-    {
-        SoulManagement.AddSouls(1);
-    }
-}
-
-#endif

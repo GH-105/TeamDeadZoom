@@ -26,7 +26,6 @@ public class checkpoint : MonoBehaviour
                 checkpointPosition = transform.position
             };
             SaveManager.SaveGame( data);
-            Debug.Log("saved");
         }
     }
 
