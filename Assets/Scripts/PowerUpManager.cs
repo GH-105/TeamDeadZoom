@@ -20,6 +20,7 @@ public class PowerUpManager : MonoBehaviour
     public int totalAirDash;
     public int totaljumpDist;
     public int totalProjPlus;
+    public float playerCurrentHP;
     public List<EffectInstance> weaponEffects;
     public bool isReloading = false;
     [SerializeField] public float reloadTime;
@@ -200,6 +201,7 @@ public class PowerUpManager : MonoBehaviour
         gameManager.instance.playerScript.JumpSpeed += totaljumpDist;
         gameManager.instance.playerScript.numProjectiles += totalProjPlus;
         gameManager.instance.playerScript.HPOrig += totalHPIncrease;
+        gameManager.instance.playerScript.HP = playerCurrentHP;
 
     }
     public (int damage, float rate, int range) CalcGunStats(int index)
@@ -325,6 +327,12 @@ public class PowerUpManager : MonoBehaviour
         {
             PowerUpText.Instance.ShowPopup(message);
         }
+    }
+
+    public void StorePlayerHP(float hp)
+    {
+        playerCurrentHP = hp;
+        pstat = true;
     }
 }
 

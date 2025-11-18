@@ -32,6 +32,7 @@ public class CoinShop : MonoBehaviour
     {
         displayCoinAmount.text = Coinlogic.coinCount.ToString();
         coins = Coinlogic.coinCount;
+        PowerUpManager.Instance.StorePlayerHP(playerContr.HP);
 
         healCostText.text = " - " + costOfHealing.ToString() + "coins for " + healCount.ToString() + " Hp";
         ammoCostText.text = " - " + ammoCost.ToString() + "coins for " + ammoMult.ToString() + " Ammo";
@@ -56,7 +57,7 @@ public class CoinShop : MonoBehaviour
         }
     }
 
-    void UpdateCoinDisplay()
+    public void UpdateCoinDisplay()
     {
         displayCoinAmount.text = Coinlogic.coinCount.ToString();
     }
@@ -68,6 +69,9 @@ public class CoinShop : MonoBehaviour
             playerContr.HP += healCount;
             if(playerContr.HP > playerContr.HPOrig)
                 playerContr.HP = playerContr.HPOrig;
+            if (playerContr.heartsUI != null)
+                playerContr.heartsUI.UpdateHearts(healCount);
+            PowerUpManager.Instance.StorePlayerHP(playerContr.HP);
             print("Healed: you now have: " + playerContr.HP.ToString());
             UpdateCoinDisplay();
             StartCoroutine(displayBought());

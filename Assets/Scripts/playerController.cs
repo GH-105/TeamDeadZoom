@@ -92,6 +92,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
         
         controller = GetComponent<CharacterController>();
         status = GetComponent<statusController>();
+        
 
         if (PowerUpManager.Instance != null)//checks everytime before applying
         {
