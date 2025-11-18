@@ -4578,6 +4578,10 @@ PrefabInstance:
       propertyPath: bossRoom
       value: 
       objectReference: {fileID: 895184576}
+    - target: {fileID: 7968735221605272654, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
+      propertyPath: ReloadSlider
+      value: 
+      objectReference: {fileID: 943709362}
     - target: {fileID: 8881158984367406722, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -13043,7 +13047,7 @@ PrefabInstance:
     - target: {fileID: 3629761327608750198, guid: 758cf89b8ed816348876e7a99dde20eb, type: 3}
       propertyPath: interactiveSource
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1102841944}
     - target: {fileID: 4926249215279122078, guid: 758cf89b8ed816348876e7a99dde20eb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1147
@@ -14335,11 +14339,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 400000, guid: 657987f19f0767d4f81541198f8e3eff, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1688034132}
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 100000, guid: 657987f19f0767d4f81541198f8e3eff, type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 533607275}
     - targetCorrespondingSourceObject: {fileID: 100000, guid: 657987f19f0767d4f81541198f8e3eff, type: 3}
       insertIndex: -1
       addedObject: {fileID: 533607276}
@@ -14354,21 +14358,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 657987f19f0767d4f81541198f8e3eff, type: 3}
   m_PrefabInstance: {fileID: 533607272}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &533607275
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 533607274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b90b49815ee23f941bd5540b46035e0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::rewardDoor
-  keyPrompt: {fileID: 148491506}
-  notEnoughPrompt: {fileID: 148491505}
-  doorObject: {fileID: 533607274}
 --- !u!65 &533607276
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14384,7 +14373,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -21655,7 +21644,7 @@ PrefabInstance:
     - target: {fileID: 3629761327608750198, guid: 758cf89b8ed816348876e7a99dde20eb, type: 3}
       propertyPath: interactiveSource
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1102841944}
     - target: {fileID: 4926249215279122078, guid: 758cf89b8ed816348876e7a99dde20eb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1293.3041
@@ -25483,6 +25472,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: 657987f19f0767d4f81541198f8e3eff, type: 3}
   m_PrefabInstance: {fileID: 938880972}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &943709362 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8828004114172687514, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
+  m_PrefabInstance: {fileID: 148491504}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
 --- !u!1001 &951085686
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25914,7 +25914,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 400000, guid: 657987f19f0767d4f81541198f8e3eff, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2117299543}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 100000, guid: 657987f19f0767d4f81541198f8e3eff, type: 3}
       insertIndex: 1
@@ -25967,8 +25970,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4, y: 4, z: 0.19397183}
-  m_Center: {x: 0.000061035156, y: 1.9999999, z: 0.09698508}
+  m_Size: {x: 4, y: 4, z: 0.19395916}
+  m_Center: {x: 0.000061035156, y: 2, z: 0.09697863}
 --- !u!1001 &971396818
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -29781,6 +29784,11 @@ BoxCollider:
 --- !u!1 &1102841938 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2135029538412865801, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
+  m_PrefabInstance: {fileID: 937268855}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1102841944 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6509400436022483906, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
   m_PrefabInstance: {fileID: 937268855}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1110560548
@@ -44050,6 +44058,75 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4, y: 4, z: 0.19397183}
   m_Center: {x: 0, y: 1.9999999, z: 0.09686301}
+--- !u!1 &1688034131
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1688034132}
+  - component: {fileID: 1688034134}
+  - component: {fileID: 1688034133}
+  m_Layer: 14
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1688034132
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688034131}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 533607273}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1688034133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688034131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b90b49815ee23f941bd5540b46035e0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::rewardDoor
+  keyPrompt: {fileID: 148491506}
+  notEnoughPrompt: {fileID: 148491505}
+  doorObject: {fileID: 533607274}
+--- !u!65 &1688034134
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688034131}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 5.666668, y: 4.434344, z: 14.000012}
+  m_Center: {x: 0.33334193, y: 1.7171714, z: -6.500006}
 --- !u!1 &1688148081
 GameObject:
   m_ObjectHideFlags: 0
@@ -57173,6 +57250,75 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4, y: 4, z: 0.19397183}
   m_Center: {x: 0, y: 1.9999999, z: 0.09700034}
+--- !u!1 &2117299542
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2117299543}
+  - component: {fileID: 2117299545}
+  - component: {fileID: 2117299544}
+  m_Layer: 14
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2117299543
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2117299542}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 970175024}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2117299544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2117299542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b90b49815ee23f941bd5540b46035e0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::rewardDoor
+  keyPrompt: {fileID: 148491506}
+  notEnoughPrompt: {fileID: 148491505}
+  doorObject: {fileID: 970175025}
+--- !u!65 &2117299545
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2117299542}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 7.666667, y: 4.400001, z: 14.999986}
+  m_Center: {x: -1.3333129, y: 1.6999997, z: 6.999993}
 --- !u!1 &2120597613
 GameObject:
   m_ObjectHideFlags: 0

@@ -109,7 +109,7 @@ MonoBehaviour:
   magnitude: 2
   HPLoss: 0
   jumpsSpeedInc: 0
-  numProjUp: 1
+  numProjUp: 2
   type: 13
 --- !u!135 &1420718751291974532
 SphereCollider:

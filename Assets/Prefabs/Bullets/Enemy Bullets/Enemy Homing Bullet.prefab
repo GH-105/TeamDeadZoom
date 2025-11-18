@@ -60,8 +60,8 @@ MonoBehaviour:
   telegraphPrefab: {fileID: 0}
   damageAmount: 1
   damageRate: 0
-  speed: 15
-  destroyTime: 3
+  speed: 20
+  destroyTime: 4
   flightTime: 0.75
   playerInDot: {fileID: 0}
   damageEffects:

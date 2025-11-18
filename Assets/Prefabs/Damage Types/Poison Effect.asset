@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e42c5394f9efd1744aa09b1760f94463, type: 3}
   m_Name: Poison Effect
   m_EditorClassIdentifier: Assembly-CSharp::PoisonEffect
-  duration: 5
-  tickInterval: 1
+  duration: 3
+  tickInterval: 1.5
   stackPolicy: 0
   combineMode: 0
   maxStacks: 999

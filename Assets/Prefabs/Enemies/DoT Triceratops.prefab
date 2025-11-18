@@ -2315,8 +2315,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c67c6c9d2ff66204fad5d9c2e1304723, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Damage
-  moveType: 0
-  zoneType: 0
+  moveType: 4
+  zoneType: 1
   zoneEffect: {fileID: 0}
   zoneMagnitude: 1
   rb: {fileID: 4036505411179803889}
@@ -2332,7 +2332,9 @@ MonoBehaviour:
   destroyTime: 0
   flightTime: 0
   playerInDot: {fileID: 0}
-  damageEffects: []
+  damageEffects:
+  - effect: {fileID: 11400000, guid: 16cff0949396a7d4382a4cccce65a7e7, type: 2}
+    magnitude: 1
   _initialized: 0
 --- !u!135 &8164337151338151820
 SphereCollider:
