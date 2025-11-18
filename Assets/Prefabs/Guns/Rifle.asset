@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Rifle
   m_EditorClassIdentifier: Assembly-CSharp::gunStats
   gunModel: {fileID: 4698201593948852689, guid: 185ce04d44da342739f0bef843698e6c, type: 3}
-  shootDamage: 2
+  shootDamage: 3
   shootDist: 500
-  shootRate: 1
-  ammoCur: 5
+  shootRate: 0.95
+  ammoCur: 10
   ammoMax: 10
   hitEffect: {fileID: 5396372950321188654, guid: fcb74f28d107e284e80af037bfec14ca, type: 3}
   shootSounds:

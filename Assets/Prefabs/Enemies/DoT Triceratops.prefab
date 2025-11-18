@@ -2317,7 +2317,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Damage
   moveType: 4
   zoneType: 1
-  zoneEffect: {fileID: 0}
+  zoneEffect: {fileID: 11400000, guid: 16cff0949396a7d4382a4cccce65a7e7, type: 2}
   zoneMagnitude: 1
   rb: {fileID: 4036505411179803889}
   projModel: {fileID: 0}

@@ -16,13 +16,13 @@ public class CoinShop : MonoBehaviour
     [SerializeField] TMP_Text damageMultCostText;
     
     [SerializeField] int healCount = 5;
-    [SerializeField] int costOfHealing = 10;
-    [SerializeField] int flatDamage = 2;
-    [SerializeField] int costOfFlat = 15;
+    [SerializeField] int costOfHealing = 5;
+    [SerializeField] int flatDamage = 1;
+    [SerializeField] int costOfFlat = 5;
     [SerializeField] float damageMultAmm = 1.5f;
-    [SerializeField] int costOfDMult = 20;
+    [SerializeField] int costOfDMult = 10;
     [SerializeField] float ammoMult = 1.5f;
-    [SerializeField] int ammoCost = 10;
+    [SerializeField] int ammoCost = 5;
 
 
     public playerController playerContr;
