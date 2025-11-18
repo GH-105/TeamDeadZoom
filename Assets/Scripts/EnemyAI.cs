@@ -429,7 +429,8 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
         }
         if (dead)//for cleanup
         {
-            Instantiate(drop, transform.position, Quaternion.identity);
+            var enemyDrop = Instantiate(drop, transform.position, Quaternion.identity);
+            Destroy(enemyDrop, 2f);
             Play2D(deathSound, deathSoundVol, transform.position);
         }
         Destroy(gameObject);

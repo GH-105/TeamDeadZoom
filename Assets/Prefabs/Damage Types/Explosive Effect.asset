@@ -18,7 +18,7 @@ MonoBehaviour:
   combineMode: 0
   maxStacks: 1
   aggregateTicks: 0
-  radius: 4
+  radius: 6
   hitMask:
     serializedVersion: 2
     m_Bits: 136

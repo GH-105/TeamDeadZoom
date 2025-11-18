@@ -15,6 +15,7 @@ public class PowerUpManager : MonoBehaviour
     public int totalDist;
     public float totalRate;
     public int totalAmmo;
+    public int totalHPIncrease;
     public int Hp;
     public int totalAirDash;
     public int totaljumpDist;
@@ -155,6 +156,8 @@ public class PowerUpManager : MonoBehaviour
     public void ApplyNumProjBonus(int proj)
     {
         totalProjPlus += proj;
+        gameManager.instance.playerScript.numProjectiles += totalProjPlus;
+        pstat = true;
     }
     public void ApplySpeedBonus(int Speed)
     {
@@ -196,6 +199,7 @@ public class PowerUpManager : MonoBehaviour
         gameManager.instance.playerScript.JumpCountMax += totalJumps;
         gameManager.instance.playerScript.JumpSpeed += totaljumpDist;
         gameManager.instance.playerScript.numProjectiles += totalProjPlus;
+        gameManager.instance.playerScript.HPOrig += totalHPIncrease;
 
     }
     public (int damage, float rate, int range) CalcGunStats(int index)
@@ -296,6 +300,20 @@ public class PowerUpManager : MonoBehaviour
         if(gameManager.instance.playerScript.HP > gameManager.instance.playerScript.HPOrig)
         {
             gameManager.instance.playerScript.HP = gameManager.instance.playerScript.HPOrig;
+        }
+
+        Notify($"+{amount} HP");
+    }
+
+    public void maxHPIncrease(int amount)
+    {
+
+        Hp += amount;
+        gameManager.instance.playerScript.heartsUI.UpdateHearts((int)gameManager.instance.playerScript.HP);
+        gameManager.instance.playerScript.HP += Hp;
+        if (gameManager.instance.playerScript.HP > gameManager.instance.playerScript.HPOrig)
+        {
+            gameManager.instance.playerScript.HPOrig = gameManager.instance.playerScript.HP;
         }
 
         Notify($"+{amount} HP");
