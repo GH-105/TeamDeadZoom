@@ -326,10 +326,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb6ec992434a99c49acd51885fcd3e90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DartTrap
-  pressurePlate: {fileID: 0}
-  bullet: {fileID: 0}
+  pressurePlate: {fileID: 4008730657333091648}
+  bullet: {fileID: 6207780247886573495, guid: 6b49c58a982ffe04c8f2896cea4bc752, type: 3}
   trapDoor: {fileID: 0}
-  firePOS: {fileID: 0}
+  firePOS: {fileID: 2885320093494916747}
   fireSpeed: 10
   type: 0
 --- !u!1 &5745492881747412059

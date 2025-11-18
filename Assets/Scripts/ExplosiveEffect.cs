@@ -1,6 +1,7 @@
-using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UIElements;
 
 [CreateAssetMenu(fileName = "ExplosiveEffect", menuName = "Scriptable Objects/ExplosiveEffect")]
 public class ExplosiveEffect : DamageEffects
@@ -12,11 +13,18 @@ public class ExplosiveEffect : DamageEffects
     public float Radius => radius;
     public override void OnProjectileImpact(Vector3 position, GameObject source)
     {
-        var hits = Physics.OverlapSphere(position, radius, hitMask, QueryTriggerInteraction.Collide);
+        Debug.Log($"[ExplosiveEffect] Using radius: {radius}", this);
+
+        var hits = Physics.OverlapSphere(position, radius, hitMask, QueryTriggerInteraction.Ignore);
+
+        Debug.Log($"[ExplosiveEffect] Hit count: {hits.Length}");
 
         for (int i = 0; i < hits.Length; i++)
         {
+            float d = Vector3.Distance(position, hits[i].transform.position);
             var idmg = hits[i].GetComponent<IDamage>();
+            Debug.Log($"  -> hit {hits[i].name} at distance {d}, has IDamage = {idmg != null}");
+
             if (idmg == null) continue;
 
             var ctx = new DamageContext(
@@ -27,17 +35,10 @@ public class ExplosiveEffect : DamageEffects
             idmg.takeDamage(in ctx, effects: null);
         }
 
-        // 2) VFX (optional)
-
-
-        IEnumerator ShowExplodeVFX()
+        if (explosionVfx != null)
         {
-            if (explosionVfx)
-            {
-            GameObject explodeVFX = Object.Instantiate(explosionVfx, position, Quaternion.identity);
-            yield return new WaitForSeconds(2f);
-            Destroy(explodeVFX);
-            }
+            var vfx = Object.Instantiate(explosionVfx, position, Quaternion.identity);
+            Object.Destroy(vfx, 2f);
         }
 
     }

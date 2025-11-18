@@ -13,6 +13,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
     [SerializeField] Animator anim;
     [SerializeField] public ParticleSystem muzzleFlash;
     [SerializeField] public GunRecoil recoil;
+    [SerializeField] public Transform playerHeadPos;
 
     [SerializeField] public DamageDirection DmgIndicatorDir;
 

@@ -15,6 +15,8 @@ public class Damage : MonoBehaviour
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private GameObject telegraphPrefab;
     private GameObject telegraph;
+    Vector3 explosionPos;
+    bool hasExplosionPos;
     private bool hasDetonated = false;
 
     [SerializeField] public int damageAmount;
@@ -52,6 +54,12 @@ public class Damage : MonoBehaviour
             rb.linearVelocity = transform.forward * speed;
     }
 
+    private void OnDestroy()
+    {
+        if (telegraph != null)
+            Destroy(telegraph);
+    }
+
     public void ArmExplosive(Vector3 targetPosition, float radius)
     {
         if (telegraphPrefab == null) return;
@@ -60,7 +68,11 @@ public class Damage : MonoBehaviour
         if (Physics.Raycast(rayStart, Vector3.down, out var hit, 100f, groundMask))
         {
             telegraph = Instantiate(telegraphPrefab, hit.point + Vector3.up * 0.02f, Quaternion.identity);
-            telegraph.transform.localScale = Vector3.one * (radius * 2f);
+
+            telegraph.transform.localScale = new Vector3(radius * 2f, 0.01f, radius * 2f);
+
+            explosionPos = telegraph.transform.position;
+            hasExplosionPos = true;
         }
     }
 
@@ -69,10 +81,14 @@ public class Damage : MonoBehaviour
         if (hasDetonated) return;
         hasDetonated = true;
 
+        Vector3 pos = hasExplosionPos ? explosionPos : transform.position;
+        Debug.Log($"[Detonate] explosion center = {pos}");
+
         foreach (var inst in damageEffects)
-            inst.effect.OnProjectileImpact(transform.position, shooter);
-        //Add Explosive Effect VFX Destroy Here
+            inst.effect.OnProjectileImpact(pos, shooter);
+
         if (telegraph) Destroy(telegraph);
+
         Destroy(gameObject);
     }
 

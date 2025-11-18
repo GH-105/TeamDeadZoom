@@ -18,9 +18,9 @@ MonoBehaviour:
   combineMode: 0
   maxStacks: 1
   aggregateTicks: 0
-  radius: 2
+  radius: 4
   hitMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 136
   explosionVfx: {fileID: 5162910912013668194, guid: cf82839c411151342a7b2337bda9fb34, type: 3}
   baseHit: 2

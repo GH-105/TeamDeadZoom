@@ -3785,10 +3785,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2
-  m_Height: 1.8
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.85, z: 0.05}
+  m_Radius: 1.2000062
+  m_Height: 7.8000183
+  m_Direction: 2
+  m_Center: {x: 0, y: 2.6, z: 0.05000305}
 --- !u!135 &4400432717337896941
 SphereCollider:
   m_ObjectHideFlags: 0
