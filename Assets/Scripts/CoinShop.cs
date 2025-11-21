@@ -32,7 +32,7 @@ public class CoinShop : MonoBehaviour
     {
         displayCoinAmount.text = Coinlogic.coinCount.ToString();
         coins = Coinlogic.coinCount;
-        PowerUpManager.Instance.StorePlayerHP(playerContr.HP);
+        
 
         healCostText.text = " - " + costOfHealing.ToString() + "coins for " + healCount.ToString() + " Hp";
         ammoCostText.text = " - " + ammoCost.ToString() + "coins for " + ammoMult.ToString() + " Ammo";
@@ -51,7 +51,7 @@ public class CoinShop : MonoBehaviour
             }
             else
             {
-                // Optional: you can re-enable it if needed, depending on your level logic
+                PowerUpManager.Instance.StorePlayerHP(playerContr.HP);
                 buttonFuncs.nextLevelButton.SetActive(true);
             }
         }
@@ -88,7 +88,7 @@ public class CoinShop : MonoBehaviour
         {
             Coinlogic.coinCount -= ammoCost;
 
-            int gunIndex =playerContr.gunListPos;
+            int gunIndex = playerContr.gunListPos;
             PowerUpManager.Instance.ApplyAmmoBonus(gunIndex, Mathf.CeilToInt(PowerUpManager.Instance.GetMaxAmmo(gunIndex) * ammoMult));
             UpdateCoinDisplay();
             StartCoroutine(displayBought());
