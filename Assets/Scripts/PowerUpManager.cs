@@ -334,5 +334,23 @@ public class PowerUpManager : MonoBehaviour
         playerCurrentHP = hp;
         pstat = true;
     }
+
+    public void ResetPlayerBonuses()
+    {
+        totalSpeed = 0;
+        totalJumps = 0;
+        totalDamage = 0;
+        totalDist = 0;
+        totalRate = 0;
+        totalAmmo = 0;
+        totalHPIncrease = 0;
+        Hp = 15;
+        totalAirDash = 0;
+        totaljumpDist = 0;
+        totalProjPlus = 0;
+        playerCurrentHP = Hp;
+        weaponEffects.Clear();
+        gunList.Clear();
+    }
 }
 

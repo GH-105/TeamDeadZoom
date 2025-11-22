@@ -53,6 +53,7 @@ public class buttonFunctions : MonoBehaviour
 
     public void restart()
     {
+        PowerUpManager.Instance.playerCurrentHP = gameManager.instance.playerScript.levelStartHP; 
         LoadingScreen.instance.LoadScene(SceneManager.GetActiveScene().buildIndex);
         gameManager.instance.stateUnpause();
     }
@@ -212,7 +213,7 @@ public class buttonFunctions : MonoBehaviour
                 }
                 PowerUpManager.Instance.gunListPos = data.currentGunIndex;
             }
-        SoulManagement.instance.UpdateUI();
+        //SoulManagement.instance.UpdateUI();
     }
     public void DeleteSave()
     {
@@ -258,5 +259,19 @@ public class buttonFunctions : MonoBehaviour
         DifficultyManager.currDif = enabled?difficulty.Hard:difficulty.normal;
 
     }
-   
+
+    public void MainMenuButton()
+    {
+        Destroy(PowerUpManager.Instance.gameObject);
+        LoadingScreen.instance.LoadScene(0);
+        gameManager.instance.stateUnpause();
+    }
+
+    public void PlayCredits()
+    {
+        gameManager.instance.menuActive.SetActive(false);
+        gameManager.instance.menuActive = gameManager.instance.creditsPanel;
+        gameManager.instance.menuActive.SetActive(true);
+    }
+
 }

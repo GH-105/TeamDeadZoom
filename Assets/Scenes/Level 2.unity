@@ -5045,6 +5045,10 @@ PrefabInstance:
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 9134313278110343880, guid: 366bb077a799fd54f8451be86a55cc79, type: 3}
+      propertyPath: battleClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 3a5e0ac88f0782141834dd156e493645, type: 3}
+    - target: {fileID: 9134313278110343880, guid: 366bb077a799fd54f8451be86a55cc79, type: 3}
       propertyPath: maxEnemies
       value: 1
       objectReference: {fileID: 0}
@@ -10812,7 +10816,7 @@ MonoBehaviour:
   - {fileID: 620792001}
   roomGoalLabel: {fileID: 183295092}
   doorStatusLabel: {fileID: 296832520}
-  battleClip: {fileID: 0}
+  battleClip: {fileID: 8300000, guid: 3a5e0ac88f0782141834dd156e493645, type: 3}
   roomGoalCount: 0
   roomActive: 0
 --- !u!65 &933287135
@@ -15845,6 +15849,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4976407977306092244, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
+      propertyPath: bulletSpeed
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 8464894528499008667, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
       propertyPath: m_LocalPosition.x
       value: 42.16184
@@ -17891,7 +17899,7 @@ MonoBehaviour:
   - {fileID: 1504237439}
   roomGoalLabel: {fileID: 183295092}
   doorStatusLabel: {fileID: 773836211}
-  battleClip: {fileID: 0}
+  battleClip: {fileID: 8300000, guid: 3a5e0ac88f0782141834dd156e493645, type: 3}
   roomGoalCount: 0
   roomActive: 0
 --- !u!65 &1834606916
@@ -17980,7 +17988,7 @@ MonoBehaviour:
   - {fileID: 86916599}
   roomGoalLabel: {fileID: 183295092}
   doorStatusLabel: {fileID: 1790131090}
-  battleClip: {fileID: 0}
+  battleClip: {fileID: 8300000, guid: 3a5e0ac88f0782141834dd156e493645, type: 3}
   roomGoalCount: 0
   roomActive: 0
 --- !u!65 &1837284039
@@ -18460,7 +18468,7 @@ MonoBehaviour:
   - {fileID: 1715708537}
   roomGoalLabel: {fileID: 183295092}
   doorStatusLabel: {fileID: 6203120}
-  battleClip: {fileID: 0}
+  battleClip: {fileID: 8300000, guid: 3a5e0ac88f0782141834dd156e493645, type: 3}
   roomGoalCount: 0
   roomActive: 0
 --- !u!65 &1882365131
@@ -19302,6 +19310,10 @@ PrefabInstance:
       propertyPath: bossRoom
       value: 
       objectReference: {fileID: 1500034678}
+    - target: {fileID: 8659121285320977102, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MainMenuButton
+      objectReference: {fileID: 0}
     - target: {fileID: 8881158984367406722, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -20188,7 +20200,7 @@ PrefabInstance:
     - target: {fileID: 5209052059936825753, guid: 2234d1085ecee174cbd784c3f80bf342, type: 3}
       propertyPath: m_Resource
       value: 
-      objectReference: {fileID: 8300000, guid: 5995433f9955b154d8e01395644cea7b, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8552754542459184044, guid: 2234d1085ecee174cbd784c3f80bf342, type: 3}
       propertyPath: m_Name
       value: Music

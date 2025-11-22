@@ -69,6 +69,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
     float stepDeg = 6f;
     float lastGrounTime;
     public hearts heartsUI;
+    public float levelStartHP;
     
 
     float shootTimer;
@@ -84,6 +85,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
     void Start()
     {
         HPOrig = HP;
+        levelStartHP = HP;
         gravOrig = gravity;
         speedOrig = speed;
         jumpSpeedOrig = jumpSpeed;
@@ -219,8 +221,12 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
     void shoot()
     {
         shootTimer = 0;
-
+        
         Camera cam = Camera.main;
+        if (cam == null)
+        {
+            return;
+        }
         Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
 
         Vector3 aimPoint;

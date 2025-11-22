@@ -80,7 +80,6 @@ public class powerupeffects : MonoBehaviour
                         break;
                     case PowerUpType.ChSpeed:
                         PowerUpManager.Instance.ApplyCHSpeedBonus(speedBoost, HPLoss);
-
                         break;
                     case PowerUpType.ChDamage:
                         PowerUpManager.Instance.ApplyCHDamage(gunIndex, damageBoostFlat, jumpsSpeedInc);

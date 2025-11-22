@@ -64,7 +64,7 @@ public class room : MonoBehaviour
             startSpawning = true;
             doorState(true);
 
-            FindObjectOfType<MusicManager>().RoomActivated(battleClip);
+            FindFirstObjectByType<MusicManager>().RoomActivated(battleClip);
         }
     }
 
@@ -74,7 +74,7 @@ public class room : MonoBehaviour
         {
             roomActive = false;
 
-            FindObjectOfType<MusicManager>().RoomDeactivated();
+            FindFirstObjectByType<MusicManager>().RoomDeactivated();
         }
     }
 
