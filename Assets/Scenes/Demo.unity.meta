@@ -1,8 +1,7 @@
 fileFormatVersion: 2
-guid: 74950ad439f2d654e9e4e520c55164b9
-NativeFormatImporter:
+guid: f319a536d8019f64588aa4d48fb1df9d
+DefaultImporter:
   externalObjects: {}
-  mainObjectFileID: 4890085278179872738
   userData: 
   assetBundleName: 
   assetBundleVariant: 
@@ -11,5 +10,5 @@ AssetOrigin:
   productId: 283665
   packageName: Low Poly ShotGun Weapon Pack 1
   packageVersion: 1.0
-  assetPath: Assets/Scenes/Demo Lighting Settings.lighting
+  assetPath: Assets/Scenes/Demo.unity
   uploadId: 724253
