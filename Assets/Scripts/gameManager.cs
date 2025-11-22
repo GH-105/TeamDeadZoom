@@ -9,6 +9,7 @@ public class gameManager : MonoBehaviour
 {
     public static gameManager instance;
 
+    [SerializeField] public GameObject creditsPanel;
     [SerializeField] public GameObject menuActive;
     [SerializeField] GameObject menuPause;
     [SerializeField] public GameObject menuWin;

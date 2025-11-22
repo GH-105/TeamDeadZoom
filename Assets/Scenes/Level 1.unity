@@ -4590,6 +4590,10 @@ PrefabInstance:
       propertyPath: DamageIndicatorDir
       value: 
       objectReference: {fileID: 328602448}
+    - target: {fileID: 8659121285320977102, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MainMenuButton
+      objectReference: {fileID: 0}
     - target: {fileID: 8881158984367406722, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -23128,7 +23132,7 @@ MonoBehaviour:
   spawnPos:
   - {fileID: 1540697333}
   roomGoalLabel: {fileID: 1516555843}
-  doorStatusLabel: {fileID: 0}
+  doorStatusLabel: {fileID: 1088884425}
   battleClip: {fileID: 8300000, guid: 73e800617cbae8843909627cf37f3b01, type: 3}
   roomGoalCount: 0
   roomActive: 0

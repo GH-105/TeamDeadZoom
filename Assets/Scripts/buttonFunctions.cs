@@ -267,4 +267,11 @@ public class buttonFunctions : MonoBehaviour
         gameManager.instance.stateUnpause();
     }
 
+    public void PlayCredits()
+    {
+        gameManager.instance.menuActive.SetActive(false);
+        gameManager.instance.menuActive = gameManager.instance.creditsPanel;
+        gameManager.instance.menuActive.SetActive(true);
+    }
+
 }
