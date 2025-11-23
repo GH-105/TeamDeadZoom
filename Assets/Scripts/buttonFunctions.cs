@@ -82,11 +82,9 @@ public class buttonFunctions : MonoBehaviour
         int sceneIndex = SceneManager.GetActiveScene().buildIndex;
         if (sceneIndex == 0)
         {
-            Debug.Log("scene index 0 ");
             levelChosen = level;
             if(PowerUpManager.Instance != null)
             {
-                Debug.Log("scene index 1 ");
                 PowerUpManager.Instance.gunList.Clear();
                 PowerUpManager.Instance.weaponEffects.Clear();
             }
@@ -96,7 +94,6 @@ public class buttonFunctions : MonoBehaviour
         {
             if(sceneIndex == level)
             {
-                Debug.Log("restart level");
                 gameManager.instance.stateUnpause();
                 SceneManager.sceneLoaded += OnMainMenuLoad;
                 SceneManager.LoadScene(0);
