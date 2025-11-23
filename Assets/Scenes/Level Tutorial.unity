@@ -4207,6 +4207,7 @@ GameObject:
   - component: {fileID: 1200930456}
   - component: {fileID: 1200930455}
   - component: {fileID: 1200930458}
+  - component: {fileID: 1200930459}
   m_Layer: 0
   m_Name: TutorialCamera
   m_TagString: Untagged
@@ -4346,6 +4347,14 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!81 &1200930459
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1200930454}
+  m_Enabled: 1
 --- !u!1001 &1225204863
 PrefabInstance:
   m_ObjectHideFlags: 0

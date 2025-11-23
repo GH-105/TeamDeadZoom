@@ -53,6 +53,8 @@ public class buttonFunctions : MonoBehaviour
 
     public void restart()
     {
+        PowerUpManager.Instance.gunList.Clear();
+        PowerUpManager.Instance.weaponEffects.Clear();
         PowerUpManager.Instance.playerCurrentHP = gameManager.instance.playerScript.levelStartHP; 
         LoadingScreen.instance.LoadScene(SceneManager.GetActiveScene().buildIndex);
         gameManager.instance.stateUnpause();
@@ -80,20 +82,40 @@ public class buttonFunctions : MonoBehaviour
         int sceneIndex = SceneManager.GetActiveScene().buildIndex;
         if (sceneIndex == 0)
         {
+            Debug.Log("scene index 0 ");
             levelChosen = level;
+            if(PowerUpManager.Instance != null)
+            {
+                Debug.Log("scene index 1 ");
+                PowerUpManager.Instance.gunList.Clear();
+                PowerUpManager.Instance.weaponEffects.Clear();
+            }
             gameManager.instance.weaponSelect();
         }
         else
         {
             if(sceneIndex == level)
             {
-                restart();
+                Debug.Log("restart level");
+                gameManager.instance.stateUnpause();
+                SceneManager.sceneLoaded += OnMainMenuLoad;
+                SceneManager.LoadScene(0);
+                return;
             }
 
             gameManager.instance.stateUnpause();
             SceneManager.LoadScene(level);
         }
         LoadGame();
+    }
+
+    private void OnMainMenuLoad(Scene scene, LoadSceneMode mode)
+    {
+        if(scene.buildIndex == 0 )
+        {
+            gameManager.instance.weaponSelect();
+            SceneManager.sceneLoaded -= OnMainMenuLoad;
+        }
     }
 
     public void nextLevel()
@@ -271,7 +293,11 @@ public class buttonFunctions : MonoBehaviour
 
     public void MainMenuButton()
     {
-        Destroy(PowerUpManager.Instance.gameObject);
+        if (PowerUpManager.Instance != null)
+        {
+            PowerUpManager.Instance.gunList.Clear();
+            PowerUpManager.Instance.weaponEffects.Clear();
+        }
         LoadingScreen.instance.LoadScene(0);
         gameManager.instance.stateUnpause();
     }
