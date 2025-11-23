@@ -8,17 +8,24 @@ public class DamageDirection : MonoBehaviour
     [SerializeField] public Vector3 TakeDmgDirection;
     [SerializeField] public CanvasGroup DmgImageCanvas;
     [SerializeField] public float FadeStart, FadeDur, MaxFade;
+    public playerController player;
 
     void Start()
     {
         PlayerObj = gameManager.instance.player.transform;
+        player = FindFirstObjectByType<playerController>();
         MaxFade = FadeDur;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(FadeStart > 0)
+        if (player.HP <= 0)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        if (FadeStart > 0)
         {
             FadeStart -= Time.deltaTime;
         }
@@ -31,7 +38,7 @@ public class DamageDirection : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
-
+        
         TakeDmgDirection.y = PlayerObj.position.y;
         Vector3 DmgDirection = (TakeDmgDirection - PlayerObj.position).normalized;
         float DmgAngle = (Vector3.SignedAngle(PlayerObj.forward, DmgDirection, Vector3.up));

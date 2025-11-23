@@ -81,9 +81,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RewardDoor
   DisplayKeyAmount: {fileID: 0}
+  KeyLabel: {fileID: 0}
   key: {fileID: 5698844783614762020}
   interactiveSource: {fileID: 0}
   interactRange: 5
+  player: {fileID: 0}
 --- !u!135 &3408759098774148404
 SphereCollider:
   m_ObjectHideFlags: 0
