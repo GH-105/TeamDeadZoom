@@ -449,6 +449,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1059451736670857884, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4976407977306092244, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
       propertyPath: recoil
       value: 
@@ -508,6 +512,10 @@ PrefabInstance:
     - target: {fileID: 9093480221707116065, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
       propertyPath: m_Name
       value: ToonSoldier_NoGun
+      objectReference: {fileID: 0}
+    - target: {fileID: 9150284309537859687, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2060,11 +2068,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5006415262684382732, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
   m_PrefabInstance: {fileID: 1602579938}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1602579940 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8755584860337431140, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
-  m_PrefabInstance: {fileID: 1602579938}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1602579941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2077,7 +2080,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2db8bd08f26d5746873594d94f00706, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
-  quitButton: {fileID: 1602579940}
+  quitButtonMenu: {fileID: 0}
+  quitButtonPause: {fileID: 0}
 --- !u!1001 &1650820281
 PrefabInstance:
   m_ObjectHideFlags: 0

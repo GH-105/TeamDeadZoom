@@ -879,6 +879,10 @@ PrefabInstance:
       value: Coin(1 value coin) (1)
       objectReference: {fileID: 0}
     - target: {fileID: 7070937281997735442, guid: 9cf0d5739813eae499c1ad9985c5f6d1, type: 3}
+      propertyPath: coinLabel
+      value: 
+      objectReference: {fileID: 875288370}
+    - target: {fileID: 7070937281997735442, guid: 9cf0d5739813eae499c1ad9985c5f6d1, type: 3}
       propertyPath: DisplayCoinAmount
       value: 
       objectReference: {fileID: 1972755400}
@@ -2102,7 +2106,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -3155,6 +3159,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin(1 value coin) (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 7070937281997735442, guid: 9cf0d5739813eae499c1ad9985c5f6d1, type: 3}
+      propertyPath: coinLabel
+      value: 
+      objectReference: {fileID: 875288370}
     - target: {fileID: 7070937281997735442, guid: 9cf0d5739813eae499c1ad9985c5f6d1, type: 3}
       propertyPath: DisplayCoinAmount
       value: 
@@ -4879,7 +4887,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -4998,6 +5006,10 @@ PrefabInstance:
     - target: {fileID: 1346118900953603976, guid: 366bb077a799fd54f8451be86a55cc79, type: 3}
       propertyPath: m_Name
       value: Room_D
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572976263746788613, guid: 366bb077a799fd54f8451be86a55cc79, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5783807348403397296, guid: 366bb077a799fd54f8451be86a55cc79, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7513,6 +7525,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6472643389924630568, guid: f4245a92efc12ec4d8b132874dea3464, type: 3}
+      propertyPath: coinLabel
+      value: 
+      objectReference: {fileID: 875288370}
+    - target: {fileID: 6472643389924630568, guid: f4245a92efc12ec4d8b132874dea3464, type: 3}
       propertyPath: DisplayCoinAmount
       value: 
       objectReference: {fileID: 1972755400}
@@ -7675,7 +7691,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -8033,13 +8049,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3629761327608750198, guid: 758cf89b8ed816348876e7a99dde20eb, type: 3}
+      propertyPath: key
+      value: 
+      objectReference: {fileID: 1525371240}
+    - target: {fileID: 3629761327608750198, guid: 758cf89b8ed816348876e7a99dde20eb, type: 3}
+      propertyPath: KeyLabel
+      value: 
+      objectReference: {fileID: 1022906640}
+    - target: {fileID: 3629761327608750198, guid: 758cf89b8ed816348876e7a99dde20eb, type: 3}
       propertyPath: DisplayKeyAmount
       value: 
       objectReference: {fileID: 1972755399}
     - target: {fileID: 3629761327608750198, guid: 758cf89b8ed816348876e7a99dde20eb, type: 3}
       propertyPath: interactiveSource
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1638537644}
     - target: {fileID: 4926249215279122078, guid: 758cf89b8ed816348876e7a99dde20eb, type: 3}
       propertyPath: m_LocalPosition.x
       value: -446.41647
@@ -8115,7 +8139,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1798236082859774782, guid: f7f2c304ea32fc441bafe7b22c1d3299, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -402
+      value: -403.75
       objectReference: {fileID: 0}
     - target: {fileID: 1798236082859774782, guid: f7f2c304ea32fc441bafe7b22c1d3299, type: 3}
       propertyPath: m_LocalRotation.w
@@ -8720,7 +8744,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -8852,6 +8876,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6472643389924630568, guid: f4245a92efc12ec4d8b132874dea3464, type: 3}
+      propertyPath: coinLabel
+      value: 
+      objectReference: {fileID: 875288370}
     - target: {fileID: 6472643389924630568, guid: f4245a92efc12ec4d8b132874dea3464, type: 3}
       propertyPath: DisplayCoinAmount
       value: 
@@ -9076,7 +9104,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -10449,6 +10477,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 870051680}
   m_Mesh: {fileID: 4300000, guid: 657987f19f0767d4f81541198f8e3eff, type: 3}
+--- !u!114 &875288370 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4057105481637837300, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
+  m_PrefabInstance: {fileID: 1972755398}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &899922025
 GameObject:
   m_ObjectHideFlags: 0
@@ -11141,6 +11180,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 998465535}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1022906640 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9212685752503132719, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
+  m_PrefabInstance: {fileID: 1972755398}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1001 &1079782946
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15034,7 +15084,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -15087,7 +15137,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -15223,13 +15273,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3629761327608750198, guid: 758cf89b8ed816348876e7a99dde20eb, type: 3}
+      propertyPath: KeyLabel
+      value: 
+      objectReference: {fileID: 1022906640}
+    - target: {fileID: 3629761327608750198, guid: 758cf89b8ed816348876e7a99dde20eb, type: 3}
       propertyPath: DisplayKeyAmount
       value: 
       objectReference: {fileID: 1972755399}
     - target: {fileID: 3629761327608750198, guid: 758cf89b8ed816348876e7a99dde20eb, type: 3}
       propertyPath: interactiveSource
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1638537644}
     - target: {fileID: 4926249215279122078, guid: 758cf89b8ed816348876e7a99dde20eb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 453.47504
@@ -15279,6 +15333,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 758cf89b8ed816348876e7a99dde20eb, type: 3}
+--- !u!1 &1525371240 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5698844783614762020, guid: 758cf89b8ed816348876e7a99dde20eb, type: 3}
+  m_PrefabInstance: {fileID: 1525371239}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1525870508
 GameObject:
   m_ObjectHideFlags: 0
@@ -15548,7 +15607,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -15680,7 +15739,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -15854,6 +15913,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1059451736670857884, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4976407977306092244, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
       propertyPath: bulletSpeed
       value: 40
@@ -15922,6 +15985,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbc7609e6469c6a4bb84fc5a631589bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::playerController
+--- !u!4 &1638537644 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6509400436022483906, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
+  m_PrefabInstance: {fileID: 1638537642}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1644943581
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16160,6 +16228,10 @@ PrefabInstance:
       value: Coin(1 value coin) (2)
       objectReference: {fileID: 0}
     - target: {fileID: 7070937281997735442, guid: 9cf0d5739813eae499c1ad9985c5f6d1, type: 3}
+      propertyPath: coinLabel
+      value: 
+      objectReference: {fileID: 875288370}
+    - target: {fileID: 7070937281997735442, guid: 9cf0d5739813eae499c1ad9985c5f6d1, type: 3}
       propertyPath: DisplayCoinAmount
       value: 
       objectReference: {fileID: 1972755400}
@@ -16221,6 +16293,10 @@ PrefabInstance:
       value: Coin(1 value coin) (5)
       objectReference: {fileID: 0}
     - target: {fileID: 7070937281997735442, guid: 9cf0d5739813eae499c1ad9985c5f6d1, type: 3}
+      propertyPath: coinLabel
+      value: 
+      objectReference: {fileID: 875288370}
+    - target: {fileID: 7070937281997735442, guid: 9cf0d5739813eae499c1ad9985c5f6d1, type: 3}
       propertyPath: DisplayCoinAmount
       value: 
       objectReference: {fileID: 1972755400}
@@ -16276,7 +16352,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -16588,7 +16664,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -16869,6 +16945,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin(1 value coin)
       objectReference: {fileID: 0}
+    - target: {fileID: 7070937281997735442, guid: 9cf0d5739813eae499c1ad9985c5f6d1, type: 3}
+      propertyPath: coinVal
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7070937281997735442, guid: 9cf0d5739813eae499c1ad9985c5f6d1, type: 3}
+      propertyPath: coinLabel
+      value: 
+      objectReference: {fileID: 875288370}
     - target: {fileID: 7070937281997735442, guid: 9cf0d5739813eae499c1ad9985c5f6d1, type: 3}
       propertyPath: DisplayCoinAmount
       value: 
@@ -18283,6 +18367,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Coin(1 value coin) (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 7070937281997735442, guid: 9cf0d5739813eae499c1ad9985c5f6d1, type: 3}
+      propertyPath: coinLabel
+      value: 
+      objectReference: {fileID: 875288370}
     - target: {fileID: 7070937281997735442, guid: 9cf0d5739813eae499c1ad9985c5f6d1, type: 3}
       propertyPath: DisplayCoinAmount
       value: 
