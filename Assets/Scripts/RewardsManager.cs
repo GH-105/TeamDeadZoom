@@ -5,7 +5,6 @@ using System.Threading;
 using System;
 
 
-
 #if UNITY_EDITOR
 using UnityEditor;
 #endif 
@@ -13,6 +12,8 @@ public class RewardsManager : MonoBehaviour
 {
     public static RewardsManager instance;
     private int coinsBeforeLevel;
+
+    [SerializeField] private CoinShop coinshop;
 
     private void Awake()
     {
@@ -101,6 +102,8 @@ public class RewardsManager : MonoBehaviour
             gameManager.instance.coinShopPanel.SetActive(true);
             gameManager.instance.menuActive = gameManager.instance.coinShopPanel;
         }
+        if(coinshop != null)
+            coinshop.RefreshShopUI();
     }
 
     public void LossRewards()

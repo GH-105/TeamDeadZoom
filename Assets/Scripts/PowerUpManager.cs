@@ -366,5 +366,14 @@ public class PowerUpManager : MonoBehaviour
         weaponEffects.Clear();
         gunList.Clear();
     }
+
+    public void ResetForTutorial()
+    {
+        gunList.Clear();
+        weaponEffects.Clear();
+        gunListPos = 0;
+        
+        ResetPlayerBonuses();
+    }
 }
 
