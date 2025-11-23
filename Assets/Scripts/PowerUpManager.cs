@@ -297,26 +297,39 @@ public class PowerUpManager : MonoBehaviour
     {
 
         Hp += amount;
-        gameManager.instance.playerScript.heartsUI.UpdateHearts((int)gameManager.instance.playerScript.HP);
-        gameManager.instance.playerScript.HP += Hp;
-        if(gameManager.instance.playerScript.HP > gameManager.instance.playerScript.HPOrig)
-        {
-            gameManager.instance.playerScript.HP = gameManager.instance.playerScript.HPOrig;
-        }
+
+        var player = gameManager.instance.playerScript;
+        if (player == null) return;
+
+        if (player.heartsUI == null)
+            player.heartsUI = FindFirstObjectByType<hearts>();
+
+        if (player.heartsUI != null)
+            player.heartsUI.UpdateHearts((int)player.HP);
+
+        player.HP += Hp;
+        if (player.HP > player.HPOrig)
+            player.HP = player.HPOrig;
 
         Notify($"+{amount} HP");
     }
 
     public void maxHPIncrease(int amount)
     {
-
         Hp += amount;
-        gameManager.instance.playerScript.heartsUI.UpdateHearts((int)gameManager.instance.playerScript.HP);
-        gameManager.instance.playerScript.HP += Hp;
-        if (gameManager.instance.playerScript.HP > gameManager.instance.playerScript.HPOrig)
-        {
-            gameManager.instance.playerScript.HPOrig = gameManager.instance.playerScript.HP;
-        }
+
+        var player = gameManager.instance.playerScript;
+        if (player == null) return;
+
+        if (player.heartsUI == null)
+            player.heartsUI = FindFirstObjectByType<hearts>();
+
+        if (player.heartsUI != null)
+            player.heartsUI.UpdateHearts((int)player.HP);
+
+        player.HP += Hp;
+        if (player.HP > player.HPOrig)
+            player.HPOrig = player.HP;
 
         Notify($"+{amount} HP");
     }

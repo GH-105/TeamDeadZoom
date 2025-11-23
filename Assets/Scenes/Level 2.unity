@@ -6750,6 +6750,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7cafb89b5a0f61f479d0a748962abbbc, type: 3}
+--- !u!1 &527300592 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9093480221707116065, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
+  m_PrefabInstance: {fileID: 1638537642}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &537793246 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1286052904094392095, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
@@ -17236,6 +17241,8 @@ PlayableDirector:
     value: {fileID: 0}
   - key: {fileID: -1602767356841502419, guid: 1455699ef00018f488153a3290b88c3e, type: 2}
     value: {fileID: 209344267}
+  - key: {fileID: 2126688762455127752, guid: 1455699ef00018f488153a3290b88c3e, type: 2}
+    value: {fileID: 527300592}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &1779786664

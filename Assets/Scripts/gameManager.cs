@@ -81,17 +81,19 @@ public class gameManager : MonoBehaviour
 
     private void Start()
     {
-        SaveManager.LoadGame();
-
-        if(SceneManager.GetActiveScene().name == "Level Select")
+        buttonFunctions.LoadGame();
+        if (SceneManager.GetActiveScene().buildIndex == 0)
         {
+            GameData data = SaveManager.LoadGame();
+            if (data != null && data.HardModeUnlocked)
+                hardModeButton.SetActive(true);
+            else
+                hardModeButton.SetActive(false);
+
             StartScreen();
             statePause();
         }
-        else
-        {
-            menuActive = null;
-        }    
+        
 
 
     }
@@ -128,8 +130,6 @@ public class gameManager : MonoBehaviour
 
         if(PowerUpText.Instance != null && PowerUpText.Instance.popUpParent != null)
             PowerUpText.Instance.popUpParent.gameObject.SetActive(false);
-
-        buttonFunctions.SaveGame(true);
     }
 
     public void stateUnpause()

@@ -425,7 +425,6 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
         if(givesSouls)
         {
             SoulManagement.AddSouls(soulsToGive);
-            buttonFunctions.SaveGame(false);
         }
         if (dead)//for cleanup
         {

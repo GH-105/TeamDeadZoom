@@ -31,7 +31,7 @@ public class buttonFunctions : MonoBehaviour
         }
         SaveGame(true);
     }
-
+#if !UNITY_EDITOR
     private void OnApplicationPause(bool pauseStatus)
     {
         if(pauseStatus)
@@ -45,7 +45,7 @@ public class buttonFunctions : MonoBehaviour
         }    
         
     }
-
+#endif
     public void resume()
     {
         gameManager.instance.stateUnpause();
@@ -62,11 +62,11 @@ public class buttonFunctions : MonoBehaviour
     {
         //SaveGame();
 
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
-    #else
+#else
             Application.Quit();
-    #endif
+#endif
     }
 
     public void respawn()
@@ -122,21 +122,24 @@ public class buttonFunctions : MonoBehaviour
 
     public static void SaveGame(bool win)
     {
-        GameData data = SaveManager.LoadGame() ?? new GameData(); // ?? is useful if left = null go with right
+        GameData data = SaveManager.LoadGame() ?? new GameData();
 
         data.souls = SoulManagement.souls;
         data.dashCount = SoulManagement.dashCount;
         data.jumpCount = SoulManagement.jumpCount;
         data.playerSpeed = SoulManagement.playerSpeed;
-        data.playerHP = (int)gameManager.instance.playerScript.HP;
+
         data.maxHP = SoulManagement.maxHp;
         data.currentHP = SoulManagement.currentHP;
+
         data.dashUpgradeCost = SoulManagement.dashUpgradeCost;
         data.hpUpgradeCost = SoulManagement.hpUpgradeCost;
         data.jumpUpgradeCost = SoulManagement.jumpUpgradeCost;
         data.speedUpgradeCost = SoulManagement.speedUpgradeCost;
 
-        if (win)
+        data.dL = DifficultyManager.currDif;
+
+        /*if (win)
         {
             data.coins = Coinlogic.coinCount;
             data.checkpointPosition = gameManager.instance.playerSpawnPos.transform.position;
@@ -161,7 +164,7 @@ public class buttonFunctions : MonoBehaviour
                 };
             }
             data.currentGunIndex = PowerUpManager.Instance.gunListPos;
-        }
+        }*/
         data.levelTimes = new List<GameData.LevelTimeData>(gameManager.instance.levelTimes);
         data.lastLevelCompleted = SceneManager.GetActiveScene().name;
 
@@ -169,21 +172,26 @@ public class buttonFunctions : MonoBehaviour
     }
     public static void LoadGame()
     {
-        GameData data = SaveManager.LoadGame() ?? new GameData();
+        GameData data = SaveManager.LoadGame();
+            if (data == null) return;
+        gameManager.instance.levelTimes = data.levelTimes ?? new List<GameData.LevelTimeData>();
+
         SoulManagement.souls = data.souls;
         SoulManagement.dashCount = data.dashCount;
         SoulManagement.jumpCount = data.jumpCount;
         SoulManagement.playerSpeed = data.playerSpeed;
+
         DifficultyManager.currDif = data.dL;
+
         SoulManagement.maxHp = data.maxHP;
         SoulManagement.currentHP = data.currentHP;
+
         SoulManagement.dashUpgradeCost = data.dashUpgradeCost;
         SoulManagement.hpUpgradeCost = data.hpUpgradeCost;
         SoulManagement.jumpUpgradeCost = data.jumpUpgradeCost;
         SoulManagement.speedUpgradeCost = data.speedUpgradeCost;
-        gameManager.instance.playerScript.HP = data.playerHP;
 
-        Coinlogic.coinCount = data.coins;
+        /*Coinlogic.coinCount = data.coins;
         gameManager.instance.playerSpawnPos.transform.position = data.checkpointPosition;
    
         gameManager.instance.playerScript.spawnPlayer();
@@ -213,7 +221,7 @@ public class buttonFunctions : MonoBehaviour
                 }
                 PowerUpManager.Instance.gunListPos = data.currentGunIndex;
             }
-        //SoulManagement.instance.UpdateUI();
+        //SoulManagement.instance.UpdateUI();*/
     }
     public void DeleteSave()
     {
@@ -253,8 +261,12 @@ public class buttonFunctions : MonoBehaviour
     public void SelectHardMode()
     {
         GameData data = SaveManager.LoadGame() ?? new GameData();
-        data.HardModeSelected = enabled;
-        SaveManager.SaveGame(data); 
+
+        Debug.Log("[HARDMODE] Before: " + data.HardModeSelected);
+        data.HardModeSelected = true;
+        SaveManager.SaveGame(data);
+
+        Debug.Log("[HARDMODE] After save: " + data.HardModeSelected);
 
         DifficultyManager.currDif = enabled?difficulty.Hard:difficulty.normal;
 

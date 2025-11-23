@@ -79,9 +79,20 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
     bool isInAir;
     bool isDashing = false;
 
-    public static event System.Action<playerController> OnPlayerReady; //event for soulManagment 
+    public static event System.Action<playerController> OnPlayerReady;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+
+    private void Awake()
+    {
+        if (controller == null)
+            controller = GetComponent<CharacterController>();
+
+        if (status == null)
+            status = GetComponent<statusController>();
+
+        EnsureHeartsUI();
+    }
     void Start()
     {
         HPOrig = HP;
@@ -89,14 +100,18 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
         gravOrig = gravity;
         speedOrig = speed;
         jumpSpeedOrig = jumpSpeed;
-        heartsUI = FindFirstObjectByType<hearts>();
-        spawnPlayer();
-        
-        controller = GetComponent<CharacterController>();
-        status = GetComponent<statusController>();
-        
 
-        if (PowerUpManager.Instance != null)//checks everytime before applying
+        EnsureHeartsUI();
+        spawnPlayer();
+
+        if (controller == null)
+            controller = GetComponent<CharacterController>();
+
+        if (status == null)
+            status = GetComponent<statusController>();
+
+
+        if (PowerUpManager.Instance != null)
         {
             if (PowerUpManager.Instance.gunList.Count > 0)
             {
@@ -115,11 +130,13 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
         }
         if (gameManager.instance.reloadText != null)
             gameManager.instance.reloadText.SetActive(false);
-        heartsUI.UpdateHearts((int)HP);
+
+        if (heartsUI != null)
+            heartsUI.UpdateHearts((int)HP);
+
         DmgIndicatorDir = gameManager.instance.DamageIndicatorDir;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (controller.isGrounded)
@@ -322,19 +339,20 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
         
         aud.PlayOneShot(audHurt[Random.Range(0, audHurt.Length)], audHurtVol);
         updatePlayerUI();
-        buttonFunctions.SaveGame(false);
     }
 
     public void ApplyDot(float amount, DamageEffects effect, GameObject source)
     {
         HP -= amount;
+
+        EnsureHeartsUI();
         if (heartsUI != null)
             heartsUI.UpdateHearts((int)HP);
+
         StartCoroutine(flashPlayerDmg());
         updatePlayerUI();
         if (HP <= 0f)
         {
-         //   buttonFunc.SaveGame();
             gameManager.instance.youLose();
         }
     }
@@ -448,9 +466,12 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
         controller.transform.position = gameManager.instance.playerSpawnPos.transform.position + Vector3.up * 1f;
         controller.enabled = true;   
         HP = HPOrig;
-        heartsUI.UpdateHearts((int)HP);
-        updatePlayerUI();
 
+        EnsureHeartsUI();
+        if (heartsUI != null)
+            heartsUI.UpdateHearts((int)HP);
+
+        updatePlayerUI();
         OnPlayerReady?.Invoke(this); // event for soulmanagement 
     }
     Vector3 GetDashDir()
@@ -467,8 +488,12 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
     void ApplyHP(float amount, GameObject source)
     {
         HP -= amount;
-        heartsUI.UpdateHearts((int)HP);
-        flashPlayerDmg();
+
+        EnsureHeartsUI();
+        if (heartsUI != null)
+            heartsUI.UpdateHearts((int)HP);
+
+        StartCoroutine(flashPlayerDmg());
         if (HP <= 0)
         {
             gameManager.instance.youLose();
@@ -544,5 +569,17 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
         isDashing = false;
 
         currDash = Mathf.Clamp(currDash, 0, maxAirDash);
+    }
+
+    void EnsureHeartsUI()
+    {
+        if (heartsUI == null)
+        {
+            heartsUI = FindFirstObjectByType<hearts>();
+            if (heartsUI == null)
+            {
+                Debug.LogWarning("playerController: heartsUI not found in scene.");
+            }
+        }
     }
 }

@@ -11,8 +11,19 @@ public class SaveManager : MonoBehaviour
 
     public static void SaveGame(GameData data)
     {
+        Debug.Log("[SAVE] Writing save file...");
+        Debug.Log("[SAVE] Souls=" + data.souls +
+            " Coins=" + data.coins +
+            " BestTimesCount=" + data.levelTimes.Count +
+            " HardModeSelected= " + data.HardModeSelected);
+
         string json = JsonUtility.ToJson(data, true);
+
+        Debug.Log("[SAVE] JSON Contents:\n" + json);
+
         File.WriteAllText(GetSavePath(), json);
+
+        Debug.Log("[SAVE] File written to: " + GetSavePath());
     }
     public static GameData LoadGame()
     {
@@ -20,9 +31,19 @@ public class SaveManager : MonoBehaviour
         if(File.Exists(path))
         {
             string json = File.ReadAllText(path);
+            Debug.Log("[LOAD] JSON read:\n" + json);
+
             GameData data = JsonUtility.FromJson<GameData>(json);
+
+            Debug.Log("[LOAD] Loaded -> Souls=" + data.souls +
+                " Coins=" + data.coins +
+                " BestTimes=" + data.levelTimes.Count +
+                " HardModeSelected=" + data.HardModeSelected);
+
             return data;
         }
+
+        Debug.Log("[LOAD] Save file does not exist. ");
         return null;
     }
     public static bool SaveExists()
@@ -48,7 +69,10 @@ public class SaveManager : MonoBehaviour
 
     public static float UpdateBestTime(string levelName, float currentTime)
     {
+        Debug.Log("[TIME] Updating best time for level: " + levelName);
+
         GameData data = LoadGame();
+        Debug.Log("[TIME] Before update: " + data.levelTimes.Count + " entries");
         if(data == null)
             data = new GameData();
 
@@ -79,6 +103,8 @@ public class SaveManager : MonoBehaviour
            data.levelTimes.Add(newLevelTime);
         }
         data.lastLevelCompleted = levelName;
+
+        Debug.Log("[TIME] After update: " + data.levelTimes.Count + " entries");
 
         SaveGame(data);
         return currentTime < float.MaxValue ? currentTime : float.MaxValue;
