@@ -407,9 +407,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5516483503538133329, guid: 0a6e173a0b175fa4aacb0618436d3d54, type: 3}
-      propertyPath: buttonFunc
-      value: 
+    - target: {fileID: 1059451736670857884, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4976407977306092244, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
       propertyPath: bulletSpeed
@@ -458,6 +458,14 @@ PrefabInstance:
     - target: {fileID: 8464894528499008667, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9150284309537859687, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5516483503538133329, guid: 0a6e173a0b175fa4aacb0618436d3d54, type: 3}
+      propertyPath: buttonFunc
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -711,7 +719,7 @@ PrefabInstance:
     - target: {fileID: 7191271711429454532, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1321452244}
+      objectReference: {fileID: 0}
     - target: {fileID: 7191271711429454532, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: MainMenuButton
