@@ -32,6 +32,7 @@ public class CoinShop : MonoBehaviour
     {
         displayCoinAmount.text = Coinlogic.coinCount.ToString();
         coins = Coinlogic.coinCount;
+        playerContr = gameManager.instance.playerScript;
         
 
         healCostText.text = " - " + costOfHealing.ToString() + "coins for " + healCount.ToString() + " Hp";

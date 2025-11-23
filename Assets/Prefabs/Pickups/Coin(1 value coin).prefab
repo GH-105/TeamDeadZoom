@@ -81,7 +81,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Coinlogic
   DisplayCoinAmount: {fileID: 0}
-  coinVal: 1
+  coinVal: 3
 --- !u!135 &7948699061650403079
 SphereCollider:
   m_ObjectHideFlags: 0
