@@ -16,6 +16,9 @@ public class powerupeffects : MonoBehaviour
     [SerializeField] int HPLoss;
     [SerializeField] int jumpsSpeedInc;
     [SerializeField] int numProjUp;
+    [SerializeField] float soundTime;//time the sound plays
+    [SerializeField] AudioSource AudioSource;//the sound itself
+
 
     public enum PowerUpType
     {
@@ -89,9 +92,8 @@ public class powerupeffects : MonoBehaviour
                         break;
 
                 }
-
-
-                Destroy(gameObject);
+                AudioSource.Play();//should play sound
+                Destroy(gameObject, soundTime);//destroys after sound time
             }
         }
     }
