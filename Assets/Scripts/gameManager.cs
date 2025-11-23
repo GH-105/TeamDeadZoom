@@ -186,6 +186,7 @@ public class gameManager : MonoBehaviour
     public void youLose()
     {
         statePause();
+        gameManager.instance.playerDamageScreen.SetActive(false);
         RewardsManager.instance.LossRewards();
         ResetKillCount();
     }
