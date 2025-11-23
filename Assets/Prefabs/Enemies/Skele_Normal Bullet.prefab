@@ -1429,7 +1429,7 @@ MonoBehaviour:
   deathSoundVol: 1
   floatingTextPrefab: {fileID: 5749133604472977256, guid: 98ae0cc342562464a8b743909731cd35, type: 3}
   givesSouls: 1
-  soulsToGive: 1
+  soulsToGive: 5
   playerInSight: 0
   thisRoom: {fileID: 0}
   HpSlider: {fileID: 3283754933895945452}
