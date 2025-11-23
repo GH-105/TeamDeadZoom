@@ -102,7 +102,7 @@ public class PowerUpManager : MonoBehaviour
 
     public void ApplyDamageMultiplier(int index, float mult)
     {
-        float added = (mult - 1) * 100f;
+        float added = (mult) * 100f;
         gunList[index].mods.damageMultMod += mult;
         string gunName = gunList[index].baseStats.name;
         Notify($"+{added:F0}% Damage on {gunName}");
@@ -209,8 +209,8 @@ public class PowerUpManager : MonoBehaviour
     {
         var gun = gunList[index];
 
-        int damage = Mathf.RoundToInt((gun.baseStats.shootDamage + gun.mods.flatDamageMod) * (gun.mods.damageMultMod));
-        float rate = gun.baseStats.shootRate / gun.mods.rateMultMod;
+        int damage = Mathf.RoundToInt((gun.baseStats.shootDamage + gun.mods.flatDamageMod) * (gun.mods.damageMultMod + 1));
+        float rate = gun.baseStats.shootRate / (gun.mods.rateMultMod + 1);
         int range = gun.baseStats.shootDist + gun.mods.addGunRangeMod;
 
         return (damage, rate, range);

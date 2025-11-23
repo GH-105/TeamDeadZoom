@@ -25668,6 +25668,7 @@ GameObject:
   - component: {fileID: 2234885596188238182}
   - component: {fileID: 5038602382245613211}
   - component: {fileID: 5109511854702009503}
+  - component: {fileID: 5976672890575358546}
   m_Layer: 5
   m_Name: delete save
   m_TagString: Untagged
@@ -25789,6 +25790,28 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!95 &5976672890575358546
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8608817157065687854}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5c575c46e6952154ea9112aba47e5e36, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8643719626302018970
 GameObject:
   m_ObjectHideFlags: 0
