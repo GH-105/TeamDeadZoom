@@ -158,6 +158,7 @@ public class PowerUpManager : MonoBehaviour
     {
         totalProjPlus += proj;
         gameManager.instance.playerScript.numProjectiles += totalProjPlus;
+        Notify($"+{proj} Projectiles");
         pstat = true;
     }
     public void ApplySpeedBonus(int Speed)
