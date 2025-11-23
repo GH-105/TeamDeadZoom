@@ -15543,6 +15543,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1552724492 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8674751849151144578, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
+  m_PrefabInstance: {fileID: 1972755398}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1561963741
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17242,6 +17247,8 @@ PlayableDirector:
     value: {fileID: 209344267}
   - key: {fileID: 2126688762455127752, guid: 1455699ef00018f488153a3290b88c3e, type: 2}
     value: {fileID: 527300592}
+  - key: {fileID: 9070344097295863097, guid: 1455699ef00018f488153a3290b88c3e, type: 2}
+    value: {fileID: 1552724492}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &1779786664

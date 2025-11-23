@@ -5110,6 +5110,8 @@ PlayableDirector:
     value: {fileID: 1200930454}
   - key: {fileID: 4597782811046479522, guid: b55db844a5524314894758185d93b2cb, type: 2}
     value: {fileID: 924509885}
+  - key: {fileID: -4730593736874649255, guid: b55db844a5524314894758185d93b2cb, type: 2}
+    value: {fileID: 1568188918}
   m_ExposedReferences:
     m_References: []
 --- !u!1 &1391209470
@@ -6155,6 +6157,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1566272530}
   m_Mesh: {fileID: 4300000, guid: 657987f19f0767d4f81541198f8e3eff, type: 3}
+--- !u!1 &1568188918 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8674751849151144578, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
+  m_PrefabInstance: {fileID: 7482262042145826162}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1572164737
 GameObject:
   m_ObjectHideFlags: 0

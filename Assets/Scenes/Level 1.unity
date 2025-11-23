@@ -45193,6 +45193,8 @@ PlayableDirector:
     value: {fileID: 1102841938}
   - key: {fileID: -4124727704621278520, guid: bd4545a0afd8b0447a339cbe7e33a06d, type: 2}
     value: {fileID: 937268858}
+  - key: {fileID: -3928877043842103715, guid: bd4545a0afd8b0447a339cbe7e33a06d, type: 2}
+    value: {fileID: 1804346102}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &1739889515
@@ -46839,6 +46841,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4, y: 4, z: 0.19397183}
   m_Center: {x: 0, y: 1.9999999, z: 0.09695456}
+--- !u!1 &1804346102 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8674751849151144578, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
+  m_PrefabInstance: {fileID: 148491504}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1805462055
 PrefabInstance:
   m_ObjectHideFlags: 0
