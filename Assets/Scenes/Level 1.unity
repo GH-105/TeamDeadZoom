@@ -4682,7 +4682,10 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 8568982054753412040, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5006415262684382732, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
+      insertIndex: 1
+      addedObject: {fileID: 148491511}
   m_SourcePrefab: {fileID: 100100000, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
 --- !u!114 &148491505 stripped
 MonoBehaviour:
@@ -4717,6 +4720,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
+--- !u!1 &148491508 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5006415262684382732, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
+  m_PrefabInstance: {fileID: 148491504}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &148491509 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6468293277543988758, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
+  m_PrefabInstance: {fileID: 148491504}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &148491510 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8755584860337431140, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
+  m_PrefabInstance: {fileID: 148491504}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &148491511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 148491508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2db8bd08f26d5746873594d94f00706, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NewMonoBehaviourScript
+  quitButtonMenu: {fileID: 148491510}
+  quitButtonPause: {fileID: 148491509}
 --- !u!4 &156702615 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 657987f19f0767d4f81541198f8e3eff, type: 3}

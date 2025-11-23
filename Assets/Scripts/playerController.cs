@@ -248,11 +248,12 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
         }
         Ray ray = cam.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
 
+        float zeroDistance = 30f;
         Vector3 aimPoint;
         if (Physics.Raycast(ray, out RaycastHit hit, 1000f, aimMask))
             aimPoint = hit.point;
         else
-            aimPoint = ray.origin + ray.direction * 1000f;
+            aimPoint = cam.transform.position + cam.transform.forward * zeroDistance;
 
         Vector3 dir = (aimPoint - firePos.position).normalized;
         Quaternion aimRotation = Quaternion.LookRotation(dir, firePos.up);
