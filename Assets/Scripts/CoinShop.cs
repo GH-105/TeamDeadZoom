@@ -57,6 +57,16 @@ public class CoinShop : MonoBehaviour
             }
         }
     }
+    public void RefreshShopUI()
+    {
+        displayCoinAmount.text = Coinlogic.coinCount.ToString();
+
+
+        healCostText.text = " - " + costOfHealing.ToString() + "coins for " + healCount.ToString() + " Hp";
+        ammoCostText.text = " - " + ammoCost.ToString() + "coins for " + ammoMult.ToString() + " Ammo";
+        flatDamageCostText.text = " - " + costOfFlat.ToString() + "coins for +" + flatDamage.ToString() + " Damage";
+        damageMultCostText.text = " - " + costOfDMult.ToString() + "coins for *" + damageMultAmm.ToString() + " Damage";
+    }
 
     public void UpdateCoinDisplay()
     {
