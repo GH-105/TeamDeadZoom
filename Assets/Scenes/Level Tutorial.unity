@@ -3073,6 +3073,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 9093480221707116065, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
   m_PrefabInstance: {fileID: 924509883}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &924509886 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4976407977306092244, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
+  m_PrefabInstance: {fileID: 924509883}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 924509885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbc7609e6469c6a4bb84fc5a631589bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::playerController
 --- !u!1 &944280928
 GameObject:
   m_ObjectHideFlags: 0
@@ -10330,6 +10341,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 473790125881994750, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
+      propertyPath: playercont
+      value: 
+      objectReference: {fileID: 924509886}
     - target: {fileID: 1193797197937992277, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -25
