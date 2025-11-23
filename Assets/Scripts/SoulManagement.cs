@@ -1,8 +1,5 @@
-using System.Collections;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class SoulManagement : MonoBehaviour
 {

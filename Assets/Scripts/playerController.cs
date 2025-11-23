@@ -95,6 +95,8 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
     }
     void Start()
     {
+        SoulManagement.ApplyStatsToPlayer(this);
+
         HPOrig = HP;
         levelStartHP = HP;
         gravOrig = gravity;
@@ -576,10 +578,6 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
         if (heartsUI == null)
         {
             heartsUI = FindFirstObjectByType<hearts>();
-            if (heartsUI == null)
-            {
-                Debug.LogWarning("playerController: heartsUI not found in scene.");
-            }
         }
     }
 }

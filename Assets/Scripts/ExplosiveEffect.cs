@@ -13,17 +13,14 @@ public class ExplosiveEffect : DamageEffects
     public float Radius => radius;
     public override void OnProjectileImpact(Vector3 position, GameObject source)
     {
-        Debug.Log($"[ExplosiveEffect] Using radius: {radius}", this);
 
         var hits = Physics.OverlapSphere(position, radius, hitMask, QueryTriggerInteraction.Ignore);
 
-        Debug.Log($"[ExplosiveEffect] Hit count: {hits.Length}");
 
         for (int i = 0; i < hits.Length; i++)
         {
             float d = Vector3.Distance(position, hits[i].transform.position);
             var idmg = hits[i].GetComponent<IDamage>();
-            Debug.Log($"  -> hit {hits[i].name} at distance {d}, has IDamage = {idmg != null}");
 
             if (idmg == null) continue;
 

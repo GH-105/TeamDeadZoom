@@ -64,9 +64,7 @@ MonoBehaviour:
   destroyTime: 2
   flightTime: 0.75
   playerInDot: {fileID: 0}
-  damageEffects:
-  - effect: {fileID: 0}
-    magnitude: 1
+  damageEffects: []
   _initialized: 0
 --- !u!135 &6764244344762775684
 SphereCollider:

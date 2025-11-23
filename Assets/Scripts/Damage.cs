@@ -82,7 +82,6 @@ public class Damage : MonoBehaviour
         hasDetonated = true;
 
         Vector3 pos = hasExplosionPos ? explosionPos : transform.position;
-        Debug.Log($"[Detonate] explosion center = {pos}");
 
         foreach (var inst in damageEffects)
             inst.effect.OnProjectileImpact(pos, shooter);

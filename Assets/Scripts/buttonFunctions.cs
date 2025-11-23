@@ -262,11 +262,8 @@ public class buttonFunctions : MonoBehaviour
     {
         GameData data = SaveManager.LoadGame() ?? new GameData();
 
-        Debug.Log("[HARDMODE] Before: " + data.HardModeSelected);
         data.HardModeSelected = true;
         SaveManager.SaveGame(data);
-
-        Debug.Log("[HARDMODE] After save: " + data.HardModeSelected);
 
         DifficultyManager.currDif = enabled?difficulty.Hard:difficulty.normal;
 

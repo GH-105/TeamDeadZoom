@@ -856,6 +856,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1489785787}
   m_CullTransparentMesh: 1
+--- !u!114 &1575890190 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4938722061642647908, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
+  m_PrefabInstance: {fileID: 6557256110332585247}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd1501b27edc377418114542a6189124, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DamageDirection
 --- !u!224 &1653956803 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8881158984367406722, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
@@ -1309,6 +1320,10 @@ PrefabInstance:
       propertyPath: playerScript
       value: 
       objectReference: {fileID: 121087722}
+    - target: {fileID: 7968735221605272654, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
+      propertyPath: DamageIndicatorDir
+      value: 
+      objectReference: {fileID: 1575890190}
     - target: {fileID: 8221820006396299178, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0

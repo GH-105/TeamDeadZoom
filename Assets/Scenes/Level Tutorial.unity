@@ -10202,6 +10202,10 @@ PrefabInstance:
       propertyPath: bossRoom
       value: 
       objectReference: {fileID: 4097229519545990935}
+    - target: {fileID: 7968735221605272654, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
+      propertyPath: DamageIndicatorDir
+      value: 
+      objectReference: {fileID: 621338129}
     - target: {fileID: 8659121285320977102, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: MainMenuButton
@@ -10289,6 +10293,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 5737018942491999360, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
+    - {fileID: 2741816825926448603, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
