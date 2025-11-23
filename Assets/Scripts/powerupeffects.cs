@@ -55,10 +55,10 @@ public class powerupeffects : MonoBehaviour
                         PowerUpManager.Instance.ApplyFlatDamage(gunIndex, damageBoostFlat);
                         break;
                     case PowerUpType.DamageMultiplier:
-                        PowerUpManager.Instance.ApplyDamageMultiplier(gunIndex, 1 + damageBoostMult);
+                        PowerUpManager.Instance.ApplyDamageMultiplier(gunIndex, damageBoostMult);
                         break;
                     case PowerUpType.FireRate:
-                        PowerUpManager.Instance.ApplyRateMultiplier(gunIndex, 1 + rateBoost);
+                        PowerUpManager.Instance.ApplyRateMultiplier(gunIndex, rateBoost);
                         break;
                     case PowerUpType.Ammo:
                         PowerUpManager.Instance.ApplyAmmoBonus(gunIndex, ammoUp);
