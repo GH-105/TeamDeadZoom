@@ -10482,7 +10482,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4057105481637837300, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
   m_PrefabInstance: {fileID: 1972755398}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1698197408}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
@@ -11185,7 +11185,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9212685752503132719, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
   m_PrefabInstance: {fileID: 1972755398}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1698197409}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
@@ -15919,15 +15919,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4976407977306092244, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
       propertyPath: audHurtVol
-      value: 0.7
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4976407977306092244, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
       propertyPath: audJumpVol
-      value: 0.7
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4976407977306092244, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
       propertyPath: audStepsVol
-      value: 0.7
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4976407977306092244, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
       propertyPath: bulletSpeed
@@ -15939,7 +15939,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4976407977306092244, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
       propertyPath: audDryfireVol
-      value: 0.7
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4976407977306092244, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
       propertyPath: audPickupItem
@@ -16533,6 +16533,16 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7673a3aebdac1845b3386dcb8fcccfc, type: 3}
+--- !u!1 &1698197408 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6499629675897793200, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
+  m_PrefabInstance: {fileID: 1972755398}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1698197409 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5847213651934192491, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
+  m_PrefabInstance: {fileID: 1972755398}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1702434521
 GameObject:
   m_ObjectHideFlags: 0
@@ -19459,6 +19469,22 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1500034678}
     - target: {fileID: 7968735221605272654, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
+      propertyPath: KeyAmount
+      value: 
+      objectReference: {fileID: 1972755399}
+    - target: {fileID: 7968735221605272654, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
+      propertyPath: CoinAmount
+      value: 
+      objectReference: {fileID: 1972755400}
+    - target: {fileID: 7968735221605272654, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
+      propertyPath: KeyDisplay
+      value: 
+      objectReference: {fileID: 1698197409}
+    - target: {fileID: 7968735221605272654, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
+      propertyPath: CoinDisplay
+      value: 
+      objectReference: {fileID: 1698197408}
+    - target: {fileID: 7968735221605272654, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
       propertyPath: ReloadSlider
       value: 
       objectReference: {fileID: 96079584}
@@ -19551,6 +19577,7 @@ PrefabInstance:
     - {fileID: 8568982054753412040, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
     - {fileID: 2741816825926448603, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
     - {fileID: 5737018942491999360, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
+    - {fileID: 1870942833003950947, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5006415262684382732, guid: 8d1ea9c24a5aa3640a9959f5800b4ff6, type: 3}

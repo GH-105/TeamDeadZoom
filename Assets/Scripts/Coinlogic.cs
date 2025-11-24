@@ -14,7 +14,8 @@ public class Coinlogic : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             coinCount += coinVal;
-            DisplayCoinAmount.text = coinCount.ToString();
+            gameManager.instance.ShowCoinAmount(true);
+            gameManager.instance.CoinAmount.text = coinCount.ToString();
             player.PlayCoinAndKeySound();
             Destroy(gameObject);
         }
@@ -24,7 +25,7 @@ public class Coinlogic : MonoBehaviour
     {
         if (player.HP <= 0)
         {
-            coinLabel.gameObject.SetActive(false);
+            gameManager.instance.ShowCoinAmount(false);
             return;
         }
     }

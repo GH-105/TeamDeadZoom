@@ -16,7 +16,9 @@ public class keyLogic : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             keyCount++;
-            DisplayKeyAmount.text = keyCount.ToString();
+            gameManager.instance.KeyAmount.text = keyCount.ToString();
+            gameManager.instance.ShowKeyAmount(true);
+            player.PlayCoinAndKeySound();
             Destroy(gameObject);
         }
     }
@@ -30,7 +32,7 @@ public class keyLogic : MonoBehaviour
     {
         if (player.HP <= 0)
         {
-            KeyLabel.gameObject.SetActive(false);
+            gameManager.instance.ShowCoinAmount(false);
             return;
         }
         if (Input.GetKeyDown(KeyCode.E))

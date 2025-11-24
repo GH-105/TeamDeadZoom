@@ -38,7 +38,10 @@ public class gameManager : MonoBehaviour
     [SerializeField] public int finalLevelIndex = 3;
     [SerializeField] GameObject hardModeButton;
     [SerializeField] public PlayableDirector endingCutscene;
-    
+    [SerializeField] public GameObject KeyDisplay;
+    [SerializeField] public TMP_Text KeyAmount;
+    [SerializeField] public GameObject CoinDisplay;
+    [SerializeField] public TMP_Text CoinAmount;
 
    
 
@@ -271,7 +274,17 @@ public class gameManager : MonoBehaviour
     }
 
     public void ResetKillCount()
-  {
+    {
        enemiesKilled = 0;
-  }
+    }
+
+    public void ShowKeyAmount(bool on)
+    {
+        KeyDisplay.SetActive(on);
+    }
+
+    public void ShowCoinAmount(bool on)
+    {
+        CoinDisplay.SetActive(on);
+    }
 }
