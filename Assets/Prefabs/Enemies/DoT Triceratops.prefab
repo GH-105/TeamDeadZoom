@@ -3744,9 +3744,9 @@ MonoBehaviour:
   soulsToGive: 1
   playerInSight: 0
   thisRoom: {fileID: 0}
-  HpSlider: {fileID: 9010166462517473699, guid: e7aca7b06b595c845bc0d6febaecfb6a, type: 3}
-  target: {fileID: 2940759203593189872}
-  offset: {x: 0, y: 5.5, z: 0}
+  HpSlider: {fileID: 7425800715145634993}
+  target: {fileID: 533028181616483449}
+  offset: {x: 0, y: 0, z: 0}
 --- !u!195 &3459307900560266884
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4358,3 +4358,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1382001106089685825, guid: b1e3e9a91fa1d3242a8bcf0313bbfaaf, type: 3}
   m_PrefabInstance: {fileID: 1461533397127655224}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7425800715145634993 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8306280974676724617, guid: b1e3e9a91fa1d3242a8bcf0313bbfaaf, type: 3}
+  m_PrefabInstance: {fileID: 1461533397127655224}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider

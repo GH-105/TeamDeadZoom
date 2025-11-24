@@ -1486,8 +1486,8 @@ MonoBehaviour:
   playerInSight: 0
   thisRoom: {fileID: 0}
   HpSlider: {fileID: 2417565450876004497}
-  target: {fileID: 1254503810006246326}
-  offset: {x: 0, y: 6, z: 0}
+  target: {fileID: 4748173751452274777}
+  offset: {x: 0, y: 0, z: 0}
 --- !u!195 &325116566542499768
 NavMeshAgent:
   m_ObjectHideFlags: 0

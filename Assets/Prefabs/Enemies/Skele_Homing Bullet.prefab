@@ -99,8 +99,8 @@ MonoBehaviour:
   playerInSight: 0
   thisRoom: {fileID: 0}
   HpSlider: {fileID: 5516626411210411922}
-  target: {fileID: 619054578388036677}
-  offset: {x: 0, y: 5.5, z: 0}
+  target: {fileID: 3235539844853741402}
+  offset: {x: 0, y: 0, z: 0}
 --- !u!95 &3138403454936158112
 Animator:
   serializedVersion: 7

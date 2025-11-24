@@ -368,7 +368,8 @@ public class EnemyAI : MonoBehaviour, IDamage, IStatusDamageReceiver
     public void UpdateEnemyHP()
     {
         if(HpSlider != null)
-        { 
+        {
+            HpSlider.maxValue = HP;
             HpSlider.value = HP; 
             HpSlider.transform.LookAt(Camera.main.transform);
             HpSlider.transform.rotation = Quaternion.LookRotation(Camera.main.transform.forward);

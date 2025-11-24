@@ -2034,7 +2034,7 @@ MonoBehaviour:
   playerInSight: 0
   thisRoom: {fileID: 0}
   HpSlider: {fileID: 9066608635975089553}
-  target: {fileID: 4684561920409169837}
+  target: {fileID: 2142337533132244313}
   offset: {x: 0, y: 0, z: 0}
 --- !u!114 &2312070777218889428
 MonoBehaviour:
