@@ -396,6 +396,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4976407977306092244, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
+      propertyPath: sfxGroup
+      value: 
+      objectReference: {fileID: -629851566480560032, guid: 99095131b45e6b046a4da90a830314d8, type: 2}
+    - target: {fileID: 4976407977306092244, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
       propertyPath: bulletSpeed
       value: 40
       objectReference: {fileID: 0}
@@ -617,6 +621,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 776848932586521361, guid: dcc93036d98abd14f8d4e062cd04b109, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6801898568020578348, guid: dcc93036d98abd14f8d4e062cd04b109, type: 3}
+      propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6996383149617955124, guid: dcc93036d98abd14f8d4e062cd04b109, type: 3}
