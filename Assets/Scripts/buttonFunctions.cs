@@ -11,6 +11,8 @@ public class buttonFunctions : MonoBehaviour
     [SerializeField] gunStats rifle;
     [SerializeField] gunStats SMG;
     [SerializeField] public GameObject nextLevelButton;
+    [SerializeField] public GameObject savingText;
+
 
     int levelChosen;
     int nextIndex;
@@ -29,7 +31,9 @@ public class buttonFunctions : MonoBehaviour
             StopWatch.instance.StopStopwatch();
             StopWatch.instance.SaveTimeToSaveManager();
         }
+        savingText.SetActive(true);
         SaveGame(true);
+        savingText.SetActive(false);
     }
 #if !UNITY_EDITOR
     private void OnApplicationPause(bool pauseStatus)
@@ -41,7 +45,9 @@ public class buttonFunctions : MonoBehaviour
                 StopWatch.instance.StopStopwatch();
                 StopWatch.instance.SaveTimeToSaveManager();
             }
-            SaveGame(true);
+        savingText.SetActive(true);
+        SaveGame(true);
+        savingText.SetActive(false);
         }    
         
     }

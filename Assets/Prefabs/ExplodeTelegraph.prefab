@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8264674353741048644}
   - component: {fileID: 7313900632913519202}
   - component: {fileID: 1813946574104705190}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ExplodeTelegraph
   m_TagString: Untagged
   m_Icon: {fileID: 0}
