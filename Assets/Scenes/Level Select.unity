@@ -396,17 +396,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4976407977306092244, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
-      propertyPath: audHurtVol
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4976407977306092244, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
-      propertyPath: audJumpVol
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4976407977306092244, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
-      propertyPath: audStepsVol
-      value: 0.7
-      objectReference: {fileID: 0}
+      propertyPath: sfxGroup
+      value: 
+      objectReference: {fileID: -629851566480560032, guid: 99095131b45e6b046a4da90a830314d8, type: 2}
     - target: {fileID: 4976407977306092244, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
       propertyPath: bulletSpeed
       value: 40
