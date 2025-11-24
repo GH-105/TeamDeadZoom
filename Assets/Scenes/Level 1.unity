@@ -24883,6 +24883,10 @@ PrefabInstance:
       value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 4976407977306092244, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
+      propertyPath: maxAirDash
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976407977306092244, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
       propertyPath: audStepsVol
       value: 0.7
       objectReference: {fileID: 0}
@@ -24893,6 +24897,10 @@ PrefabInstance:
     - target: {fileID: 4976407977306092244, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
       propertyPath: audPickupVol
       value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976407977306092244, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
+      propertyPath: jumpCountMax
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4976407977306092244, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
       propertyPath: audDryfireVol

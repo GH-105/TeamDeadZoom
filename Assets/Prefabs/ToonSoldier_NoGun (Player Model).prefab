@@ -6608,15 +6608,15 @@ MonoBehaviour:
   HP: 15
   speed: 16
   sprintMod: 2
-  jumpSpeed: 20
+  jumpSpeed: 26
   jumpCountMax: 2
   gravity: 35
   underwaterGravity: 14
   underwaterSpeed: 12
-  underwaterJumpSpeed: 14
+  underwaterJumpSpeed: 12
   groundbuffer: 0.1
   dashDist: 20
-  maxAirDash: 1
+  maxAirDash: 0
   shootDamage: 2
   shootDist: 50
   shootRate: 0.5
@@ -6653,6 +6653,10 @@ MonoBehaviour:
   audHurtVol: 0.075
   audDryfire: []
   audDryfireVol: 0
+  audPickupItem: {fileID: 0}
+  audPickupVol: 0
+  CoinAndKeySound: {fileID: 8300000, guid: dcb4a1c68df121a48a5815ebccaad0da, type: 3}
+  coinAndKeyVol: 0
   HPOrig: 0
   gunListPos: 0
   gravOrig: 0
@@ -6660,6 +6664,7 @@ MonoBehaviour:
   jumpSpeedOrig: 0
   bulletDamage: 0
   heartsUI: {fileID: 0}
+  levelStartHP: 0
 --- !u!143 &5867841632748879998
 CharacterController:
   m_ObjectHideFlags: 0
