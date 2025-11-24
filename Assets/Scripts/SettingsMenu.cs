@@ -33,5 +33,6 @@ public class SettingsMenu : MonoBehaviour
     public void AdjustSFXVol()
     {
         mainMixer.SetFloat("SFXVolume", sfxVolume.value);
+        PlayerPrefs.SetFloat("SFXVolume", sfxVolume.value);//save for player bullets
     }
 }

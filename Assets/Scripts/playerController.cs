@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.Audio;
 public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageReceiver
 {
     [SerializeField] private buttonFunctions buttonFunc;
@@ -137,6 +138,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
             heartsUI.UpdateHearts((int)HP);
 
         DmgIndicatorDir = gameManager.instance.DamageIndicatorDir;
+
     }
 
     void Update()
@@ -261,6 +263,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
         
 
         PowerUpManager.Instance.ConsumeAmmo(gunListPos);
+
         aud.PlayOneShot(PowerUpManager.Instance.gunList[gunListPos].baseStats.shootSounds[Random.Range(0, PowerUpManager.Instance.gunList[gunListPos].baseStats.shootSounds.Length)], PowerUpManager.Instance.gunList[gunListPos].baseStats.shootSoundVol);
         muzzleFlash.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
         muzzleFlash.Play();
