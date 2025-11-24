@@ -15,6 +15,7 @@ public class Coinlogic : MonoBehaviour
         {
             coinCount += coinVal;
             DisplayCoinAmount.text = coinCount.ToString();
+            player.PlayCoinAndKeySound();
             Destroy(gameObject);
         }
     }

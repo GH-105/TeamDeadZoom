@@ -13972,7 +13972,7 @@ MonoBehaviour:
   rewardsPanel: {fileID: 5315282679960477115}
   coinShopPanel: {fileID: 3444744323404713309}
   startingGun: {fileID: 0}
-  ReloadSlider: {fileID: 1548365630874265075, guid: bbae892a52f90a940a19f52726504070, type: 3}
+  ReloadSlider: {fileID: 8828004114172687514}
   player: {fileID: 0}
   playerScript: {fileID: 0}
   playerSpawnPos: {fileID: 0}
@@ -28710,6 +28710,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4680015118406665790, guid: bbae892a52f90a940a19f52726504070, type: 3}
   m_PrefabInstance: {fileID: 8070372116452348265}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8828004114172687514 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1548365630874265075, guid: bbae892a52f90a940a19f52726504070, type: 3}
+  m_PrefabInstance: {fileID: 8070372116452348265}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Slider
 --- !u!1001 &8869287729504548172
 PrefabInstance:
   m_ObjectHideFlags: 0

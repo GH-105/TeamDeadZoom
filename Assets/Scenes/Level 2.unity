@@ -15918,9 +15918,41 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4976407977306092244, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
+      propertyPath: audHurtVol
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976407977306092244, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
+      propertyPath: audJumpVol
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976407977306092244, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
+      propertyPath: audStepsVol
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976407977306092244, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
       propertyPath: bulletSpeed
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 4976407977306092244, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
+      propertyPath: audPickupVol
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976407977306092244, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
+      propertyPath: audDryfireVol
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976407977306092244, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
+      propertyPath: audPickupItem
+      value: 
+      objectReference: {fileID: 8300000, guid: 56703418e3aed4c47a5f6622816b8e41, type: 3}
+    - target: {fileID: 4976407977306092244, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
+      propertyPath: coinAndKeyVol
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4976407977306092244, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
+      propertyPath: CoinAndKeySound
+      value: 
+      objectReference: {fileID: 8300000, guid: dcb4a1c68df121a48a5815ebccaad0da, type: 3}
     - target: {fileID: 4976407977306092244, guid: 5eef12f37098bde4098fc937c4905f34, type: 3}
       propertyPath: DmgIndicatorDir
       value: 

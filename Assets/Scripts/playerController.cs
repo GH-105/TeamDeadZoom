@@ -44,7 +44,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
     [SerializeField] Transform firePos;
     [SerializeField] GameObject bullet;
 
-    [SerializeField] AudioSource aud;
+    [SerializeField] public AudioSource aud;
     [SerializeField] AudioClip[] audSteps;
     [Range(0, 1)][SerializeField] float audStepsVol;
     [SerializeField] AudioClip[] audJump;
@@ -53,6 +53,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
     [Range(0, 1)][SerializeField] float audHurtVol;
     [SerializeField] AudioClip[] audDryfire;
     [Range(0, 1)][SerializeField] float audDryfireVol;
+    [SerializeField] AudioClip audPickupItem;
+    [Range(0, 1)][SerializeField] float audPickupVol;
+    [SerializeField] AudioClip CoinAndKeySound;
+    [Range(0, 1)][SerializeField] float coinAndKeyVol;
 
     Vector3 moveDir;
     Vector3 playerVel;
@@ -71,7 +75,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
     float lastGrounTime;
     public hearts heartsUI;
     public float levelStartHP;
-    
+
 
     float shootTimer;
 
@@ -165,7 +169,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
     {
         if (isDashing)
         {
-            controller.Move(playerVel*Time.deltaTime);
+            controller.Move(playerVel * Time.deltaTime);
             return;
         }
         if (controller.isGrounded)
@@ -198,7 +202,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
             {
                 shoot();
                 anim.SetTrigger("Shoot");
-                if(recoil != null)
+                if (recoil != null)
                 {
                     recoil.ApplyRecoil();
                 }
@@ -206,6 +210,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
             else
             {
                 aud.PlayOneShot(PowerUpManager.Instance.dryFireSound);
+                shootTimer = 0;
                 if (gameManager.instance.reloadText != null)
                     gameManager.instance.reloadText.gameObject.SetActive(true);
 
@@ -242,7 +247,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
     void shoot()
     {
         shootTimer = 0;
-        
+
         Camera cam = Camera.main;
         if (cam == null)
         {
@@ -260,7 +265,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
         Vector3 dir = (aimPoint - firePos.position).normalized;
         Quaternion aimRotation = Quaternion.LookRotation(dir, firePos.up);
 
-        
+
 
         PowerUpManager.Instance.ConsumeAmmo(gunListPos);
 
@@ -294,9 +299,9 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
                     break;
                 }
             }
-            
+
         }
-        
+
     }
 
     void reload()
@@ -307,7 +312,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
             updatePlayerUI();
             gameManager.instance.reloadText.gameObject.SetActive(false);
         }
-        
+
     }
 
     public void takeDamage(in DamageContext context, IReadOnlyList<EffectInstance> effects)
@@ -327,10 +332,10 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
                 if (mag <= 0f) continue;
 
                 status.ApplyEffect(e.effect, in context, mag);
-                
+
             }
         }
-        if(context.source != null)
+        if (context.source != null)
         {
             DmgIndicatorDir.TakeDmgDirection = context.source.transform.position;
         }
@@ -342,7 +347,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
         {
             StartCoroutine(Camshake.camShake(ShakeDur, ShakeMag));
         }
-        
+
         aud.PlayOneShot(audHurt[Random.Range(0, audHurt.Length)], audHurtVol);
         updatePlayerUI();
     }
@@ -411,7 +416,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
         if (PowerUpManager.Instance.GetCurrentAmmo(gunListPos) <= 1)
         {
             if (gameManager.instance.reloadText != null)
-                    gameManager.instance.reloadText.SetActive(true);
+                gameManager.instance.reloadText.SetActive(true);
 
         }
         else
@@ -420,7 +425,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
                 gameManager.instance.reloadText.SetActive(false);
         }
 
-            updatePlayerUI();
+        updatePlayerUI();
     }
 
     void selectGun()
@@ -470,7 +475,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
     {
         controller.enabled = false;
         controller.transform.position = gameManager.instance.playerSpawnPos.transform.position + Vector3.up * 1f;
-        controller.enabled = true;   
+        controller.enabled = true;
         HP = HPOrig;
 
         EnsureHeartsUI();
@@ -484,13 +489,13 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
     {
         Vector3 camForward = Camera.main.transform.forward;
         camForward.y = 0f;
-        if(camForward.y < 0f)
+        if (camForward.y < 0f)
         {
             return transform.forward;
         }
         return camForward.normalized;
     }
-    
+
     void ApplyHP(float amount, GameObject source)
     {
         HP -= amount;
@@ -523,7 +528,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
         playerVel.y = 0f;
 
         StartCoroutine(DashCoroutine());
-    
+
     }
 
     public int JumpSpeed
@@ -571,7 +576,7 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
             yield return null;
         }
 
-        
+
         isDashing = false;
 
         currDash = Mathf.Clamp(currDash, 0, maxAirDash);
@@ -583,5 +588,15 @@ public class playerController : MonoBehaviour, IDamage, IPickup, IStatusDamageRe
         {
             heartsUI = FindFirstObjectByType<hearts>();
         }
+    }
+
+    public void PlayPickupSound()
+    {
+        aud.PlayOneShot(audPickupItem, audPickupVol);
+    }
+
+    public void PlayCoinAndKeySound()
+    {
+        aud.PlayOneShot(CoinAndKeySound, coinAndKeyVol);
     }
 }

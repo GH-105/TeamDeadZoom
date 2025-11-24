@@ -92,8 +92,8 @@ public class powerupeffects : MonoBehaviour
                         break;
 
                 }
-                AudioSource.Play();//should play sound
-                Destroy(gameObject, soundTime);//destroys after sound time
+                player.PlayPickupSound();
+                Destroy(gameObject);//destroys after sound time
             }
         }
     }
